@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 知识复习小程序</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .subject-switch {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: flex-end;
+            margin: 10px 0 20px;
+        }
+
+        .subject-switch span {
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .subject-btn {
+            padding: 10px 14px;
+            border: 2px solid #ffffff;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .subject-btn:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .subject-btn.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 15px;
+            padding: 48px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 20px;
+        }
+
+        .content-main {
+            min-width: 0;
+        }
+
+        .question-nav {
+            background: #f8f8ff;
+            border: 1px solid #e5e7fb;
+            border-radius: 12px;
+            padding: 24px;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+            max-height: calc(100vh - 160px);
+            overflow-y: auto;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .question-nav h4 {
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .nav-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 8px;
+            background: white;
+            border: 1px solid #eceffd;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-item:hover {
+            background: #eef2ff;
+            transform: translateX(2px);
+        }
+
+        .nav-item.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.35);
+        }
+
+        .nav-num {
+            font-weight: 700;
+        }
+
+        .nav-type {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .nav-group {
+            margin-bottom: 12px;
+        }
+
+        .nav-group-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: #555;
+            margin: 6px 0;
+            font-size: 0.9rem;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .mode-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 16px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .mode-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .mode-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .question-container {
+            display: none;
+        }
+
+        .question-container.active {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .question-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .question-number {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .question-type {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.9;
+            padding: 25px;
+            background: #f9f9f9;
+            border-left: 5px solid #667eea;
+            border-radius: 4px;
+        }
+
+        .options {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .option {
+            padding: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f5f7ff;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .option.correct {
+            border-color: #4caf50;
+            background: #4caf50;
+            color: white;
+        }
+
+        .option.incorrect {
+            border-color: #f44336;
+            background: #f44336;
+            color: white;
+        }
+
+        .answer-display {
+            background: #f0f7ff;
+            border-left: 4px solid #2196f3;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .answer-display.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        .answer-display h3 {
+            color: #2196f3;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .answer-display p {
+            color: #333;
+            line-height: 1.9;
+            white-space: pre-wrap;
+            font-size: 1.1rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #e8e8e8;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .question-list {
+            display: grid;
+            gap: 10px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .question-item {
+            padding: 16px;
+            background: #f9f9f9;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        .question-item:hover {
+            background: #f0f7ff;
+            transform: translateX(5px);
+        }
+
+        .question-item.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        /* 反馈消息样式 */
+        .feedback-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 30px 50px;
+            border-radius: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            z-index: 10000;
+            animation: popIn 0.3s ease-out;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feedback-message.correct {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+        }
+
+        .feedback-message.wrong {
+            background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+            color: white;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .question-nav {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .mode-btn {
+                min-width: 120px;
+                padding: 12px 15px;
+            }
+
+            .question-text {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI 知识复习小程序</h1>
+            <p>刷题、练习、统计、错题集，一站式强化学习</p>
+        </div>
+
+        <div class="subject-switch">
+            <span>科目切换：</span>
+            <button class="subject-btn" data-subject-btn data-subject="ai" onclick="switchSubject('ai')">人工智能</button>
+            <button class="subject-btn" data-subject-btn data-subject="exchange" onclick="switchSubject('exchange')">现代交换原理</button>
+            <button class="subject-btn" data-subject-btn data-subject="linux" onclick="switchSubject('linux')">Linux 技术应用</button>
+        </div>
+
+        <div class="main-content">
+            <div class="content-layout">
+                <div class="content-main">
+                    <div class="mode-selector">
+                        <button class="mode-btn active" onclick="switchMode('practice', this)">🎯 练习模式</button>
+                        <button class="mode-btn" onclick="switchMode('browse', this)">📚 浏览模式</button>
+                        <button class="mode-btn" onclick="switchMode('collected', this)">📌 收藏题目</button>
+                        <button class="mode-btn" onclick="window.open('wrong.html', '_blank')">❌ 错题集</button>
+                        <button class="mode-btn" onclick="switchMode('stats', this)">📊 统计数据</button>
+                    </div>
+
+                    <!-- 练习模式 -->
+                    <div id="practice" class="question-container active">
+                        <div class="stats" id="practiceStats">
+                            <div class="stat-card">
+                                <div class="stat-value" id="totalQuestions">0</div>
+                                <div class="stat-label">总题数</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="currentQuestion">0</div>
+                                <div class="stat-label">当前进度</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="correctCount">0</div>
+                                <div class="stat-label">答对</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="accuracy">0%</div>
+                                <div class="stat-label">准确率</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+
+                        <div class="question-info">
+                            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                                <span class="question-number" id="questionNumber">第 1 题 / 325</span>
+                                <div style="display: flex; gap: 6px; align-items: center;">
+                                    <input id="jumpInput" type="number" min="1" value="1" style="width: 80px; padding: 4px 6px; border-radius: 6px; border: 1px solid #ddd;" placeholder="题号">
+                                    <button class="btn btn-small" onclick="jumpToQuestion()" style="padding: 6px 12px; font-size: 0.9rem;">➡ 跳转</button>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <span class="question-type" id="questionType">单选题</span>
+                                <button class="btn btn-small" id="shuffleOptionsBtn" onclick="shuffleCurrentOptions()" style="display: none; padding: 6px 12px; font-size: 0.9rem;">🔀 乱序</button>
+                            </div>
+                        </div>
+
+                        <div class="question-text" id="questionText"></div>
+
+                        <div class="options" id="optionsContainer"></div>
+
+                        <div class="answer-display" id="answerDisplay">
+                            <h3>✓ 正确答案</h3>
+                            <p id="answerText"></p>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="showAnswerBtn" onclick="showAnswer()">显示答案</button>
+                            <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>← 上一题</button>
+                            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">下一题 →</button>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-secondary" id="collectBtn" onclick="toggleCollectQuestion(allQuestions[currentIndex].id)">☆ 收藏</button>
+                            <button class="btn btn-secondary" onclick="shuffleQuestions()">🔀 随机出题</button>
+                            <button class="btn btn-secondary" onclick="resetProgress()">↻ 重置进度</button>
+                            <button class="btn btn-secondary" id="exitReviewBtn" onclick="exitReviewMode()" style="display: none; background-color: #ffc107; color: #333; border-color: #ffc107;">↩️ 退出复习</button>
+                        </div>
+                    </div>
+
+                    <!-- 浏览模式 -->
+                    <div id="browse" class="question-container">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="搜索题目或答案..." onkeyup="filterQuestions()">
+                        </div>
+
+                        <div class="filters">
+                            <button class="filter-btn active" onclick="filterByType('all', this)">全部</button>
+                            <button class="filter-btn" onclick="filterByType('single', this)">单选题</button>
+                            <button class="filter-btn" onclick="filterByType('multiple', this)">多选题</button>
+                            <button class="filter-btn" onclick="filterByType('fill', this)">填空题</button>
+                            <button class="filter-btn" onclick="filterByType('judge', this)">判断题</button>
+                            <button class="filter-btn" onclick="filterByType('essay', this)">简答题</button>
+                        </div>
+
+                        <div class="question-list" id="questionList"></div>
+                    </div>
+
+                    <!-- 收藏题目模式 -->
+                    <div id="collected" class="question-container">
+                        <div style="margin-bottom: 20px;">
+                            <h3 style="color: #333; margin-bottom: 10px;">📌 收藏题目 (<span id="collectedCount">0</span> 题)</h3>
+                            <p style="color: #999; font-size: 0.9em;">收藏重要题目，方便后续复习</p>
+                        </div>
+
+                        <div class="question-list" id="collectedList"></div>
+
+                        <div style="margin-top: 20px; text-align: center;">
+                            <button class="btn btn-secondary" onclick="clearCollectedQuestions()">🗑️ 清空收藏</button>
+                        </div>
+                    </div>
+
+                    <!-- 错题集模式 -->
+                    <div id="wrong" class="question-container">
+                        <div style="margin-bottom: 20px;">
+                            <h3 style="color: #333; margin-bottom: 10px;">❌ 错题集 (<span id="wrongCount">0</span> 题)</h3>
+                            <p style="color: #999; font-size: 0.9em;">点击题目可进入练习模式复习该题</p>
+                        </div>
+
+                        <div class="question-list" id="wrongList"></div>
+
+                        <div style="margin-top: 20px; text-align: center;">
+                            <button class="btn btn-secondary" onclick="reviewWrongQuestions()">📝 复习错题</button>
+                            <button class="btn btn-secondary" onclick="clearWrongQuestions()">🗑️ 清空错题集</button>
+                        </div>
+                    </div>
+
+                    <!-- 统计模式 -->
+                    <div id="stats" class="question-container">
+                        <div class="stats" style="margin-bottom: 30px;">
+                            <div class="stat-card">
+                                <div class="stat-value" id="statTotal">0</div>
+                                <div class="stat-label">总题数</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="statCorrect">0</div>
+                                <div class="stat-label">答对题数</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="statAccuracy">0%</div>
+                                <div class="stat-label">总体准确率</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="statTime">0 分钟</div>
+                                <div class="stat-label">学习时长</div>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-bottom: 20px; color: #333;">题型分布</h3>
+                        <div id="typeStats" style="display: grid; gap: 15px;"></div>
+
+                        <div style="margin-top: 30px; text-align: center;">
+                            <button class="btn btn-secondary" onclick="exportStats()">📥 导出数据</button>
+                            <button class="btn btn-secondary" onclick="resetAllData()">🗑️ 清空所有数据</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-nav">
+                    <h4>快速跳转</h4>
+                    <div class="nav-list" id="questionNavList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions-part1.js"></script>
+    <script src="questions-part2.js"></script>
+    <script src="questions-part3.js"></script>
+    <script src="questions-part4.js"></script>
+    <!-- 现代交换原理题库（新增科目） -->
+    <script src="questions-exchange.js"></script>
+    <!-- Linux 题库（新增科目） -->
+    <script src="questions-linux.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

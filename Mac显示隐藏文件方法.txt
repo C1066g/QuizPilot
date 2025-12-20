@@ -1,0 +1,55 @@
+========================================
+在Mac Finder中显示隐藏文件的方法
+========================================
+
+方法1: 使用键盘快捷键（最简单）
+--------------------------------
+1. 打开 Finder
+2. 按快捷键: Command + Shift + . (点号)
+3. 再次按相同快捷键可以隐藏
+
+方法2: 使用终端命令（永久显示）
+--------------------------------
+在Mac终端运行:
+defaults write com.apple.finder AppleShowAllFiles -bool true
+killall Finder
+
+隐藏隐藏文件（恢复默认）:
+defaults write com.apple.finder AppleShowAllFiles -bool false
+killall Finder
+
+方法3: 直接在终端访问
+--------------------------------
+在Mac终端中运行:
+cd ~/.ssh
+open .
+
+这会在Finder中打开.ssh文件夹
+
+========================================
+SSH配置文件位置
+========================================
+
+Mac上的SSH配置:
+~/.ssh/config
+完整路径: /Users/mac/.ssh/config
+
+Windows上的SSH配置:
+C:\Users\conve\.ssh\config
+
+========================================
+修改Mac终端提示符（之前的任务）
+========================================
+
+如果想隐藏终端提示符，在Mac终端运行:
+echo 'export PS1="$ "' >> ~/.zshrc
+source ~/.zshrc
+
+或者创建一个简洁的提示符:
+echo 'export PS1="%# "' >> ~/.zshrc
+source ~/.zshrc
+
+========================================
+
+
+

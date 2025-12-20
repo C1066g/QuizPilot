@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  ai-review-app:
+    build: .
+    container_name: ai-review-app
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./:/app:ro
+    networks:
+      - ai-review-network
+
+networks:
+  ai-review-network:
+    driver: bridge
