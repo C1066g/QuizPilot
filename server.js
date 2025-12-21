@@ -116,7 +116,7 @@ server.listen(PORT, HOST, () => {
    手机：http://<你的电脑IP>:${PORT}
 
 💡 示例：
-   http://192.168.1.108:${PORT}
+   http://<你的电脑IP>:${PORT}
 
 ⚠️  按 Ctrl+C 停止服务器
 
