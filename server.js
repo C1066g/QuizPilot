@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 
-const PORT = 8001;
-const HOST = '0.0.0.0';
+const PORT = parseInt(process.env.PORT || '8001', 10);
+const HOST = process.env.HOST || '0.0.0.0';
 
 // MIME 类型映射
 const mimeTypes = {
