@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const url = require('url');
+const { URL } = require('url');
 
 const PORT = parseInt(process.env.PORT || '8001', 10);
 const HOST = process.env.HOST || '0.0.0.0';
@@ -22,9 +22,31 @@ const mimeTypes = {
     '.md': 'text/markdown; charset=utf-8'
 };
 
+const securityHeaders = {
+    'X-Content-Type-Options': 'nosniff',
+    'Referrer-Policy': 'no-referrer',
+    'X-Frame-Options': 'DENY',
+    'Permissions-Policy': 'geolocation=(), microphone=(), camera=()'
+};
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
 const server = http.createServer((req, res) => {
-    // 解析 URL
-    const parsedUrl = url.parse(req.url, true);
+    // 全局安全响应头
+    for (const [k, v] of Object.entries(securityHeaders)) {
+        res.setHeader(k, v);
+    }
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'");
+
+    // 解析 URL (WHATWG)
+    const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
     let pathname = parsedUrl.pathname;
 
     // 移除开头的斜杠
@@ -64,7 +86,7 @@ const server = http.createServer((req, res) => {
                     </head>
                     <body>
                         <h1>404 - 文件未找到</h1>
-                        <p>请求的文件不存在：${pathname}</p>
+                        <p>请求的文件不存在：${escapeHtml(pathname)}</p>
                     </body>
                     </html>
                 `);
