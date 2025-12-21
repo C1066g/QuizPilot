@@ -1,6 +1,7 @@
 import json, re, pathlib
 
-raw_path = pathlib.Path(r'd:\桌面\qimofuxi\linux_raw_full.txt')
+base_dir = pathlib.Path(__file__).resolve().parent
+raw_path = base_dir / 'linux_raw_full.txt'
 raw = raw_path.read_text(encoding='utf-8')
 
 lines = [ln.rstrip() for ln in raw.splitlines()]
@@ -78,7 +79,7 @@ while idx < len(lines):
         'answerText': answerText
     })
 
-out_path = pathlib.Path(r'd:\桌面\qimofuxi\rgzr\questions-linux.js')
+out_path = base_dir / 'rgzr' / 'questions-linux.js'
 js = 'const questionsLinux = ' + json.dumps(questions, ensure_ascii=False, indent=4) + ';\n'
 out_path.write_text(js, encoding='utf-8')
 print('written', out_path, 'count', len(questions))
