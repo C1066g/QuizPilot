@@ -13,3 +13,4 @@ build/
 logs/
 coverage/
 .coverage
+docs/IP地址信息.txt

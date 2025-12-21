@@ -14,6 +14,8 @@ let currentMode = 'practice';
 let isReviewingWrong = false; // 标记是否在复习错题模式
 let currentOptions = []; // 保存当前题目的选项顺序（用于乱序功能）
 let originalOptions = []; // 保存原始选项顺序
+let multiSelected = new Set(); // 多选题：当前已选择的选项字母集合
+let autoAdvance = (localStorage.getItem('autoAdvance') || '1') === '1';
 
 // 科目题库映射
 const SUBJECTS = {
@@ -40,6 +42,136 @@ const SUBJECTS = {
     }
 };
 
+// 提交主观题答案（不判对错，仅记录与展示参考答案）
+function submitEssayAnswer(userAnswer, question) {
+    answeredQuestions.add(currentIndex);
+    saveProgress();
+    updateStats();
+    showAnswer();
+}
+
+// 提交多选题答案
+function submitMultipleAnswer(question) {
+    const normalizeLetters = (ans) => (ans || '')
+        .toUpperCase()
+        .replace(/[^A-D]/g, '')
+        .split('')
+        .sort()
+        .join('');
+
+    const userAns = normalizeLetters(Array.from(multiSelected).join(''));
+    if (!userAns) {
+        alert('请至少选择一个选项');
+        return;
+    }
+
+    const correctAns = normalizeLetters(question.answer);
+    const isCorrect = userAns === correctAns;
+
+    highlightMultipleOptions(question, userAns);
+    if (isCorrect) {
+        answeredQuestions.add(currentIndex);
+        correctAnswers++;
+        wrongQuestions.delete(question.id);
+        saveProgress();
+        updateStats();
+        showCorrectMessage();
+        if (autoAdvance) {
+            setTimeout(() => {
+                if (currentIndex < allQuestions.length - 1) {
+                    currentIndex++;
+                    showQuestion();
+                }
+            }, 1000);
+        }
+    } else {
+        answeredQuestions.add(currentIndex);
+        wrongQuestions.set(question.id, {
+            question: question,
+            userAnswer: userAns,
+            timestamp: new Date().toLocaleString()
+        });
+        saveProgress();
+        updateStats();
+        showWrongMessage();
+        showAnswer();
+    }
+}
+
+function highlightSingleJudgeOptions(question, userAnswer) {
+    const container = document.getElementById('optionsContainer');
+    const items = Array.from(container.querySelectorAll('.option'));
+    if (question.type === 'single') {
+        const correctLetter = question.answer;
+        items.forEach((div, idx) => {
+            const letter = currentOptions[idx] && currentOptions[idx].letter;
+            if (letter === correctLetter) div.classList.add('correct');
+        });
+        const userIdx = currentOptions.findIndex(o => o.letter === userAnswer);
+        if (userIdx >= 0 && items[userIdx] && userAnswer !== question.answer) items[userIdx].classList.add('incorrect');
+    } else if (question.type === 'judge') {
+        items.forEach(div => { if (div.textContent === question.answer) div.classList.add('correct'); });
+        items.forEach(div => { if (div.textContent !== question.answer && div.textContent === userAnswer) div.classList.add('incorrect'); });
+    }
+    items.forEach(div => div.onclick = null);
+}
+
+function highlightMultipleOptions(question, userAns) {
+    const container = document.getElementById('optionsContainer');
+    const items = Array.from(container.querySelectorAll('.option'));
+    const ansSet = new Set((question.answer || '').toUpperCase().split(''));
+    const userSet = new Set((userAns || '').toUpperCase().split(''));
+    items.forEach((div, idx) => {
+        const letter = currentOptions[idx] && currentOptions[idx].letter;
+        if (ansSet.has(letter)) div.classList.add('correct');
+        if (userSet.has(letter) && !ansSet.has(letter)) div.classList.add('incorrect');
+    });
+    items.forEach(div => div.onclick = null);
+}
+
+function setupAutoAdvanceToggle() {
+    const el = document.getElementById('autoAdvanceToggle');
+    if (el) {
+        el.checked = autoAdvance;
+        el.onchange = () => {
+            autoAdvance = el.checked;
+            localStorage.setItem('autoAdvance', autoAdvance ? '1' : '0');
+        };
+    }
+}
+
+function handleKeydown(e) {
+    const tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    const q = allQuestions[currentIndex];
+    if (!q) return;
+    if (e.key === 'ArrowRight') { nextQuestion(); return; }
+    if (e.key === 'ArrowLeft') { previousQuestion(); return; }
+    if (e.key === 's' || e.key === 'S') { shuffleCurrentOptions(); return; }
+    if (e.key === 'a' || e.key === 'A') { showAnswer(); return; }
+    if (e.key === 'c' || e.key === 'C') { toggleCollectQuestion(q.id); updateCollectButton(); return; }
+    if (['1','2','3','4'].includes(e.key)) {
+        const idx = parseInt(e.key, 10) - 1;
+        const container = document.getElementById('optionsContainer');
+        const items = Array.from(container.querySelectorAll('.option'));
+        if (!items[idx]) return;
+        if (q.type === 'single') {
+            const letter = currentOptions[idx] && currentOptions[idx].letter;
+            if (letter) selectOption(letter, q);
+        } else if (q.type === 'multiple') {
+            items[idx].click();
+        } else if (q.type === 'judge') {
+            if (idx === 0) selectOption('正确', q);
+            if (idx === 1) selectOption('错误', q);
+        }
+        return;
+    }
+    if (e.key === 'Enter') {
+        if (q.type === 'multiple') submitMultipleAnswer(q);
+        return;
+    }
+}
+
 function getProgressKey() {
     return `quizProgress_${currentSubject}`;
 }
@@ -54,6 +186,7 @@ function initApp() {
     updateSubjectButtons();
     // 渲染右侧导航
     renderQuestionNav();
+    setupAutoAdvanceToggle();
     
     // 从本地存储加载进度
     loadProgress();
@@ -113,6 +246,8 @@ function showQuestion() {
     if (jumpInput) jumpInput.value = currentIndex + 1;
     document.getElementById('questionType').textContent = getTypeLabel(question.type);
     document.getElementById('questionText').textContent = question.question;
+    const aa = document.getElementById('autoAdvanceToggle');
+    if (aa) aa.checked = autoAdvance;
     
     // 更新进度条
     const progress = ((currentIndex + 1) / allQuestions.length) * 100;
@@ -164,13 +299,41 @@ function renderOptions(question) {
         }
         
         // 使用当前选项顺序渲染
-        currentOptions.forEach((optionObj, index) => {
+        // 多选题：初始化选择集合
+        if (question.type === 'multiple') {
+            multiSelected = new Set();
+        }
+
+        currentOptions.forEach((optionObj) => {
             const div = document.createElement('div');
             div.className = 'option';
             div.textContent = `${optionObj.letter}、${optionObj.text}`;
-            div.onclick = () => selectOption(optionObj.letter, question);
+
+            if (question.type === 'single') {
+                div.onclick = () => selectOption(optionObj.letter, question);
+            } else if (question.type === 'multiple') {
+                div.onclick = () => {
+                    if (div.classList.contains('selected')) {
+                        div.classList.remove('selected');
+                        multiSelected.delete(optionObj.letter);
+                    } else {
+                        div.classList.add('selected');
+                        multiSelected.add(optionObj.letter);
+                    }
+                };
+            }
             container.appendChild(div);
         });
+
+        // 多选题：渲染提交按钮
+        if (question.type === 'multiple') {
+            const submitBtn = document.createElement('button');
+            submitBtn.className = 'btn btn-primary';
+            submitBtn.textContent = '提交答案';
+            submitBtn.style.marginTop = '10px';
+            submitBtn.onclick = () => submitMultipleAnswer(question);
+            container.appendChild(submitBtn);
+        }
     } else if (question.type === 'fill' || question.type === 'essay') {
         const wrapper = document.createElement('div');
         
@@ -199,7 +362,11 @@ function renderOptions(question) {
                 alert('请输入答案');
                 return;
             }
-            submitFillAnswer(userAnswer, question);
+            if (question.type === 'fill') {
+                submitFillAnswer(userAnswer, question);
+            } else {
+                submitEssayAnswer(userAnswer, question);
+            }
         };
         wrapper.appendChild(submitBtn);
         
@@ -227,17 +394,17 @@ function selectOption(answer, question) {
         wrongQuestions.delete(question.id);
         saveProgress();
         updateStats();
-        
-        // 显示正确提示
+        highlightSingleJudgeOptions(question, answer);
         showCorrectMessage();
-        
-        // 1秒后自动跳到下一题
-        setTimeout(() => {
-            if (currentIndex < allQuestions.length - 1) {
-                currentIndex++;
-                showQuestion();
-            }
-        }, 1000);
+        showCorrectMessage();
+        if (autoAdvance) {
+            setTimeout(() => {
+                if (currentIndex < allQuestions.length - 1) {
+                    currentIndex++;
+                    showQuestion();
+                }
+            }, 1000);
+        }
     } else {
         // 答错了
         answeredQuestions.add(currentIndex);
@@ -249,8 +416,8 @@ function selectOption(answer, question) {
         });
         saveProgress();
         updateStats();
-        
-        // 显示错误提示和答案
+        highlightSingleJudgeOptions(question, answer);
+        showWrongMessage();
         showWrongMessage();
         showAnswer();
     }
@@ -440,7 +607,7 @@ function renderQuestionList() {
             optionsHtml = '<div style="margin-top: 8px; padding: 8px; background: #f5f5f5; border-radius: 6px; font-size: 0.85em;">';
             question.options.forEach((option, idx) => {
                 const letter = String.fromCharCode(65 + idx);
-                const isCorrect = letter === question.answer;
+                const isCorrect = question.type === 'multiple' ? (question.answer || '').toUpperCase().includes(letter) : (letter === question.answer);
                 const style = isCorrect ? 'color: #4CAF50; font-weight: bold;' : 'color: #666;';
                 optionsHtml += `<div style="${style}">  ${letter}、${option}</div>`;
             });
@@ -759,8 +926,8 @@ function renderWrongList() {
             optionsHtml = '<div style="margin-top: 12px; padding: 12px; background: #f5f5f5; border-radius: 6px; font-size: 0.95em;">';
             question.options.forEach((option, idx) => {
                 const letter = String.fromCharCode(65 + idx);
-                const isCorrect = letter === question.answer;
-                const isUserAnswer = letter === wrongData.userAnswer;
+                const isCorrect = question.type === 'multiple' ? (question.answer || '').toUpperCase().includes(letter) : (letter === question.answer);
+                const isUserAnswer = question.type === 'multiple' ? (String(wrongData.userAnswer || '').toUpperCase().includes(letter)) : (letter === wrongData.userAnswer);
                 let style = 'color: #666;';
                 if (isCorrect) {
                     style = 'color: #4CAF50; font-weight: bold;'; // 正确答案：绿色
@@ -1035,3 +1202,4 @@ function exitReviewMode() {
 
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', initApp);
+document.addEventListener('keydown', handleKeydown);

@@ -7,7 +7,7 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
 # 检查旧IP
-$oldIP = "192.168.102.181"
+$oldIP = "<YOUR_MAC_IP>"
 Write-Host "1. 检查旧IP地址: $oldIP" -ForegroundColor Yellow
 $pingResult = Test-Connection -ComputerName $oldIP -Count 2 -Quiet -ErrorAction SilentlyContinue
 if ($pingResult) {

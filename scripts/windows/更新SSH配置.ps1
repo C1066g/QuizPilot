@@ -6,7 +6,7 @@ Write-Host "SSH配置快速更新工具" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
-$oldIP = "192.168.102.181"
+$oldIP = "<YOUR_MAC_IP>"
 $configPath = "$env:USERPROFILE\.ssh\config"
 
 Write-Host "当前配置的Mac IP: $oldIP" -ForegroundColor Yellow
