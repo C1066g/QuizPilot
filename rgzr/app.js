@@ -489,14 +489,14 @@ function renderQuestionNav() {
     const nav = document.getElementById('questionNavList');
     if (!nav) return;
     nav.innerHTML = '';
-    const typeOrder = ['single', 'multiple', 'fill', 'judge', 'essay'];
     const typeLabel = getTypeLabel;
     const grouped = {};
     allQuestions.forEach((q, idx) => {
         if (!grouped[q.type]) grouped[q.type] = [];
         grouped[q.type].push({ q, idx });
     });
-    
+    const typeOrder = Object.keys(grouped).sort((a, b) => grouped[a][0].idx - grouped[b][0].idx);
+
     typeOrder.forEach(type => {
         const list = grouped[type];
         if (!list || list.length === 0) return;
