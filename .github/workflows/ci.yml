@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install (none needed)
+        run: |
+          echo "No dependencies to install"
+
+      - name: Start server
+        working-directory: rgzr
+        run: |
+          nohup node server.js &
+          sleep 2
+
+      - name: Smoke test endpoints
+        run: |
+          curl -sSf http://localhost:8001/ > /dev/null
+          curl -sSf http://localhost:8001/custom/index.json | jq . > /dev/null || true
+          curl -sSf http://localhost:8001/lib/mammoth.browser.min.js > /dev/null
+          curl -sSf http://localhost:8001/lib/pdf.min.js > /dev/null
+          curl -sSf http://localhost:8001/lib/pdf.worker.min.js > /dev/null

@@ -1,0 +1,18 @@
+* text=auto eol=lf
+
+# Treat common binary types
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg text
+*.ico binary
+*.pdf binary
+*.docx binary
+*.zip binary
+*.tar binary
+*.gz binary
+
+# Minified assets
+*.min.js text
+*.min.css text
