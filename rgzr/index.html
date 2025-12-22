@@ -581,6 +581,17 @@
                         <button class="mode-btn" onclick="switchMode('stats', this)">📊 统计数据</button>
                     </div>
 
+                    <div class="button-group" style="margin-top: -10px; margin-bottom: 20px;">
+                        <button class="btn btn-secondary" onclick="importWordPdf()">📄 导入 Word/PDF/文本</button>
+                        <button class="btn btn-secondary" onclick="importOverlayFromFile()">📥 导入覆盖层（本地）</button>
+                        <button class="btn btn-secondary" onclick="importOverlayToServer()">⤴️ 上传覆盖层（到服务器）</button>
+                        <button class="btn btn-secondary" onclick="exportOverlay()">📤 导出覆盖层</button>
+                        <button class="btn btn-secondary" onclick="clearOverlay()">🧹 清空覆盖层</button>
+                        <input type="file" id="overlayFileInput" accept="application/json,.json" style="display:none" onchange="handleOverlayFileChange(event)">
+                        <input type="file" id="overlayUploadInput" accept="application/json,.json" style="display:none" onchange="handleOverlayUploadFileChange(event)">
+                        <input type="file" id="docFileInput" accept=".docx,.pdf,.txt,.md" style="display:none" onchange="handleWordPdfFileChange(event)">
+                    </div>
+
                     <!-- 练习模式 -->
                     <div id="practice" class="question-container active">
                         <div class="stats" id="practiceStats">
@@ -644,6 +655,8 @@
                             <button class="btn btn-secondary" onclick="resetProgress()">↻ 重置进度</button>
                             <button class="btn btn-secondary" id="exitReviewBtn" onclick="exitReviewMode()" style="display: none; background-color: #ffc107; color: #333; border-color: #ffc107;">↩️ 退出复习</button>
                         </div>
+
+                        
                     </div>
 
                     <!-- 浏览模式 -->
@@ -740,6 +753,9 @@
     <script src="questions-exchange.js"></script>
     <!-- Linux 题库（新增科目） -->
     <script src="questions-linux.js"></script>
+    <script src="lib/mammoth.browser.min.js"></script>
+    <script src="lib/pdf.min.js"></script>
+    <script src="lib/pdf.worker.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
