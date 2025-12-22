@@ -26,7 +26,9 @@ const securityHeaders = {
     'X-Content-Type-Options': 'nosniff',
     'Referrer-Policy': 'no-referrer',
     'X-Frame-Options': 'DENY',
-    'Permissions-Policy': 'geolocation=(), microphone=(), camera=()'
+    'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
+    'Cross-Origin-Opener-Policy': 'same-origin',
+    'Cross-Origin-Resource-Policy': 'same-origin'
 };
 
 function escapeHtml(str) {
@@ -59,6 +61,92 @@ const server = http.createServer((req, res) => {
         pathname = 'index.html';
     }
 
+    // 自定义覆盖层索引
+    if (pathname === 'custom/index.json') {
+        const customDir = path.join(__dirname, 'custom');
+        fs.readdir(customDir, { withFileTypes: true }, (err, entries) => {
+            const now = new Date().toISOString();
+            if (err) {
+                res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+                res.end(JSON.stringify({ files: [], updatedAt: now }));
+                return;
+            }
+            const files = entries
+                .filter(e => e.isFile() && e.name.toLowerCase().endsWith('.json'))
+                .map(e => e.name);
+            const listStats = files.map(name => {
+                try {
+                    const st = fs.statSync(path.join(customDir, name));
+                    return { name, mtime: st.mtime.toISOString(), size: st.size };
+                } catch {
+                    return { name, mtime: now, size: 0 };
+                }
+            }).sort((a, b) => (a.mtime < b.mtime ? 1 : -1));
+            res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+            res.end(JSON.stringify({ files: listStats, updatedAt: now }));
+        });
+        return;
+    }
+
+    // 自定义覆盖层上传（仅本机可用）
+    if (pathname === 'custom/upload' && (req.method === 'POST' || req.method === 'PUT')) {
+        const addr = (req.socket && req.socket.remoteAddress) || '';
+        const isLocal = addr === '127.0.0.1' || addr === '::1' || addr === '::ffff:127.0.0.1';
+        if (!isLocal) {
+            res.writeHead(403, { 'Content-Type': 'application/json; charset=utf-8' });
+            res.end(JSON.stringify({ ok: false, error: 'forbidden' }));
+            return;
+        }
+        const qName = parsedUrl.searchParams.get('name') || `overlay_${Date.now()}.json`;
+        let safeName = qName.replace(/[^a-zA-Z0-9._-]/g, '_');
+        if (!safeName.toLowerCase().endsWith('.json')) safeName += '.json';
+        const customDir = path.join(__dirname, 'custom');
+        const target = path.join(customDir, safeName);
+
+        let body = Buffer.alloc(0);
+        const MAX = 2 * 1024 * 1024; // 2MB
+        req.on('data', chunk => {
+            body = Buffer.concat([body, chunk]);
+            if (body.length > MAX) {
+                res.writeHead(413, { 'Content-Type': 'application/json; charset=utf-8' });
+                res.end(JSON.stringify({ ok: false, error: 'payload too large' }));
+                req.destroy();
+            }
+        });
+        req.on('end', () => {
+            const txt = body.toString('utf-8');
+            try {
+                const parsed = JSON.parse(txt);
+                if (!(Array.isArray(parsed) || (parsed && Array.isArray(parsed.items)))) {
+                    res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+                    res.end(JSON.stringify({ ok: false, error: 'invalid format' }));
+                    return;
+                }
+            } catch (e) {
+                res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+                res.end(JSON.stringify({ ok: false, error: 'invalid json' }));
+                return;
+            }
+            fs.mkdir(customDir, { recursive: true }, (mErr) => {
+                if (mErr) {
+                    res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+                    res.end(JSON.stringify({ ok: false, error: 'mkdir failed' }));
+                    return;
+                }
+                fs.writeFile(target, txt, 'utf-8', (wErr) => {
+                    if (wErr) {
+                        res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+                        res.end(JSON.stringify({ ok: false, error: 'write failed' }));
+                        return;
+                    }
+                    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+                    res.end(JSON.stringify({ ok: true, name: safeName }));
+                });
+            });
+        });
+        return;
+    }
+
     // 构建文件路径
     const filePath = path.join(__dirname, pathname);
 
@@ -72,11 +160,11 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-    // 读取文件
-    fs.readFile(filePath, (err, data) => {
-        if (err) {
-            if (err.code === 'ENOENT') {
-                res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+    // 文件信息与缓存策略
+    fs.stat(filePath, (statErr, stats) => {
+        if (statErr) {
+            if (statErr.code === 'ENOENT') {
+                res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
                 res.end(`
                     <!DOCTYPE html>
                     <html lang="zh-CN">
@@ -90,18 +178,36 @@ const server = http.createServer((req, res) => {
                     </body>
                     </html>
                 `);
+                return;
             } else {
-                res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
+                res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
                 res.end('500 Internal Server Error');
+                return;
             }
-        } else {
-            // 获取文件扩展名
-            const ext = path.extname(filePath).toLowerCase();
-            const contentType = mimeTypes[ext] || 'application/octet-stream';
-
-            res.writeHead(200, { 'Content-Type': contentType });
-            res.end(data);
         }
+
+        const ext = path.extname(filePath).toLowerCase();
+        const contentType = mimeTypes[ext] || 'application/octet-stream';
+        const isHtml = ext === '.html';
+        const longCacheExts = new Set(['.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.webp', '.woff', '.woff2', '.ttf', '.eot']);
+        const cacheControl = isHtml ? 'no-store' : (longCacheExts.has(ext) ? 'public, max-age=31536000, immutable' : 'public, max-age=3600');
+        const lastModified = stats.mtime.toUTCString();
+
+        if (req.method === 'HEAD') {
+            res.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': cacheControl, 'Last-Modified': lastModified });
+            res.end();
+            return;
+        }
+
+        fs.readFile(filePath, (err, data) => {
+            if (err) {
+                res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+                res.end('500 Internal Server Error');
+                return;
+            }
+            res.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': cacheControl, 'Last-Modified': lastModified });
+            res.end(data);
+        });
     });
 });
 

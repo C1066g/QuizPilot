@@ -17,6 +17,8 @@ let originalOptions = []; // 保存原始选项顺序
 let multiSelected = new Set(); // 多选题：当前已选择的选项字母集合
 let autoAdvance = (localStorage.getItem('autoAdvance') || '1') === '1';
 
+try { if (typeof window !== 'undefined' && window.pdfjsLib) { window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'lib/pdf.worker.min.js'; } } catch (e) {}
+
 // 科目题库映射
 const SUBJECTS = {
     ai: {
@@ -42,12 +44,329 @@ const SUBJECTS = {
     }
 };
 
+function refreshAfterOverlayChange() {
+    allQuestions = SUBJECTS[currentSubject].getQuestions();
+    originalQuestions = [...allQuestions];
+    const proceed = () => {
+        renderQuestionNav();
+        showQuestion();
+        updateStats();
+    };
+    applyOverlaysForSubject(currentSubject).then(proceed).catch(proceed);
+}
+
+// ================= Word/PDF/TXT 导入 =================
+function importWordPdf() {
+    const inp = document.getElementById('docFileInput');
+    if (inp) inp.click();
+}
+
+async function handleWordPdfFileChange(e) {
+    const file = e && e.target && e.target.files && e.target.files[0];
+    if (!file) return;
+    const name = file.name || '';
+    const lower = name.toLowerCase();
+    try {
+        if (lower.endsWith('.txt') || lower.endsWith('.md')) {
+            const text = await file.text();
+            await importFromPlainText(text);
+        } else if (lower.endsWith('.docx')) {
+            if (typeof window.mammoth === 'undefined') {
+                alert('当前离线环境未内置 Word 解析库。可先将 Word 另存为纯文本，或上传覆盖层 JSON。');
+                return;
+            }
+            const arrayBuf = await file.arrayBuffer();
+            const result = await window.mammoth.extractRawText({ arrayBuffer: arrayBuf });
+            await importFromPlainText(result && result.value ? result.value : '');
+        } else if (lower.endsWith('.pdf')) {
+            if (typeof window.pdfjsLib === 'undefined') {
+                alert('当前离线环境未内置 PDF 解析库。可先将 PDF 导出为纯文本，或上传覆盖层 JSON。');
+                return;
+            }
+            const arrayBuf = await file.arrayBuffer();
+            const pdf = await window.pdfjsLib.getDocument({ data: arrayBuf }).promise;
+            let text = '';
+            for (let p = 1; p <= pdf.numPages; p++) {
+                const page = await pdf.getPage(p);
+                const content = await page.getTextContent();
+                const str = content.items.map(it => it.str).join(' ');
+                text += str + '\n';
+            }
+            await importFromPlainText(text);
+        } else {
+            alert('暂不支持的文件类型，请选择 .docx / .pdf / .txt / .md');
+        }
+    } catch (err) {
+        alert('导入失败');
+    } finally {
+        e.target.value = '';
+    }
+}
+
+async function importFromPlainText(text) {
+    const items = parseTextToOverlayItems(text);
+    if (!items || items.length === 0) {
+        alert('未识别到题目，请检查格式或先转为 TXT 再试');
+        return;
+    }
+    localStorage.setItem(`overlay_${currentSubject}`, JSON.stringify(items));
+    refreshAfterOverlayChange();
+    alert(`导入完成：识别 ${items.length} 条题目，已应用到 ${SUBJECTS[currentSubject].name}`);
+}
+
+function parseTextToOverlayItems(text) {
+    const lines = String(text || '').replace(/\r\n?/g, '\n').split('\n').map(s => s.trim());
+    const isQStart = (s) => /^\d+[\.、\)]\s*/.test(s) || /^第\s*\d+\s*题/.test(s);
+    const isOpt = (s) => /^[A-Da-d][\.、\)]\s+/.test(s);
+    const isAns = (s) => /^(答案|正确答案)[:：]/.test(s);
+    const blocks = [];
+    let cur = [];
+    for (const ln of lines) {
+        if (isQStart(ln) && cur.length > 0) { blocks.push(cur); cur = [ln]; }
+        else cur.push(ln);
+    }
+    if (cur.length) blocks.push(cur);
+    const items = [];
+    for (const b of blocks) {
+        if (b.length === 0) continue;
+        let qline = b[0].replace(/^\d+[\.、\)]\s*/, '').replace(/^第\s*\d+\s*题\s*/,'').trim();
+        const other = b.slice(1);
+        const opts = [];
+        let answerLine = '';
+        const desc = [];
+        for (const ln of other) {
+            if (isOpt(ln)) opts.push(ln.replace(/^([A-Da-d])[\.、\)]\s*/, ''));
+            else if (isAns(ln)) answerLine = ln;
+            else if (ln) desc.push(ln);
+        }
+        let type = 'essay';
+        let answer = '';
+        let answerText = '';
+        if (answerLine) {
+            const m = answerLine.match(/[:：]\s*([A-Da-d]{1,4})/);
+            if (m) {
+                const letters = m[1].toUpperCase();
+                if (letters.length === 1) type = 'single'; else type = 'multiple';
+                answer = letters;
+            } else {
+                answerText = answerLine.replace(/^(答案|正确答案)[:：]\s*/, '');
+            }
+        }
+        if ((type === 'single' || type === 'multiple') && opts.length < 2) {
+            // 选项不足，降级为主观题
+            answerText = answerText || answer;
+            answer = '';
+            type = 'essay';
+        }
+        if (type === 'essay') {
+            answerText = answerText || desc.join('\n');
+        }
+        const item = { type, question: qline };
+        if (opts.length >= 2) item.options = [
+            String(opts[0] || ''), String(opts[1] || ''), String(opts[2] || ''), String(opts[3] || '')
+        ];
+        if (answer) item.answer = answer;
+        if (answerText) item.answerText = answerText;
+        items.push(item);
+    }
+    return items;
+}
+function importOverlayFromFile() {
+    const inp = document.getElementById('overlayFileInput');
+    if (inp) inp.click();
+}
+
+function handleOverlayFileChange(e) {
+    const file = e && e.target && e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+        try {
+            const data = JSON.parse(String(reader.result || 'null'));
+            let items = null;
+            let subjectKey = currentSubject;
+            if (Array.isArray(data)) items = data;
+            else if (data && Array.isArray(data.items)) { items = data.items; if (data.subject) subjectKey = String(data.subject).toLowerCase(); }
+            if (!items || !Array.isArray(items)) { alert('导入失败：JSON 格式不正确'); return; }
+            localStorage.setItem(`overlay_${subjectKey}`, JSON.stringify(items));
+            refreshAfterOverlayChange();
+            alert('导入成功，覆盖层已应用');
+        } catch (err) {
+            alert('导入失败：JSON 解析错误');
+        } finally {
+            e.target.value = '';
+        }
+    };
+    reader.readAsText(file);
+}
+
+function exportOverlay() {
+    const key = `overlay_${currentSubject}`;
+    const raw = localStorage.getItem(key) || localStorage.getItem('overlay_global');
+    if (!raw) { alert('当前科目暂无覆盖层可导出'); return; }
+    const blob = new Blob([raw], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    a.href = url;
+    a.download = `overlay_${currentSubject}_${ts}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+}
+
+function clearOverlay() {
+    localStorage.removeItem(`overlay_${currentSubject}`);
+    refreshAfterOverlayChange();
+    alert('已清空当前科目的本地覆盖层');
+}
+
+function importOverlayToServer() {
+    const inp = document.getElementById('overlayUploadInput');
+    if (inp) inp.click();
+}
+
+function handleOverlayUploadFileChange(e) {
+    const file = e && e.target && e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async () => {
+        try {
+            const text = String(reader.result || '');
+            // 简单校验 JSON
+            try { JSON.parse(text); } catch { alert('上传失败：JSON 解析错误'); e.target.value=''; return; }
+            const name = encodeURIComponent(file.name.replace(/\s+/g, '_'));
+            const res = await fetch(`custom/upload?name=${name}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: text,
+                cache: 'no-store'
+            });
+            if (!res.ok) { alert('上传失败'); e.target.value=''; return; }
+            const data = await res.json();
+            if (!data.ok) { alert('上传失败：' + (data.error || '未知错误')); e.target.value=''; return; }
+            refreshAfterOverlayChange();
+            alert('上传成功，已写入服务器 custom/ 并应用');
+        } catch (err) {
+            alert('上传失败');
+        } finally {
+            e.target.value = '';
+        }
+    };
+    reader.readAsText(file);
+}
+
 // 提交主观题答案（不判对错，仅记录与展示参考答案）
 function submitEssayAnswer(userAnswer, question) {
     answeredQuestions.add(currentIndex);
     saveProgress();
     updateStats();
     showAnswer();
+}
+
+// ================= 覆盖层（Overlay）支持 =================
+function normalizeStr(s) {
+    return (s || '')
+        .toLowerCase()
+        .replace(/\s+/g, '')
+        .replace(/[.,?!;:'"，。！？；：“”‘’\-_/\\]/g, '');
+}
+
+function computeQuestionKey(q) {
+    return normalizeStr(q && q.question);
+}
+
+function coerceQuestion(item) {
+    const out = { ...item };
+    if (out.type) out.type = String(out.type).toLowerCase();
+    if (Array.isArray(out.options)) out.options = out.options.map(x => String(x == null ? '' : x));
+    if (typeof out.answer === 'string') out.answer = out.answer.trim();
+    if (typeof out.answerText === 'string') out.answerText = out.answerText.trim();
+    if (typeof out.question === 'string') out.question = out.question.trim();
+    return out;
+}
+
+function mergeOverlayItems(subjectKey, items) {
+    if (!Array.isArray(items) || items.length === 0) return { updated: 0, inserted: 0 };
+    const byId = new Map();
+    const byKey = new Map();
+    allQuestions.forEach(q => {
+        if (q.id != null) byId.set(q.id, q);
+        const k = computeQuestionKey(q);
+        if (k) byKey.set(k, q);
+    });
+    let updated = 0, inserted = 0;
+    items.forEach(raw => {
+        const item = coerceQuestion(raw);
+        let target = null;
+        if (item.id != null && byId.has(item.id)) {
+            target = byId.get(item.id);
+        } else {
+            const key = computeQuestionKey(item);
+            if (key && byKey.has(key)) target = byKey.get(key);
+        }
+        if (target) {
+            ['type','question','options','answer','answerText'].forEach(f => {
+                if (item[f] != null) target[f] = item[f];
+            });
+            updated++;
+        } else {
+            const nextId = (allQuestions.reduce((m, q) => Math.max(m, q.id || 0), 0) + 1);
+            const toPush = { id: item.id != null ? item.id : nextId, ...item };
+            allQuestions.push(toPush);
+            inserted++;
+        }
+    });
+    originalQuestions = [...allQuestions];
+    return { updated, inserted };
+}
+
+async function fetchJsonSafe(url) {
+    try {
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) return null;
+        return await res.json();
+    } catch (e) {
+        return null;
+    }
+}
+
+function getLocalOverlays(subjectKey) {
+    const out = [];
+    const keys = [`overlay_${subjectKey}`, 'overlay_global'];
+    keys.forEach(k => {
+        const raw = localStorage.getItem(k);
+        if (!raw) return;
+        try {
+            const json = JSON.parse(raw);
+            if (Array.isArray(json)) out.push(json);
+            else if (json && Array.isArray(json.items)) out.push(json.items);
+        } catch {}
+    });
+    return out;
+}
+
+async function applyOverlaysForSubject(subjectKey) {
+    // 本地 localStorage 覆盖层
+    const localSets = getLocalOverlays(subjectKey);
+    localSets.forEach(arr => mergeOverlayItems(subjectKey, arr));
+
+    // 服务器 custom 目录覆盖层
+    const idx = await fetchJsonSafe('custom/index.json');
+    if (!idx || !Array.isArray(idx.files)) return;
+    for (const f of idx.files) {
+        const data = await fetchJsonSafe(`custom/${encodeURIComponent(f.name)}`);
+        if (!data) continue;
+        let items = null;
+        if (Array.isArray(data)) items = data;
+        else if (data && Array.isArray(data.items)) items = data.items;
+        else continue;
+        if (data && data.subject && String(data.subject).toLowerCase() !== subjectKey) {
+            continue;
+        }
+        mergeOverlayItems(subjectKey, items);
+    }
 }
 
 // 提交多选题答案
@@ -180,29 +499,21 @@ function getProgressKey() {
 function initApp() {
     // 合并所有题目
     allQuestions = SUBJECTS[currentSubject].getQuestions();
-    originalQuestions = [...allQuestions]; // 保存原始题目列表
-    
-    // 更新科目按钮状态
+    originalQuestions = [...allQuestions];
     updateSubjectButtons();
-    // 渲染右侧导航
-    renderQuestionNav();
     setupAutoAdvanceToggle();
-    
-    // 从本地存储加载进度
     loadProgress();
-    
-    // 更新统计信息
     updateStats();
-    
-    // 检查 URL 参数
-    const params = new URLSearchParams(window.location.search);
-    if (params.has('reviewWrong')) {
-        // 如果是从错题集页面跳转过来，直接开始复习错题
-        reviewWrongQuestions();
-    } else {
-        // 显示第一题
-        showQuestion();
-    }
+    const proceed = () => {
+        renderQuestionNav();
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('reviewWrong')) {
+            reviewWrongQuestions();
+        } else {
+            showQuestion();
+        }
+    };
+    applyOverlaysForSubject(currentSubject).then(proceed).catch(proceed);
 }
 
 // 切换模式
@@ -843,16 +1154,18 @@ function switchSubject(subjectKey) {
     currentSubject = subjectKey;
     localStorage.setItem('currentSubject', subjectKey);
     
-    // 重新加载题目与进度
+    // 重新加载题目与覆盖层
     allQuestions = SUBJECTS[currentSubject].getQuestions();
     originalQuestions = [...allQuestions];
-    loadProgress();
-    updateStats();
-    showQuestion();
-    
-    updateSubjectButtons();
-    renderQuestionNav();
-    alert(`已切换科目：${SUBJECTS[subjectKey].name}`);
+    const after = () => {
+        loadProgress();
+        updateStats();
+        showQuestion();
+        updateSubjectButtons();
+        renderQuestionNav();
+        alert(`已切换科目：${SUBJECTS[subjectKey].name}`);
+    };
+    applyOverlaysForSubject(subjectKey).then(after).catch(after);
 }
 
 // 更新科目按钮样式
