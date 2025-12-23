@@ -311,16 +311,16 @@
 
         <div class="controls">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="搜索题目或答案..." onkeyup="filterQuestions()">
+                <input type="text" id="searchInput" placeholder="搜索题目或答案...">
             </div>
 
             <div class="filters">
-                <button class="filter-btn active" onclick="filterByType('all')">全部</button>
-                <button class="filter-btn" onclick="filterByType('single')">单选题</button>
-                <button class="filter-btn" onclick="filterByType('multiple')">多选题</button>
-                <button class="filter-btn" onclick="filterByType('fill')">填空题</button>
-                <button class="filter-btn" onclick="filterByType('judge')">判断题</button>
-                <button class="filter-btn" onclick="filterByType('essay')">简答题</button>
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="single">单选题</button>
+                <button class="filter-btn" data-filter="multiple">多选题</button>
+                <button class="filter-btn" data-filter="fill">填空题</button>
+                <button class="filter-btn" data-filter="judge">判断题</button>
+                <button class="filter-btn" data-filter="essay">简答题</button>
             </div>
         </div>
 
@@ -342,155 +342,6 @@
     <script src="questions-part2.js"></script>
     <script src="questions-part3.js"></script>
     <script src="questions-part4.js"></script>
-
-    <script>
-        let allQuestions = [];
-        let currentFilter = 'all';
-        let currentSearchTerm = '';
-
-        // 初始化
-        function initBrowse() {
-            allQuestions = [...questionsPart1, ...questionsPart2, ...questionsPart3, ...questionsPart4];
-            renderQuestionList();
-        }
-
-        // 获取题型标签
-        function getTypeLabel(type) {
-            const labels = {
-                'single': '单选题',
-                'multiple': '多选题',
-                'fill': '填空题',
-                'judge': '判断题',
-                'essay': '简答题'
-            };
-            return labels[type] || type;
-        }
-
-        // 渲染题目列表
-        function renderQuestionList() {
-            const list = document.getElementById('questionList');
-            list.innerHTML = '';
-            
-            let filtered = allQuestions;
-            
-            // 按类型过滤
-            if (currentFilter !== 'all') {
-                filtered = filtered.filter(q => q.type === currentFilter);
-            }
-            
-            // 按搜索词过滤
-            if (currentSearchTerm) {
-                const term = currentSearchTerm.toLowerCase();
-                filtered = filtered.filter(q => 
-                    q.question.toLowerCase().includes(term) || 
-                    q.answerText.toLowerCase().includes(term)
-                );
-            }
-            
-            // 更新统计
-            document.getElementById('filteredCount').textContent = filtered.length;
-            
-            if (filtered.length === 0) {
-                list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📭</div><p>没有找到匹配的题目</p></div>';
-                return;
-            }
-            
-            filtered.forEach((question) => {
-                const div = document.createElement('div');
-                div.className = 'question-item';
-                
-                // 构建选项显示（如果是选择题）
-                let optionsHtml = '';
-                if (question.type === 'single' || question.type === 'multiple') {
-                    optionsHtml = '<div class="options">';
-                    question.options.forEach((option, idx) => {
-                        const letter = String.fromCharCode(65 + idx);
-                        const isCorrect = letter === question.answer;
-                        const className = isCorrect ? 'option correct' : 'option';
-                        optionsHtml += `<div class="${className}">${letter}、${option}</div>`;
-                    });
-                    optionsHtml += '</div>';
-                }
-                
-                // 构建答案显示
-                const answerHtml = `
-                    <div class="answer-box">
-                        <div class="answer-label">✓ 答案：${question.answer}</div>
-                        <div class="answer-text">${question.answerText}</div>
-                    </div>
-                `;
-                
-                div.innerHTML = `
-                    <div class="question-header">
-                        <span class="question-number">第 ${question.id} 题</span>
-                        <span class="question-type">${getTypeLabel(question.type)}</span>
-                    </div>
-                    <div class="question-text">${question.question}</div>
-                    ${optionsHtml}
-                    ${answerHtml}
-                    <div class="button-group">
-                        <button class="btn btn-primary" onclick="goToPractice(${question.id})">进入练习</button>
-                        <button class="btn btn-secondary" onclick="toggleCollect(${question.id}, this)">☆ 收藏</button>
-                    </div>
-                `;
-                
-                list.appendChild(div);
-            });
-        }
-
-        // 搜索题目
-        function filterQuestions() {
-            currentSearchTerm = document.getElementById('searchInput').value;
-            renderQuestionList();
-        }
-
-        // 按类型过滤
-        function filterByType(type) {
-            currentFilter = type;
-            
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            renderQuestionList();
-        }
-
-        // 进入练习模式
-        function goToPractice(questionId) {
-            // 保存当前过滤状态到 sessionStorage
-            sessionStorage.setItem('browseFilter', currentFilter);
-            sessionStorage.setItem('browseSearch', currentSearchTerm);
-            
-            // 跳转到主页并进入练习模式
-            window.location.href = `index.html?question=${questionId}`;
-        }
-
-        // 收藏或取消收藏题目
-        function toggleCollect(questionId, btn) {
-            // 从 localStorage 获取收藏列表
-            const collected = JSON.parse(localStorage.getItem('collectedQuestions') || '[]');
-            const index = collected.indexOf(questionId);
-            
-            if (index > -1) {
-                // 取消收藏
-                collected.splice(index, 1);
-                btn.textContent = '☆ 收藏';
-                btn.style.background = '#f0f0f0';
-                btn.style.color = '#333';
-            } else {
-                // 收藏
-                collected.push(questionId);
-                btn.textContent = '★ 已收藏';
-                btn.style.background = '#FFB800';
-                btn.style.color = 'white';
-            }
-            
-            localStorage.setItem('collectedQuestions', JSON.stringify(collected));
-        }
-
-        // 页面加载时初始化
-        window.onload = initBrowse;
-    </script>
+    <script src="browse.js"></script>
 </body>
 </html>

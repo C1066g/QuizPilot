@@ -19,10 +19,20 @@
 # 进入服务目录
 cd rgzr
 
-# 启动（默认 0.0.0.0:8001）
-npm run start:dev
+# 启动（跨平台，默认 0.0.0.0:8001）
+npm start
 # 打开 http://localhost:8001
+
+# 如需修改端口：
+# mac/Linux (bash/zsh)
+PORT=8002 npm start
+# Windows CMD
+set PORT=8002 && npm start
+# Windows PowerShell
+$env:PORT=8002; npm start
 ```
+
+Windows 也可使用：`npm run start:win`
 
 手机访问：`http://<你的电脑IP>:8001`
 
@@ -65,8 +75,29 @@ Final-review/
 └─ README.md
 ```
 
+## 截图与演示
+在 `docs/assets/` 放置截图与 GIF，README 将引用这些资源：
+
+- 首页界面：`docs/assets/screenshot-home.png`
+- 导入工具栏与文件选择：`docs/assets/screenshot-import.png`
+- 浏览模式 Demo（关键词过滤）：`docs/assets/screenshot-browse-demo.png`
+- 导入演示动图：`docs/assets/demo-import.gif`
+
+占位符已创建，可直接替换文件名。录制步骤见 `docs/DEMO录制指南.md`。
+
+示例引用（资源准备好后可取消注释）：
+
+<!-- ![Home](docs/assets/screenshot-home.png)
+![Import](docs/assets/screenshot-import.png)
+![Browse Demo](docs/assets/screenshot-browse-demo.png)
+![Demo GIF](docs/assets/demo-import.gif) -->
+
 ## 常见问题（FAQ）
-- 端口被占用：修改环境变量 `PORT` 后启动，或关闭占用服务
+- 端口被占用：
+  - 修改环境变量 `PORT` 后再启动（见上文）
+  - 或关闭占用 8001 的进程：
+    - mac：`lsof -nP -iTCP:8001 | grep LISTEN` → `kill -9 <PID>`
+    - Windows：`netstat -ano | findstr :8001` → `taskkill /PID <PID> /F`
 - 上传失败：`/custom/upload` 仅本机可用；请在运行服务的机器浏览器执行
 - PDF/Word 解析失败：请将文档导出为 TXT 再导入，或检查文档是否为扫描版
 

@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  rgzr:
+    build: ./rgzr
+    container_name: final-review-rgzr
+    ports:
+      - "8001:8001"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8001
+    volumes:
+      - ./rgzr/custom:/app/custom
+    restart: unless-stopped

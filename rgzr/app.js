@@ -16,8 +16,318 @@ let currentOptions = []; // 保存当前题目的选项顺序（用于乱序功�
 let originalOptions = []; // 保存原始选项顺序
 let multiSelected = new Set(); // 多选题：当前已选择的选项字母集合
 let autoAdvance = (localStorage.getItem('autoAdvance') || '1') === '1';
+let overlayEditorState = null;
 
 try { if (typeof window !== 'undefined' && window.pdfjsLib) { window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'lib/pdf.worker.min.js'; } } catch (e) {}
+
+function setupHelpOverlay() {
+    const overlay = document.getElementById('helpOverlay');
+    const btn = document.getElementById('helpBtn');
+    const closeBtn = document.getElementById('helpClose');
+    const resetBtn = document.getElementById('helpResetTipsBtn');
+    if (!overlay || !btn || !closeBtn) return;
+    const visible = () => overlay.style.display !== 'none';
+    const open = () => { overlay.style.display = 'flex'; };
+    const close = () => { overlay.style.display = 'none'; };
+    btn.onclick = () => open();
+    closeBtn.onclick = () => close();
+    if (resetBtn) resetBtn.onclick = () => { try { localStorage.removeItem('tips_v20251223'); showToast('已重置小贴士，下次将再次显示', 'success'); } catch {} };
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    window.addEventListener('keydown', (e) => {
+        if ((e.key === '?' || (e.key === '/' && e.shiftKey)) && !visible()) { e.preventDefault(); open(); return; }
+        if (visible() && e.key === 'Escape') { e.preventDefault(); close(); return; }
+    }, true);
+}
+
+function setupFeatureTips() {
+    try {
+        const key = 'tips_v20251223';
+        if (localStorage.getItem(key) === '1') return;
+        const isMac = /Mac/i.test(navigator.userAgent || '');
+        const mod = isMac ? '⌘' : 'Ctrl';
+        setTimeout(() => showToast(`快捷键：${mod}+K 打开快速跳题，Esc 关闭`, 'info', 6000), 300);
+        setTimeout(() => showToast('右侧导航可折叠：点击顶部“📑 导航”按钮', 'info', 6000), 1800);
+        setTimeout(() => showToast('顶部栏自动隐藏：下滑隐藏，上滑显示', 'info', 6000), 3300);
+        localStorage.setItem(key, '1');
+    } catch {}
+}
+
+function setupNavToggle() {
+    const root = document.documentElement;
+    const btn = document.getElementById('navToggle');
+    let collapsed = (localStorage.getItem('navCollapsed') || '0') === '1';
+    const apply = () => {
+        if (collapsed) root.setAttribute('data-nav', 'collapsed');
+        else root.removeAttribute('data-nav');
+        if (btn) btn.textContent = collapsed ? '📑 导航(已折叠)' : '📑 导航';
+    };
+    apply();
+    if (btn) btn.onclick = () => { collapsed = !collapsed; localStorage.setItem('navCollapsed', collapsed ? '1' : '0'); apply(); };
+}
+
+function setupQuickJumpPanel() {
+    const overlay = document.getElementById('quickJumpOverlay');
+    const input = document.getElementById('quickInput');
+    const list = document.getElementById('quickList');
+    if (!overlay || !input || !list) return;
+    let results = [];
+    let active = 0;
+    const visible = () => overlay.style.display !== 'none';
+    const open = () => { overlay.style.display = 'flex'; input.value = ''; build(''); setTimeout(() => input.focus(), 0); };
+    const close = () => { overlay.style.display = 'none'; };
+    const build = (q) => {
+        const term = String(q || '').trim();
+        results = [];
+        if (!allQuestions || !allQuestions.length) { list.innerHTML = ''; return; }
+        if (/^\d{1,5}$/.test(term)) {
+            const idx = Math.min(Math.max(parseInt(term, 10) - 1, 0), allQuestions.length - 1);
+            results.push({ idx, score: 1 });
+        } else {
+            const lower = term.toLowerCase();
+            for (let i = 0; i < allQuestions.length; i++) {
+                const it = allQuestions[i];
+                const text = [it.question || '', ...(Array.isArray(it.options) ? it.options : []), it.answerText || ''].join(' ').toLowerCase();
+                if (!lower || text.includes(lower)) results.push({ idx: i, score: lower ? 1 : 0 });
+                if (results.length >= 200) break;
+            }
+        }
+        active = 0;
+        render();
+    };
+    const render = () => {
+        list.innerHTML = '';
+        results.forEach((r, i) => {
+            const it = allQuestions[r.idx];
+            const div = document.createElement('div');
+            div.className = 'quick-item' + (i === active ? ' active' : '');
+            div.dataset.index = String(r.idx);
+            const title = String(it.question || '').slice(0, 80);
+            const snip = (Array.isArray(it.options) ? it.options.filter(Boolean).join(' · ') : (it.answerText || '')).slice(0, 120);
+            div.innerHTML = `<div class="quick-num">#${r.idx + 1}</div><div><div class="quick-title">${escapeHTML(title)}</div><div class="quick-snippet">${escapeHTML(snip)}</div></div>`;
+            div.onclick = () => { jumpTo(r.idx); };
+            list.appendChild(div);
+        });
+    };
+    const jumpTo = (idx) => {
+        if (idx == null) return;
+        currentIndex = Math.min(Math.max(idx, 0), allQuestions.length - 1);
+        if (currentMode !== 'practice') switchMode('practice');
+        showQuestion();
+        close();
+    };
+    input.addEventListener('input', () => build(input.value));
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    window.addEventListener('keydown', (e) => {
+        if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) { e.preventDefault(); open(); return; }
+        if (!visible()) return;
+        if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+        if (e.key === 'ArrowDown') { e.preventDefault(); if (active < results.length - 1) { active++; render(); } return; }
+        if (e.key === 'ArrowUp') { e.preventDefault(); if (active > 0) { active--; render(); } return; }
+        if (e.key === 'Enter') { e.preventDefault(); const r = results[active]; if (r) jumpTo(r.idx); return; }
+    }, true);
+}
+
+function openOverlayEditor(onlyUnknown = true) {
+    const key = `overlay_${currentSubject}`;
+    const raw = localStorage.getItem(key);
+    if (!raw) { showToast('当前科目无本地覆盖层可校对', 'info'); return; }
+    let items;
+    try { items = JSON.parse(raw); } catch { showToast('覆盖层 JSON 解析失败', 'error'); return; }
+    if (!Array.isArray(items)) { showToast('覆盖层结构无效', 'error'); return; }
+    const indexes = [];
+    items.forEach((it, idx) => {
+        if (!onlyUnknown || it._unknown) indexes.push(idx);
+    });
+    if (indexes.length === 0) { showToast(onlyUnknown ? '没有低置信度条目需要校对' : '没有可校对条目', 'info'); return; }
+    overlayEditorState = { items, indexes, pos: 0, subject: currentSubject, onlyUnknown: !!onlyUnknown };
+    showOverlayEditorModal(true);
+    renderOverlayEditor();
+}
+
+function showOverlayEditorModal(show) {
+    const el = document.getElementById('overlayEditorModal');
+    if (!el) return;
+    el.style.display = show ? 'flex' : 'none';
+    const cb = document.getElementById('edFilterUnknown');
+    if (show && cb && overlayEditorState) {
+        cb.checked = !!overlayEditorState.onlyUnknown;
+        cb.onchange = () => {
+            if (!overlayEditorState) return;
+            overlayEditorState.onlyUnknown = !!cb.checked;
+            recomputeOverlayIndexes(overlayEditorState.onlyUnknown);
+            renderOverlayEditor();
+        };
+    }
+}
+
+function getEditorCurrentItem() {
+    if (!overlayEditorState) return null;
+    const idx = overlayEditorState.indexes[overlayEditorState.pos];
+    return { data: overlayEditorState.items[idx], idx };
+}
+
+function renderOverlayEditor() {
+    const st = overlayEditorState; if (!st) return;
+    const { data, idx } = getEditorCurrentItem();
+    const head = document.getElementById('editorIndex');
+    if (head) head.textContent = `${st.pos + 1} / ${st.indexes.length}（原始序号 ${idx + 1}）`;
+    const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v == null ? '' : String(v); };
+    const setSel = (id, v) => { const el = document.getElementById(id); if (el) el.value = String(v || 'essay'); };
+    setSel('edType', data.type || 'essay');
+    setVal('edQuestion', data.question || '');
+    const opts = Array.isArray(data.options) ? data.options : [];
+    setVal('edOptA', opts[0] || '');
+    setVal('edOptB', opts[1] || '');
+    setVal('edOptC', opts[2] || '');
+    setVal('edOptD', opts[3] || '');
+    setVal('edAnswer', data.answer || '');
+    setVal('edAnswerText', data.answerText || '');
+    const unk = document.getElementById('edUnknown'); if (unk) unk.checked = !!data._unknown;
+    const src = document.getElementById('edSource');
+    if (src) {
+        const joined = [data.question, ...(opts.filter(Boolean).map((t,i)=>`${String.fromCharCode(65+i)}、${t}`)), data.answer ? `答案: ${data.answer}` : '', data.answerText || ''].filter(Boolean).join('\n');
+        const prefer = (data && data._src && String(data._src).trim()) ? String(data._src) : joined;
+        src.textContent = prefer;
+    }
+}
+
+function recomputeOverlayIndexes(onlyUnknown) {
+    const st = overlayEditorState; if (!st) return;
+    const arr = [];
+    st.items.forEach((it, i) => { if (!onlyUnknown || it._unknown) arr.push(i); });
+    st.indexes = arr;
+    if (st.pos >= st.indexes.length) st.pos = 0;
+}
+
+function saveOverlayEditorCurrent() {
+    const st = overlayEditorState; if (!st) return;
+    const { idx } = getEditorCurrentItem();
+    const cur = getEditorCurrentItem();
+    const prevData = cur && cur.data ? cur.data : {};
+    const getVal = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+    const item = {
+        type: getVal('edType'),
+        question: getVal('edQuestion'),
+        options: [getVal('edOptA'), getVal('edOptB'), getVal('edOptC'), getVal('edOptD')].filter((v,i)=> i<4),
+        answer: getVal('edAnswer'),
+        answerText: getVal('edAnswerText')
+    };
+    const unk = document.getElementById('edUnknown');
+    if (unk && !unk.checked) delete item._unknown; else if (unk && unk.checked) item._unknown = true;
+    const srcEl = document.getElementById('edSource');
+    const rawSrc = srcEl ? String(srcEl.textContent || '') : '';
+    if (prevData && prevData._src) item._src = prevData._src; else if (rawSrc.trim()) item._src = rawSrc;
+    st.items[idx] = item;
+}
+
+function prevOverlayEditor() {
+    const st = overlayEditorState; if (!st) return;
+    saveOverlayEditorCurrent();
+    if (st.pos > 0) st.pos--;
+    renderOverlayEditor();
+}
+
+function nextOverlayEditor() {
+    const st = overlayEditorState; if (!st) return;
+    saveOverlayEditorCurrent();
+    if (st.pos < st.indexes.length - 1) st.pos++;
+    renderOverlayEditor();
+}
+
+function applyOverlayEditor() {
+    const st = overlayEditorState; if (!st) { showOverlayEditorModal(false); return; }
+    saveOverlayEditorCurrent();
+    localStorage.setItem(`overlay_${st.subject}`, JSON.stringify(st.items));
+    showOverlayEditorModal(false);
+    currentSubject = st.subject;
+    refreshAfterOverlayChange();
+    showToast('已保存校对结果并应用', 'success');
+}
+
+function assignFromSelection(target) {
+    const src = document.getElementById('edSource'); if (!src) return;
+    const sel = window.getSelection();
+    let txt = '';
+    if (sel && sel.rangeCount) {
+        const r = sel.getRangeAt(0);
+        if (src.contains(r.commonAncestorContainer)) txt = String(r.toString()).trim();
+    }
+    if (!txt) return;
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+    if (target === 'question') set('edQuestion', txt);
+    if (target === 'A') set('edOptA', txt);
+    if (target === 'B') set('edOptB', txt);
+    if (target === 'C') set('edOptC', txt);
+    if (target === 'D') set('edOptD', txt);
+    if (target === 'answer') set('edAnswer', txt.replace(/\s+/g,''));
+    if (target === 'answerText') set('edAnswerText', txt);
+}
+
+function autoAssignFromSource() {
+    const src = document.getElementById('edSource');
+    if (!src) return;
+    const raw = String(src.textContent || '');
+    if (!raw.trim()) { showToast('没有可识别的原文', 'warn'); return; }
+    let items = [];
+    try { items = parseTextToOverlayItems(raw) || []; } catch (e) { items = []; }
+    if (!items.length) { showToast('未能自动识别，请手动取词', 'warn'); return; }
+    const it = items[0] || {};
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v == null ? '' : String(v); };
+    const setSel = (id, v) => { const el = document.getElementById(id); if (el) el.value = String(v || 'essay'); };
+    setSel('edType', it.type || 'essay');
+    set('edQuestion', it.question || '');
+    const opts = Array.isArray(it.options) ? it.options : [];
+    set('edOptA', opts[0] || '');
+    set('edOptB', opts[1] || '');
+    set('edOptC', opts[2] || '');
+    set('edOptD', opts[3] || '');
+    set('edAnswer', it.answer || '');
+    set('edAnswerText', it.answerText || '');
+    const unk = document.getElementById('edUnknown'); if (unk) unk.checked = !!it._unknown;
+}
+
+function autoAssignBatchUnknown() {
+    const st = overlayEditorState; if (!st) return;
+    if (!st.indexes || !st.indexes.length) { showToast('没有可批量处理的条目', 'info'); return; }
+    const ok = confirm(`将对 ${st.indexes.length} 条条目尝试自动取词（不会立即保存），继续？`);
+    if (!ok) return;
+    let changed = 0;
+    for (const pos of st.indexes) {
+        const prev = st.items[pos];
+        if (!prev) continue;
+        const joined = [prev.question, ...((Array.isArray(prev.options)?prev.options:[]).map((t,i)=>`${String.fromCharCode(65+i)}、${t}`)), prev.answer?`答案: ${prev.answer}`:'', prev.answerText||''].filter(Boolean).join('\n');
+        const raw = String(prev._src || joined);
+        let it = null;
+        try {
+            const arr = parseTextToOverlayItems(raw) || [];
+            it = arr[0];
+        } catch {}
+        if (!it) continue;
+        const merged = {
+            ...prev,
+            type: it.type || prev.type || 'essay',
+            question: it.question || prev.question || '',
+            options: it.options || prev.options,
+            answer: it.answer || prev.answer,
+            answerText: it.answerText || prev.answerText,
+            _src: prev._src || raw
+        };
+        if (it._unknown) merged._unknown = true; else delete merged._unknown;
+        st.items[pos] = merged;
+        changed++;
+    }
+    renderOverlayEditor();
+    showToast(`已自动解析 ${changed} 条，请核对后点击“保存并应用”以生效`, 'success');
+}
+
+function escapeHTML(s) {
+    return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
 
 // 科目题库映射
 const SUBJECTS = {
@@ -44,6 +354,60 @@ const SUBJECTS = {
     }
 };
 
+const DEFAULT_SUBJECT_KEYS = new Set(['ai','exchange','linux']);
+const DYNAMIC_SUBJECT_BASE = new Map();
+
+function registerSubject(subjectKey, displayName) {
+    const key = String(subjectKey || '').trim().toLowerCase();
+    if (!key || SUBJECTS[key]) return false;
+    DYNAMIC_SUBJECT_BASE.set(key, DYNAMIC_SUBJECT_BASE.get(key) || []);
+    SUBJECTS[key] = {
+        name: String(displayName || key),
+        getQuestions: () => DYNAMIC_SUBJECT_BASE.get(key) || []
+    };
+    updateSubjectButtons();
+    return true;
+}
+
+async function persistSubjectToServer(subjectKey, displayName) {
+    try {
+        const payload = { subject: subjectKey, name: displayName, items: [] };
+        await fetch(`custom/upload?name=subject_${encodeURIComponent(subjectKey)}.json`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            cache: 'no-store'
+        });
+    } catch (e) {}
+}
+
+function promptAddSubject() {
+    let key = prompt('请输入学科英文 key（例如 datastruct）') || '';
+    key = String(key).trim().toLowerCase();
+    if (!key) return;
+    if (!/^[a-z0-9_-]{2,32}$/.test(key)) { showToast('学科 key 需为 2-32 位小写字母、数字、下划线或短横线', 'warn'); return; }
+    let name = prompt('请输入学科显示名') || key;
+    name = String(name).trim() || key;
+    const created = registerSubject(key, name);
+    if (created) {
+        switchSubject(key);
+        persistSubjectToServer(key, name).then(() => discoverSubjectsFromServer()).catch(() => {});
+    }
+    else showToast('学科已存在或创建失败', 'error');
+}
+
+async function discoverSubjectsFromServer() {
+    const idx = await fetchJsonSafe('custom/index.json');
+    if (!idx || !Array.isArray(idx.files)) return;
+    for (const f of idx.files) {
+        const data = await fetchJsonSafe(`custom/${encodeURIComponent(f.name)}`);
+        if (data && data.subject) {
+            const key = String(data.subject).toLowerCase();
+            if (!SUBJECTS[key]) registerSubject(key, data.name ? String(data.name) : key);
+        }
+    }
+}
+
 function refreshAfterOverlayChange() {
     allQuestions = SUBJECTS[currentSubject].getQuestions();
     originalQuestions = [...allQuestions];
@@ -51,8 +415,130 @@ function refreshAfterOverlayChange() {
         renderQuestionNav();
         showQuestion();
         updateStats();
+        updateSubjectStatus();
     };
     applyOverlaysForSubject(currentSubject).then(proceed).catch(proceed);
+}
+
+function bindCspSafeEvents() {
+    // 科目切换
+    document.querySelectorAll('[data-subject-btn]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const key = btn.getAttribute('data-subject');
+            if (key) switchSubject(key);
+        });
+    });
+    const addBtn = document.querySelector('[data-subject-add]');
+    if (addBtn) addBtn.addEventListener('click', () => promptAddSubject());
+
+    // 模式切换
+    document.querySelectorAll('.mode-btn[data-mode]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const m = btn.getAttribute('data-mode');
+            if (m === 'wrong-ext') { switchMode('wrong', btn); return; }
+            switchMode(m, btn);
+        });
+    });
+
+    // 工具栏绑定
+    const byId = (id) => document.getElementById(id);
+    const map = [
+        ['importDocBtn', () => importWordPdf()],
+        ['openOverlayEditorBtn', () => openOverlayEditor(true)],
+        ['importOverlayLocalBtn', () => importOverlayFromFile()],
+        ['importOverlayServerBtn', () => importOverlayToServer()],
+        ['exportOverlayBtn', () => exportOverlay()],
+        ['clearOverlayBtn', () => clearOverlay()],
+        ['jumpBtn', () => jumpToQuestion()],
+        ['shuffleOptionsBtn', () => shuffleCurrentOptions()],
+        ['showAnswerBtn', () => showAnswer()],
+        ['prevBtn', () => previousQuestion()],
+        ['nextBtn', () => nextQuestion()],
+        ['mbPrevBtn', () => previousQuestion()],
+        ['mbShowBtn', () => showAnswer()],
+        ['mbNextBtn', () => nextQuestion()],
+        ['collectBtn', () => { const q = allQuestions[currentIndex]; if (q) { toggleCollectQuestion(q.id); updateCollectButton(); } }],
+        ['shuffleQuestionsBtn', () => goRandomQuestion()],
+        ['resetProgressBtn', () => resetProgress()],
+        ['exitReviewBtn', () => exitReviewMode()],
+        ['clearCollectedBtn', () => clearCollectedQuestions()],
+        ['reviewWrongBtn', () => reviewWrongQuestions()],
+        ['clearWrongBtn', () => clearWrongQuestions()],
+        ['exportStatsBtn', () => exportStats()],
+        ['resetAllBtn', () => resetAllData()],
+    ];
+    map.forEach(([id, fn]) => { const el = byId(id); if (el) el.addEventListener('click', fn); });
+
+    // 文件选择
+    const overlayFileInput = byId('overlayFileInput');
+    if (overlayFileInput) overlayFileInput.addEventListener('change', (e) => handleOverlayFileChange(e));
+    const overlayUploadInput = byId('overlayUploadInput');
+    if (overlayUploadInput) overlayUploadInput.addEventListener('change', (e) => handleOverlayUploadFileChange(e));
+    const docFileInput = byId('docFileInput');
+    if (docFileInput) docFileInput.addEventListener('change', (e) => handleWordPdfFileChange(e));
+
+    // 搜索
+    const search = byId('searchInput');
+    if (search) search.addEventListener('input', () => filterQuestions());
+
+    // 题型过滤
+    document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tp = btn.getAttribute('data-filter') || 'all';
+            filterByType(tp, btn);
+        });
+    });
+
+    // 覆盖层编辑器按钮
+    document.querySelectorAll('button[data-assign]').forEach(b => {
+        b.addEventListener('click', () => {
+            const key = b.getAttribute('data-assign');
+            if (key) assignFromSelection(key);
+        });
+    });
+    const bindIf = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener('click', fn); };
+    bindIf('autoAssignOneBtn', () => autoAssignFromSource());
+    bindIf('autoAssignBatchBtn', () => autoAssignBatchUnknown());
+    bindIf('prevEditorBtn', () => prevOverlayEditor());
+    bindIf('nextEditorBtn', () => nextOverlayEditor());
+    bindIf('applyOverlayEditorBtn', () => applyOverlayEditor());
+    bindIf('cancelOverlayEditorBtn', () => showOverlayEditorModal(false));
+}
+
+function updateSubjectStatus() {
+    const el = document.getElementById('subjectStatus'); if (!el) return;
+    const name = SUBJECTS[currentSubject] && SUBJECTS[currentSubject].name ? SUBJECTS[currentSubject].name : currentSubject;
+    const total = allQuestions.length || 0;
+    const key = `overlay_${currentSubject}`;
+    const raw = localStorage.getItem(key);
+    let overlayCount = 0, unknown = 0;
+    if (raw) {
+        try {
+            const j = JSON.parse(raw);
+            const arr = Array.isArray(j) ? j : (j && Array.isArray(j.items) ? j.items : []);
+            overlayCount = Array.isArray(arr) ? arr.length : 0;
+            unknown = Array.isArray(arr) ? arr.reduce((n, it) => n + (it && it._unknown ? 1 : 0), 0) : 0;
+        } catch {}
+    }
+    el.style.display = 'flex';
+    const info = overlayCount ? `${name} · 题目 ${total} · 覆盖层 ${overlayCount}（低置信度 ${unknown}）` : `${name} · 题目 ${total}`;
+    // 安全渲染，避免 name 中出现潜在的 HTML 片段
+    el.innerHTML = '';
+    const left = document.createElement('div');
+    left.textContent = info;
+    const right = document.createElement('div');
+    const btn1 = document.createElement('button');
+    btn1.className = 'mini-btn';
+    btn1.textContent = '校对';
+    btn1.onclick = () => openOverlayEditor(true);
+    const btn2 = document.createElement('button');
+    btn2.className = 'mini-btn';
+    btn2.textContent = '导出';
+    btn2.onclick = () => exportOverlay();
+    right.appendChild(btn1);
+    right.appendChild(btn2);
+    el.appendChild(left);
+    el.appendChild(right);
 }
 
 // ================= Word/PDF/TXT 导入 =================
@@ -67,12 +553,13 @@ async function handleWordPdfFileChange(e) {
     const name = file.name || '';
     const lower = name.toLowerCase();
     try {
+        setLoading(true, '正在识别文档…');
         if (lower.endsWith('.txt') || lower.endsWith('.md')) {
             const text = await file.text();
             await importFromPlainText(text);
         } else if (lower.endsWith('.docx')) {
             if (typeof window.mammoth === 'undefined') {
-                alert('当前离线环境未内置 Word 解析库。可先将 Word 另存为纯文本，或上传覆盖层 JSON。');
+                showToast('当前离线环境未内置 Word 解析库。可先将 Word 另存为纯文本，或上传覆盖层 JSON。', 'error');
                 return;
             }
             const arrayBuf = await file.arrayBuffer();
@@ -80,7 +567,7 @@ async function handleWordPdfFileChange(e) {
             await importFromPlainText(result && result.value ? result.value : '');
         } else if (lower.endsWith('.pdf')) {
             if (typeof window.pdfjsLib === 'undefined') {
-                alert('当前离线环境未内置 PDF 解析库。可先将 PDF 导出为纯文本，或上传覆盖层 JSON。');
+                showToast('当前离线环境未内置 PDF 解析库。可先将 PDF 导出为纯文本，或上传覆盖层 JSON。', 'error');
                 return;
             }
             const arrayBuf = await file.arrayBuffer();
@@ -94,11 +581,12 @@ async function handleWordPdfFileChange(e) {
             }
             await importFromPlainText(text);
         } else {
-            alert('暂不支持的文件类型，请选择 .docx / .pdf / .txt / .md');
+            showToast('暂不支持的文件类型，请选择 .docx / .pdf / .txt / .md', 'error');
         }
     } catch (err) {
-        alert('导入失败');
+        showToast('导入失败', 'error');
     } finally {
+        setLoading(false);
         e.target.value = '';
     }
 }
@@ -106,19 +594,60 @@ async function handleWordPdfFileChange(e) {
 async function importFromPlainText(text) {
     const items = parseTextToOverlayItems(text);
     if (!items || items.length === 0) {
-        alert('未识别到题目，请检查格式或先转为 TXT 再试');
+        showToast('未识别到题目，请检查格式或先转为 TXT 再试', 'warn');
         return;
     }
+    const unknownCount = items.reduce((n, it) => n + (it && it._unknown ? 1 : 0), 0);
+    const sample = items.slice(0, 3).map((it, idx) => {
+        const head = `${idx + 1}. [${it.type}] ${String(it.question || '').slice(0, 50)}`;
+        const opts = Array.isArray(it.options) ? it.options.filter(Boolean).map((t, i) => `  ${String.fromCharCode(65+i)}、${String(t).slice(0, 40)}`).join('\n') : '';
+        const ans = it.answer ? `  答案: ${it.answer}` : (it.answerText ? `  参考: ${String(it.answerText).slice(0, 40)}` : '');
+        const mark = it._unknown ? '  ⚠ 低置信度' : '';
+        return [head, opts, ans, mark].filter(Boolean).join('\n');
+    }).join('\n\n');
+    const confirmMsg = `预览识别 ${items.length} 条（低置信度 ${unknownCount} 条）\n\n样例：\n${sample}\n\n是否应用到学科：${SUBJECTS[currentSubject].name}？`;
+    const ok = confirm(confirmMsg);
+    if (!ok) return;
     localStorage.setItem(`overlay_${currentSubject}`, JSON.stringify(items));
     refreshAfterOverlayChange();
-    alert(`导入完成：识别 ${items.length} 条题目，已应用到 ${SUBJECTS[currentSubject].name}`);
+    let msg = `导入完成：识别 ${items.length} 条题目`;
+    if (unknownCount > 0) msg += `（其中 ${unknownCount} 条需人工校对）`;
+    msg += `，已应用到 ${SUBJECTS[currentSubject].name}`;
+    showToast(msg, 'success');
 }
 
 function parseTextToOverlayItems(text) {
-    const lines = String(text || '').replace(/\r\n?/g, '\n').split('\n').map(s => s.trim());
-    const isQStart = (s) => /^\d+[\.、\)]\s*/.test(s) || /^第\s*\d+\s*题/.test(s);
-    const isOpt = (s) => /^[A-Da-d][\.、\)]\s+/.test(s);
-    const isAns = (s) => /^(答案|正确答案)[:：]/.test(s);
+    function toHalfWidth(str) {
+        let out = '';
+        for (let i = 0; i < str.length; i++) {
+            const code = str.charCodeAt(i);
+            if (code === 12288) out += ' ';
+            else if (code >= 65281 && code <= 65374) out += String.fromCharCode(code - 65248);
+            else out += str[i];
+        }
+        return out;
+    }
+    const normalize = (s) => toHalfWidth(s.trim()).replace(/[．。]/g, '.').replace(/[：]/g, ':');
+    const lines = String(text || '').replace(/\r\n?/g, '\n').split('\n').map(s => normalize(s));
+    const isQStart = (s) => /^\s*(?:\d+[\.、\)]\s*|[（(]\d+[）)]\s*|第\s*\d+\s*题|第[一二三四五六七八九十百]+\s*题|[一二三四五六七八九十百千]+[、\.)]\s*)/.test(s);
+    const isOpt = (s) => /^\s*(?:[（(]?[A-Ha-h][）)]?[\.、:)]\s+|[A-Ha-h]\s+)/.test(s);
+    const isAns = (s) => /(?:^|\s)(?:答案|正确答案|参考答案|答案是|Answer|Ans)\s*(?:[:：]|为)?\s*/i.test(s);
+    const inlineOptRe = /[（(]?([A-Ha-h])[）)]?[\.、:)]\s*/g;
+    function extractInlineOptions(s) {
+        const pos = [];
+        let m;
+        while ((m = inlineOptRe.exec(s)) !== null) {
+            pos.push({ letter: m[1].toUpperCase(), index: m.index, end: inlineOptRe.lastIndex });
+        }
+        if (pos.length < 2) return [];
+        const out = [];
+        for (let i = 0; i < pos.length; i++) {
+            const start = pos[i].end;
+            const stop = i + 1 < pos.length ? pos[i+1].index : s.length;
+            out.push(s.slice(start, stop).trim());
+        }
+        return out;
+    }
     const blocks = [];
     let cur = [];
     for (const ln of lines) {
@@ -129,27 +658,68 @@ function parseTextToOverlayItems(text) {
     const items = [];
     for (const b of blocks) {
         if (b.length === 0) continue;
-        let qline = b[0].replace(/^\d+[\.、\)]\s*/, '').replace(/^第\s*\d+\s*题\s*/,'').trim();
+        const first = b[0];
+        const firstIsQ = isQStart(first);
+        let qline = first
+            .replace(/^\s*\d+[\.、\)]\s*/, '')
+            .replace(/^\s*[（(]\d+[）)]\s*/, '')
+            .replace(/^第\s*\d+\s*题\s*/, '')
+            .replace(/^第[一二三四五六七八九十百]+\s*题\s*/, '')
+            .replace(/^[一二三四五六七八九十百千]+[、\.)]\s*/, '')
+            .trim();
         const other = b.slice(1);
         const opts = [];
         let answerLine = '';
         const desc = [];
         for (const ln of other) {
-            if (isOpt(ln)) opts.push(ln.replace(/^([A-Da-d])[\.、\)]\s*/, ''));
-            else if (isAns(ln)) answerLine = ln;
+            if (isOpt(ln)) {
+                opts.push(ln.replace(/^\s*[（(]?([A-Ha-h])[）)]?[\.、:)]\s*/, ''));
+                // 行内还可能带有更多选项
+                const extra = extractInlineOptions(ln);
+                if (extra.length > 1) {
+                    // 第一个已作为本行选项，其余追加
+                    extra.slice(1).forEach(t => opts.push(t));
+                }
+            }
+            if (isAns(ln)) {
+                const mAns = ln.match(/(?:答案|正确答案|参考答案|答案是|Answer|Ans)\s*(?:[:：]|为)?\s*(.+)$/i);
+                if (mAns) answerLine = '答案: ' + mAns[1].trim();
+            }
             else if (ln) desc.push(ln);
+        }
+        // 如果未识别出选项，尝试在合并文本中做行内切分
+        if (opts.length < 2) {
+            const joined = other.join(' ');
+            const inl = extractInlineOptions(joined);
+            if (inl.length >= 2) {
+                inl.forEach(t => opts.push(t));
+            }
+            if (!answerLine) {
+                const mAns2 = joined.match(/(?:答案|正确答案|参考答案|答案是|Answer|Ans)\s*(?:[:：]|为)?\s*([^\n]+)/i);
+                if (mAns2) answerLine = '答案: ' + mAns2[1].trim();
+            }
         }
         let type = 'essay';
         let answer = '';
         let answerText = '';
         if (answerLine) {
-            const m = answerLine.match(/[:：]\s*([A-Da-d]{1,4})/);
+            const m = answerLine.match(/[:：为]?\s*([A-Ha-hTF对错]{1,8}|正确|错误)/);
             if (m) {
-                const letters = m[1].toUpperCase();
-                if (letters.length === 1) type = 'single'; else type = 'multiple';
-                answer = letters;
+                const token = m[1];
+                const up = token.toUpperCase();
+                if (/^(?:对|正确|T)$/i.test(token)) { type = 'judge'; answer = '正确'; }
+                else if (/^(?:错|错误|F)$/i.test(token)) { type = 'judge'; answer = '错误'; }
+                else {
+                    const letters = up.replace(/[^A-H]/g, '');
+                    if (letters) {
+                        type = letters.length === 1 ? 'single' : 'multiple';
+                        answer = letters;
+                    } else {
+                        answerText = token;
+                    }
+                }
             } else {
-                answerText = answerLine.replace(/^(答案|正确答案)[:：]\s*/, '');
+                answerText = answerLine.replace(/^(?:答案|正确答案|参考答案|答案是|Answer|Ans)\s*[:：]\s*/i, '');
             }
         }
         if ((type === 'single' || type === 'multiple') && opts.length < 2) {
@@ -167,6 +737,9 @@ function parseTextToOverlayItems(text) {
         ];
         if (answer) item.answer = answer;
         if (answerText) item.answerText = answerText;
+        item._src = b.join('\n');
+        const lowConfidence = !firstIsQ || (!answerLine && opts.length === 0 && desc.length === 0) || !qline || (item.options && item.options.filter(Boolean).length < 2 && (type === 'single' || type === 'multiple'));
+        if (lowConfidence) item._unknown = true;
         items.push(item);
     }
     return items;
@@ -187,12 +760,20 @@ function handleOverlayFileChange(e) {
             let subjectKey = currentSubject;
             if (Array.isArray(data)) items = data;
             else if (data && Array.isArray(data.items)) { items = data.items; if (data.subject) subjectKey = String(data.subject).toLowerCase(); }
-            if (!items || !Array.isArray(items)) { alert('导入失败：JSON 格式不正确'); return; }
-            localStorage.setItem(`overlay_${subjectKey}`, JSON.stringify(items));
+            if (!items || !Array.isArray(items)) { showToast('导入失败：JSON 格式不正确', 'error'); return; }
+            const v = validateOverlayItems(items, subjectKey);
+            if (!v.items || v.items.length === 0) { showToast('导入失败：结构校验未通过', 'error'); return; }
+            if (!SUBJECTS[subjectKey]) registerSubject(subjectKey, data && data.name ? data.name : subjectKey);
+            localStorage.setItem(`overlay_${subjectKey}`, JSON.stringify(v.items));
             refreshAfterOverlayChange();
-            alert('导入成功，覆盖层已应用');
+            showToast(`导入成功，覆盖层已应用（有效 ${v.items.length}${v.errors && v.errors.length ? `，忽略 ${v.errors.length}` : ''}）`, 'success');
+            if (subjectKey !== currentSubject && SUBJECTS[subjectKey]) {
+                if (confirm(`已导入到学科 ${SUBJECTS[subjectKey].name}，是否切换查看？`)) {
+                    switchSubject(subjectKey);
+                }
+            }
         } catch (err) {
-            alert('导入失败：JSON 解析错误');
+            showToast('导入失败：JSON 解析错误', 'error');
         } finally {
             e.target.value = '';
         }
@@ -203,7 +784,7 @@ function handleOverlayFileChange(e) {
 function exportOverlay() {
     const key = `overlay_${currentSubject}`;
     const raw = localStorage.getItem(key) || localStorage.getItem('overlay_global');
-    if (!raw) { alert('当前科目暂无覆盖层可导出'); return; }
+    if (!raw) { showToast('当前科目暂无覆盖层可导出', 'warn'); return; }
     const blob = new Blob([raw], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -219,7 +800,7 @@ function exportOverlay() {
 function clearOverlay() {
     localStorage.removeItem(`overlay_${currentSubject}`);
     refreshAfterOverlayChange();
-    alert('已清空当前科目的本地覆盖层');
+    showToast('已清空当前科目的本地覆盖层', 'info');
 }
 
 function importOverlayToServer() {
@@ -233,28 +814,67 @@ function handleOverlayUploadFileChange(e) {
     const reader = new FileReader();
     reader.onload = async () => {
         try {
+            setLoading(true, '正在上传…');
             const text = String(reader.result || '');
             // 简单校验 JSON
-            try { JSON.parse(text); } catch { alert('上传失败：JSON 解析错误'); e.target.value=''; return; }
+            let parsed;
+            try { parsed = JSON.parse(text); } catch { showToast('上传失败：JSON 解析错误', 'error'); e.target.value=''; return; }
+            let items = Array.isArray(parsed) ? parsed : (parsed && Array.isArray(parsed.items) ? parsed.items : null);
+            let subjectKey = (parsed && parsed.subject) ? String(parsed.subject).toLowerCase() : currentSubject;
+            if (!items) { showToast('上传失败：JSON 结构错误', 'error'); e.target.value=''; return; }
+            const v = validateOverlayItems(items, subjectKey);
+            if (!v.items || v.items.length === 0) { showToast('上传失败：覆盖层结构校验未通过', 'error'); e.target.value=''; return; }
+            const uploadPayload = Array.isArray(parsed) ? v.items : { subject: subjectKey, name: (parsed && parsed.name) || subjectKey, items: v.items };
             const name = encodeURIComponent(file.name.replace(/\s+/g, '_'));
             const res = await fetch(`custom/upload?name=${name}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: text,
+                body: JSON.stringify(uploadPayload),
                 cache: 'no-store'
             });
-            if (!res.ok) { alert('上传失败'); e.target.value=''; return; }
+            if (!res.ok) { showToast('上传失败', 'error'); e.target.value=''; return; }
             const data = await res.json();
-            if (!data.ok) { alert('上传失败：' + (data.error || '未知错误')); e.target.value=''; return; }
+            if (!data.ok) { showToast('上传失败：' + (data.error || '未知错误'), 'error'); e.target.value=''; return; }
             refreshAfterOverlayChange();
-            alert('上传成功，已写入服务器 custom/ 并应用');
+            showToast(`上传成功，已写入服务器 custom/ 并应用（有效 ${v.items.length}${v.errors && v.errors.length ? `，忽略 ${v.errors.length}` : ''}）`, 'success');
         } catch (err) {
-            alert('上传失败');
+            showToast('上传失败', 'error');
         } finally {
+            setLoading(false);
             e.target.value = '';
         }
     };
     reader.readAsText(file);
+}
+
+function setLoading(show, msg) {
+    const el = document.getElementById('loadingOverlay'); if (!el) return;
+    el.style.display = show ? 'flex' : 'none';
+    const t = document.getElementById('loadingText'); if (t && typeof msg === 'string') t.textContent = msg;
+}
+
+function showToast(message, type = 'info', duration = 3000) {
+    try {
+        const container = document.getElementById('toastContainer');
+        if (!container) { alert(String(message)); return; }
+        const el = document.createElement('div');
+        el.className = 'toast ' + (type || 'info');
+        el.textContent = String(message);
+        container.appendChild(el);
+        const list = container.querySelectorAll('.toast');
+        if (list.length > 5) {
+            container.removeChild(list[0]);
+        }
+        const hideAfter = Math.max(1000, Number(duration) || 0);
+        setTimeout(() => {
+            el.style.transition = 'opacity .2s, transform .2s';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-6px)';
+            setTimeout(() => { try { el.remove(); } catch {} }, 220);
+        }, hideAfter);
+    } catch (e) {
+        try { alert(String(message)); } catch {}
+    }
 }
 
 // 提交主观题答案（不判对错，仅记录与展示参考答案）
@@ -285,6 +905,61 @@ function coerceQuestion(item) {
     if (typeof out.answerText === 'string') out.answerText = out.answerText.trim();
     if (typeof out.question === 'string') out.question = out.question.trim();
     return out;
+}
+
+function validateOverlayItems(items, subjectKey) {
+    const allowedTypes = new Set(['single','multiple','judge','fill','essay']);
+    const out = [];
+    const errors = [];
+    const coerce = coerceQuestion;
+    const limit = (s, n) => String(s == null ? '' : s).slice(0, n);
+    const isLetter = (ch) => /^[A-D]$/.test(ch);
+    const normAnsLetters = (s) => Array.from(new Set(String(s||'').toUpperCase().replace(/[^A-D]/g,''))).sort().join('');
+    const isJudgeToken = (s) => s === '正确' || s === '错误';
+    if (!Array.isArray(items)) return { items: [], errors: ['root:not_array'] };
+    for (let i = 0; i < items.length; i++) {
+        const raw = items[i];
+        if (!raw || typeof raw !== 'object') { errors.push(`item${i}:not_object`); continue; }
+        const it = coerce(raw);
+        if (!allowedTypes.has(it.type)) { errors.push(`item${i}:bad_type`); continue; }
+        it.question = limit(it.question || '', 500).trim();
+        if (!it.question) { errors.push(`item${i}:empty_question`); continue; }
+        if (Array.isArray(it.options)) {
+            it.options = it.options.map(x => limit(x, 200)).filter(Boolean).slice(0, 4);
+        }
+        if ((it.type === 'single' || it.type === 'multiple') && (!Array.isArray(it.options) || it.options.length < 2)) {
+            errors.push(`item${i}:options_invalid`); continue;
+        }
+        if (it.type === 'single') {
+            const a = String(it.answer || '').toUpperCase();
+            if (!isLetter(a)) { errors.push(`item${i}:answer_invalid_single`); continue; }
+            it.answer = a;
+        } else if (it.type === 'multiple') {
+            const a = normAnsLetters(it.answer);
+            if (!a) { errors.push(`item${i}:answer_invalid_multiple`); continue; }
+            it.answer = a;
+        } else if (it.type === 'judge') {
+            let a = String(it.answer || '').trim();
+            if (/^(?:对|正确|T)$/i.test(a)) a = '正确';
+            else if (/^(?:错|错误|F)$/i.test(a)) a = '错误';
+            if (!isJudgeToken(a)) { errors.push(`item${i}:answer_invalid_judge`); continue; }
+            it.answer = a;
+            delete it.options;
+        } else if (it.type === 'fill' || it.type === 'essay') {
+            // 用 answerText 表述参考答案，answer 可为空
+            it.answerText = limit(it.answerText || '', 2000);
+            delete it.answer;
+        }
+        // 严格字段白名单
+        const clean = { type: it.type, question: it.question };
+        if (Array.isArray(it.options) && it.options.length >= 2) clean.options = it.options;
+        if (typeof it.answer === 'string' && it.answer) clean.answer = it.answer;
+        if (typeof it.answerText === 'string' && it.answerText) clean.answerText = it.answerText;
+        if (it._unknown) clean._unknown = true;
+        if (subjectKey) clean.subject = subjectKey;
+        out.push(clean);
+    }
+    return { items: out, errors };
 }
 
 function mergeOverlayItems(subjectKey, items) {
@@ -322,13 +997,20 @@ function mergeOverlayItems(subjectKey, items) {
     return { updated, inserted };
 }
 
-async function fetchJsonSafe(url) {
+async function fetchJsonSafe(url, timeoutMs = 8000) {
+    const controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    let timer = null;
     try {
-        const res = await fetch(url, { cache: 'no-store' });
+        if (controller) timer = setTimeout(() => { try { controller.abort(); } catch {} }, timeoutMs);
+        const res = await fetch(url, { cache: 'no-store', signal: controller ? controller.signal : undefined });
         if (!res.ok) return null;
+        const ct = String(res.headers.get('content-type') || '').toLowerCase();
+        if (ct && ct.indexOf('application/json') === -1) return null;
         return await res.json();
     } catch (e) {
         return null;
+    } finally {
+        if (timer) clearTimeout(timer);
     }
 }
 
@@ -350,7 +1032,10 @@ function getLocalOverlays(subjectKey) {
 async function applyOverlaysForSubject(subjectKey) {
     // 本地 localStorage 覆盖层
     const localSets = getLocalOverlays(subjectKey);
-    localSets.forEach(arr => mergeOverlayItems(subjectKey, arr));
+    localSets.forEach(arr => {
+        const v = validateOverlayItems(arr, subjectKey);
+        if (v.items && v.items.length) mergeOverlayItems(subjectKey, v.items);
+    });
 
     // 服务器 custom 目录覆盖层
     const idx = await fetchJsonSafe('custom/index.json');
@@ -365,7 +1050,8 @@ async function applyOverlaysForSubject(subjectKey) {
         if (data && data.subject && String(data.subject).toLowerCase() !== subjectKey) {
             continue;
         }
-        mergeOverlayItems(subjectKey, items);
+        const v = validateOverlayItems(items, subjectKey);
+        if (v.items && v.items.length) mergeOverlayItems(subjectKey, v.items);
     }
 }
 
@@ -380,7 +1066,7 @@ function submitMultipleAnswer(question) {
 
     const userAns = normalizeLetters(Array.from(multiSelected).join(''));
     if (!userAns) {
-        alert('请至少选择一个选项');
+        showToast('请至少选择一个选项', 'warn');
         return;
     }
 
@@ -460,6 +1146,10 @@ function setupAutoAdvanceToggle() {
 }
 
 function handleKeydown(e) {
+    const quick = document.getElementById('quickJumpOverlay');
+    if (quick && quick.style.display !== 'none') return;
+    const help = document.getElementById('helpOverlay');
+    if (help && help.style.display !== 'none') return;
     const tag = (document.activeElement && document.activeElement.tagName) || '';
     if (tag === 'INPUT' || tag === 'TEXTAREA') return;
     const q = allQuestions[currentIndex];
@@ -495,8 +1185,128 @@ function getProgressKey() {
     return `quizProgress_${currentSubject}`;
 }
 
+// ============== 主题切换 ==============
+function setupThemeToggle() {
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme') || '';
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let theme = saved || (prefersDark ? 'dark' : 'light');
+
+    const apply = (t) => {
+        if (t === 'dark') root.setAttribute('data-theme', 'dark');
+        else root.removeAttribute('data-theme');
+        if (btn) btn.textContent = t === 'dark' ? '🌞 亮色' : '🌙 暗色';
+    };
+    apply(theme);
+    if (btn) {
+        btn.onclick = () => {
+            theme = theme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+            apply(theme);
+        };
+    }
+}
+
+function setupStyleSelect() {
+    const root = document.documentElement;
+    const sel = document.getElementById('styleSelect');
+    const saved = localStorage.getItem('style') || 'default';
+    const apply = (style) => {
+        if (style && style !== 'default') root.setAttribute('data-style', style);
+        else root.removeAttribute('data-style');
+    };
+    apply(saved);
+    if (sel) {
+        sel.value = saved;
+        sel.onchange = () => {
+            const val = sel.value || 'default';
+            localStorage.setItem('style', val);
+            apply(val);
+        };
+    }
+}
+
+function setupLayoutSelect() {
+    const root = document.documentElement;
+    const sel = document.getElementById('layoutSelect');
+    const savedRaw = localStorage.getItem('layout') || 'default';
+    const normalize = (l) => (l === 'magazine' ? 'default' : l);
+    const saved = normalize(savedRaw);
+    const apply = (layout) => {
+        const v = normalize(layout || 'default');
+        if (v && v !== 'default') root.setAttribute('data-layout', v);
+        else root.removeAttribute('data-layout');
+    };
+    apply(saved);
+    if (sel) {
+        sel.value = saved;
+        sel.onchange = () => {
+            const val = normalize(sel.value || 'default');
+            localStorage.setItem('layout', val);
+            apply(val);
+        };
+    }
+}
+
+function setupDensitySelect() {
+    const root = document.documentElement;
+    const sel = document.getElementById('densitySelect');
+    const saved = localStorage.getItem('density') || 'default';
+    const apply = (density) => {
+        if (density && density !== 'default') root.setAttribute('data-density', density);
+        else root.removeAttribute('data-density');
+    };
+    apply(saved);
+    if (sel) {
+        sel.value = saved;
+        sel.onchange = () => {
+            const val = sel.value || 'default';
+            localStorage.setItem('density', val);
+            apply(val);
+        };
+    }
+}
+
+function setupStickyHeader() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+    let lastY = 0;
+    let ticking = false;
+    let shrunk = false;
+    let hidden = false;
+    const apply = (y) => {
+        // Hysteresis to avoid jitter: expand <20px, shrink >80px
+        if (!shrunk && y > 80) { header.classList.add('header-shrink'); shrunk = true; }
+        else if (shrunk && y < 20) { header.classList.remove('header-shrink'); shrunk = false; }
+        // Auto-hide on scroll down, show on scroll up
+        const dy = y - (header._lastAppliedY || 0);
+        header._lastAppliedY = y;
+        if (y > 100 && dy > 2 && !hidden) { header.classList.add('header-hidden'); hidden = true; }
+        else if ((dy < -2 || y < 60) && hidden) { header.classList.remove('header-hidden'); hidden = false; }
+    };
+    const onScroll = () => {
+        lastY = window.scrollY || document.documentElement.scrollTop || 0;
+        if (!ticking) {
+            window.requestAnimationFrame(() => { apply(lastY); ticking = false; });
+            ticking = true;
+        }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+}
+
 // 初始化应用
 function initApp() {
+    setupThemeToggle();
+    setupStyleSelect();
+    setupLayoutSelect();
+    setupDensitySelect();
+    setupStickyHeader();
+    setupNavToggle();
+    setupQuickJumpPanel();
+    setupHelpOverlay();
+    bindCspSafeEvents();
     // 合并所有题目
     allQuestions = SUBJECTS[currentSubject].getQuestions();
     originalQuestions = [...allQuestions];
@@ -504,6 +1314,7 @@ function initApp() {
     setupAutoAdvanceToggle();
     loadProgress();
     updateStats();
+    discoverSubjectsFromServer().catch(() => {});
     const proceed = () => {
         renderQuestionNav();
         const params = new URLSearchParams(window.location.search);
@@ -512,6 +1323,8 @@ function initApp() {
         } else {
             showQuestion();
         }
+        updateSubjectStatus();
+        setupFeatureTips();
     };
     applyOverlaysForSubject(currentSubject).then(proceed).catch(proceed);
 }
@@ -573,11 +1386,16 @@ function showQuestion() {
     
     // 隐藏答案
     document.getElementById('answerDisplay').classList.remove('show');
-    document.getElementById('showAnswerBtn').textContent = '显示答案';
+    const mainBtn = document.getElementById('showAnswerBtn');
+    if (mainBtn) mainBtn.textContent = '显示答案';
+    const mbBtn = document.getElementById('mbShowBtn');
+    if (mbBtn) mbBtn.textContent = '显示答案';
     
     // 更新按钮状态
     document.getElementById('prevBtn').disabled = currentIndex === 0;
     document.getElementById('nextBtn').disabled = currentIndex === allQuestions.length - 1;
+    const mbPrev = document.getElementById('mbPrevBtn'); if (mbPrev) mbPrev.disabled = currentIndex === 0;
+    const mbNext = document.getElementById('mbNextBtn'); if (mbNext) mbNext.disabled = currentIndex === allQuestions.length - 1;
     
     // 更新乱序按钮显示状态（只有选择题、判断题、填空题才显示）
     const shuffleBtn = document.getElementById('shuffleOptionsBtn');
@@ -669,10 +1487,7 @@ function renderOptions(question) {
         submitBtn.style.fontSize = '1.1rem';
         submitBtn.onclick = () => {
             const userAnswer = input.value.trim();
-            if (!userAnswer) {
-                alert('请输入答案');
-                return;
-            }
+            if (!userAnswer) { showToast('请输入答案', 'warn'); return; }
             if (question.type === 'fill') {
                 submitFillAnswer(userAnswer, question);
             } else {
@@ -794,7 +1609,10 @@ function showAnswer() {
     
     answerText.textContent = question.answerText;
     display.classList.add('show');
-    document.getElementById('showAnswerBtn').textContent = '✓ 已显示';
+    const mainBtn = document.getElementById('showAnswerBtn');
+    if (mainBtn) mainBtn.textContent = '✓ 已显示';
+    const mbBtn = document.getElementById('mbShowBtn');
+    if (mbBtn) mbBtn.textContent = '✓ 已显示';
 }
 
 // 显示正确消息
@@ -839,19 +1657,22 @@ function previousQuestion() {
     }
 }
 
+// 随机跳转一题
+function goRandomQuestion() {
+    if (!allQuestions || allQuestions.length === 0) return;
+    const idx = Math.floor(Math.random() * allQuestions.length);
+    currentIndex = idx;
+    if (currentMode !== 'practice') switchMode('practice');
+    showQuestion();
+}
+
 // 跳转到指定题号
 function jumpToQuestion() {
     const input = document.getElementById('jumpInput');
     if (!input) return;
     const val = parseInt(input.value, 10);
-    if (isNaN(val)) {
-        alert('请输入有效的题号');
-        return;
-    }
-    if (val < 1 || val > allQuestions.length) {
-        alert(`题号超出范围 1-${allQuestions.length}`);
-        return;
-    }
+    if (isNaN(val)) { showToast('请输入有效的题号', 'warn'); return; }
+    if (val < 1 || val > allQuestions.length) { showToast(`题号超出范围 1-${allQuestions.length}`, 'warn'); return; }
     currentIndex = val - 1;
     showQuestion();
 }
@@ -920,7 +1741,7 @@ function renderQuestionList() {
                 const letter = String.fromCharCode(65 + idx);
                 const isCorrect = question.type === 'multiple' ? (question.answer || '').toUpperCase().includes(letter) : (letter === question.answer);
                 const style = isCorrect ? 'color: #4CAF50; font-weight: bold;' : 'color: #666;';
-                optionsHtml += `<div style="${style}">  ${letter}、${option}</div>`;
+                optionsHtml += `<div style="${style}">  ${letter}、${escapeHTML(option)}</div>`;
             });
             optionsHtml += '</div>';
         }
@@ -928,25 +1749,39 @@ function renderQuestionList() {
         // 构建答案显示
         let answerHtml = `
             <div style="margin-top: 10px; padding: 10px; background: #e8f5e9; border-left: 4px solid #4CAF50; border-radius: 4px;">
-                <div style="color: #2e7d32; font-weight: bold; margin-bottom: 5px;">✓ 答案：${question.answer}</div>
-                <div style="color: #555; font-size: 0.9em;">${question.answerText}</div>
+                <div style="color: #2e7d32; font-weight: bold; margin-bottom: 5px;">✓ 答案：${escapeHTML(question.answer)}</div>
+                <div style="color: #555; font-size: 0.9em;">${escapeHTML(question.answerText)}</div>
             </div>
         `;
         
-        div.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div style="flex: 1;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                        <strong style="color: #667eea;">第 ${questionIndex + 1} 题</strong>
-                        <span style="background: #667eea; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75em;">${getTypeLabel(question.type)}</span>
-                    </div>
-                    <p style="margin: 8px 0; font-size: 0.95em; color: #333; line-height: 1.5;">${question.question}</p>
-                    ${optionsHtml}
-                    ${answerHtml}
-                </div>
-                <button class="btn btn-primary" style="min-width: 80px; padding: 8px 12px; font-size: 0.9em; margin-left: 10px; white-space: nowrap;" onclick="event.stopPropagation(); goToPracticMode(${questionIndex})">练习</button>
+        const wrapper = document.createElement('div');
+        wrapper.style.display = 'flex';
+        wrapper.style.justifyContent = 'space-between';
+        wrapper.style.alignItems = 'flex-start';
+        const left = document.createElement('div');
+        left.style.flex = '1';
+        left.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <strong style="color: #667eea;">第 ${questionIndex + 1} 题</strong>
+                <span style="background: #667eea; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75em;">${getTypeLabel(question.type)}</span>
             </div>
+            <p style="margin: 8px 0; font-size: 0.95em; color: #333; line-height: 1.5;">${escapeHTML(question.question)}</p>
+            ${optionsHtml}
+            ${answerHtml}
         `;
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-primary';
+        btn.style.minWidth = '80px';
+        btn.style.padding = '8px 12px';
+        btn.style.fontSize = '0.9em';
+        btn.style.marginLeft = '10px';
+        btn.style.whiteSpace = 'nowrap';
+        btn.textContent = '练习';
+        btn.addEventListener('click', (e) => { e.stopPropagation(); goToPracticMode(questionIndex); });
+        wrapper.appendChild(left);
+        wrapper.appendChild(btn);
+        div.innerHTML = '';
+        div.appendChild(wrapper);
         
         // 悬停效果
         div.onmouseover = () => {
@@ -1121,8 +1956,7 @@ function resetProgress() {
         // 更新界面
         showQuestion();
         updateStats();
-        
-        alert('当前科目进度已重置');
+        showToast('当前科目进度已重置', 'success');
     }
 }
 
@@ -1141,16 +1975,13 @@ function resetAllData() {
         if (currentMode === 'wrong') {
             renderWrongList();
         }
-        alert('已清空所有数据');
+        showToast('已清空所有数据', 'success');
     }
 }
 
 // 切换科目
 function switchSubject(subjectKey) {
-    if (!SUBJECTS[subjectKey]) {
-        alert('未知科目');
-        return;
-    }
+    if (!SUBJECTS[subjectKey]) { showToast('未知科目', 'error'); return; }
     currentSubject = subjectKey;
     localStorage.setItem('currentSubject', subjectKey);
     
@@ -1163,20 +1994,33 @@ function switchSubject(subjectKey) {
         showQuestion();
         updateSubjectButtons();
         renderQuestionNav();
-        alert(`已切换科目：${SUBJECTS[subjectKey].name}`);
+        showToast(`已切换科目：${SUBJECTS[subjectKey].name}`,'success');
     };
     applyOverlaysForSubject(subjectKey).then(after).catch(after);
 }
 
 // 更新科目按钮样式
 function updateSubjectButtons() {
+    const container = document.querySelector('.subject-switch');
+    if (container) {
+        container.querySelectorAll('[data-subject-dynamic="1"]').forEach(el => el.remove());
+        Object.keys(SUBJECTS).forEach(key => {
+            if (DEFAULT_SUBJECT_KEYS.has(key)) return;
+            const exists = container.querySelector(`[data-subject-btn][data-subject="${key}"]`);
+            if (exists) return;
+            const btn = document.createElement('button');
+            btn.className = 'subject-btn';
+            btn.setAttribute('data-subject-btn', '');
+            btn.setAttribute('data-subject', key);
+            btn.setAttribute('data-subject-dynamic', '1');
+            btn.textContent = SUBJECTS[key].name;
+            btn.onclick = () => switchSubject(key);
+            container.appendChild(btn);
+        });
+    }
     document.querySelectorAll('[data-subject-btn]').forEach(btn => {
         const key = btn.getAttribute('data-subject');
-        if (key === currentSubject) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
+        if (key === currentSubject) btn.classList.add('active'); else btn.classList.remove('active');
     });
 }
 
@@ -1247,7 +2091,7 @@ function renderWrongList() {
                 } else if (isUserAnswer) {
                     style = 'color: #f44336; font-weight: bold;'; // 用户答案：红色
                 }
-                optionsHtml += `<div style="${style}">  ${letter}、${option}</div>`;
+                optionsHtml += `<div style="${style}">  ${letter}、${escapeHTML(option)}</div>`;
             });
             optionsHtml += '</div>';
         }
@@ -1255,8 +2099,8 @@ function renderWrongList() {
         // 构建答案显示
         let answerHtml = `
             <div style="margin-top: 12px; padding: 12px; background: #e8f5e9; border-left: 4px solid #4CAF50; border-radius: 4px;">
-                <div style="color: #2e7d32; font-weight: bold; margin-bottom: 5px;">✓ 正确答案：${question.answer}</div>
-                <div style="color: #555; font-size: 0.95em;">${question.answerText}</div>
+                <div style="color: #2e7d32; font-weight: bold; margin-bottom: 5px;">✓ 正确答案：${escapeHTML(question.answer)}</div>
+                <div style="color: #555; font-size: 0.95em;">${escapeHTML(question.answerText)}</div>
             </div>
         `;
         
@@ -1265,29 +2109,53 @@ function renderWrongList() {
         if (wrongData.userAnswer) {
             userAnswerHtml = `
                 <div style="margin-top: 12px; padding: 12px; background: #ffebee; border-left: 4px solid #f44336; border-radius: 4px;">
-                    <div style="color: #c62828; font-weight: bold; margin-bottom: 5px;">✗ 你的答案：${wrongData.userAnswer}</div>
+                    <div style="color: #c62828; font-weight: bold; margin-bottom: 5px;">✗ 你的答案：${escapeHTML(wrongData.userAnswer)}</div>
                 </div>
             `;
         }
         
-        div.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div style="flex: 1;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                        <strong style="color: #667eea; font-size: 1.1rem;">第 ${question.id} 题</strong>
-                        <span style="background: #667eea; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.85em;">${getTypeLabel(question.type)}</span>
-                    </div>
-                    <p style="margin: 10px 0; font-size: 1.05rem; color: #333; line-height: 1.6;">${question.question}</p>
-                    ${optionsHtml}
-                    ${userAnswerHtml}
-                    ${answerHtml}
-                </div>
-                <div style="display: flex; gap: 8px; margin-left: 10px;">
-                    <button class="btn btn-primary" style="min-width: 80px; padding: 10px 16px; font-size: 0.95rem; white-space: nowrap;" onclick="reviewQuestion(${question.id})">再练一遍</button>
-                    <button class="btn btn-secondary" style="min-width: 80px; padding: 10px 16px; font-size: 0.95rem; white-space: nowrap;" onclick="removeFromWrong(${question.id}); renderWrongList();">移除</button>
-                </div>
+        const row = document.createElement('div');
+        row.style.display = 'flex';
+        row.style.justifyContent = 'space-between';
+        row.style.alignItems = 'flex-start';
+        const left = document.createElement('div');
+        left.style.flex = '1';
+        left.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <strong style="color: #667eea; font-size: 1.1rem;">第 ${question.id} 题</strong>
+                <span style="background: #667eea; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.85em;">${getTypeLabel(question.type)}</span>
             </div>
+            <p style="margin: 10px 0; font-size: 1.05rem; color: #333; line-height: 1.6;">${escapeHTML(question.question)}</p>
+            ${optionsHtml}
+            ${userAnswerHtml}
+            ${answerHtml}
         `;
+        const actions = document.createElement('div');
+        actions.style.display = 'flex';
+        actions.style.gap = '8px';
+        actions.style.marginLeft = '10px';
+        const again = document.createElement('button');
+        again.className = 'btn btn-primary';
+        again.style.minWidth = '80px';
+        again.style.padding = '10px 16px';
+        again.style.fontSize = '0.95rem';
+        again.style.whiteSpace = 'nowrap';
+        again.textContent = '再练一遍';
+        again.addEventListener('click', () => reviewQuestion(question.id));
+        const remove = document.createElement('button');
+        remove.className = 'btn btn-secondary';
+        remove.style.minWidth = '80px';
+        remove.style.padding = '10px 16px';
+        remove.style.fontSize = '0.95rem';
+        remove.style.whiteSpace = 'nowrap';
+        remove.textContent = '移除';
+        remove.addEventListener('click', () => { removeFromWrong(question.id); renderWrongList(); });
+        actions.appendChild(again);
+        actions.appendChild(remove);
+        row.appendChild(left);
+        row.appendChild(actions);
+        div.innerHTML = '';
+        div.appendChild(row);
         
         list.appendChild(div);
     });
@@ -1311,19 +2179,12 @@ function removeFromWrong(questionId) {
 
 // 复习所有错题
 function reviewWrongQuestions() {
-    if (wrongQuestions.size === 0) {
-        alert('没有错题，继续加油！');
-        return;
-    }
+    if (wrongQuestions.size === 0) { showToast('没有错题，继续加油！', 'info'); return; }
     
     // 创建错题列表
     const wrongIds = Array.from(wrongQuestions.keys());
     const wrongQuestionsArray = originalQuestions.filter(q => wrongIds.includes(q.id));
-    
-    if (wrongQuestionsArray.length === 0) {
-        alert('没有找到对应的错题');
-        return;
-    }
+    if (wrongQuestionsArray.length === 0) { showToast('没有找到对应的错题', 'warn'); return; }
     
     // 保存当前状态
     isReviewingWrong = true;
@@ -1343,7 +2204,7 @@ function reviewWrongQuestions() {
     // 延迟显示题目，确保 DOM 已经准备好
     setTimeout(() => {
         showQuestion();
-        alert(`开始复习 ${wrongQuestionsArray.length} 道错题`);
+        showToast(`开始复习 ${wrongQuestionsArray.length} 道错题`, 'info');
     }, 100);
 }
 
@@ -1353,7 +2214,7 @@ function clearWrongQuestions() {
         wrongQuestions.clear();
         saveProgress();
         renderWrongList();
-        alert('已清空错题集');
+        showToast('已清空错题集', 'success');
     }
 }
 
@@ -1422,7 +2283,7 @@ function renderCollectedList() {
                 const letter = String.fromCharCode(65 + idx);
                 const isCorrect = letter === question.answer;
                 const style = isCorrect ? 'color: #4CAF50; font-weight: bold;' : 'color: #666;';
-                optionsHtml += `<div style="${style}">  ${letter}、${option}</div>`;
+                optionsHtml += `<div style="${style}">  ${letter}、${escapeHTML(option)}</div>`;
             });
             optionsHtml += '</div>';
         }
@@ -1430,29 +2291,53 @@ function renderCollectedList() {
         // 构建答案显示
         let answerHtml = `
             <div style="margin-top: 12px; padding: 12px; background: #e8f5e9; border-left: 4px solid #4CAF50; border-radius: 4px;">
-                <div style="color: #2e7d32; font-weight: bold; margin-bottom: 5px;">✓ 答案：${question.answer}</div>
-                <div style="color: #555; font-size: 0.95em;">${question.answerText}</div>
+                <div style="color: #2e7d32; font-weight: bold; margin-bottom: 5px;">✓ 答案：${escapeHTML(question.answer)}</div>
+                <div style="color: #555; font-size: 0.95em;">${escapeHTML(question.answerText)}</div>
             </div>
         `;
         
-        div.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                <div style="flex: 1;">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                        <strong style="color: #667eea; font-size: 1.1rem;">第 ${question.id} 题</strong>
-                        <span style="background: #667eea; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.85em;">${getTypeLabel(question.type)}</span>
-                        <span style="color: #999; font-size: 0.85em;">收藏于 ${collectedData.timestamp}</span>
-                    </div>
-                    <p style="margin: 10px 0; font-size: 1.05rem; color: #333; line-height: 1.6;">${question.question}</p>
-                    ${optionsHtml}
-                    ${answerHtml}
-                </div>
-                <div style="display: flex; gap: 8px; margin-left: 10px;">
-                    <button class="btn btn-primary" style="min-width: 80px; padding: 10px 16px; font-size: 0.95rem; white-space: nowrap;" onclick="goToPracticMode(${question.id - 1})">练习</button>
-                    <button class="btn btn-secondary" style="min-width: 80px; padding: 10px 16px; font-size: 0.95rem; white-space: nowrap;" onclick="toggleCollectQuestion(${question.id}); renderCollectedList();">取消</button>
-                </div>
+        const row = document.createElement('div');
+        row.style.display = 'flex';
+        row.style.justifyContent = 'space-between';
+        row.style.alignItems = 'flex-start';
+        const left = document.createElement('div');
+        left.style.flex = '1';
+        left.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                <strong style="color: #667eea; font-size: 1.1rem;">第 ${question.id} 题</strong>
+                <span style="background: #667eea; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.85em;">${getTypeLabel(question.type)}</span>
+                <span style="color: #999; font-size: 0.85em;">收藏于 ${collectedData.timestamp}</span>
             </div>
+            <p style="margin: 10px 0; font-size: 1.05rem; color: #333; line-height: 1.6;">${escapeHTML(question.question)}</p>
+            ${optionsHtml}
+            ${answerHtml}
         `;
+        const actions = document.createElement('div');
+        actions.style.display = 'flex';
+        actions.style.gap = '8px';
+        actions.style.marginLeft = '10px';
+        const practice = document.createElement('button');
+        practice.className = 'btn btn-primary';
+        practice.style.minWidth = '80px';
+        practice.style.padding = '10px 16px';
+        practice.style.fontSize = '0.95rem';
+        practice.style.whiteSpace = 'nowrap';
+        practice.textContent = '练习';
+        practice.addEventListener('click', () => goToPracticMode(question.id - 1));
+        const cancel = document.createElement('button');
+        cancel.className = 'btn btn-secondary';
+        cancel.style.minWidth = '80px';
+        cancel.style.padding = '10px 16px';
+        cancel.style.fontSize = '0.95rem';
+        cancel.style.whiteSpace = 'nowrap';
+        cancel.textContent = '取消';
+        cancel.addEventListener('click', () => { toggleCollectQuestion(question.id); renderCollectedList(); });
+        actions.appendChild(practice);
+        actions.appendChild(cancel);
+        row.appendChild(left);
+        row.appendChild(actions);
+        div.innerHTML = '';
+        div.appendChild(row);
         
         list.appendChild(div);
     });
@@ -1464,7 +2349,7 @@ function clearCollectedQuestions() {
         collectedQuestions.clear();
         saveProgress();
         renderCollectedList();
-        alert('已清空收藏');
+        showToast('已清空收藏', 'success');
     }
 }
 
@@ -1509,8 +2394,7 @@ function exitReviewMode() {
     showQuestion();
     updateStats();
     renderQuestionNav();
-
-    alert('已退出复习模式，返回完整题库。');
+    showToast('已退出复习模式，返回完整题库。','info');
 }
 
 // 页面加载完成后初始化
