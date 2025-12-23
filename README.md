@@ -1,6 +1,13 @@
-# Final-review / AI 知识复习小程序
+# QuizPilot · AI Study & Quiz App
 
-一个轻量、离线可用的刷题小程序。支持题库覆盖层（Overlay）自动导入、Word/PDF/TXT/MD 一键导入题库、错题与收藏管理、基本安全加固与离线使用。
+AI 驱动的现代化学习与刷题应用（中英双语）。快速跳题、覆盖层校对、严格 CSP、防注入与性能优化。
+
+[![Stars](https://img.shields.io/github/stars/C1066g/QuizPilot?style=social)](https://github.com/C1066g/QuizPilot/stargazers)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![CSP](https://img.shields.io/badge/Security-Strict%20CSP-success)
+![JSON Schema](https://img.shields.io/badge/Validation-JSON%20Schema-informational)
+
+一个轻量、离线可用的刷题小程序。支持题库覆盖层（Overlay）自动导入、Word/PDF/TXT/MD 一键导入题库、错题与收藏管理、严格 CSP 与离线使用。
 
 ## 功能特性
 - 覆盖层自动导入：
@@ -39,9 +46,9 @@ Windows 也可使用：`npm run start:win`
 ## Docker 启动
 ```bash
 # 在仓库根目录
-docker build -t final-review ./rgzr
+docker build -t quizpilot ./rgzr
 # 运行
-docker run --rm -p 8001:8001 -e HOST=0.0.0.0 -e PORT=8001 final-review
+docker run --rm -p 8001:8001 -e HOST=0.0.0.0 -e PORT=8001 quizpilot
 # 打开 http://localhost:8001
 ```
 或使用 docker-compose：
@@ -62,7 +69,7 @@ docker compose up --build
 
 ## 目录结构
 ```
-Final-review/
+QuizPilot/
 ├─ rgzr/                     # 前端与本地 Node 服务
 │  ├─ server.js              # 本地服务（含 /custom/index.json /custom/upload）
 │  ├─ index.html, app.js     # 前端应用
