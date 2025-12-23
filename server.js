@@ -5,6 +5,7 @@ const { URL } = require('url');
 
 const PORT = parseInt(process.env.PORT || '8001', 10);
 const HOST = process.env.HOST || '0.0.0.0';
+const DEV_MODE = process.env.NODE_ENV !== 'production';
 
 // MIME 类型映射
 const mimeTypes = {
@@ -31,6 +32,15 @@ const securityHeaders = {
     'Cross-Origin-Resource-Policy': 'same-origin'
 };
 
+function getHostnameFromHost(h) {
+    try { return new URL('http://' + String(h || '')).hostname; } catch { return ''; }
+}
+
+function isLoopbackName(name) {
+    const n = String(name || '').toLowerCase();
+    return n === 'localhost' || n === '127.0.0.1' || n === '::1' || n === '::ffff:127.0.0.1';
+}
+
 function escapeHtml(str) {
     return String(str)
         .replace(/&/g, '&amp;')
@@ -45,7 +55,7 @@ const server = http.createServer((req, res) => {
     for (const [k, v] of Object.entries(securityHeaders)) {
         res.setHeader(k, v);
     }
-    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'");
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; worker-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'");
 
     // 解析 URL (WHATWG)
     const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
@@ -59,6 +69,18 @@ const server = http.createServer((req, res) => {
     // 默认文件
     if (pathname === '' || pathname === '/') {
         pathname = 'index.html';
+    }
+
+    // 基础防护：禁止直接访问敏感文件与隐藏文件
+    if (pathname === 'server.js' || pathname.endsWith('/server.js')) {
+        res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+        res.end('403 Forbidden');
+        return;
+    }
+    if (pathname.split('/').some(seg => seg.startsWith('.'))) {
+        res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+        res.end('403 Forbidden');
+        return;
     }
 
     // 自定义覆盖层索引
@@ -95,6 +117,53 @@ const server = http.createServer((req, res) => {
         if (!isLocal) {
             res.writeHead(403, { 'Content-Type': 'application/json; charset=utf-8' });
             res.end(JSON.stringify({ ok: false, error: 'forbidden' }));
+            return;
+        }
+
+        // CSRF 防护：仅接受同源请求（阻止跨站请求访问本地上传接口）
+        const origin = req.headers['origin'] || '';
+        const host = req.headers['host'] || '';
+        const okSameOrigin = origin && (origin === `http://${host}` || origin === `https://${host}`);
+        let originAllowed = okSameOrigin;
+        if (!originAllowed && origin) {
+            try {
+                const o = new URL(origin);
+                const hostName = getHostnameFromHost(host);
+                // 便捷开发：允许本机不同端口（IDE 预览代理）
+                if (DEV_MODE && isLoopbackName(o.hostname) && isLoopbackName(hostName)) {
+                    originAllowed = true;
+                }
+            } catch {}
+        }
+        if (origin && !originAllowed) {
+            res.writeHead(403, { 'Content-Type': 'application/json; charset=utf-8' });
+            res.end(JSON.stringify({ ok: false, error: 'invalid origin' }));
+            return;
+        }
+        const sfs = req.headers['sec-fetch-site'];
+        if (sfs && sfs !== 'same-origin') {
+            // 便捷开发：放行本机 loopback 来源
+            const hostName = getHostnameFromHost(host);
+            try {
+                const o = origin ? new URL(origin) : null;
+                const okLocal = DEV_MODE && isLoopbackName(hostName) && (!o || isLoopbackName(o.hostname));
+                if (!okLocal) {
+                    res.writeHead(403, { 'Content-Type': 'application/json; charset=utf-8' });
+                    res.end(JSON.stringify({ ok: false, error: 'cross-site blocked' }));
+                    return;
+                }
+            } catch {
+                res.writeHead(403, { 'Content-Type': 'application/json; charset=utf-8' });
+                res.end(JSON.stringify({ ok: false, error: 'cross-site blocked' }));
+                return;
+            }
+        }
+
+        // 仅接受 JSON");
+        const ct = String(req.headers['content-type'] || '').toLowerCase();
+        if (!ct.startsWith('application/json')) {
+            res.writeHead(415, { 'Content-Type': 'application/json; charset=utf-8' });
+            res.end(JSON.stringify({ ok: false, error: 'unsupported media type' }));
             return;
         }
         const qName = parsedUrl.searchParams.get('name') || `overlay_${Date.now()}.json`;
@@ -187,10 +256,16 @@ const server = http.createServer((req, res) => {
         }
 
         const ext = path.extname(filePath).toLowerCase();
+        // 仅允许 custom 目录下的 JSON 被读取
+        if (pathname.startsWith('custom/') && ext !== '.json') {
+            res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' });
+            res.end('403 Forbidden');
+            return;
+        }
         const contentType = mimeTypes[ext] || 'application/octet-stream';
         const isHtml = ext === '.html';
         const longCacheExts = new Set(['.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.webp', '.woff', '.woff2', '.ttf', '.eot']);
-        const cacheControl = isHtml ? 'no-store' : (longCacheExts.has(ext) ? 'public, max-age=31536000, immutable' : 'public, max-age=3600');
+        const cacheControl = DEV_MODE ? 'no-store' : (isHtml ? 'no-store' : (longCacheExts.has(ext) ? 'public, max-age=31536000, immutable' : 'public, max-age=3600'));
         const lastModified = stats.mtime.toUTCString();
 
         if (req.method === 'HEAD') {

@@ -11,35 +11,276 @@
             box-sizing: border-box;
         }
 
+        /* Quick Jump Modal */
+        .quick-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: none; align-items: flex-start; justify-content: center; padding-top: 10vh; z-index: 10005; }
+        .quick-modal { width: min(800px, 92vw); background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-elev-3); overflow: hidden; }
+        .quick-input-row { padding: 12px; border-bottom: 1px solid var(--border-color); background: var(--panel-bg); }
+        .quick-input-row input { width: 100%; padding: 12px 14px; font-size: 1.05rem; border: 1px solid var(--border-color); border-radius: 10px; outline: none; background: var(--card-bg); color: var(--text-color); }
+        .quick-input-row input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2); }
+        .quick-list { max-height: 60vh; overflow-y: auto; }
+        .quick-item { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-bottom: 1px solid var(--border-color); cursor: pointer; transition: background .15s ease; }
+        .quick-item:hover { background: var(--panel-bg); }
+        .quick-item.active { background: rgba(127,140,255,0.12); }
+        .quick-num { font-weight: 700; color: var(--accent); min-width: 56px; }
+        .quick-title { color: var(--text-color); }
+        .quick-snippet { color: var(--muted-color); font-size: .92rem; margin-top: 2px; }
+
+        /* Density presets */
+        [data-density="compact"] .main-content { padding: 28px; }
+        [data-density="compact"] .mode-btn { padding: 12px 16px; min-width: 120px; }
+        [data-density="compact"] .btn { padding: 10px 16px; min-width: 100px; font-size: 1rem; }
+        [data-density="compact"] .option { padding: 12px; font-size: 1.05rem; }
+        [data-density="compact"] .nav-item { padding: 6px 8px; }
+        [data-density="compact"] .question-text { padding: 18px; line-height: 1.7; }
+        [data-density="compact"] .stats { gap: 10px; }
+        [data-density="compact"] .bottom-bar .btn { padding: 10px 12px; }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--bg-gradient);
+            background-size: 240% 240%;
+            animation: bg-shift 28s ease infinite;
             min-height: 100vh;
             padding: 20px;
             font-size: 18px;
         }
+        @keyframes bg-shift { 0%{ background-position: 0 0; } 50%{ background-position: 100% 50%; } 100%{ background-position: 0 0; } }
+        @media (prefers-reduced-motion: reduce) { body { animation: none; } }
+
+        :root {
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-bg: #ffffff;
+            --panel-bg: #f8f8ff;
+            --text-color: #222;
+            --muted-color: #555;
+            --border-color: #e6e6ef;
+            --accent: #667eea;
+            --accent-2: #764ba2;
+            --shadow-elev-2: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-elev-3: 0 20px 60px rgba(0,0,0,0.20);
+            --radius: 12px;
+        }
+        [data-theme="dark"] {
+            --bg-gradient: radial-gradient(1200px 600px at 20% 0%, #0b1220 0%, #0f172a 40%, #111827 100%);
+            --card-bg: #0f172a;
+            --panel-bg: #0b1220;
+            --text-color: #e5e7eb;
+            --muted-color: #94a3b8;
+            --border-color: rgba(255,255,255,0.08);
+            --accent: #7f8cff;
+            --accent-2: #a78bfa;
+            --shadow-elev-2: 0 8px 24px rgba(0,0,0,0.45);
+            --shadow-elev-3: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        /* Style presets: override tokens via data-style attribute */
+        [data-style="glass"] {
+            --card-bg: rgba(255,255,255,0.22);
+            --panel-bg: rgba(255,255,255,0.12);
+            --border-color: rgba(255,255,255,0.35);
+            --shadow-elev-2: 0 10px 30px rgba(0,0,0,0.15);
+            --shadow-elev-3: 0 30px 80px rgba(0,0,0,0.25);
+        }
+        [data-theme="dark"][data-style="glass"] {
+            --card-bg: rgba(16,24,40,0.45);
+            --panel-bg: rgba(11,18,32,0.35);
+            --border-color: rgba(255,255,255,0.12);
+        }
+        [data-style="glass"] .main-content,
+        [data-style="glass"] .question-nav,
+        [data-style="glass"] .subject-status {
+            backdrop-filter: saturate(150%) blur(12px);
+        }
+
+        [data-style="aurora"] {
+            --bg-gradient: radial-gradient(1000px 600px at 10% -10%, #1e293b 0%, #0f172a 30%, #111827 100%),
+                             radial-gradient(600px 300px at 90% 10%, rgba(60,186,255,0.35), transparent 60%),
+                             radial-gradient(600px 300px at 30% 90%, rgba(167,139,250,0.35), transparent 60%);
+            --accent: #60a5fa;
+            --accent-2: #a78bfa;
+        }
+
+        [data-style="editorial"] {
+            --bg-gradient: linear-gradient(180deg, #f6f7fb 0%, #eef1f7 100%);
+            --card-bg: #ffffff;
+            --panel-bg: #ffffff;
+            --text-color: #1f2937;
+            --muted-color: #4b5563;
+            --border-color: #e5e7eb;
+            --accent: #1f2937;
+            --accent-2: #4b5563;
+            --shadow-elev-2: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-elev-3: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        [data-style="brutal"] {
+            --bg-gradient: linear-gradient(135deg, #fff7e6 0%, #ffe3ec 100%);
+            --card-bg: #ffffff;
+            --panel-bg: #ffffff;
+            --text-color: #111827;
+            --muted-color: #374151;
+            --border-color: #111827;
+            --accent: #ef4444;
+            --accent-2: #f59e0b;
+            --shadow-elev-2: 8px 8px 0 rgba(17,24,39,0.8);
+            --shadow-elev-3: 12px 12px 0 rgba(17,24,39,0.9);
+        }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .header {
             text-align: center;
-            color: white;
+            color: var(--text-color);
             margin-bottom: 30px;
+            position: sticky;
+            top: 12px;
+            z-index: 5;
+            padding: 12px 16px;
+            min-height: 80px;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            background: rgba(255,255,255,0.58);
+            backdrop-filter: saturate(140%) blur(12px);
+            box-shadow: var(--shadow-elev-2);
+            transition: box-shadow .2s ease, background .2s ease, transform .2s ease;
+            will-change: transform;
         }
+        [data-theme="dark"] .header { background: rgba(0,0,0,0.28); }
+        .header.header-shrink { box-shadow: var(--shadow-elev-2); }
+        .header.header-hidden { transform: translateY(-140%); }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 2.2em;
+            margin-bottom: 6px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: transform .2s ease;
+            will-change: transform;
         }
+        .header.header-shrink h1 { transform: scale(0.9); }
 
         .header p {
-            font-size: 1.1em;
+            font-size: 1.0em;
             opacity: 0.9;
+            color: var(--muted-color);
+            transition: opacity .2s ease;
         }
+        .header.header-shrink p { opacity: 0; }
+
+        .theme-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translateY(-10px);
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+            color: var(--text-color);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all .2s ease;
+        }
+        [data-theme="dark"] .theme-toggle { background: rgba(0,0,0,0.25); }
+        .theme-toggle:hover { transform: translateY(-12px); }
+
+        .nav-toggle {
+            position: absolute;
+            top: 0;
+            right: 444px;
+            transform: translateY(-10px);
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            color: var(--text-color);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all .2s ease;
+        }
+        [data-theme="dark"] .nav-toggle { background: rgba(0,0,0,0.35); }
+        .nav-toggle:hover { transform: translateY(-12px); }
+
+        .help-btn {
+            position: absolute;
+            top: 0;
+            right: 540px;
+            transform: translateY(-10px);
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            color: var(--text-color);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all .2s ease;
+        }
+        [data-theme="dark"] .help-btn { background: rgba(0,0,0,0.35); }
+        .help-btn:hover { transform: translateY(-12px); }
+
+        .style-select {
+            position: absolute;
+            top: 0;
+            right: 92px;
+            transform: translateY(-10px);
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            color: var(--text-color);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all .2s ease;
+        }
+        [data-theme="dark"] .style-select { background: rgba(0,0,0,0.35); }
+        .style-select:hover { transform: translateY(-12px); }
+
+        .layout-select {
+            position: absolute;
+            top: 0;
+            right: 200px;
+            transform: translateY(-10px);
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            color: var(--text-color);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all .2s ease;
+        }
+        [data-theme="dark"] .layout-select { background: rgba(0,0,0,0.35); }
+        .layout-select:hover { transform: translateY(-12px); }
+
+        .density-select {
+            position: absolute;
+            top: 0;
+            right: 324px;
+            transform: translateY(-10px);
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            color: var(--text-color);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all .2s ease;
+        }
+        [data-theme="dark"] .density-select { background: rgba(0,0,0,0.35); }
+        .density-select:hover { transform: translateY(-12px); }
 
         .subject-switch {
             display: flex;
@@ -48,6 +289,31 @@
             justify-content: flex-end;
             margin: 10px 0 20px;
         }
+
+        .subject-status {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-elev-2);
+        }
+        .subject-status .mini-btn {
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all .2s ease;
+        }
+        .subject-status .mini-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
         .subject-switch span {
             color: white;
@@ -79,10 +345,10 @@
         }
 
         .main-content {
-            background: white;
+            background: var(--card-bg);
             border-radius: 15px;
             padding: 48px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-elev-3);
             display: flex;
             flex-direction: column;
         }
@@ -90,16 +356,16 @@
         .content-layout {
             display: grid;
             grid-template-columns: 1fr 360px;
+            grid-template-areas: 'main nav';
             gap: 20px;
         }
 
-        .content-main {
-            min-width: 0;
-        }
+        .content-main { grid-area: main; min-width: 0; }
 
         .question-nav {
-            background: #f8f8ff;
-            border: 1px solid #e5e7fb;
+            grid-area: nav;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 24px;
             position: sticky;
@@ -107,12 +373,20 @@
             height: fit-content;
             max-height: calc(100vh - 160px);
             overflow-y: auto;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            box-shadow: var(--shadow-elev-2);
         }
+
+        /* Layout presets */
+        [data-layout="sidebar-left"] .content-layout { grid-template-columns: 360px 1fr; grid-template-areas: 'nav main'; }
+        [data-layout="single"] .content-layout { grid-template-columns: 1fr; grid-template-areas: 'main'; }
+        [data-layout="single"] .question-nav { display: none; }
+
+        [data-nav="collapsed"] .content-layout { grid-template-columns: 1fr; grid-template-areas: 'main'; }
+        [data-nav="collapsed"] .question-nav { display: none; }
 
         .question-nav h4 {
             margin-bottom: 10px;
-            color: #444;
+            color: var(--muted-color);
         }
 
         .nav-list {
@@ -127,22 +401,35 @@
             align-items: center;
             padding: 8px 10px;
             border-radius: 8px;
-            background: white;
-            border: 1px solid #eceffd;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             cursor: pointer;
             transition: all 0.2s ease;
             font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .nav-item:hover {
-            background: #eef2ff;
+            background: rgba(127,140,255,0.12);
             transform: translateX(2px);
         }
 
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 0;
+            background: var(--accent);
+            transition: width .18s ease;
+        }
+        .nav-item:hover::before { width: 4px; }
+        .nav-item.active::before { width: 6px; }
+
         .nav-item.active {
-            background: #667eea;
+            background: var(--accent);
             color: white;
-            border-color: #667eea;
+            border-color: var(--accent);
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.35);
         }
 
@@ -180,9 +467,9 @@
             flex: 1;
             min-width: 150px;
             padding: 16px 24px;
-            border: 2px solid #667eea;
-            background: white;
-            color: #667eea;
+            border: 2px solid var(--accent);
+            background: var(--card-bg);
+            color: var(--accent);
             border-radius: 8px;
             cursor: pointer;
             font-size: 1.05rem;
@@ -191,13 +478,13 @@
         }
 
         .mode-btn:hover {
-            background: #667eea;
+            background: var(--accent);
             color: white;
             transform: translateY(-2px);
         }
 
         .mode-btn.active {
-            background: #667eea;
+            background: var(--accent);
             color: white;
         }
 
@@ -224,15 +511,16 @@
         .progress-bar {
             width: 100%;
             height: 8px;
-            background: #e0e0e0;
+            background: var(--panel-bg);
             border-radius: 10px;
             margin-bottom: 20px;
             overflow: hidden;
+            border: 1px solid var(--border-color);
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
             transition: width 0.3s ease;
         }
 
@@ -253,7 +541,7 @@
 
         .question-type {
             display: inline-block;
-            background: #667eea;
+            background: var(--accent);
             color: white;
             padding: 6px 16px;
             border-radius: 20px;
@@ -263,12 +551,12 @@
 
         .question-text {
             font-size: 1.5rem;
-            color: #333;
+            color: var(--text-color);
             margin-bottom: 25px;
             line-height: 1.9;
             padding: 25px;
-            background: #f9f9f9;
-            border-left: 5px solid #667eea;
+            background: var(--panel-bg);
+            border-left: 5px solid var(--accent);
             border-radius: 4px;
         }
 
@@ -280,23 +568,23 @@
 
         .option {
             padding: 18px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid var(--border-color);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            background: white;
+            background: var(--card-bg);
             font-size: 1.2rem;
             line-height: 1.6;
         }
 
         .option:hover {
-            border-color: #667eea;
+            border-color: var(--accent);
             background: #f5f7ff;
         }
 
         .option.selected {
-            border-color: #667eea;
-            background: #667eea;
+            border-color: var(--accent);
+            background: var(--accent);
             color: white;
         }
 
@@ -360,20 +648,20 @@
         }
 
         .btn-primary {
-            background: #667eea;
+            background: var(--accent);
             color: white;
         }
 
         .btn-primary:hover {
-            background: #5568d3;
+            background: var(--accent-2);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
         .btn-secondary {
-            background: #f0f0f0;
-            color: #333;
-            border: 2px solid #ddd;
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 2px solid var(--border-color);
         }
 
         .btn-secondary:hover {
@@ -393,12 +681,23 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
             color: white;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
+            box-shadow: var(--shadow-elev-2);
         }
+
+        .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; display: none; }
+        .ambient .blob { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.35; }
+        .ambient .b1 { width: 420px; height: 420px; left: -120px; top: -80px; background: radial-gradient(circle at 30% 30%, #60a5fa, transparent 60%); }
+        .ambient .b2 { width: 520px; height: 520px; right: -160px; top: 120px; background: radial-gradient(circle at 70% 30%, #a78bfa, transparent 60%); }
+        .ambient .b3 { width: 380px; height: 380px; left: 20%; bottom: -140px; background: radial-gradient(circle at 50% 50%, #34d399, transparent 60%); }
+        @keyframes floatBlob { 0%{ transform: translateY(0) scale(1);} 50%{ transform: translateY(-12px) scale(1.02);} 100%{ transform: translateY(0) scale(1);} }
+        .ambient .blob { animation: floatBlob 12s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) { .ambient .blob { animation: none; } }
+        [data-style="aurora"] .ambient { display: block; }
 
         .stat-value {
             font-size: 2.2rem;
@@ -438,22 +737,24 @@
 
         .question-item {
             padding: 16px;
-            background: #f9f9f9;
-            border-left: 4px solid #667eea;
-            border-radius: 4px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1.05rem;
+            box-shadow: var(--shadow-elev-2);
         }
 
         .question-item:hover {
-            background: #f0f7ff;
+            background: var(--panel-bg);
             transform: translateX(5px);
         }
 
         .question-item.active {
-            background: #667eea;
-            color: white;
+            background: var(--accent);
+            color: #fff;
         }
 
         .empty-state {
@@ -510,6 +811,58 @@
             flex-wrap: wrap;
         }
 
+        .toolbar-section { margin-top: -10px; margin-bottom: 18px; }
+        .toolbar-title { font-size: 0.95rem; color: #666; margin: 4px 0 8px; font-weight: 600; }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .modal {
+            width: min(1000px, 96vw);
+            max-height: 90vh;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .modal-header {
+            padding: 14px 18px;
+            background: #667eea;
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .editor-source { padding: 16px; border-right: 1px solid #eee; }
+        .editor-form { padding: 16px; display: grid; gap: 10px; align-content: start; }
+        .source-box {
+            background: #f7f7f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 12px;
+            white-space: pre-wrap;
+            overflow: auto;
+            max-height: 60vh;
+        }
+        .field-row { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: center; }
+        .field-row textarea, .field-row input, .field-row select { width: 100%; padding: 8px 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.95rem; }
+        .small-btn { padding: 6px 10px; font-size: 0.85rem; border-radius: 6px; border: 1px solid #ddd; background: #f0f0f0; cursor: pointer; }
+        .editor-actions { display: flex; gap: 10px; justify-content: flex-end; padding-top: 8px; border-top: 1px solid #eee; }
+
         .filter-btn {
             padding: 10px 20px;
             border: 2px solid #e0e0e0;
@@ -525,6 +878,75 @@
             background: #667eea;
             color: white;
         }
+
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+        }
+        .loading-card {
+            background: #fff;
+            padding: 18px 22px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+        .spinner {
+            width: 22px; height: 22px;
+            border: 3px solid #e0e0ff;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .toast-container {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10002;
+        }
+        .toast {
+            background: var(--card-bg);
+            border-left: 5px solid var(--accent);
+            padding: 12px 14px;
+            border-radius: 8px;
+            min-width: 260px;
+            max-width: 420px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            color: var(--text-color);
+            font-size: 0.95rem;
+            animation: slideIn .2s ease-out;
+        }
+        .toast.success { border-left-color: #28a745; }
+        .toast.error { border-left-color: #dc3545; }
+        .toast.warn { border-left-color: #ffc107; }
+        .toast.info { border-left-color: var(--accent); }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+        .bottom-bar {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            box-shadow: var(--shadow-elev-2);
+            padding: max(10px, env(safe-area-inset-bottom));
+            padding-left: 12px;
+            padding-right: 12px;
+            display: none;
+            z-index: 1000;
+        }
+        .bottom-bar .bottom-inner { display: flex; gap: 10px; }
+        .bottom-bar .btn { flex: 1; }
 
         @media (max-width: 768px) {
             .header h1 {
@@ -553,43 +975,123 @@
             .question-text {
                 font-size: 1.1em;
             }
+
+            .bottom-bar { display: block; }
+            .content-main { padding-bottom: 86px; }
         }
     </style>
 </head>
 <body>
+    <div class="ambient" aria-hidden="true">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+    </div>
+
+    <div id="quickJumpOverlay" class="quick-overlay" style="display:none;">
+        <div class="quick-modal">
+            <div class="quick-input-row">
+                <input id="quickInput" type="text" placeholder="输入题号或关键词…（⌘/Ctrl + K 打开，Esc 关闭）" />
+            </div>
+            <div id="quickList" class="quick-list"></div>
+        </div>
+    </div>
+    <div id="helpOverlay" class="quick-overlay" style="display:none;">
+        <div class="quick-modal">
+            <div class="quick-input-row" style="display:flex;align-items:center;justify-content:space-between;">
+                <div style="font-weight:700;color:var(--text-color)">帮助与快捷键</div>
+                <button id="helpClose" class="btn btn-secondary">关闭</button>
+            </div>
+            <div class="quick-list" id="helpContent" style="padding:12px 14px;">
+                <div style="margin-bottom:14px;">
+                    <div style="font-weight:700;margin-bottom:6px;">快速跳题</div>
+                    <div style="color:var(--muted-color);">⌘/Ctrl + K 打开；Esc 关闭；上下选择；Enter 跳转</div>
+                </div>
+                <div style="margin-bottom:14px;">
+                    <div style="font-weight:700;margin-bottom:6px;">右侧导航</div>
+                    <div style="color:var(--muted-color);">点击顶部“📑 导航”折叠/展开；状态会自动记忆</div>
+                </div>
+                <div style="margin-bottom:14px;">
+                    <div style="font-weight:700;margin-bottom:6px;">顶部栏</div>
+                    <div style="color:var(--muted-color);">向下滚动自动隐藏，向上滚动或接近顶部自动出现</div>
+                </div>
+                <div style="margin-bottom:14px;">
+                    <div style="font-weight:700;margin-bottom:6px;">练习快捷键</div>
+                    <div style="color:var(--muted-color);">→ 下一题，← 上一题，S 乱序选项，A 显示答案，1-4 选择选项</div>
+                </div>
+                <div>
+                    <div style="font-weight:700;margin-bottom:6px;">帮助面板</div>
+                    <div style="color:var(--muted-color);">按 Shift + /（?）或点击右上角“❔ 帮助”打开本面板</div>
+                </div>
+                <div style="margin-top:18px; display:flex; gap:10px;">
+                    <button id="helpResetTipsBtn" class="btn btn-secondary">重置小贴士</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="header">
+            <button id="themeToggle" class="theme-toggle" title="切换主题">🌓 主题</button>
+            <select id="layoutSelect" class="layout-select" title="页面布局">
+                <option value="default">默认布局</option>
+                <option value="sidebar-left">左侧导航</option>
+                <option value="single">单列沉浸</option>
+            </select>
+            <button id="helpBtn" class="help-btn" title="帮助与快捷键">❔ 帮助</button>
+            <button id="navToggle" class="nav-toggle" title="折叠/展开右侧导航">📑 导航</button>
+            <select id="densitySelect" class="density-select" title="视觉密度">
+                <option value="default">标准密度</option>
+                <option value="compact">紧凑模式</option>
+            </select>
+            <select id="styleSelect" class="style-select" title="视觉风格">
+                <option value="default">默认</option>
+                <option value="glass">玻璃</option>
+                <option value="aurora">极光</option>
+                <option value="editorial">极简</option>
+                <option value="brutal">块状</option>
+            </select>
             <h1>AI 知识复习小程序</h1>
             <p>刷题、练习、统计、错题集，一站式强化学习</p>
         </div>
 
         <div class="subject-switch">
             <span>科目切换：</span>
-            <button class="subject-btn" data-subject-btn data-subject="ai" onclick="switchSubject('ai')">人工智能</button>
-            <button class="subject-btn" data-subject-btn data-subject="exchange" onclick="switchSubject('exchange')">现代交换原理</button>
-            <button class="subject-btn" data-subject-btn data-subject="linux" onclick="switchSubject('linux')">Linux 技术应用</button>
+            <button class="subject-btn" data-subject-btn data-subject="ai">人工智能</button>
+            <button class="subject-btn" data-subject-btn data-subject="exchange">现代交换原理</button>
+            <button class="subject-btn" data-subject-btn data-subject="linux">Linux 技术应用</button>
+            <button class="subject-btn" data-subject-add>➕ 新增学科</button>
         </div>
+        <div id="subjectStatus" class="subject-status" style="display:none;"></div>
 
         <div class="main-content">
             <div class="content-layout">
                 <div class="content-main">
                     <div class="mode-selector">
-                        <button class="mode-btn active" onclick="switchMode('practice', this)">🎯 练习模式</button>
-                        <button class="mode-btn" onclick="switchMode('browse', this)">📚 浏览模式</button>
-                        <button class="mode-btn" onclick="switchMode('collected', this)">📌 收藏题目</button>
-                        <button class="mode-btn" onclick="window.open('wrong.html', '_blank')">❌ 错题集</button>
-                        <button class="mode-btn" onclick="switchMode('stats', this)">📊 统计数据</button>
+                        <button class="mode-btn active" data-mode="practice">🎯 练习模式</button>
+                        <button class="mode-btn" data-mode="browse">📚 浏览模式</button>
+                        <button class="mode-btn" data-mode="collected">📌 收藏题目</button>
+                        <button class="mode-btn" data-mode="wrong-ext">❌ 错题集</button>
+                        <button class="mode-btn" data-mode="stats">📊 统计数据</button>
                     </div>
 
-                    <div class="button-group" style="margin-top: -10px; margin-bottom: 20px;">
-                        <button class="btn btn-secondary" onclick="importWordPdf()">📄 导入 Word/PDF/文本</button>
-                        <button class="btn btn-secondary" onclick="importOverlayFromFile()">📥 导入覆盖层（本地）</button>
-                        <button class="btn btn-secondary" onclick="importOverlayToServer()">⤴️ 上传覆盖层（到服务器）</button>
-                        <button class="btn btn-secondary" onclick="exportOverlay()">📤 导出覆盖层</button>
-                        <button class="btn btn-secondary" onclick="clearOverlay()">🧹 清空覆盖层</button>
-                        <input type="file" id="overlayFileInput" accept="application/json,.json" style="display:none" onchange="handleOverlayFileChange(event)">
-                        <input type="file" id="overlayUploadInput" accept="application/json,.json" style="display:none" onchange="handleOverlayUploadFileChange(event)">
-                        <input type="file" id="docFileInput" accept=".docx,.pdf,.txt,.md" style="display:none" onchange="handleWordPdfFileChange(event)">
+                    <div class="toolbar-section">
+                        <div class="toolbar-title">导入与识别</div>
+                        <div class="button-group">
+                            <button class="btn btn-secondary" id="importDocBtn">📄 导入 Word/PDF/文本</button>
+                            <button class="btn btn-secondary" id="openOverlayEditorBtn">🛠️ 覆盖层校对</button>
+                        </div>
+                    </div>
+                    <div class="toolbar-section">
+                        <div class="toolbar-title">覆盖层管理</div>
+                        <div class="button-group">
+                            <button class="btn btn-secondary" id="importOverlayLocalBtn">📥 导入覆盖层（本地）</button>
+                            <button class="btn btn-secondary" id="importOverlayServerBtn">⤴️ 上传覆盖层（到服务器）</button>
+                            <button class="btn btn-secondary" id="exportOverlayBtn">📤 导出覆盖层</button>
+                            <button class="btn btn-secondary" id="clearOverlayBtn">🧹 清空覆盖层</button>
+                        </div>
+                        <input type="file" id="overlayFileInput" accept="application/json,.json" style="display:none">
+                        <input type="file" id="overlayUploadInput" accept="application/json,.json" style="display:none">
+                        <input type="file" id="docFileInput" accept=".docx,.pdf,.txt,.md" style="display:none">
                     </div>
 
                     <!-- 练习模式 -->
@@ -622,12 +1124,12 @@
                                 <span class="question-number" id="questionNumber">第 1 题 / 325</span>
                                 <div style="display: flex; gap: 6px; align-items: center;">
                                     <input id="jumpInput" type="number" min="1" value="1" style="width: 80px; padding: 4px 6px; border-radius: 6px; border: 1px solid #ddd;" placeholder="题号">
-                                    <button class="btn btn-small" onclick="jumpToQuestion()" style="padding: 6px 12px; font-size: 0.9rem;">➡ 跳转</button>
+                                    <button class="btn btn-small" id="jumpBtn" style="padding: 6px 12px; font-size: 0.9rem;">➡ 跳转</button>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 10px; align-items: center;">
                                 <span class="question-type" id="questionType">单选题</span>
-                                <button class="btn btn-small" id="shuffleOptionsBtn" onclick="shuffleCurrentOptions()" style="display: none; padding: 6px 12px; font-size: 0.9rem;">🔀 乱序</button>
+                                <button class="btn btn-small" id="shuffleOptionsBtn" style="display: none; padding: 6px 12px; font-size: 0.9rem;">🔀 乱序</button>
                                 <label for="autoAdvanceToggle" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; color: #666; user-select: none;">
                                     <input type="checkbox" id="autoAdvanceToggle" style="transform: translateY(1px);"> 自动下一题
                                 </label>
@@ -644,16 +1146,16 @@
                         </div>
 
                         <div class="button-group">
-                            <button class="btn btn-primary" id="showAnswerBtn" onclick="showAnswer()">显示答案</button>
-                            <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>← 上一题</button>
-                            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">下一题 →</button>
+                            <button class="btn btn-primary" id="showAnswerBtn">显示答案</button>
+                            <button class="btn btn-secondary" id="prevBtn" disabled>← 上一题</button>
+                            <button class="btn btn-primary" id="nextBtn">下一题 →</button>
                         </div>
 
                         <div class="button-group">
-                            <button class="btn btn-secondary" id="collectBtn" onclick="toggleCollectQuestion(allQuestions[currentIndex].id)">☆ 收藏</button>
-                            <button class="btn btn-secondary" onclick="shuffleQuestions()">🔀 随机出题</button>
-                            <button class="btn btn-secondary" onclick="resetProgress()">↻ 重置进度</button>
-                            <button class="btn btn-secondary" id="exitReviewBtn" onclick="exitReviewMode()" style="display: none; background-color: #ffc107; color: #333; border-color: #ffc107;">↩️ 退出复习</button>
+                            <button class="btn btn-secondary" id="collectBtn">☆ 收藏</button>
+                            <button class="btn btn-secondary" id="shuffleQuestionsBtn">🔀 随机出题</button>
+                            <button class="btn btn-secondary" id="resetProgressBtn">↻ 重置进度</button>
+                            <button class="btn btn-secondary" id="exitReviewBtn" style="display: none; background-color: #ffc107; color: #333; border-color: #ffc107;">↩️ 退出复习</button>
                         </div>
 
                         
@@ -662,16 +1164,16 @@
                     <!-- 浏览模式 -->
                     <div id="browse" class="question-container">
                         <div class="search-box">
-                            <input type="text" id="searchInput" placeholder="搜索题目或答案..." onkeyup="filterQuestions()">
+                            <input type="text" id="searchInput" placeholder="搜索题目或答案...">
                         </div>
 
                         <div class="filters">
-                            <button class="filter-btn active" onclick="filterByType('all', this)">全部</button>
-                            <button class="filter-btn" onclick="filterByType('single', this)">单选题</button>
-                            <button class="filter-btn" onclick="filterByType('multiple', this)">多选题</button>
-                            <button class="filter-btn" onclick="filterByType('fill', this)">填空题</button>
-                            <button class="filter-btn" onclick="filterByType('judge', this)">判断题</button>
-                            <button class="filter-btn" onclick="filterByType('essay', this)">简答题</button>
+                            <button class="filter-btn active" data-filter="all">全部</button>
+                            <button class="filter-btn" data-filter="single">单选题</button>
+                            <button class="filter-btn" data-filter="multiple">多选题</button>
+                            <button class="filter-btn" data-filter="fill">填空题</button>
+                            <button class="filter-btn" data-filter="judge">判断题</button>
+                            <button class="filter-btn" data-filter="essay">简答题</button>
                         </div>
 
                         <div class="question-list" id="questionList"></div>
@@ -687,7 +1189,7 @@
                         <div class="question-list" id="collectedList"></div>
 
                         <div style="margin-top: 20px; text-align: center;">
-                            <button class="btn btn-secondary" onclick="clearCollectedQuestions()">🗑️ 清空收藏</button>
+                            <button class="btn btn-secondary" id="clearCollectedBtn">🗑️ 清空收藏</button>
                         </div>
                     </div>
 
@@ -701,8 +1203,8 @@
                         <div class="question-list" id="wrongList"></div>
 
                         <div style="margin-top: 20px; text-align: center;">
-                            <button class="btn btn-secondary" onclick="reviewWrongQuestions()">📝 复习错题</button>
-                            <button class="btn btn-secondary" onclick="clearWrongQuestions()">🗑️ 清空错题集</button>
+                            <button class="btn btn-secondary" id="reviewWrongBtn">📝 复习错题</button>
+                            <button class="btn btn-secondary" id="clearWrongBtn">🗑️ 清空错题集</button>
                         </div>
                     </div>
 
@@ -731,8 +1233,8 @@
                         <div id="typeStats" style="display: grid; gap: 15px;"></div>
 
                         <div style="margin-top: 30px; text-align: center;">
-                            <button class="btn btn-secondary" onclick="exportStats()">📥 导出数据</button>
-                            <button class="btn btn-secondary" onclick="resetAllData()">🗑️ 清空所有数据</button>
+                            <button class="btn btn-secondary" id="exportStatsBtn">📥 导出数据</button>
+                            <button class="btn btn-secondary" id="resetAllBtn">🗑️ 清空所有数据</button>
                         </div>
                     </div>
                 </div>
@@ -740,6 +1242,104 @@
                 <div class="question-nav">
                     <h4>快速跳转</h4>
                     <div class="nav-list" id="questionNavList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay" style="display:none;">
+        <div class="loading-card">
+            <div class="spinner"></div>
+            <div id="loadingText">处理中…</div>
+        </div>
+    </div>
+
+    <div class="bottom-bar" id="bottomBar">
+        <div class="bottom-inner">
+            <button class="btn btn-secondary" id="mbPrevBtn">← 上一题</button>
+            <button class="btn btn-primary" id="mbShowBtn">显示答案</button>
+            <button class="btn btn-primary" id="mbNextBtn">下一题 →</button>
+        </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <div id="overlayEditorModal" class="modal-overlay" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">
+                <div>🛠️ 覆盖层校对（取词）</div>
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <label style="display:inline-flex; align-items:center; gap:6px; font-size:0.9rem;">
+                        <input type="checkbox" id="edFilterUnknown" checked> 仅看低置信度
+                    </label>
+                    <div id="editorIndex">0/0</div>
+                </div>
+            </div>
+            <div class="editor-grid">
+                <div class="editor-source">
+                    <div style="color:#666; font-size:0.9rem; margin-bottom:8px;">在下方原文区域中，选择文本后，点右侧对应字段的「取词」按钮快速填充。</div>
+                    <pre id="edSource" class="source-box"></pre>
+                </div>
+                <div class="editor-form">
+                    <div class="field-row">
+                        <label>题型</label>
+                        <select id="edType">
+                            <option value="single">单选</option>
+                            <option value="multiple">多选</option>
+                            <option value="judge">判断</option>
+                            <option value="fill">填空</option>
+                            <option value="essay">简答</option>
+                        </select>
+                        <span></span>
+                    </div>
+                    <div class="field-row">
+                        <label>题干</label>
+                        <textarea id="edQuestion" rows="2"></textarea>
+                        <button class="small-btn" data-assign="question">取词</button>
+                    </div>
+                    <div class="field-row">
+                        <label>A</label>
+                        <input id="edOptA">
+                        <button class="small-btn" data-assign="A">取词</button>
+                    </div>
+                    <div class="field-row">
+                        <label>B</label>
+                        <input id="edOptB">
+                        <button class="small-btn" data-assign="B">取词</button>
+                    </div>
+                    <div class="field-row">
+                        <label>C</label>
+                        <input id="edOptC">
+                        <button class="small-btn" data-assign="C">取词</button>
+                    </div>
+                    <div class="field-row">
+                        <label>D</label>
+                        <input id="edOptD">
+                        <button class="small-btn" data-assign="D">取词</button>
+                    </div>
+                    <div class="field-row">
+                        <label>答案</label>
+                        <input id="edAnswer" placeholder="单选/多选填字母；判断填 对/错；填空/简答可留空">
+                        <button class="small-btn" data-assign="answer">取词</button>
+                    </div>
+                    <div class="field-row">
+                        <label>解析</label>
+                        <textarea id="edAnswerText" rows="3"></textarea>
+                        <button class="small-btn" data-assign="answerText">取词</button>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <label style="display:inline-flex; align-items:center; gap:6px; font-size:0.9rem; color:#666;">
+                            <input type="checkbox" id="edUnknown"> 标记为低置信度
+                        </label>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="btn btn-secondary" id="autoAssignOneBtn">⚙️ 自动取词（当前）</button>
+                        <button class="btn btn-secondary" id="autoAssignBatchBtn">⚡ 批量自动取词（低置信度）</button>
+                        <button class="btn btn-secondary" id="prevEditorBtn">← 上一条</button>
+                        <button class="btn btn-secondary" id="nextEditorBtn">下一条 →</button>
+                        <button class="btn btn-primary" id="applyOverlayEditorBtn">保存并应用</button>
+                        <button class="btn btn-secondary" id="cancelOverlayEditorBtn">取消</button>
+                    </div>
                 </div>
             </div>
         </div>

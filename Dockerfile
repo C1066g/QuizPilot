@@ -1,14 +1,16 @@
-# 使用官方 Python 镜像作为基础镜像
-FROM python:3.9-slim
+FROM node:18-alpine
 
-# 设置工作目录
 WORKDIR /app
 
-# 复制项目文件到容器
+# Copy app
 COPY . /app/
 
-# 暴露端口 8000
-EXPOSE 8000
+# Environment
+ENV HOST=0.0.0.0
+ENV PORT=8001
 
-# 启动 HTTP 服务器
-CMD ["python", "-m", "http.server", "8000", "--bind", "0.0.0.0"]
+# Expose port
+EXPOSE 8001
+
+# Run Node server
+CMD ["node", "server.js"]
