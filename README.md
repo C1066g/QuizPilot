@@ -1,4 +1,4 @@
-# QuizPilot · AI Study # QuizPilot · AI Study # 🎓 AI 知识复习小程序 Quiz App Quiz App
+# QuizPilot · AI Study & Quiz App
 
 一个现代化的人工智能基础知识复习助手，包含325道精选题目。
 
