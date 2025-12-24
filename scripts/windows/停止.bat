@@ -3,7 +3,7 @@ REM AI 复习小程序 Docker 停止脚本
 
 echo.
 echo ========================================
-echo   AI 知识复习小程序 - Docker 停止
+echo   QuizPilot - Docker 停止
 echo ========================================
 echo.
 
