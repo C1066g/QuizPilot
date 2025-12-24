@@ -99,6 +99,72 @@ QuizPilot/
 ![Browse Demo](docs/assets/screenshot-browse-demo.png)
 ![Demo GIF](docs/assets/demo-import.gif) -->
 
+## 部署（静态托管）
+- 注意：在静态托管（GitHub Pages/Netlify）环境下，`/custom/upload` 不可用；需要的覆盖层请以 JSON 文件形式放入 `rgzr/custom/`。动态生成 `custom/index.json` 的能力仅在本地 Node 服务器中提供。
+
+- GitHub Pages（推荐，使用 gh-pages 分支）
+  1. 首次部署：将 `rgzr` 目录内容发布到 `gh-pages` 分支
+     ```bash
+     # 将 rgzr 目录推送为 gh-pages
+     git subtree push --prefix rgzr origin gh-pages
+     ```
+  2. 在 GitHub 仓库 Settings → Pages：
+     - Source: Deploy from a branch
+     - Branch: gh-pages, folder: /
+  3. 后续更新：
+     ```bash
+     # 每次更新后再次推送子树
+     git subtree push --prefix rgzr origin gh-pages
+     ```
+  4. 静态环境下的覆盖层索引：如需自动列出 `rgzr/custom/*.json`，请预生成 `rgzr/custom/index.json`：
+     ```bash
+     node -e "const fs=require('fs'); const p='rgzr/custom'; const f=fs.readdirSync(p).filter(n=>n.endsWith('.json')).map(n=>({name:n,mtime:new Date(fs.statSync(p+'/'+n).mtime).toISOString(),size:fs.statSync(p+'/'+n).size})).sort((a,b)=>a.mtime<b.mtime?1:-1); fs.writeFileSync(p+'/index.json', JSON.stringify({files:f,updatedAt:new Date().toISOString()},null,2)); console.log('written',p+'/index.json');"
+     ```
+
+- Netlify（静态托管）
+  1. 目录 `rgzr` 作为发布目录（Publish directory）
+  2. 本仓库已提供 `netlify.toml`，包含 CSP、XFO 等安全响应头设置，用于对齐本地服务器安全基线
+  3. 通过 CLI 部署（可选）：
+     ```bash
+     npm i -g netlify-cli
+     netlify deploy --dir=rgzr --prod
+     ```
+  4. 同样地，`/custom/upload` 不可用；如需索引覆盖层，请按上文生成 `rgzr/custom/index.json`
+
+## 社交预览图（Social preview）
+- 推荐尺寸：1280×640，格式：PNG/JPG/GIF（不支持 SVG 上传）
+- 本仓库已提供源文件：`docs/assets/social-preview.svg`
+  - 本地转换为 PNG（任选其一）：
+    - macOS（Homebrew 安装 librsvg）：`brew install librsvg && rsvg-convert -w 1280 -h 640 -o docs/assets/social-preview.png docs/assets/social-preview.svg`
+    - 或使用 Inkscape：`inkscape docs/assets/social-preview.svg --export-type=png --export-filename=docs/assets/social-preview.png -w 1280 -h 640`
+- 在 GitHub 仓库 Settings → Options → Social preview 上传 `docs/assets/social-preview.png`
+
+## GitHub Topics 与 About 描述
+- 推荐 Topics：
+  - quiz
+  - study
+  - education
+  - javascript
+  - frontend
+  - security
+  - csp
+  - json-schema
+  - nodejs
+  - spa
+- 推荐描述（About → Description）：
+  - English：Modern AI-powered study and quiz app. Fast jump, overlay proofreading, strict CSP, secure-by-default.
+  - 中文：AI 驱动的现代化刷题/复习应用。快速跳题、覆盖层校对、严格 CSP，安全默认。
+- 使用 GitHub CLI 一键设置（可选）：
+  ```bash
+  # 安装并登录 gh（如未安装）：brew install gh && gh auth login
+  gh repo edit C1066g/QuizPilot \
+    --description "Modern AI-powered study and quiz app. Fast jump, overlay proofreading, strict CSP, secure-by-default." \
+    --homepage "https://github.com/C1066g/QuizPilot" \
+    --add-topic quiz --add-topic study --add-topic education \
+    --add-topic javascript --add-topic frontend --add-topic security \
+    --add-topic csp --add-topic json-schema --add-topic nodejs --add-topic spa
+  ```
+
 ## 常见问题（FAQ）
 - 端口被占用：
   - 修改环境变量 `PORT` 后再启动（见上文）

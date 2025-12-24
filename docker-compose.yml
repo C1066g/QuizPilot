@@ -2,7 +2,7 @@ version: '3.8'
 services:
   rgzr:
     build: ./rgzr
-    container_name: final-review-rgzr
+    container_name: quizpilot-rgzr
     ports:
       - "8001:8001"
     environment:

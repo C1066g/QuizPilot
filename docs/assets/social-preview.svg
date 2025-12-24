@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#667eea"/>
+      <stop offset="100%" stop-color="#764ba2"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12" result="blur"/>
+      <feOffset dy="8" result="off"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.35"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+
+  <!-- Decorative blobs -->
+  <g opacity="0.15">
+    <circle cx="1140" cy="100" r="220" fill="#a78bfa"/>
+    <circle cx="160" cy="520" r="180" fill="#60a5fa"/>
+  </g>
+
+  <!-- Title -->
+  <text x="80" y="230" font-family="Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="96" fill="url(#titleGrad)" filter="url(#shadow)">QuizPilot</text>
+
+  <!-- Tagline -->
+  <text x="84" y="290" font-family="Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="32" fill="#f8fafc" opacity="0.95">AI Study & Quiz App · 快速跳题 · 覆盖层校对 · 严格 CSP</text>
+
+  <!-- Feature pills -->
+  <g font-family="Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="24" fill="#0f172a">
+    <g transform="translate(84, 340)">
+      <rect rx="12" ry="12" width="360" height="48" fill="#ffffff" opacity="0.92"/>
+      <text x="20" y="32">Fast Jump (Cmd/Ctrl+K)</text>
+    </g>
+    <g transform="translate(464, 340)">
+      <rect rx="12" ry="12" width="420" height="48" fill="#ffffff" opacity="0.92"/>
+      <text x="20" y="32">Overlay Proofreading (JSON Schema)</text>
+    </g>
+    <g transform="translate(904, 340)">
+      <rect rx="12" ry="12" width="300" height="48" fill="#ffffff" opacity="0.92"/>
+      <text x="20" y="32">Strict CSP</text>
+    </g>
+  </g>
+
+  <!-- Footer -->
+  <text x="84" y="580" font-family="Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="18" fill="#e5e7eb" opacity="0.9">github.com/C1066g/QuizPilot</text>
+</svg>

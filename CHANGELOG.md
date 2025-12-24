@@ -22,5 +22,5 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 ### Fixed
 - Minor stability and import robustness.
 
-[Unreleased]: https://github.com/C1066g/Final-review/compare/main...HEAD
-[1.0.0]: https://github.com/C1066g/Final-review/releases/tag/v1.0.0
+[Unreleased]: https://github.com/C1066g/QuizPilot/compare/main...HEAD
+[1.0.0]: https://github.com/C1066g/QuizPilot/releases/tag/v1.0.0

@@ -1,4 +1,4 @@
-# Contributing to Final-review
+# Contributing to QuizPilot
 
 Thanks for taking the time to contribute! Please follow the guidelines below to help us keep things running smoothly.
 
