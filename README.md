@@ -16,6 +16,9 @@ AI 驱动的现代化学习与刷题应用（中英双语）。快速跳题、�
 - 一键导入 Word/PDF/TXT/MD：
   - 内置 `mammoth`（docx）与 `pdf.js`（pdf）离线解析
   - 导入后自动转换为覆盖层并合并
+- 内置资料入口：
+  - 项目内附 `AI 微认证`、`openEuler 微认证` 与 `AI 升级考试题` PDF
+  - 页面可一键导入到独立学科，也可直接打开原 PDF
 - 基础题型支持：判断、单选、多选、简答
 - UI/UX：练习/浏览/收藏/错题/统计，快捷键，乱序选项，自动下一题
 - 安全基线：CSP、XFO、COOP/CORP、Referrer-Policy、nosniff；路径穿越防护
@@ -42,6 +45,36 @@ $env:PORT=8002; npm start
 Windows 也可使用：`npm run start:win`
 
 手机访问：`http://<你的电脑IP>:8001`
+
+## 手机本机运行（Termux）
+适合出门时只有手机、没有在线电脑的场景。应用会直接跑在手机本机，不需要互联网，也不需要电脑中转。
+
+```bash
+pkg update
+pkg install nodejs
+termux-setup-storage
+
+# 把项目拷到手机后，进入 rgzr 目录（按你的实际存放位置调整）
+cd ~/storage/downloads/QuizPilot/rgzr
+
+# 首次执行可加权限，也可以直接用 sh 运行
+chmod +x scripts/termux/start-termux.sh
+./scripts/termux/start-termux.sh
+```
+
+打开手机浏览器访问：`http://127.0.0.1:8002`
+
+也可以直接运行：`npm run start:termux`
+
+如果手机已经装好 Termux + `openssh`，也可以从电脑直接推送整个目录：
+
+```bash
+cd rgzr
+chmod +x scripts/termux/push-to-termux.sh
+scripts/termux/push-to-termux.sh <termux_user@phone_ip>
+```
+
+默认会解压到手机的 `~/storage/downloads/QuizPilot/rgzr`
 
 ## Docker 启动
 ```bash

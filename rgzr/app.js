@@ -206,12 +206,14 @@ function saveOverlayEditorCurrent() {
     const prevData = cur && cur.data ? cur.data : {};
     const getVal = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
     const item = {
+        id: prevData && prevData.id != null ? prevData.id : undefined,
         type: getVal('edType'),
         question: getVal('edQuestion'),
         options: [getVal('edOptA'), getVal('edOptB'), getVal('edOptC'), getVal('edOptD')].filter((v,i)=> i<4),
         answer: getVal('edAnswer'),
         answerText: getVal('edAnswerText')
     };
+    if (item.id === undefined) delete item.id;
     const unk = document.getElementById('edUnknown');
     if (unk && !unk.checked) delete item._unknown; else if (unk && unk.checked) item._unknown = true;
     const srcEl = document.getElementById('edSource');
@@ -241,7 +243,13 @@ function applyOverlayEditor() {
     showOverlayEditorModal(false);
     currentSubject = st.subject;
     refreshAfterOverlayChange();
-    showToast('已保存校对结果并应用', 'success');
+    const subjName = (SUBJECTS[st.subject] && SUBJECTS[st.subject].name) ? SUBJECTS[st.subject].name : st.subject;
+    persistSubjectToServer(st.subject, subjName, st.items).then((ok) => {
+        if (ok) showToast('已保存校对结果并应用（已同步到服务器题库）', 'success');
+        else showToast('已保存校对结果并应用（服务器同步失败，仅保存本地）', 'warn');
+    }).catch(() => {
+        showToast('已保存校对结果并应用（服务器同步失败，仅保存本地）', 'warn');
+    });
 }
 
 function assignFromSelection(target) {
@@ -252,14 +260,69 @@ function assignFromSelection(target) {
         const r = sel.getRangeAt(0);
         if (src.contains(r.commonAncestorContainer)) txt = String(r.toString()).trim();
     }
-    if (!txt) return;
+    const getType = () => {
+        const el = document.getElementById('edType');
+        return el ? String(el.value || '').toLowerCase() : 'essay';
+    };
+    const tp = getType();
     const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+    const normMulti = (s) => Array.from(new Set(String(s || '').toUpperCase().replace(/[^A-D]/g, '').split(''))).sort().join('');
+    const normSingle = (s) => {
+        const m = String(s || '').toUpperCase().match(/[A-D]/);
+        return m ? m[0] : '';
+    };
+    const normJudge = (s) => {
+        const raw = String(s || '').trim();
+        const compact = raw.replace(/\s+/g, '');
+        if (/^(?:A|对|正确|T|TRUE|是)$/i.test(compact)) return '正确';
+        if (/^(?:B|错|错误|F|FALSE|否|不)$/i.test(compact)) return '错误';
+        if (/正确|对/.test(raw)) return '正确';
+        if (/错误|错/.test(raw)) return '错误';
+        return '';
+    };
+
+    if (tp === 'judge' && (target === 'A' || target === 'B')) {
+        set('edOptA', '正确');
+        set('edOptB', '错误');
+        set('edOptC', '');
+        set('edOptD', '');
+        return;
+    }
+
+    if (!txt) return;
     if (target === 'question') set('edQuestion', txt);
     if (target === 'A') set('edOptA', txt);
     if (target === 'B') set('edOptB', txt);
     if (target === 'C') set('edOptC', txt);
     if (target === 'D') set('edOptD', txt);
-    if (target === 'answer') set('edAnswer', txt.replace(/\s+/g,''));
+    if (target === 'answer') {
+        if (tp === 'fill' || tp === 'essay') {
+            set('edAnswer', '');
+            set('edAnswerText', txt);
+            return;
+        }
+        if (tp === 'judge') {
+            const j = normJudge(txt);
+            if (j) set('edAnswer', j);
+            else set('edAnswer', txt.replace(/\s+/g, ''));
+            return;
+        }
+        if (tp === 'multiple') {
+            const m = normMulti(txt);
+            if (m) set('edAnswer', m);
+            else set('edAnswer', txt.replace(/\s+/g, ''));
+            return;
+        }
+        if (tp === 'single') {
+            const s = normSingle(txt);
+            if (s) set('edAnswer', s);
+            else set('edAnswer', txt.replace(/\s+/g, ''));
+            return;
+        }
+        const any = normMulti(txt);
+        if (any) set('edAnswer', any);
+        else set('edAnswer', txt.replace(/\s+/g, ''));
+    }
     if (target === 'answerText') set('edAnswerText', txt);
 }
 
@@ -268,12 +331,127 @@ function autoAssignFromSource() {
     if (!src) return;
     const raw = String(src.textContent || '');
     if (!raw.trim()) { showToast('没有可识别的原文', 'warn'); return; }
-    let items = [];
-    try { items = parseTextToOverlayItems(raw) || []; } catch (e) { items = []; }
-    if (!items.length) { showToast('未能自动识别，请手动取词', 'warn'); return; }
-    const it = items[0] || {};
+
+    function parseSingleBlockBestEffort(text) {
+        const normMulti = (s) => Array.from(new Set(String(s || '').toUpperCase().replace(/[^A-D]/g, '').split(''))).sort().join('');
+        const normSingle = (s) => {
+            const m = String(s || '').toUpperCase().match(/[A-D]/);
+            return m ? m[0] : '';
+        };
+        const normJudge = (s) => {
+            const raw2 = String(s || '').trim();
+            const compact = raw2.replace(/\s+/g, '');
+            if (/^(?:A|对|正确|T|TRUE|是)$/i.test(compact)) return '正确';
+            if (/^(?:B|错|错误|F|FALSE|否|不)$/i.test(compact)) return '错误';
+            if (/正确|对/.test(raw2)) return '正确';
+            if (/错误|错/.test(raw2)) return '错误';
+            return '';
+        };
+
+        const lines = String(text || '').replace(/\r\n?/g, '\n').split('\n').map(s => String(s || '').trim()).filter(Boolean);
+        if (!lines.length) return null;
+        let question = '';
+        const opts = [];
+        let answerRaw = '';
+        const desc = [];
+        let stage = 'question';
+
+        const isAnsLine = (s) => /^(?:答案|正确答案|参考答案|我的答案)\s*[:：]/.test(s);
+        const parseAns = (s) => {
+            const m = String(s || '').match(/^(?:答案|正确答案|参考答案|我的答案)\s*[:：]\s*(.*)$/);
+            return m ? String(m[1] || '').trim() : '';
+        };
+
+        for (const ln of lines) {
+            if (!answerRaw && isAnsLine(ln)) {
+                answerRaw = parseAns(ln);
+                continue;
+            }
+            const mOpt = ln.match(/^\s*[（(]?([A-Da-d])[）)]?[\.、:)]\s*(.*)$/);
+            if (mOpt) {
+                stage = 'options';
+                opts.push(String(mOpt[2] || '').trim());
+                continue;
+            }
+            if (stage === 'options' && opts.length > 0) {
+                opts[opts.length - 1] = String((opts[opts.length - 1] || '') + ' ' + ln).trim();
+                continue;
+            }
+            if (stage === 'question') {
+                question = question ? (question + ' ' + ln) : ln;
+                continue;
+            }
+            desc.push(ln);
+        }
+
+        let type = 'essay';
+        let answer = '';
+        let answerText = '';
+
+        const maybeJudge = normJudge(answerRaw);
+        if (maybeJudge) {
+            type = 'judge';
+            answer = maybeJudge;
+        } else {
+            const letters = normMulti(answerRaw);
+            if (letters) {
+                type = letters.length > 1 ? 'multiple' : 'single';
+                answer = letters.length === 1 ? normSingle(letters) : letters;
+            }
+        }
+
+        if (opts.filter(Boolean).length >= 2) {
+            if (type === 'essay') type = 'single';
+        } else {
+            if (type !== 'judge') {
+                type = 'essay';
+                answerText = answerRaw || desc.join('\n');
+                answer = '';
+            }
+        }
+
+        const item = { type, question: question || lines[0] };
+        if (opts.filter(Boolean).length >= 2) item.options = [opts[0] || '', opts[1] || '', opts[2] || '', opts[3] || ''];
+        if (answer) item.answer = answer;
+        if (answerText) item.answerText = answerText;
+        item._src = String(text || '');
+        const low = !item.question || (item.type === 'single' || item.type === 'multiple') && (!item.options || item.options.filter(Boolean).length < 2);
+        if (low) item._unknown = true;
+        return item;
+    }
+
+    let used = 'unknown';
+    const pick = () => {
+        try {
+            const arr = parseTextToOverlayItems(raw) || [];
+            const first = arr[0];
+            if (first && first.question && (first.answer || first.answerText || (first.options && first.options.filter(Boolean).length >= 2)) && !first._unknown) {
+                used = 'parser';
+                return first;
+            }
+        } catch {}
+        const fb = parseSingleBlockBestEffort(raw);
+        if (fb) used = 'fallback';
+        return fb;
+    };
+
+    const it = pick();
+    if (!it) { showToast('未能自动识别，请手动取词', 'warn'); return; }
+    if (used === 'fallback') {
+        showToast('自动取词：已启用兜底解析（更适合编辑器原文块）', 'info', 2500);
+    }
     const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v == null ? '' : String(v); };
     const setSel = (id, v) => { const el = document.getElementById(id); if (el) el.value = String(v || 'essay'); };
+    const normMulti = (s) => Array.from(new Set(String(s || '').toUpperCase().replace(/[^A-D]/g, '').split(''))).sort().join('');
+    const normJudge = (s) => {
+        const raw2 = String(s || '').trim();
+        const compact = raw2.replace(/\s+/g, '');
+        if (/^(?:A|对|正确|T|TRUE|是)$/i.test(compact)) return '正确';
+        if (/^(?:B|错|错误|F|FALSE|否|不)$/i.test(compact)) return '错误';
+        if (/正确|对/.test(raw2)) return '正确';
+        if (/错误|错/.test(raw2)) return '错误';
+        return '';
+    };
     setSel('edType', it.type || 'essay');
     set('edQuestion', it.question || '');
     const opts = Array.isArray(it.options) ? it.options : [];
@@ -281,9 +459,25 @@ function autoAssignFromSource() {
     set('edOptB', opts[1] || '');
     set('edOptC', opts[2] || '');
     set('edOptD', opts[3] || '');
-    set('edAnswer', it.answer || '');
+    const tp = String(it.type || 'essay').toLowerCase();
+    if (tp === 'judge') {
+        set('edOptA', '正确');
+        set('edOptB', '错误');
+        set('edOptC', '');
+        set('edOptD', '');
+        const j = normJudge(it.answer);
+        set('edAnswer', j || it.answer || '');
+    } else if (tp === 'multiple') {
+        const m = normMulti(it.answer);
+        set('edAnswer', m || it.answer || '');
+    } else {
+        set('edAnswer', it.answer || '');
+    }
     set('edAnswerText', it.answerText || '');
     const unk = document.getElementById('edUnknown'); if (unk) unk.checked = !!it._unknown;
+    if (it._unknown) {
+        showToast('自动取词结果置信度偏低：建议手动框选补全题干/选项/答案', 'warn', 3500);
+    }
 }
 
 function autoAssignBatchUnknown() {
@@ -301,7 +495,58 @@ function autoAssignBatchUnknown() {
         try {
             const arr = parseTextToOverlayItems(raw) || [];
             it = arr[0];
+            if (it && it._unknown) it = null;
         } catch {}
+        if (!it) {
+            try {
+                const lines = String(raw || '').replace(/\r\n?/g, '\n').split('\n').map(s => String(s || '').trim()).filter(Boolean);
+                if (lines.length) {
+                    let question = '';
+                    const opts = [];
+                    let answerRaw = '';
+                    const desc = [];
+                    let stage = 'question';
+                    const isAnsLine = (s) => /^(?:答案|正确答案|参考答案|我的答案)\s*[:：]/.test(s);
+                    const parseAns = (s) => {
+                        const m = String(s || '').match(/^(?:答案|正确答案|参考答案|我的答案)\s*[:：]\s*(.*)$/);
+                        return m ? String(m[1] || '').trim() : '';
+                    };
+                    for (const ln of lines) {
+                        if (!answerRaw && isAnsLine(ln)) { answerRaw = parseAns(ln); continue; }
+                        const mOpt = ln.match(/^\s*[（(]?([A-Da-d])[）)]?[\.、:)]\s*(.*)$/);
+                        if (mOpt) { stage = 'options'; opts.push(String(mOpt[2] || '').trim()); continue; }
+                        if (stage === 'options' && opts.length > 0) { opts[opts.length - 1] = String((opts[opts.length - 1] || '') + ' ' + ln).trim(); continue; }
+                        if (stage === 'question') { question = question ? (question + ' ' + ln) : ln; continue; }
+                        desc.push(ln);
+                    }
+                    const normMulti = (s) => Array.from(new Set(String(s || '').toUpperCase().replace(/[^A-D]/g, '').split(''))).sort().join('');
+                    const normJudge = (s) => {
+                        const raw2 = String(s || '').trim();
+                        const compact = raw2.replace(/\s+/g, '');
+                        if (/^(?:A|对|正确|T|TRUE|是)$/i.test(compact)) return '正确';
+                        if (/^(?:B|错|错误|F|FALSE|否|不)$/i.test(compact)) return '错误';
+                        if (/正确|对/.test(raw2)) return '正确';
+                        if (/错误|错/.test(raw2)) return '错误';
+                        return '';
+                    };
+                    let type = 'essay';
+                    let answer = '';
+                    let answerText = '';
+                    const j = normJudge(answerRaw);
+                    if (j) { type = 'judge'; answer = j; }
+                    else {
+                        const letters = normMulti(answerRaw);
+                        if (letters) { type = letters.length > 1 ? 'multiple' : 'single'; answer = letters; }
+                    }
+                    if (opts.filter(Boolean).length >= 2) {
+                        if (type === 'essay') type = 'single';
+                    } else {
+                        if (type !== 'judge') { type = 'essay'; answerText = answerRaw || desc.join('\n'); answer = ''; }
+                    }
+                    it = { type, question: question || lines[0], options: [opts[0]||'', opts[1]||'', opts[2]||'', opts[3]||''], answer, answerText, _src: raw };
+                }
+            } catch {}
+        }
         if (!it) continue;
         const merged = {
             ...prev,
@@ -356,6 +601,29 @@ const SUBJECTS = {
 
 const DEFAULT_SUBJECT_KEYS = new Set(['ai','exchange','linux']);
 const DYNAMIC_SUBJECT_BASE = new Map();
+const BUNDLED_IMPORTS = {
+    ai_microcert: {
+        subject: 'ai_microcert',
+        name: 'AI 微认证',
+        file: 'materials/ai-microcert.pdf',
+        dataFile: 'custom/subject_ai_microcert.json',
+        mode: 'json'
+    },
+    openeuler_microcert: {
+        subject: 'openeuler_microcert',
+        name: 'openEuler 微认证',
+        file: 'materials/openeuler-microcert.pdf',
+        dataFile: 'custom/subject_openeuler_microcert.json',
+        mode: 'json'
+    },
+    ai_upgrade_exam: {
+        subject: 'ai_upgrade_exam',
+        name: 'AI 升级考试题',
+        file: 'materials/ai-upgrade-exam.pdf',
+        dataFile: 'custom/subject_ai_upgrade_exam.json',
+        mode: 'json'
+    }
+};
 
 function registerSubject(subjectKey, displayName) {
     const key = String(subjectKey || '').trim().toLowerCase();
@@ -369,16 +637,40 @@ function registerSubject(subjectKey, displayName) {
     return true;
 }
 
-async function persistSubjectToServer(subjectKey, displayName) {
+function ensureCurrentSubjectAvailable() {
+    const key = String(currentSubject || '').trim().toLowerCase();
+    if (key && SUBJECTS[key]) return;
+    const bundled = key ? BUNDLED_IMPORTS[key] : null;
+    if (bundled) {
+        registerSubject(bundled.subject, bundled.name);
+        currentSubject = bundled.subject;
+        localStorage.setItem('currentSubject', currentSubject);
+        return;
+    }
+    currentSubject = 'ai';
+    localStorage.setItem('currentSubject', currentSubject);
+}
+
+async function persistSubjectToServer(subjectKey, displayName, items) {
     try {
-        const payload = { subject: subjectKey, name: displayName, items: [] };
-        await fetch(`custom/upload?name=subject_${encodeURIComponent(subjectKey)}.json`, {
+        const key = String(subjectKey || '').trim().toLowerCase();
+        const name = String(displayName || key || '').trim() || key;
+        const arr = Array.isArray(items) ? items : [];
+        const v = validateOverlayItems(arr, key);
+        const payload = { subject: key, name, items: v.items || [] };
+        const res = await fetch(`custom/upload?name=subject_${encodeURIComponent(key)}.json`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
             cache: 'no-store'
         });
-    } catch (e) {}
+        if (!res.ok) return false;
+        const data = await res.json().catch(() => null);
+        if (data && data.ok === false) return false;
+        return true;
+    } catch (e) {
+        return false;
+    }
 }
 
 function promptAddSubject() {
@@ -444,6 +736,9 @@ function bindCspSafeEvents() {
     const byId = (id) => document.getElementById(id);
     const map = [
         ['importDocBtn', () => importWordPdf()],
+        ['importBundledAiBtn', () => importBundledSubject('ai_microcert')],
+        ['importBundledOpenEulerBtn', () => importBundledSubject('openeuler_microcert')],
+        ['importBundledAiUpgradeBtn', () => importBundledSubject('ai_upgrade_exam')],
         ['openOverlayEditorBtn', () => openOverlayEditor(true)],
         ['importOverlayLocalBtn', () => importOverlayFromFile()],
         ['importOverlayServerBtn', () => importOverlayToServer()],
@@ -503,6 +798,22 @@ function bindCspSafeEvents() {
     bindIf('nextEditorBtn', () => nextOverlayEditor());
     bindIf('applyOverlayEditorBtn', () => applyOverlayEditor());
     bindIf('cancelOverlayEditorBtn', () => showOverlayEditorModal(false));
+
+    const edType = byId('edType');
+    if (edType) {
+        edType.addEventListener('change', () => {
+            const tp = String(edType.value || '').toLowerCase();
+            if (tp !== 'judge') return;
+            const a = byId('edOptA');
+            const b = byId('edOptB');
+            const c = byId('edOptC');
+            const d = byId('edOptD');
+            if (a) a.value = '正确';
+            if (b) b.value = '错误';
+            if (c) c.value = '';
+            if (d) d.value = '';
+        });
+    }
 }
 
 function updateSubjectStatus() {
@@ -547,6 +858,118 @@ function importWordPdf() {
     if (inp) inp.click();
 }
 
+async function extractTextFromPdfBuffer(arrayBuf) {
+    if (typeof window.pdfjsLib === 'undefined') {
+        throw new Error('pdfjs_unavailable');
+    }
+    const pdf = await window.pdfjsLib.getDocument({ data: arrayBuf }).promise;
+    let text = '';
+    const buildLine = (parts) => {
+        const sorted = parts
+            .filter(it => it && typeof it.str === 'string' && it.str.trim())
+            .sort((a, b) => a.x - b.x);
+        let line = '';
+        let prevEnd = null;
+        for (const part of sorted) {
+            const seg = String(part.str || '').trim();
+            if (!seg) continue;
+            const x = Number(part.x || 0);
+            const width = Number(part.width || 0);
+            if (line && prevEnd != null) {
+                const gap = x - prevEnd;
+                if (gap > 1.5) line += ' ';
+            }
+            line += seg;
+            prevEnd = x + width;
+        }
+        return line.trim();
+    };
+    for (let p = 1; p <= pdf.numPages; p++) {
+        const page = await pdf.getPage(p);
+        const content = await page.getTextContent();
+        const rows = [];
+        for (const item of content.items || []) {
+            const str = String((item && item.str) || '');
+            if (!str.trim()) continue;
+            const x = Number(item && item.transform ? item.transform[4] : 0) || 0;
+            const y = Number(item && item.transform ? item.transform[5] : 0) || 0;
+            const h = Number(item && item.height) || 0;
+            const tol = Math.max(1.2, Math.min(3, h * 0.35 || 1.5));
+            let row = null;
+            for (const r of rows) {
+                if (Math.abs(r.y - y) <= r.tol) { row = r; break; }
+            }
+            if (!row) {
+                row = { y, tol, parts: [] };
+                rows.push(row);
+            } else {
+                row.y = (row.y * row.parts.length + y) / (row.parts.length + 1);
+                row.tol = Math.max(row.tol, tol);
+            }
+            row.parts.push({ str, x, width: Number(item.width || 0) || 0 });
+        }
+        rows.sort((a, b) => b.y - a.y);
+        const pageLines = rows.map(r => buildLine(r.parts)).filter(Boolean);
+        text += pageLines.join('\n') + '\n';
+    }
+    return text;
+}
+
+async function importBundledSubject(resourceKey) {
+    const meta = BUNDLED_IMPORTS[resourceKey];
+    if (!meta) {
+        showToast('未找到内置资料', 'error');
+        return;
+    }
+    if (typeof window !== 'undefined' && window.location && window.location.protocol === 'file:') {
+        showToast('请先用本地服务打开项目，再使用内置资料一键导入', 'warn', 4500);
+        return;
+    }
+    try {
+        setLoading(true, `正在载入 ${meta.name} 题库…`);
+        if (meta.mode === 'pdf') {
+            if (typeof window.pdfjsLib === 'undefined') {
+                showToast('当前离线环境未内置 PDF 解析库，无法读取内置 PDF 题库', 'error');
+                return;
+            }
+            const prevSubject = currentSubject;
+            if (!SUBJECTS[meta.subject]) registerSubject(meta.subject, meta.name);
+            const res = await fetch(meta.file, { cache: 'no-store' });
+            if (!res.ok) {
+                showToast(`未能读取 ${meta.name} 的 PDF`, 'warn');
+                return;
+            }
+            const arrayBuf = await res.arrayBuffer();
+            const text = await extractTextFromPdfBuffer(arrayBuf);
+            setLoading(false);
+            switchSubject(meta.subject);
+            const applied = await importFromPlainText(text);
+            if (!applied && prevSubject !== meta.subject && SUBJECTS[prevSubject]) {
+                switchSubject(prevSubject);
+            }
+            return;
+        }
+        if (!SUBJECTS[meta.subject]) registerSubject(meta.subject, meta.name);
+        const data = await fetchJsonSafe(meta.dataFile);
+        if (!data || !Array.isArray(data.items)) {
+            showToast(`未能读取 ${meta.name} 的内置题库`, 'warn');
+            return;
+        }
+        const v = validateOverlayItems(data.items, meta.subject);
+        if (!v.items || v.items.length === 0) {
+            showToast(`${meta.name} 的内置题库未通过校验`, 'warn');
+            return;
+        }
+        localStorage.setItem(`overlay_${meta.subject}`, JSON.stringify(v.items));
+        switchSubject(meta.subject);
+        showToast(`已载入 ${meta.name} 稳定题库：${v.items.length} 条`, 'success', 4500);
+    } catch (err) {
+        showToast(`载入 ${meta.name} 失败`, 'error');
+    } finally {
+        setLoading(false);
+    }
+}
+
 async function handleWordPdfFileChange(e) {
     const file = e && e.target && e.target.files && e.target.files[0];
     if (!file) return;
@@ -571,14 +994,7 @@ async function handleWordPdfFileChange(e) {
                 return;
             }
             const arrayBuf = await file.arrayBuffer();
-            const pdf = await window.pdfjsLib.getDocument({ data: arrayBuf }).promise;
-            let text = '';
-            for (let p = 1; p <= pdf.numPages; p++) {
-                const page = await pdf.getPage(p);
-                const content = await page.getTextContent();
-                const str = content.items.map(it => it.str).join(' ');
-                text += str + '\n';
-            }
+            const text = await extractTextFromPdfBuffer(arrayBuf);
             await importFromPlainText(text);
         } else {
             showToast('暂不支持的文件类型，请选择 .docx / .pdf / .txt / .md', 'error');
@@ -592,31 +1008,80 @@ async function handleWordPdfFileChange(e) {
 }
 
 async function importFromPlainText(text) {
-    const items = parseTextToOverlayItems(text);
+    const templateLabels = {
+        auto: '自动（通用）',
+        platform_export: '平台导出（我的答案/正确答案/分值/答案解析）',
+        choice_ad: '选择题 A-D（无类型标注）',
+        judge_ab: '判断题 A/B（A=正确，B=错误）'
+    };
+    const profileKey = `import_profile_${currentSubject}`;
+    let template = 'auto';
+    try {
+        const raw = localStorage.getItem(profileKey);
+        if (raw) {
+            const prof = JSON.parse(raw);
+            if (prof && typeof prof.template === 'string' && templateLabels[prof.template]) template = prof.template;
+        }
+    } catch {}
+
+    const chooseMsg = `请选择导入模板（学科：${SUBJECTS[currentSubject].name}）\n\n1) ${templateLabels.auto}\n2) ${templateLabels.platform_export}\n3) ${templateLabels.choice_ad}\n4) ${templateLabels.judge_ab}\n\n回车保持：${templateLabels[template]}\n请输入 1-4（取消则终止导入）：`;
+    const choose = prompt(chooseMsg, '');
+    if (choose === null) return false;
+    const t = String(choose || '').trim();
+    if (t) {
+        const map = { '1': 'auto', '2': 'platform_export', '3': 'choice_ad', '4': 'judge_ab' };
+        if (map[t]) template = map[t];
+        try { localStorage.setItem(profileKey, JSON.stringify({ template, updatedAt: new Date().toISOString() })); } catch {}
+    }
+
+    const items = parseTextToOverlayItems(text, { template });
     if (!items || items.length === 0) {
         showToast('未识别到题目，请检查格式或先转为 TXT 再试', 'warn');
-        return;
+        return false;
     }
     const unknownCount = items.reduce((n, it) => n + (it && it._unknown ? 1 : 0), 0);
+    const withOpts = items.reduce((n, it) => n + (it && Array.isArray(it.options) && it.options.filter(Boolean).length >= 2 ? 1 : 0), 0);
+    const withAns = items.reduce((n, it) => n + (it && ((it.answer && String(it.answer).trim()) || (it.answerText && String(it.answerText).trim())) ? 1 : 0), 0);
+    const types = items.reduce((m, it) => { const k = (it && it.type) ? String(it.type) : 'unknown'; m[k] = (m[k] || 0) + 1; return m; }, {});
+    const typeLine = Object.keys(types).sort().map(k => `${k}:${types[k]}`).join('  ');
+    const ratio = items.length ? (unknownCount / items.length) : 0;
     const sample = items.slice(0, 3).map((it, idx) => {
         const head = `${idx + 1}. [${it.type}] ${String(it.question || '').slice(0, 50)}`;
-        const opts = Array.isArray(it.options) ? it.options.filter(Boolean).map((t, i) => `  ${String.fromCharCode(65+i)}、${String(t).slice(0, 40)}`).join('\n') : '';
+        const opts = Array.isArray(it.options) ? it.options.filter(Boolean).map((tt, i) => `  ${String.fromCharCode(65+i)}、${String(tt).slice(0, 40)}`).join('\n') : '';
         const ans = it.answer ? `  答案: ${it.answer}` : (it.answerText ? `  参考: ${String(it.answerText).slice(0, 40)}` : '');
         const mark = it._unknown ? '  ⚠ 低置信度' : '';
         return [head, opts, ans, mark].filter(Boolean).join('\n');
     }).join('\n\n');
-    const confirmMsg = `预览识别 ${items.length} 条（低置信度 ${unknownCount} 条）\n\n样例：\n${sample}\n\n是否应用到学科：${SUBJECTS[currentSubject].name}？`;
+    const report = `模板：${templateLabels[template] || template}\n识别：${items.length} 条（低置信度 ${unknownCount} 条，${Math.round(ratio*100)}%）\n带选项：${withOpts} 条  带答案/参考：${withAns} 条\n类型：${typeLine}`;
+    const confirmMsg = `${report}\n\n样例：\n${sample}\n\n是否应用到学科：${SUBJECTS[currentSubject].name}？`;
     const ok = confirm(confirmMsg);
-    if (!ok) return;
+    if (!ok) return false;
     localStorage.setItem(`overlay_${currentSubject}`, JSON.stringify(items));
     refreshAfterOverlayChange();
     let msg = `导入完成：识别 ${items.length} 条题目`;
     if (unknownCount > 0) msg += `（其中 ${unknownCount} 条需人工校对）`;
-    msg += `，已应用到 ${SUBJECTS[currentSubject].name}`;
-    showToast(msg, 'success');
+    if (unknownCount > 0) {
+        const applied = Math.max(0, items.length - unknownCount);
+        msg += `，已应用 ${applied} 条到 ${SUBJECTS[currentSubject].name}（低置信度条目不会进入练习，需校对后生效）`;
+    } else {
+        msg += `，已应用到 ${SUBJECTS[currentSubject].name}`;
+    }
+    showToast(msg + '（正在同步到服务器题库…）', 'success');
+    persistSubjectToServer(currentSubject, SUBJECTS[currentSubject].name, items).then((synced) => {
+        if (synced) showToast('已同步到服务器题库', 'success');
+        else showToast('服务器同步失败，仅保存本地', 'warn');
+    }).catch(() => {
+        showToast('服务器同步失败，仅保存本地', 'warn');
+    });
+    if (ratio >= 0.3) {
+        if (confirm(`当前识别低置信度较高（${Math.round(ratio*100)}%），是否立即打开“校对”面板？`)) {
+            openOverlayEditor(true);
+        }
+    }
+    return true;
 }
 
-function parseTextToOverlayItems(text) {
+function parseTextToOverlayItems(text, opt) {
     function toHalfWidth(str) {
         let out = '';
         for (let i = 0; i < str.length; i++) {
@@ -627,12 +1092,105 @@ function parseTextToOverlayItems(text) {
         }
         return out;
     }
+    const template = (opt && opt.template) ? String(opt.template) : 'auto';
     const normalize = (s) => toHalfWidth(s.trim()).replace(/[．。]/g, '.').replace(/[：]/g, ':');
-    const lines = String(text || '').replace(/\r\n?/g, '\n').split('\n').map(s => normalize(s));
-    const isQStart = (s) => /^\s*(?:\d+[\.、\)]\s*|[（(]\d+[）)]\s*|第\s*\d+\s*题|第[一二三四五六七八九十百]+\s*题|[一二三四五六七八九十百千]+[、\.)]\s*)/.test(s);
-    const isOpt = (s) => /^\s*(?:[（(]?[A-Ha-h][）)]?[\.、:)]\s+|[A-Ha-h]\s+)/.test(s);
-    const isAns = (s) => /(?:^|\s)(?:答案|正确答案|参考答案|答案是|Answer|Ans)\s*(?:[:：]|为)?\s*/i.test(s);
+    const joinWrapped = (a, b) => {
+        const left = String(a || '').trim();
+        const right = String(b || '').trim();
+        if (!left) return right;
+        if (!right) return left;
+        const last = left.slice(-1);
+        const first = right.charAt(0);
+        if (/[A-Za-z0-9\]]$/.test(last) && /^[A-Za-z0-9\[]/.test(first)) return `${left} ${right}`;
+        return left + right;
+    };
+    const typeMap = {
+        '单选题': 'single',
+        '多选题': 'multiple',
+        '判断题': 'judge',
+        '填空题': 'fill',
+        '简答题': 'essay',
+        '论述题': 'essay'
+    };
+    const rawLines = String(text || '').replace(/\r\n?/g, '\n').split('\n').map(s => normalize(s));
+    const stripOptionLabel = (s) => String(s || '').replace(/^\s*(?:选项|options?)\s*[:：]\s*/i, '');
+    const dedupeLetters = (s) => Array.from(new Set(String(s || '').split(''))).sort().join('');
+    const extractAnswerLetters = (s) => {
+        const body = String(s || '').toUpperCase();
+        const compact = body.replace(/[\s,，、;；/]+/g, '');
+        if (/^[A-H]+$/.test(compact)) return dedupeLetters(compact);
+        const out = [];
+        const re = /(?:^|[^A-Z0-9])([A-H])(?=[\.\)、,，、:：;；\s]|$)/g;
+        let m;
+        while ((m = re.exec(body)) !== null) out.push(m[1]);
+        return dedupeLetters(out.join(''));
+    };
+    const splitAnswerSuffix = (s) => {
+        const ln = String(s || '').trim();
+        if (!ln) return null;
+        const m = ln.match(/^(.*?)(?:正确答案|参考答案|我的答案|答案是|答\s*案|Answer|Ans)\s*(?:[:：]|为)\s*(.*)$/i);
+        if (m) return { before: String(m[1] || '').trim(), answer: String(m[2] || '').trim() };
+        const startOnly = ln.match(/^(?:正确答案|参考答案|我的答案|答案是|答\s*案|Answer|Ans)\s+(.+)$/i);
+        if (startOnly) return { before: '', answer: String(startOnly[1] || '').trim() };
+        return null;
+    };
+    const normalizeAnswerBody = (s) => String(s || '')
+        .replace(/^(?:正确答案|参考答案|我的答案|答案是|答\s*案|Answer|Ans)\s*(?:[:：]|为)?\s*/i, '')
+        .replace(/^[:：]\s*/, '')
+        .trim();
+    const parseQuestionLead = (s) => {
+        const raw = String(s || '').trim();
+        if (!raw) return null;
+        const typeLabel = ((raw.match(/(?:单选题|多选题|判断题|填空题|简答题|论述题)/) || [])[0]) || '';
+        let body = raw
+            .replace(/^[\s([{\]【（]*?(?:单选题|多选题|判断题|填空题|简答题|论述题)\s*[)\]】】}）【\s]*/i, '')
+            .replace(/^\s*[【\[]?\s*试题\s*ID\s*[:：]?\s*\d+\s*[】\]]?\s*/i, '')
+            .replace(/^\s*[)\]】】}）]+\s*/, '');
+        const matched = body.match(/^(\d+)[\.\)、]\s*(.*)$/) || body.match(/(?:^|\s)(\d+)[\.\)、]\s*(.+)$/);
+        if (!matched) return null;
+        const idx = matched.index || 0;
+        const question = String(matched[2] || '').trim();
+        if (!question) return null;
+        return {
+            typeLabel,
+            type: typeLabel ? typeMap[typeLabel] || '' : '',
+            number: String(matched[1] || ''),
+            question,
+            raw: idx > 0 ? body.slice(idx).trim() : body
+        };
+    };
+    const skipLine = (s) => {
+        if (!s) return true;
+        if (/^(?:单选题|多选题|判断题|填空题|简答题|论述题)$/.test(s)) return true;
+        if (/^(?:答案解析|解析)\s*:?\s*$/.test(s)) return true;
+        if (/升级考试/.test(s) && !parseQuestionLead(s)) return true;
+        if (template === 'platform_export') {
+            if (/^(?:\(?客观\)?\s*-?|\(?主观\)?\s*-?)/.test(s)) return true;
+            if (/^[一二三四五六七八九十]+\s*[\.|、]?\s*(?:判断题|单选题|多选题|填空题|简答题|论述题)\b/.test(s)) return true;
+            if (/^第\s*\d+\s*章/.test(s)) return true;
+            if (/^\d+(?:\.\d+)?\s*分$/.test(s)) return true;
+            if (/^(?:答案解析|解析)\s*:?$/.test(s)) return true;
+        }
+        return false;
+    };
+    const lines = rawLines.filter(s => !skipLine(s));
+    const isQStart = (s) => !!parseQuestionLead(s) || /^\s*(?:\d+[\.、\)]\s*|[（(]\d+[）)]\s*|第\s*\d+\s*题|第[一二三四五六七八九十百]+\s*题|[一二三四五六七八九十百千]+[、\.)]\s*)/.test(s);
+    const isOptAuto = (s) => /^\s*(?:[（(]?[A-Ha-h][）)]?[\.、:,)]\s*|[A-Ha-h]\s+)/.test(stripOptionLabel(s));
+    const isOptChoice = (s) => /^\s*(?:[（(]?[A-Da-d][）)]?[\.、:,)]\s*|[A-Da-d]\s+)/.test(stripOptionLabel(s));
+    const isOpt = (s) => (template === 'choice_ad' || template === 'judge_ab') ? isOptChoice(s) : isOptAuto(s);
+    const isAns = (s) => !!splitAnswerSuffix(s);
     const inlineOptRe = /[（(]?([A-Ha-h])[）)]?[\.、:)]\s*/g;
+    const stripAfterMarkers = (s) => {
+        const m = String(s || '').match(/^(.*?)(?:\s*(?:我的答案|正确答案|参考答案|答案解析|解析)\s*[:：]|\s*\d+(?:\.\d+)?\s*分\b)/);
+        return m ? m[1].trim() : String(s || '').trim();
+    };
+    function extractAnswerLine(s) {
+        const split = splitAnswerSuffix(s);
+        if (!split) return '';
+        const payload = stripAfterMarkers(split.answer);
+        if (payload) return '答案: ' + payload;
+        return '';
+    }
     function extractInlineOptions(s) {
         const pos = [];
         let m;
@@ -651,76 +1209,158 @@ function parseTextToOverlayItems(text) {
     const blocks = [];
     let cur = [];
     for (const ln of lines) {
-        if (isQStart(ln) && cur.length > 0) { blocks.push(cur); cur = [ln]; }
-        else cur.push(ln);
+        if (isQStart(ln) && cur.length > 0) {
+            const curHasAnswer = cur.some(x => isAns(x));
+            const curHasOption = cur.some(x => isOpt(x)) || extractInlineOptions(cur.join(' ')).length >= 2;
+            const curLooksTitle = cur.length === 1 && !isQStart(cur[0]) && !curHasOption && !curHasAnswer;
+            if (curLooksTitle || curHasAnswer) {
+                blocks.push(cur);
+                cur = [ln];
+                continue;
+            }
+        }
+        cur.push(ln);
     }
     if (cur.length) blocks.push(cur);
     const items = [];
     for (const b of blocks) {
         if (b.length === 0) continue;
         const first = b[0];
-        const firstIsQ = isQStart(first);
-        let qline = first
+        const lead = parseQuestionLead(first);
+        const firstIsQ = !!lead || isQStart(first);
+        const typeHint = lead && lead.type ? lead.type : '';
+        let qline = lead ? lead.question : first
             .replace(/^\s*\d+[\.、\)]\s*/, '')
             .replace(/^\s*[（(]\d+[）)]\s*/, '')
             .replace(/^第\s*\d+\s*题\s*/, '')
             .replace(/^第[一二三四五六七八九十百]+\s*题\s*/, '')
             .replace(/^[一二三四五六七八九十百千]+[、\.)]\s*/, '')
+            .replace(/^\s*[（(][^）)]+题[）)]\s*/, '')
+            .replace(/^[【\[]?\s*试题\s*ID\s*[:：]?\s*\d+\s*[】\]]?\s*/i, '')
             .trim();
         const other = b.slice(1);
         const opts = [];
         let answerLine = '';
         const desc = [];
-        for (const ln of other) {
-            if (isOpt(ln)) {
-                opts.push(ln.replace(/^\s*[（(]?([A-Ha-h])[）)]?[\.、:)]\s*/, ''));
-                // 行内还可能带有更多选项
-                const extra = extractInlineOptions(ln);
-                if (extra.length > 1) {
-                    // 第一个已作为本行选项，其余追加
-                    extra.slice(1).forEach(t => opts.push(t));
+        let stage = 'question';
+        let awaitingAnswer = false;
+        for (const ln0 of other) {
+            let ln = String(ln0 || '').trim();
+            if (!ln) continue;
+            if (awaitingAnswer) {
+                if (!isOpt(ln)) {
+                    answerLine = '答案: ' + stripAfterMarkers(ln);
+                    awaitingAnswer = false;
+                    continue;
+                }
+                awaitingAnswer = false;
+            }
+            if (stage === 'question') {
+                const mixed = ln.match(/^(.*?)(?:选项|options?)\s*[:：]\s*([A-Ha-h].*)$/i);
+                if (mixed) {
+                    const lead = String(mixed[1] || '').trim();
+                    if (lead) qline = joinWrapped(qline, lead);
+                    ln = '选项:' + String(mixed[2] || '').trim();
                 }
             }
-            if (isAns(ln)) {
-                const mAns = ln.match(/(?:答案|正确答案|参考答案|答案是|Answer|Ans)\s*(?:[:：]|为)?\s*(.+)$/i);
-                if (mAns) answerLine = '答案: ' + mAns[1].trim();
+            const answerSplit = splitAnswerSuffix(ln);
+            let pendingAnswerLine = '';
+            if (answerSplit) {
+                ln = answerSplit.before;
+                if (answerSplit.answer) pendingAnswerLine = '答案: ' + stripAfterMarkers(answerSplit.answer);
+                else awaitingAnswer = true;
             }
-            else if (ln) desc.push(ln);
+            if (!ln) {
+                if (!answerLine && pendingAnswerLine) answerLine = pendingAnswerLine;
+                continue;
+            }
+            if (isOpt(ln)) {
+                stage = 'options';
+                const optionLine = stripOptionLabel(ln);
+                const cleaned = stripAfterMarkers(optionLine.replace(/^\s*[（(]?([A-Ha-h])[）)]?[\.、:,)]\s*/, ''));
+                opts.push(cleaned);
+                const extra = extractInlineOptions(optionLine);
+                if (extra.length > 1) {
+                    extra.slice(1).forEach(t => opts.push(stripAfterMarkers(t)));
+                }
+                if (!answerLine && pendingAnswerLine) answerLine = pendingAnswerLine;
+                continue;
+            }
+            if (stage === 'options' && /^题目\s*[:：]/.test(ln)) {
+                qline = joinWrapped(qline, ln.replace(/^题目\s*[:：]\s*/, ''));
+                if (!answerLine && pendingAnswerLine) answerLine = pendingAnswerLine;
+                continue;
+            }
+            if (stage === 'options' && opts.length > 0 && opts.length < 4) {
+                const disguised = ln.match(/^\d+[\.、\)]\s*(.+)$/);
+                if (disguised) {
+                    opts.push(stripAfterMarkers(disguised[1]));
+                    if (!answerLine && pendingAnswerLine) answerLine = pendingAnswerLine;
+                    continue;
+                }
+            }
+            if (stage === 'question') {
+                qline = joinWrapped(qline, ln);
+                if (!answerLine && pendingAnswerLine) answerLine = pendingAnswerLine;
+                continue;
+            }
+            if (stage === 'options' && opts.length > 0) {
+                opts[opts.length - 1] = stripAfterMarkers(joinWrapped(opts[opts.length - 1] || '', ln));
+                if (!answerLine && pendingAnswerLine) answerLine = pendingAnswerLine;
+                continue;
+            }
+            desc.push(ln);
+            if (!answerLine && pendingAnswerLine) answerLine = pendingAnswerLine;
         }
         // 如果未识别出选项，尝试在合并文本中做行内切分
         if (opts.length < 2) {
             const joined = other.join(' ');
             const inl = extractInlineOptions(joined);
             if (inl.length >= 2) {
-                inl.forEach(t => opts.push(t));
+                inl.forEach(t => opts.push(stripAfterMarkers(t)));
             }
             if (!answerLine) {
-                const mAns2 = joined.match(/(?:答案|正确答案|参考答案|答案是|Answer|Ans)\s*(?:[:：]|为)?\s*([^\n]+)/i);
-                if (mAns2) answerLine = '答案: ' + mAns2[1].trim();
+                const picked2 = extractAnswerLine(joined);
+                if (picked2) answerLine = picked2;
             }
         }
         let type = 'essay';
         let answer = '';
         let answerText = '';
         if (answerLine) {
-            const m = answerLine.match(/[:：为]?\s*([A-Ha-hTF对错]{1,8}|正确|错误)/);
-            if (m) {
-                const token = m[1];
-                const up = token.toUpperCase();
-                if (/^(?:对|正确|T)$/i.test(token)) { type = 'judge'; answer = '正确'; }
-                else if (/^(?:错|错误|F)$/i.test(token)) { type = 'judge'; answer = '错误'; }
-                else {
-                    const letters = up.replace(/[^A-H]/g, '');
-                    if (letters) {
+            const body = normalizeAnswerBody(answerLine);
+            if (/^(?:对|正确|T|TRUE)$/i.test(body)) { type = 'judge'; answer = '正确'; }
+            else if (/^(?:错|错误|F|FALSE)$/i.test(body)) { type = 'judge'; answer = '错误'; }
+            else {
+                const letters = extractAnswerLetters(body);
+                if (letters) {
+                    if ((template === 'judge_ab' || typeHint === 'judge') && letters.length === 1 && (letters === 'A' || letters === 'B')) {
+                        type = 'judge';
+                        answer = letters === 'A' ? '正确' : '错误';
+                    } else {
                         type = letters.length === 1 ? 'single' : 'multiple';
                         answer = letters;
-                    } else {
-                        answerText = token;
                     }
+                } else if (body) {
+                    answerText = body;
                 }
-            } else {
-                answerText = answerLine.replace(/^(?:答案|正确答案|参考答案|答案是|Answer|Ans)\s*[:：]\s*/i, '');
             }
+        }
+        if (typeHint === 'judge') {
+            type = 'judge';
+            if (answer === 'A') answer = '正确';
+            else if (answer === 'B') answer = '错误';
+            else if (!answer && /^(?:对|正确)$/i.test(answerText)) { answer = '正确'; answerText = ''; }
+            else if (!answer && /^(?:错|错误)$/i.test(answerText)) { answer = '错误'; answerText = ''; }
+        } else if (typeHint === 'multiple' && answer) {
+            type = answer.length > 1 ? 'multiple' : 'single';
+            if (answer.length === 1 && opts.length >= 2) type = 'single';
+            if (answer.length > 1) type = 'multiple';
+        } else if (typeHint === 'single' && opts.length >= 2) {
+            type = answer && answer.length > 1 ? 'multiple' : 'single';
+        }
+        if (template === 'choice_ad' && type === 'essay' && opts.length >= 2) {
+            type = 'single';
         }
         if ((type === 'single' || type === 'multiple') && opts.length < 2) {
             // 选项不足，降级为主观题
@@ -744,6 +1384,7 @@ function parseTextToOverlayItems(text) {
     }
     return items;
 }
+
 function importOverlayFromFile() {
     const inp = document.getElementById('overlayFileInput');
     if (inp) inp.click();
@@ -760,7 +1401,7 @@ function handleOverlayFileChange(e) {
             let subjectKey = currentSubject;
             if (Array.isArray(data)) items = data;
             else if (data && Array.isArray(data.items)) { items = data.items; if (data.subject) subjectKey = String(data.subject).toLowerCase(); }
-            if (!items || !Array.isArray(items)) { showToast('导入失败：JSON 格式不正确', 'error'); return; }
+            if (!items) { showToast('导入失败：JSON 格式不正确', 'error'); return; }
             const v = validateOverlayItems(items, subjectKey);
             if (!v.items || v.items.length === 0) { showToast('导入失败：结构校验未通过', 'error'); return; }
             if (!SUBJECTS[subjectKey]) registerSubject(subjectKey, data && data.name ? data.name : subjectKey);
@@ -819,9 +1460,11 @@ function handleOverlayUploadFileChange(e) {
             // 简单校验 JSON
             let parsed;
             try { parsed = JSON.parse(text); } catch { showToast('上传失败：JSON 解析错误', 'error'); e.target.value=''; return; }
-            let items = Array.isArray(parsed) ? parsed : (parsed && Array.isArray(parsed.items) ? parsed.items : null);
+            let items = null;
             let subjectKey = (parsed && parsed.subject) ? String(parsed.subject).toLowerCase() : currentSubject;
-            if (!items) { showToast('上传失败：JSON 结构错误', 'error'); e.target.value=''; return; }
+            if (Array.isArray(parsed)) items = parsed;
+            else if (parsed && Array.isArray(parsed.items)) { items = parsed.items; if (parsed.subject) subjectKey = String(parsed.subject).toLowerCase(); }
+            else { showToast('上传失败：JSON 结构错误', 'error'); e.target.value=''; return; }
             const v = validateOverlayItems(items, subjectKey);
             if (!v.items || v.items.length === 0) { showToast('上传失败：覆盖层结构校验未通过', 'error'); e.target.value=''; return; }
             const uploadPayload = Array.isArray(parsed) ? v.items : { subject: subjectKey, name: (parsed && parsed.name) || subjectKey, items: v.items };
@@ -897,6 +1540,17 @@ function computeQuestionKey(q) {
     return normalizeStr(q && q.question);
 }
 
+function computeStableQuestionId(subjectKey, questionText) {
+    const base = normalizeStr(String(questionText || ''));
+    const seed = String(subjectKey || '').toLowerCase() + '|' + base;
+    let h = 5381;
+    for (let i = 0; i < seed.length; i++) {
+        h = ((h << 5) + h) + seed.charCodeAt(i);
+        h = h >>> 0;
+    }
+    return (h % 2000000000) + 1;
+}
+
 function coerceQuestion(item) {
     const out = { ...item };
     if (out.type) out.type = String(out.type).toLowerCase();
@@ -924,6 +1578,11 @@ function validateOverlayItems(items, subjectKey) {
         if (!allowedTypes.has(it.type)) { errors.push(`item${i}:bad_type`); continue; }
         it.question = limit(it.question || '', 500).trim();
         if (!it.question) { errors.push(`item${i}:empty_question`); continue; }
+        let id = (raw && raw.id != null) ? raw.id : (it && it.id != null ? it.id : null);
+        if (typeof id === 'string' && /^\d{1,18}$/.test(id)) id = parseInt(id, 10);
+        if (!(typeof id === 'number' && Number.isFinite(id) && id > 0)) {
+            id = computeStableQuestionId(subjectKey, it.question);
+        }
         if (Array.isArray(it.options)) {
             it.options = it.options.map(x => limit(x, 200)).filter(Boolean).slice(0, 4);
         }
@@ -951,7 +1610,7 @@ function validateOverlayItems(items, subjectKey) {
             delete it.answer;
         }
         // 严格字段白名单
-        const clean = { type: it.type, question: it.question };
+        const clean = { id, type: it.type, question: it.question };
         if (Array.isArray(it.options) && it.options.length >= 2) clean.options = it.options;
         if (typeof it.answer === 'string' && it.answer) clean.answer = it.answer;
         if (typeof it.answerText === 'string' && it.answerText) clean.answerText = it.answerText;
@@ -1016,25 +1675,57 @@ async function fetchJsonSafe(url, timeoutMs = 8000) {
 
 function getLocalOverlays(subjectKey) {
     const out = [];
-    const keys = [`overlay_${subjectKey}`, 'overlay_global'];
-    keys.forEach(k => {
-        const raw = localStorage.getItem(k);
-        if (!raw) return;
+    const key = `overlay_${subjectKey}`;
+    const raw = localStorage.getItem(key);
+    if (raw) {
         try {
             const json = JSON.parse(raw);
             if (Array.isArray(json)) out.push(json);
             else if (json && Array.isArray(json.items)) out.push(json.items);
         } catch {}
-    });
+        return out;
+    }
+
+    const rawGlobal = localStorage.getItem('overlay_global');
+    if (!rawGlobal) return out;
+
+    let hasOtherOverlays = false;
+    try {
+        for (let i = 0; i < localStorage.length; i++) {
+            const k = localStorage.key(i);
+            if (!k) continue;
+            if (k === 'overlay_global' || k === key) continue;
+            if (/^overlay_[a-z0-9_-]+$/i.test(k)) { hasOtherOverlays = true; break; }
+        }
+    } catch {}
+
+    try {
+        const json = JSON.parse(rawGlobal);
+        if (Array.isArray(json)) {
+            const hasSubject = json.some(it => it && typeof it === 'object' && it.subject);
+            if (hasSubject) {
+                const picked = json.filter(it => it && typeof it === 'object' && String(it.subject || '').toLowerCase() === String(subjectKey || '').toLowerCase());
+                if (picked.length) out.push(picked);
+            } else if (!hasOtherOverlays) {
+                out.push(json);
+            }
+        } else if (json && Array.isArray(json.items)) {
+            const subj = json.subject ? String(json.subject).toLowerCase() : '';
+            if (subj && subj === String(subjectKey || '').toLowerCase()) out.push(json.items);
+            else if (!subj && !hasOtherOverlays) out.push(json.items);
+        }
+    } catch {}
     return out;
 }
 
 async function applyOverlaysForSubject(subjectKey) {
+    const subjectLower = String(subjectKey || '').toLowerCase();
     // 本地 localStorage 覆盖层
     const localSets = getLocalOverlays(subjectKey);
     localSets.forEach(arr => {
         const v = validateOverlayItems(arr, subjectKey);
-        if (v.items && v.items.length) mergeOverlayItems(subjectKey, v.items);
+        const safe = (v.items || []).filter(it => !(it && it._unknown));
+        if (safe.length) mergeOverlayItems(subjectKey, safe);
     });
 
     // 服务器 custom 目录覆盖层
@@ -1047,11 +1738,20 @@ async function applyOverlaysForSubject(subjectKey) {
         if (Array.isArray(data)) items = data;
         else if (data && Array.isArray(data.items)) items = data.items;
         else continue;
-        if (data && data.subject && String(data.subject).toLowerCase() !== subjectKey) {
-            continue;
+        const topSubject = (data && data.subject) ? String(data.subject).toLowerCase() : '';
+        if (topSubject && topSubject !== subjectLower) continue;
+        if (!topSubject) {
+            if (Array.isArray(items) && items.some(it => it && typeof it === 'object' && it.subject)) {
+                items = items.filter(it => it && typeof it === 'object' && String(it.subject || '').toLowerCase() === subjectLower);
+                if (!items.length) continue;
+            } else {
+                const fname = String((f && f.name) ? f.name : '').toLowerCase();
+                if (!fname || fname !== `subject_${subjectLower}.json`) continue;
+            }
         }
         const v = validateOverlayItems(items, subjectKey);
-        if (v.items && v.items.length) mergeOverlayItems(subjectKey, v.items);
+        const safe = (v.items || []).filter(it => !(it && it._unknown));
+        if (safe.length) mergeOverlayItems(subjectKey, safe);
     }
 }
 
@@ -1298,6 +1998,7 @@ function setupStickyHeader() {
 
 // 初始化应用
 function initApp() {
+    ensureCurrentSubjectAvailable();
     setupThemeToggle();
     setupStyleSelect();
     setupLayoutSelect();
@@ -2001,7 +2702,7 @@ function switchSubject(subjectKey) {
 
 // 更新科目按钮样式
 function updateSubjectButtons() {
-    const container = document.querySelector('.subject-switch');
+    const container = document.querySelector('.subject-btn-group');
     if (container) {
         container.querySelectorAll('[data-subject-dynamic="1"]').forEach(el => el.remove());
         Object.keys(SUBJECTS).forEach(key => {

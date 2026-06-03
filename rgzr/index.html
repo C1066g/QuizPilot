@@ -135,14 +135,12 @@
         }
 
         .header {
-            text-align: center;
             color: var(--text-color);
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             position: sticky;
             top: 12px;
             z-index: 5;
-            padding: 12px 16px;
-            min-height: 80px;
+            padding: 16px 20px 12px;
             border: 1px solid var(--border-color);
             border-radius: 14px;
             background: rgba(255,255,255,0.58);
@@ -155,9 +153,22 @@
         .header.header-shrink { box-shadow: var(--shadow-elev-2); }
         .header.header-hidden { transform: translateY(-140%); }
 
-        .header h1 {
-            font-size: 2.2em;
-            margin-bottom: 6px;
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 2px;
+        }
+        .header-brand {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        .header-brand h1 {
+            font-size: 1.7em;
+            margin: 0;
             background: linear-gradient(90deg, var(--accent), var(--accent-2));
             -webkit-background-clip: text;
             background-clip: text;
@@ -165,130 +176,99 @@
             transition: transform .2s ease;
             will-change: transform;
         }
-        .header.header-shrink h1 { transform: scale(0.9); }
-
-        .header p {
-            font-size: 1.0em;
-            opacity: 0.9;
+        .header-brand p {
+            font-size: 0.9em;
             color: var(--muted-color);
+            margin: 0;
             transition: opacity .2s ease;
+            white-space: nowrap;
         }
-        .header.header-shrink p { opacity: 0; }
+        .header.header-shrink .header-brand h1 { transform: scale(0.9); }
+        .header.header-shrink .header-brand p { opacity: 0; }
 
-        .theme-toggle {
-            position: absolute;
-            top: 0;
-            right: 0;
-            transform: translateY(-10px);
-            padding: 10px 14px;
-            border-radius: 999px;
+        .header-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .header-toolbar select,
+        .header-toolbar button {
+            padding: 7px 12px;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
-            background: rgba(255,255,255,0.3);
-            backdrop-filter: blur(10px);
+            background: var(--card-bg);
             color: var(--text-color);
             cursor: pointer;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 500;
             transition: all .2s ease;
+            white-space: nowrap;
+            font-family: inherit;
         }
-        [data-theme="dark"] .theme-toggle { background: rgba(0,0,0,0.25); }
-        .theme-toggle:hover { transform: translateY(-12px); }
-
-        .nav-toggle {
-            position: absolute;
-            top: 0;
-            right: 444px;
-            transform: translateY(-10px);
-            padding: 10px 12px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(10px);
-            color: var(--text-color);
-            cursor: pointer;
-            font-weight: 600;
-            transition: all .2s ease;
+        .header-toolbar select:hover,
+        .header-toolbar button:hover {
+            background: var(--panel-bg);
+            border-color: var(--accent);
+            transform: translateY(-1px);
         }
-        [data-theme="dark"] .nav-toggle { background: rgba(0,0,0,0.35); }
-        .nav-toggle:hover { transform: translateY(-12px); }
-
-        .help-btn {
-            position: absolute;
-            top: 0;
-            right: 540px;
-            transform: translateY(-10px);
-            padding: 10px 12px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(10px);
-            color: var(--text-color);
-            cursor: pointer;
-            font-weight: 600;
-            transition: all .2s ease;
+        .header-toolbar .toolbar-sep {
+            width: 1px;
+            height: 20px;
+            background: var(--border-color);
+            margin: 0 4px;
         }
-        [data-theme="dark"] .help-btn { background: rgba(0,0,0,0.35); }
-        .help-btn:hover { transform: translateY(-12px); }
 
-        .style-select {
-            position: absolute;
-            top: 0;
-            right: 92px;
-            transform: translateY(-10px);
-            padding: 10px 12px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(10px);
-            color: var(--text-color);
-            cursor: pointer;
-            font-weight: 600;
-            transition: all .2s ease;
-        }
-        [data-theme="dark"] .style-select { background: rgba(0,0,0,0.35); }
-        .style-select:hover { transform: translateY(-12px); }
-
-        .layout-select {
-            position: absolute;
-            top: 0;
-            right: 200px;
-            transform: translateY(-10px);
-            padding: 10px 12px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(10px);
-            color: var(--text-color);
-            cursor: pointer;
-            font-weight: 600;
-            transition: all .2s ease;
-        }
-        [data-theme="dark"] .layout-select { background: rgba(0,0,0,0.35); }
-        .layout-select:hover { transform: translateY(-12px); }
-
-        .density-select {
-            position: absolute;
-            top: 0;
-            right: 324px;
-            transform: translateY(-10px);
-            padding: 10px 12px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(10px);
-            color: var(--text-color);
-            cursor: pointer;
-            font-weight: 600;
-            transition: all .2s ease;
-        }
-        [data-theme="dark"] .density-select { background: rgba(0,0,0,0.35); }
-        .density-select:hover { transform: translateY(-12px); }
-
-        .subject-switch {
+        .subject-bar {
             display: flex;
             gap: 10px;
             align-items: center;
-            justify-content: flex-end;
-            margin: 10px 0 20px;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: var(--shadow-elev-2);
+            flex-wrap: wrap;
+        }
+        .subject-bar-label {
+            font-weight: 700;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .subject-btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .subject-btn {
+            padding: 8px 14px;
+            border: 2px solid var(--border-color);
+            background: var(--panel-bg);
+            color: var(--text-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .subject-btn:hover {
+            border-color: var(--accent);
+            background: var(--card-bg);
+        }
+
+        .subject-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.35);
         }
 
         .subject-status {
@@ -316,39 +296,54 @@
         }
         .subject-status .mini-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-        .subject-switch span {
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
+        .tools-panel {
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--card-bg);
+            box-shadow: var(--shadow-elev-2);
+            overflow: hidden;
         }
-
-        .subject-btn {
-            padding: 10px 14px;
-            border: 2px solid #ffffff;
-            background: rgba(255,255,255,0.15);
-            color: white;
-            border-radius: 8px;
+        .tools-panel summary {
+            padding: 12px 18px;
             cursor: pointer;
+            font-weight: 700;
+            color: var(--muted-color);
             font-size: 0.95rem;
+            user-select: none;
+            background: var(--panel-bg);
+            transition: background .2s;
+        }
+        .tools-panel summary:hover { background: var(--border-color); }
+        .tools-panel .tools-body {
+            padding: 16px 18px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .tools-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .tools-row-label {
+            font-size: 0.85rem;
+            color: var(--muted-color);
             font-weight: 600;
-            transition: all 0.2s ease;
+            min-width: 80px;
         }
-
-        .subject-btn:hover {
-            background: white;
-            color: #667eea;
-        }
-
-        .subject-btn.active {
-            background: white;
-            color: #667eea;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        .tools-row .btn {
+            padding: 8px 14px;
+            font-size: 0.9rem;
+            min-width: auto;
+            flex: 0 0 auto;
         }
 
         .main-content {
             background: var(--card-bg);
-            border-radius: 15px;
-            padding: 48px;
+            border-radius: 14px;
+            padding: 32px 36px;
             box-shadow: var(--shadow-elev-3);
             display: flex;
             flex-direction: column;
@@ -356,9 +351,9 @@
 
         .content-layout {
             display: grid;
-            grid-template-columns: 1fr 360px;
+            grid-template-columns: 1fr 300px;
             grid-template-areas: 'main nav';
-            gap: 20px;
+            gap: 24px;
         }
 
         .content-main { grid-area: main; min-width: 0; }
@@ -368,7 +363,7 @@
             background: var(--panel-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 24px;
+            padding: 20px;
             position: sticky;
             top: 80px;
             height: fit-content;
@@ -378,7 +373,7 @@
         }
 
         /* Layout presets */
-        [data-layout="sidebar-left"] .content-layout { grid-template-columns: 360px 1fr; grid-template-areas: 'nav main'; }
+        [data-layout="sidebar-left"] .content-layout { grid-template-columns: 300px 1fr; grid-template-areas: 'nav main'; }
         [data-layout="single"] .content-layout { grid-template-columns: 1fr; grid-template-areas: 'main'; }
         [data-layout="single"] .question-nav { display: none; }
 
@@ -388,6 +383,7 @@
         .question-nav h4 {
             margin-bottom: 10px;
             color: var(--muted-color);
+            font-size: 0.95rem;
         }
 
         .nav-list {
@@ -452,41 +448,43 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 700;
-            color: #555;
+            color: var(--muted-color);
             margin: 6px 0;
             font-size: 0.9rem;
         }
 
         .mode-selector {
             display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 10px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
         }
 
         .mode-btn {
             flex: 1;
-            min-width: 150px;
-            padding: 16px 24px;
-            border: 2px solid var(--accent);
+            min-width: 130px;
+            padding: 14px 18px;
+            border: 2px solid var(--border-color);
             background: var(--card-bg);
-            color: var(--accent);
-            border-radius: 8px;
+            color: var(--text-color);
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
+            font-family: inherit;
         }
 
         .mode-btn:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-2px);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
         }
 
         .mode-btn.active {
             background: var(--accent);
             color: white;
+            border-color: var(--accent);
         }
 
         .question-container {
@@ -531,12 +529,14 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
+            border-bottom: 2px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .question-number {
             font-size: 1.1rem;
-            color: #333;
+            color: var(--text-color);
             font-weight: bold;
         }
 
@@ -580,7 +580,7 @@
 
         .option:hover {
             border-color: var(--accent);
-            background: #f5f7ff;
+            background: var(--panel-bg);
         }
 
         .option.selected {
@@ -602,8 +602,8 @@
         }
 
         .answer-display {
-            background: #f0f7ff;
-            border-left: 4px solid #2196f3;
+            background: var(--panel-bg);
+            border-left: 4px solid var(--accent);
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -616,14 +616,14 @@
         }
 
         .answer-display h3 {
-            color: #2196f3;
+            color: var(--accent);
             margin-bottom: 15px;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
         }
 
         .answer-display p {
-            color: #333;
+            color: var(--text-color);
             line-height: 1.9;
             white-space: pre-wrap;
             font-size: 1.1rem;
@@ -637,6 +637,9 @@
         }
 
         .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             flex: 1;
             min-width: 120px;
             padding: 15px 25px;
@@ -645,6 +648,7 @@
             cursor: pointer;
             font-size: 1.1rem;
             font-weight: 600;
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
@@ -666,7 +670,7 @@
         }
 
         .btn-secondary:hover {
-            background: #e8e8e8;
+            background: var(--panel-bg);
         }
 
         .btn:disabled {
@@ -717,16 +721,18 @@
 
         .search-box input {
             width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1.1rem;
+            padding: 14px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1.05rem;
+            background: var(--card-bg);
+            color: var(--text-color);
             transition: border-color 0.3s ease;
         }
 
         .search-box input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--accent);
         }
 
         .question-list {
@@ -761,7 +767,7 @@
         .empty-state {
             text-align: center;
             padding: 40px;
-            color: #999;
+            color: var(--muted-color);
         }
 
         .empty-state-icon {
@@ -812,8 +818,6 @@
             flex-wrap: wrap;
         }
 
-        .toolbar-section { margin-top: -10px; margin-bottom: 18px; }
-        .toolbar-title { font-size: 0.95rem; color: #666; margin: 4px 0 8px; font-weight: 600; }
 
         .modal-overlay {
             position: fixed;
@@ -836,7 +840,7 @@
         }
         .modal-header {
             padding: 14px 18px;
-            background: #667eea;
+            background: var(--accent);
             color: #fff;
             font-weight: 700;
             display: flex;
@@ -865,18 +869,20 @@
         .editor-actions { display: flex; gap: 10px; justify-content: flex-end; padding-top: 8px; border-top: 1px solid #eee; }
 
         .filter-btn {
-            padding: 10px 20px;
-            border: 2px solid #e0e0e0;
-            background: white;
+            padding: 8px 18px;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-color);
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            font-family: inherit;
         }
 
         .filter-btn:hover, .filter-btn.active {
-            border-color: #667eea;
-            background: #667eea;
+            border-color: var(--accent);
+            background: var(--accent);
             color: white;
         }
 
@@ -900,8 +906,8 @@
         }
         .spinner {
             width: 22px; height: 22px;
-            border: 3px solid #e0e0ff;
-            border-top-color: #667eea;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--accent);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -950,9 +956,22 @@
         .bottom-bar .btn { flex: 1; }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
             }
+            .header-toolbar {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .header-toolbar select,
+            .header-toolbar button {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+            .header-brand h1 { font-size: 1.5em; }
+            .header-brand p { font-size: 0.8em; }
 
             .main-content {
                 padding: 20px;
@@ -969,12 +988,25 @@
             }
 
             .mode-btn {
-                min-width: 120px;
-                padding: 12px 15px;
+                min-width: 100px;
+                padding: 10px 12px;
+                font-size: 0.9rem;
             }
 
             .question-text {
                 font-size: 1.1em;
+                padding: 18px;
+            }
+
+            .subject-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .tools-panel .tools-row {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .bottom-bar { display: block; }
@@ -1032,37 +1064,78 @@
     </div>
     <div class="container">
         <div class="header">
-            <button id="themeToggle" class="theme-toggle" title="切换主题">🌓 主题</button>
-            <select id="layoutSelect" class="layout-select" title="页面布局">
-                <option value="default">默认布局</option>
-                <option value="sidebar-left">左侧导航</option>
-                <option value="single">单列沉浸</option>
-            </select>
-            <button id="helpBtn" class="help-btn" title="帮助与快捷键">❔ 帮助</button>
-            <button id="navToggle" class="nav-toggle" title="折叠/展开右侧导航">📑 导航</button>
-            <select id="densitySelect" class="density-select" title="视觉密度">
-                <option value="default">标准密度</option>
-                <option value="compact">紧凑模式</option>
-            </select>
-            <select id="styleSelect" class="style-select" title="视觉风格">
-                <option value="default">默认</option>
-                <option value="glass">玻璃</option>
-                <option value="aurora">极光</option>
-                <option value="editorial">极简</option>
-                <option value="brutal">块状</option>
-            </select>
-            <h1>QuizPilot</h1>
-            <p>刷题、练习、统计、错题集，一站式强化学习</p>
+            <div class="header-top">
+                <div class="header-brand">
+                    <h1>QuizPilot</h1>
+                    <p>刷题、练习、统计、错题集，一站式强化学习</p>
+                </div>
+                <div class="header-toolbar">
+                    <select id="styleSelect" title="视觉风格">
+                        <option value="default">默认</option>
+                        <option value="glass">玻璃</option>
+                        <option value="aurora">极光</option>
+                        <option value="editorial">极简</option>
+                        <option value="brutal">块状</option>
+                    </select>
+                    <select id="layoutSelect" title="页面布局">
+                        <option value="default">默认布局</option>
+                        <option value="sidebar-left">左侧导航</option>
+                        <option value="single">单列沉浸</option>
+                    </select>
+                    <select id="densitySelect" title="视觉密度">
+                        <option value="default">标准密度</option>
+                        <option value="compact">紧凑模式</option>
+                    </select>
+                    <span class="toolbar-sep"></span>
+                    <button id="navToggle" title="折叠/展开导航">📑 导航</button>
+                    <button id="helpBtn" title="帮助与快捷键">❔ 帮助</button>
+                    <button id="themeToggle" title="切换主题">🌓 主题</button>
+                </div>
+            </div>
         </div>
 
-        <div class="subject-switch">
-            <span>科目切换：</span>
-            <button class="subject-btn" data-subject-btn data-subject="ai">人工智能</button>
-            <button class="subject-btn" data-subject-btn data-subject="exchange">现代交换原理</button>
-            <button class="subject-btn" data-subject-btn data-subject="linux">Linux 技术应用</button>
-            <button class="subject-btn" data-subject-add>➕ 新增学科</button>
+        <div class="subject-bar">
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                <span class="subject-bar-label">科目切换</span>
+                <div class="subject-btn-group">
+                    <button class="subject-btn active" data-subject-btn data-subject="ai">人工智能</button>
+                    <button class="subject-btn" data-subject-btn data-subject="exchange">现代交换原理</button>
+                    <button class="subject-btn" data-subject-btn data-subject="linux">Linux 技术应用</button>
+                </div>
+            </div>
+            <button class="subject-btn" data-subject-add style="border-style:dashed;">+ 新增学科</button>
         </div>
         <div id="subjectStatus" class="subject-status" style="display:none;"></div>
+
+        <details class="tools-panel" id="toolsPanel">
+            <summary>工具与资料（点击展开）</summary>
+            <div class="tools-body">
+                <div class="tools-row">
+                    <span class="tools-row-label">导入识别</span>
+                    <button class="btn btn-secondary" id="importDocBtn">导入 Word/PDF/文本</button>
+                    <button class="btn btn-secondary" id="openOverlayEditorBtn">覆盖层校对</button>
+                </div>
+                <div class="tools-row">
+                    <span class="tools-row-label">内置资料</span>
+                    <button class="btn btn-secondary" id="importBundledAiBtn">载入 AI 微认证题库</button>
+                    <a class="btn btn-secondary" href="materials/ai-microcert.pdf" target="_blank" rel="noopener">查看 AI PDF</a>
+                    <button class="btn btn-secondary" id="importBundledOpenEulerBtn">载入 openEuler 微认证题库</button>
+                    <a class="btn btn-secondary" href="materials/openeuler-microcert.pdf" target="_blank" rel="noopener">查看 openEuler PDF</a>
+                    <button class="btn btn-secondary" id="importBundledAiUpgradeBtn">载入 AI 升级考试题</button>
+                    <a class="btn btn-secondary" href="materials/ai-upgrade-exam.pdf" target="_blank" rel="noopener">查看 AI 升级 PDF</a>
+                </div>
+                <div class="tools-row">
+                    <span class="tools-row-label">覆盖层管理</span>
+                    <button class="btn btn-secondary" id="importOverlayLocalBtn">导入覆盖层（本地）</button>
+                    <button class="btn btn-secondary" id="importOverlayServerBtn">上传覆盖层（服务器）</button>
+                    <button class="btn btn-secondary" id="exportOverlayBtn">导出覆盖层</button>
+                    <button class="btn btn-secondary" id="clearOverlayBtn">清空覆盖层</button>
+                </div>
+            </div>
+        </details>
+        <input type="file" id="overlayFileInput" accept="application/json,.json" style="display:none">
+        <input type="file" id="overlayUploadInput" accept="application/json,.json" style="display:none">
+        <input type="file" id="docFileInput" accept=".docx,.pdf,.txt,.md" style="display:none">
 
         <div class="main-content">
             <div class="content-layout">
@@ -1075,25 +1148,7 @@
                         <button class="mode-btn" data-mode="stats">📊 统计数据</button>
                     </div>
 
-                    <div class="toolbar-section">
-                        <div class="toolbar-title">导入与识别</div>
-                        <div class="button-group">
-                            <button class="btn btn-secondary" id="importDocBtn">📄 导入 Word/PDF/文本</button>
-                            <button class="btn btn-secondary" id="openOverlayEditorBtn">🛠️ 覆盖层校对</button>
-                        </div>
-                    </div>
-                    <div class="toolbar-section">
-                        <div class="toolbar-title">覆盖层管理</div>
-                        <div class="button-group">
-                            <button class="btn btn-secondary" id="importOverlayLocalBtn">📥 导入覆盖层（本地）</button>
-                            <button class="btn btn-secondary" id="importOverlayServerBtn">⤴️ 上传覆盖层（到服务器）</button>
-                            <button class="btn btn-secondary" id="exportOverlayBtn">📤 导出覆盖层</button>
-                            <button class="btn btn-secondary" id="clearOverlayBtn">🧹 清空覆盖层</button>
-                        </div>
-                        <input type="file" id="overlayFileInput" accept="application/json,.json" style="display:none">
-                        <input type="file" id="overlayUploadInput" accept="application/json,.json" style="display:none">
-                        <input type="file" id="docFileInput" accept=".docx,.pdf,.txt,.md" style="display:none">
-                    </div>
+
 
                     <!-- 练习模式 -->
                     <div id="practice" class="question-container active">

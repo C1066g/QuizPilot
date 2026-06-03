@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "start:dev": "HOST=0.0.0.0 PORT=8001 node server.js",
-    "start:win": "node server.js"
+    "start:win": "node server.js",
+    "start:termux": "HOST=127.0.0.1 PORT=8002 node server.js"
   },
   "repository": {
     "type": "git",
