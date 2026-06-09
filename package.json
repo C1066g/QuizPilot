@@ -1,0 +1,32 @@
+{
+  "name": "quizpilot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "QuizPilot · AI Study & Quiz App / AI 学习与刷题应用",
+  "scripts": {
+    "start": "node server.js",
+    "start:dev": "HOST=0.0.0.0 PORT=8001 node server.js",
+    "start:win": "node server.js",
+    "start:termux": "HOST=127.0.0.1 PORT=8002 node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/C1066g/QuizPilot.git"
+  },
+  "homepage": "https://github.com/C1066g/QuizPilot",
+  "keywords": [
+    "quiz",
+    "study",
+    "education",
+    "javascript",
+    "frontend",
+    "security",
+    "csp",
+    "json-schema",
+    "nodejs",
+    "spa"
+  ],
+  "engines": {
+    "node": ">=14"
+  }
+}
