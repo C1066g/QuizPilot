@@ -627,15 +627,15 @@ const BUNDLED_IMPORTS = {
         subject: 'comm_net_1_3',
         name: '通信网络技术 第1-3章',
         file: 'materials/comm-net-ch1-3.pdf',
-        dataFile: null,
-        mode: 'pdf'
+        dataFile: 'custom/subject_comm_net_1_3.json',
+        mode: 'json'
     },
     comm_net_4_5: {
         subject: 'comm_net_4_5',
         name: '通信网络技术 第4-5章',
         file: 'materials/comm-net-ch4-5.pdf',
-        dataFile: null,
-        mode: 'pdf'
+        dataFile: 'custom/subject_comm_net_4_5.json',
+        mode: 'json'
     }
 };
 
