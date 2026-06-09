@@ -4,3 +4,4 @@
 # Keep templates and placeholder
 !*.template.json
 !.gitkeep
+!subject_*.json
