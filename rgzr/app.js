@@ -622,6 +622,20 @@ const BUNDLED_IMPORTS = {
         file: 'materials/ai-upgrade-exam.pdf',
         dataFile: 'custom/subject_ai_upgrade_exam.json',
         mode: 'json'
+    },
+    comm_net_1_3: {
+        subject: 'comm_net_1_3',
+        name: '通信网络技术 第1-3章',
+        file: 'materials/comm-net-ch1-3.pdf',
+        dataFile: null,
+        mode: 'pdf'
+    },
+    comm_net_4_5: {
+        subject: 'comm_net_4_5',
+        name: '通信网络技术 第4-5章',
+        file: 'materials/comm-net-ch4-5.pdf',
+        dataFile: null,
+        mode: 'pdf'
     }
 };
 
@@ -739,6 +753,8 @@ function bindCspSafeEvents() {
         ['importBundledAiBtn', () => importBundledSubject('ai_microcert')],
         ['importBundledOpenEulerBtn', () => importBundledSubject('openeuler_microcert')],
         ['importBundledAiUpgradeBtn', () => importBundledSubject('ai_upgrade_exam')],
+        ['importBundledCommNet13Btn', () => importBundledSubject('comm_net_1_3')],
+        ['importBundledCommNet45Btn', () => importBundledSubject('comm_net_4_5')],
         ['openOverlayEditorBtn', () => openOverlayEditor(true)],
         ['importOverlayLocalBtn', () => importOverlayFromFile()],
         ['importOverlayServerBtn', () => importOverlayToServer()],
