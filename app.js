@@ -792,6 +792,11 @@ function bindCspSafeEvents() {
         ['clearWrongBtn', () => clearWrongQuestions()],
         ['exportStatsBtn', () => exportStats()],
         ['resetAllBtn', () => resetAllData()],
+        ['typeBtnAll', () => filterByType('all')],
+        ['typeBtnSingle', () => filterByType('single')],
+        ['typeBtnJudge', () => filterByType('judge')],
+        ['typeBtnFill', () => filterByType('fill')],
+        ['typeBtnEssay', () => filterByType('essay')],
     ];
     map.forEach(([id, fn]) => { const el = byId(id); if (el) el.addEventListener('click', fn); });
 

@@ -1117,11 +1117,11 @@
         <div id="subjectStatus" class="subject-status" style="display:none;"></div>
         <div class="type-bar" id="typeBar" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0;padding:6px 0;">
             <span style="font-size:0.8rem;font-weight:600;color:var(--muted-color,#888);">题型筛选</span>
-            <button class="type-btn active" data-type="all" onclick="filterByType('all')">全部</button>
-            <button class="type-btn" data-type="single" onclick="filterByType('single')">📝 选择题</button>
-            <button class="type-btn" data-type="judge" onclick="filterByType('judge')">⚖️ 判断题</button>
-            <button class="type-btn" data-type="fill" onclick="filterByType('fill')">✏️ 填空题</button>
-            <button class="type-btn" data-type="essay" onclick="filterByType('essay')">📄 简答题</button>
+            <button class="type-btn active" data-type="all" id="typeBtnAll">全部</button>
+            <button class="type-btn" data-type="single" id="typeBtnSingle">📝 选择题</button>
+            <button class="type-btn" data-type="judge" id="typeBtnJudge">⚖️ 判断题</button>
+            <button class="type-btn" data-type="fill" id="typeBtnFill">✏️ 填空题</button>
+            <button class="type-btn" data-type="essay" id="typeBtnEssay">📄 简答题</button>
         </div>
 
         <details class="tools-panel" id="toolsPanel">
