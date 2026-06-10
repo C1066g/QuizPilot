@@ -2835,6 +2835,149 @@
       ],
       "answer": "D",
       "answerText": "D"
+    },
+    {
+      "type": "tf",
+      "question": "ARP协议用来实现将IP地址解析为数据链层的MAC地址( ) 答案：正确",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "answerText": "正确",
+      "id": 219
+    },
+    {
+      "type": "tf",
+      "question": "网络通信中的路由选择功能是由OSI参考模型的网络层完成的。( ) 答案：正确",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "answerText": "正确",
+      "id": 220
+    },
+    {
+      "type": "tf",
+      "question": "路由器可以隔离广播风暴。( ) 答案：正确",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "answerText": "正确",
+      "id": 221
+    },
+    {
+      "type": "tf",
+      "question": "路由器可以显著提升网络传输速度。( ) 答案：错误",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "answerText": "错误",
+      "id": 222
+    },
+    {
+      "type": "tf",
+      "question": "路由器依据MAC地址转发数据包。( ) 答案：错误",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "answerText": "错误",
+      "id": 223
+    },
+    {
+      "type": "tf",
+      "question": "在TCP/IP体系结构中，网络层提供可靠的传输服务。( ) 答案：错误",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "answerText": "错误",
+      "id": 224
+    },
+    {
+      "type": "tf",
+      "question": "路由器的各个端口的IP地址是相同的。( ) 答案：错误",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "answerText": "错误",
+      "id": 225
+    },
+    {
+      "type": "tf",
+      "question": "路由器是一种具有多个输入端口和多个输出端口的专用计算机，其任务是转 发分组。( ) 答案：错误",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "answerText": "错误",
+      "id": 226
+    },
+    {
+      "type": "tf",
+      "question": "网桥是工作在网络层的网络互连设备。( ) 答案：错误",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "answerText": "错误",
+      "id": 227
+    },
+    {
+      "type": "tf",
+      "question": "面向连接服务适用于数据量大、实时性要求高的场合。( ) 答案：正确",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "answerText": "正确",
+      "id": 228
+    },
+    {
+      "type": "tf",
+      "question": "UDP协议为应用程序之间提供可靠的的数据传输服务。( ) 答案：错误",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "answerText": "错误",
+      "id": 229
+    },
+    {
+      "type": "tf",
+      "question": "运输层的TCP和UDP协议是根据IP地址将数据交给应用层特定的应用进程。( ) 答案：错误",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "answerText": "错误",
+      "id": 230
+    },
+    {
+      "type": "tf",
+      "question": "TCP支持一对多的广播服务。( ) 答案：错误",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "answerText": "错误",
+      "id": 231
     }
   ]
 }
