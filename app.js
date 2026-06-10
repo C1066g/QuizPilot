@@ -714,24 +714,9 @@ async function discoverSubjectsFromServer() {
     }
 }
 
-let currentType = localStorage.getItem('currentType') || 'all';
-function filterByType(type) {
-    currentType = type;
-    localStorage.setItem('currentType', type);
-    document.querySelectorAll('.type-btn').forEach(b => b.classList.toggle('active', b.dataset.type === type));
-    allQuestions = (type === 'all') ? [...originalQuestions] : originalQuestions.filter(q => q.type === type);
-    currentIndex = 0;
-    renderQuestionNav();
-    showQuestion();
-    updateStats();
-}
-
 function refreshAfterOverlayChange() {
     allQuestions = SUBJECTS[currentSubject].getQuestions();
     originalQuestions = [...allQuestions];
-    if (currentType && currentType !== 'all') allQuestions = allQuestions.filter(q => q.type === currentType);
-    currentIndex = 0;
-    document.querySelectorAll('.type-btn').forEach(b => b.classList.toggle('active', b.dataset.type === (currentType || 'all')));
     const proceed = () => {
         renderQuestionNav();
         showQuestion();
@@ -792,11 +777,6 @@ function bindCspSafeEvents() {
         ['clearWrongBtn', () => clearWrongQuestions()],
         ['exportStatsBtn', () => exportStats()],
         ['resetAllBtn', () => resetAllData()],
-        ['typeBtnAll', () => filterByType('all')],
-        ['typeBtnSingle', () => filterByType('single')],
-        ['typeBtnJudge', () => filterByType('judge')],
-        ['typeBtnFill', () => filterByType('fill')],
-        ['typeBtnEssay', () => filterByType('essay')],
     ];
     map.forEach(([id, fn]) => { const el = byId(id); if (el) el.addEventListener('click', fn); });
 
@@ -2047,8 +2027,6 @@ function initApp() {
     // 合并所有题目
     allQuestions = SUBJECTS[currentSubject].getQuestions();
     originalQuestions = [...allQuestions];
-    if (currentType && currentType !== 'all') allQuestions = allQuestions.filter(q => q.type === currentType);
-    document.querySelectorAll('.type-btn').forEach(b => b.classList.toggle('active', b.dataset.type === (currentType || 'all')));
     updateSubjectButtons();
     setupAutoAdvanceToggle();
     loadProgress();
