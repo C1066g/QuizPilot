@@ -271,6 +271,15 @@
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.35);
         }
 
+        .type-btn {
+            padding: 5px 14px; border-radius: 18px; border: 1px solid var(--border-color, #ddd);
+            background: var(--card-bg, #fff); color: var(--muted-color, #666);
+            font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all .2s;
+            font-family: inherit; white-space: nowrap;
+        }
+        .type-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .type-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
         .subject-status {
             display: flex;
             gap: 12px;
@@ -1106,6 +1115,14 @@
             <button class="subject-btn" data-subject-add style="border-style:dashed;">+ 新增学科</button>
         </div>
         <div id="subjectStatus" class="subject-status" style="display:none;"></div>
+        <div class="type-bar" id="typeBar" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0;padding:6px 0;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--muted-color,#888);">题型筛选</span>
+            <button class="type-btn active" data-type="all" onclick="filterByType('all')">全部</button>
+            <button class="type-btn" data-type="single" onclick="filterByType('single')">📝 选择题</button>
+            <button class="type-btn" data-type="judge" onclick="filterByType('judge')">⚖️ 判断题</button>
+            <button class="type-btn" data-type="fill" onclick="filterByType('fill')">✏️ 填空题</button>
+            <button class="type-btn" data-type="essay" onclick="filterByType('essay')">📄 简答题</button>
+        </div>
 
         <details class="tools-panel" id="toolsPanel">
             <summary>工具与资料（点击展开）</summary>
