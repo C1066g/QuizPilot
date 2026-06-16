@@ -636,6 +636,20 @@ const BUNDLED_IMPORTS = {
         file: 'materials/comm-net-ch4-5.pdf',
         dataFile: 'custom/subject_comm_net_4_5.json',
         mode: 'json'
+    },
+    ic_design: {
+        subject: 'ic_design',
+        name: '集成电路设计基础',
+        file: 'materials/ic-design.pdf',
+        dataFile: 'custom/subject_ic_design.json',
+        mode: 'pdf'
+    },
+    android: {
+        subject: 'android',
+        name: 'Android系统开发基础',
+        file: 'materials/android.txt',
+        dataFile: 'custom/subject_android.json',
+        mode: 'json'
     }
 };
 
@@ -755,6 +769,8 @@ function bindCspSafeEvents() {
         ['importBundledAiUpgradeBtn', () => importBundledSubject('ai_upgrade_exam')],
         ['importBundledCommNet13Btn', () => importBundledSubject('comm_net_1_3')],
         ['importBundledCommNet45Btn', () => importBundledSubject('comm_net_4_5')],
+        ['importBundledIcDesignBtn', () => importBundledSubject('ic_design')],
+        ['importBundledAndroidBtn', () => importBundledSubject('android')],
         ['openOverlayEditorBtn', () => openOverlayEditor(true)],
         ['importOverlayLocalBtn', () => importOverlayFromFile()],
         ['importOverlayServerBtn', () => importOverlayToServer()],
@@ -1622,7 +1638,7 @@ function validateOverlayItems(items, subjectKey) {
             delete it.options;
         } else if (it.type === 'fill' || it.type === 'essay') {
             // 用 answerText 表述参考答案，answer 可为空
-            it.answerText = limit(it.answerText || '', 2000);
+            it.answerText = limit(it.answerText || it.answer || '', 2000);
             delete it.answer;
         }
         // 严格字段白名单
@@ -2515,44 +2531,22 @@ function renderQuestionList() {
 }
 
 // 渲染右侧题号/类型导航（按题型分组）
+function escapeHtml(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
 function renderQuestionNav() {
     const nav = document.getElementById('questionNavList');
     if (!nav) return;
     nav.innerHTML = '';
-    const typeLabel = getTypeLabel;
-    const grouped = {};
-    allQuestions.forEach((q, idx) => {
-        if (!grouped[q.type]) grouped[q.type] = [];
-        grouped[q.type].push({ q, idx });
-    });
-    const typeOrder = Object.keys(grouped).sort((a, b) => grouped[a][0].idx - grouped[b][0].idx);
 
-    typeOrder.forEach(type => {
-        const list = grouped[type];
-        if (!list || list.length === 0) return;
-        const group = document.createElement('div');
-        group.className = 'nav-group';
-        
-        const title = document.createElement('div');
-        title.className = 'nav-group-title';
-        title.innerHTML = `<span>${typeLabel(type)}</span><span>${list.length} 题</span>`;
-        group.appendChild(title);
-        
-        const listContainer = document.createElement('div');
-        listContainer.className = 'nav-list';
-        
-        list.forEach(({ q, idx }) => {
-            const item = document.createElement('div');
-            item.className = 'nav-item' + (idx === currentIndex ? ' active' : '');
-            item.setAttribute('data-index', idx);
-            item.innerHTML = `<span class="nav-num">第 ${idx + 1} 题</span><span class="nav-type">${typeLabel(q.type)}</span>`;
-            listContainer.appendChild(item);
-        });
-        
-        group.appendChild(listContainer);
-        nav.appendChild(group);
+    allQuestions.forEach((q, idx) => {
+        const item = document.createElement('div');
+        item.className = 'nav-item' + (idx === currentIndex ? ' active' : '');
+        item.setAttribute('data-index', idx);
+        const tag = getTypeLabel(q.type);
+        item.innerHTML = '<span class="nav-num">' + (idx + 1) + '</span><span class="nav-tag">' + tag + '</span><span class="nav-title">' + escapeHtml(q.question.slice(0, 28)) + '</span>';
+        nav.appendChild(item);
     });
-    
+
     nav.onclick = (e) => {
         const target = e.target.closest('.nav-item');
         if (!target) return;
