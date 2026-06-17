@@ -1,0 +1,1912 @@
+{
+  "subject": "ai_upgrade_exam",
+  "name": "AI 升级考试题",
+  "items": [
+    {
+      "id": 900702264,
+      "type": "single",
+      "question": "AscdExtensionfor PyTorch 插件是基于昇腾的深度学习适配框架,使昇腾 NPU 可以支持 PyTorch 框架,这种实现方式在粒度上为以下哪个选项?(相似题)",
+      "options": [
+        "图粒度",
+        "层粒度",
+        "算子粒度",
+        "动态选择"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 521169261,
+      "type": "single",
+      "question": "某工程师希望通过 AI 模型实现水果图像分类,以下哪项是训练模型时需要使用的数据?",
+      "options": [
+        "水果颜色值",
+        "水果甜度",
+        "敲击水果声音数据",
+        "水果图片"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 643810343,
+      "type": "single",
+      "question": "在昇腾 AI 软件栈中,MindStudio 属于以下哪一种类别?",
+      "options": [
+        "异构计算架构",
+        "全流程开发工具链",
+        "管理运维工具",
+        "深度学习框架"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 576609643,
+      "type": "single",
+      "question": "以下哪项任务特性最适合采用 AI Agent 架构来实现?",
+      "options": [
+        "仅涉及简单的数值计算,无需外部接口",
+        "完全依赖于人类的即时创意和直觉",
+        "流程固定且决策路径完全可预定义",
+        "需要频繁执行相同或类似的操作序列"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 315030851,
+      "type": "single",
+      "question": "DeepSeek - R1 是效果最为出众的模型之一,它属于以下哪个范畴的人工智能?",
+      "options": [
+        "通用人工智能",
+        "超人工智能",
+        "弱人工智能",
+        "强人工智能"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1368100832,
+      "type": "single",
+      "question": "现在训练 LLM 存在很多挑战,其中联算比失衡指的是以下哪个选项跟不上 LLM 运算量发展?",
+      "options": [
+        "内存容量",
+        "内存带宽",
+        "服务器内部互联带宽",
+        "服务器之间互联带宽"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 599797555,
+      "type": "single",
+      "question": "“从有标签的历史数据中来预测下季度的商铺营收额”,这是一个什么问题?(单选)",
+      "options": [
+        "回归问题",
+        "规则问题",
+        "聚类问题",
+        "分类问题"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1723119295,
+      "type": "single",
+      "question": "小艺是华为全场景设备上的智慧助手,在 AI大模型加持下,具备全场景解决方案能力.虽然能力强,但它依然存在局限性.以下哪一项日常中常见的问题是不可能解决的?",
+      "options": [
+        "预测未来一周内的天气",
+        "对文档进行总结",
+        "设置重要事件提醒",
+        "编写简单的文案"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1129551419,
+      "type": "single",
+      "question": "在 AI 模型开发时,以下哪种操作不属于网络定义的功能?",
+      "options": [
+        "数据清洗",
+        "选择优化器",
+        "选择损失函数",
+        "D 确定输入输出"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1289357809,
+      "type": "single",
+      "question": "AscendExtension for PyTorch 插件是基于昇腾的深度学习适配框架,使昇腾 NPU 可以支持 PyTorch 框架,这种实现方式对应为以下哪个选项?",
+      "options": [
+        "算子重载",
+        "即插即用",
+        "动态适配",
+        "硬转换"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 267980899,
+      "type": "single",
+      "question": "以下哪个选项不是 FPGA 架构芯片的特点?",
+      "options": [
+        "开发周期较短",
+        "峰值计算能力较低",
+        "可通过编程灵活配置芯片架构",
+        "量产后成本低"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1950772487,
+      "type": "single",
+      "question": "在 MindSpore 中,运行以上这段代码后,以下描述正确的是哪个选项?a = ([[1, 2], [3, 4], [5, 6, 7]])x = Tensor (a,dtype=int32)",
+      "options": [
+        "程序异常,a 必须转化为数组,才能正常执行",
+        "程序异常,抛出 TypeError",
+        "创建一个维度为 (3, 2) 的 tensor",
+        "创建一个维度为 (2, 3) 的 tensor"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1849238558,
+      "type": "single",
+      "question": "在一个任务中,让模型利用大量未标记数据以及少量有标记数据进行训练,这样的算法属于以下哪一类学习?",
+      "options": [
+        "监督学习",
+        "半监督学习",
+        "无监督学习",
+        "自监督学习"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1926747300,
+      "type": "single",
+      "question": "关于 AI 技术,以下哪项描述是错误的?",
+      "options": [
+        "AI 框架可以提高工程师实现 AI 模型的效率",
+        "训练 AI 模型可以不使用数据和 AI 计算芯片",
+        "训练 AI 模型使用的数据类别可以是图片、文字或者语音",
+        "AI 模型是从数据中学习,不同类型的任务需要的训练数据也不完全相同"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1390983537,
+      "type": "single",
+      "question": "某工程师想要部署一个大语言模型的应用,可以通过以下哪个选项获取模型?",
+      "options": [
+        "ModelZoo",
+        "MindSpeed - LLMC",
+        "ModelArts",
+        "MindSDK"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1127662554,
+      "type": "single",
+      "question": "以下关于前馈神经网络描述错误的是哪一项?",
+      "options": [
+        "前馈神经网络由于输出层神经元数较多,因此无法解决二分类任务,但可以实现多分类",
+        "前馈神经网络中每一个神经元的功能是通过激活函数实现的",
+        "前馈神经网络中使用了非线性激活函数",
+        "前馈神经网络是一种全连接的前馈网络"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 553324868,
+      "type": "single",
+      "question": "John 使用 PyTorch 框架构建了 ResNet50网络用于图像分类,在训练模型时他应该将数据集处理成以下哪个形式的张量?(N 为批量数据大小,H、W 为图片高度,C 为通道数)",
+      "options": [
+        "[N,H,W,C]",
+        "[N,C,H,W]",
+        "[H,W,C,N]",
+        "[N,H*W,C]"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1224554202,
+      "type": "single",
+      "question": "以下哪一项是 Transformer 相对于 RNN 的优势?",
+      "options": [
+        "能够实现中英翻译",
+        "可以理解语音信息",
+        "能够识别垃圾邮件",
+        "能够有效地理解更长的文本信息"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1740248245,
+      "type": "single",
+      "question": "昇腾大模型解决方案提供了全流程的工具,以下哪个工具可用于性能调优?",
+      "options": [
+        "MindIE",
+        "MindSpore",
+        "MindStudio",
+        "MindSpeed"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1794300038,
+      "type": "single",
+      "question": "John 在训练模型过程中,将模型保存为 ckpt(checkpoint) 格式,以下描述错误的是哪个选项?",
+      "options": [
+        "训练中断后,可加载 ckpt 文件继续训练",
+        "ckpt 文件记录了模型权重,是一种轻量级的格式",
+        "可以直接加载 ckpt 文件进行分布式训练",
+        "ckpt 文件可以记录模型的不同版本,便于进行比较和选择"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 851648732,
+      "type": "single",
+      "question": "AI 模型训练的基本流程包括以下步骤:(1)准备数据 (2)保存模型(3)测试模型 (4)数据处理(5)训练模型.以下哪个是正确的排序?",
+      "options": [
+        "1->4->2->5->3",
+        "1->4->5->3->2",
+        "1->5->4->3->2",
+        "1->5->2->4->3"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 252858737,
+      "type": "single",
+      "question": "在卷积神经网络中 ReLU 激活函数的作用是什么?",
+      "options": [
+        "压缩参数",
+        "弥补物理尺寸",
+        "控制数值分布",
+        "引入非线性元素"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1697518486,
+      "type": "single",
+      "question": "输入一个 32x32 的图像,用大小为 5x5 的卷积核进行步长为 1 的卷积计算,输出的图像尺寸为以下哪个选项?",
+      "options": [
+        "23x23",
+        "28x23",
+        "28x28",
+        "29x29"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1496631414,
+      "type": "single",
+      "question": "关于反向传播,以下描述错误的是哪一项?",
+      "options": [
+        "反向传播可以结合梯度下降算法更新网络权重",
+        "反向传播指的是误差通过网络反向传播",
+        "反向传播只能在前馈神经网络中运用",
+        "反向传播会使用激活函数的梯度"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 735403134,
+      "type": "single",
+      "question": "模型构建流程的正确步骤是以下哪个选项?①. 验证模型 ②. 分割数据 ③. 用户反馈数据优化模型 ④. 训练模型 ⑤. 部署模型 ⑥. 测试模型",
+      "options": [
+        "2->4->1->3->6->5",
+        "2->4->3->1->5->6",
+        "2->4->3->1->6->5",
+        "2->4->1->6->5->3"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 60478784,
+      "type": "single",
+      "question": "在智慧医疗场景下,以下技术与应用对应错误的是哪一项?",
+      "options": [
+        "医学影像\\-\\-- 计算机视觉",
+        "虚拟助理\\-\\-- 语音识别",
+        "药物挖掘--- 语音合成",
+        "疾病风险预测\\-\\-- 数据挖掘"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 449323355,
+      "type": "single",
+      "question": "在信用卡欺诈检测场景和垃圾邮件分类场景中,分别对模型的哪个评估指标要求较高?",
+      "options": [
+        "精度、精度",
+        "召回率、精度",
+        "召回率、召回率",
+        "精度、召回率"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 568542273,
+      "type": "single",
+      "question": "自然语言处理的应用场景不包括以下哪一个选项?",
+      "options": [
+        "舆情分析",
+        "文本分类",
+        "图像识别",
+        "机器翻译"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1821343680,
+      "type": "single",
+      "question": "John 在使用 PyTorch + GPU 进行模型训练时,发现资源利用率低且损失函数震荡难以收敛,他可以通过以下哪个选项来尝试解决问题?",
+      "options": [
+        "增大学习率",
+        "增加神经网络的深度",
+        "增大 batch_size",
+        "减少训练集数据量"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 70043805,
+      "type": "single",
+      "question": "John 在 AI 应用开发过程中操作正确的是以下哪个选项?",
+      "options": [
+        "适当增大 batch size 来增加 GPU 的利用率",
+        "尽可能设置较大的 epoch 保证训练精度",
+        "确保模型训练完成后才保存参数",
+        "为加快训练速度可以适当删除一部分训练数据"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1707482803,
+      "type": "single",
+      "question": "智能驾驶的能力越来越强,以下哪一项因素不是支撑它发展的因素?",
+      "options": [
+        "智能座舱语音助手/智能座舱的自动驾驶",
+        "强大的 AI 算法",
+        "高性能的车机芯片",
+        "优质的传感设备"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 6532063,
+      "type": "single",
+      "question": "以下哪一个选项正确描述了 AI、机器学习、深度学习之间从大到小的包含关系?",
+      "options": [
+        "AI、深度学习、机器学习",
+        "深度学习、机器学习、AI",
+        "AI、机器学习、深度学习",
+        "深度学习、AI、机器学习"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1747178913,
+      "type": "single",
+      "question": "从技术架构角度,关于 AI 芯片的描述,错误的是哪一个选项?",
+      "options": [
+        "ASIC 属于专用集成电路",
+        "GPU 是一种专门在个人电脑、工作站、游戏和一些移动设备上进行图像运算工作的微处理器",
+        "CPU 的功能主要是解释计算机指令以及储存计算机硬件中的数据",
+        "FPGA 实现了半定制芯片的功能"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1181242908,
+      "type": "single",
+      "question": "John 想要实现一个机器翻译的应用,他可以选择以下哪个类别的算法?",
+      "options": [
+        "语义分割",
+        "文本分类",
+        "文本生成",
+        "字符识别"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1480427859,
+      "type": "single",
+      "question": "以下哪个选项不属于 AI 开发框架?",
+      "options": [
+        "MindSpore",
+        "PyTorch",
+        "Python",
+        "TensorFlow"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1744467488,
+      "type": "single",
+      "question": "机器学习中,从数据处理到模型开始训练之前,以下哪个选项不是这个过程的一部分?",
+      "options": [
+        "数据采集",
+        "数据降维",
+        "数据标准化",
+        "数据清理"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 563108570,
+      "type": "single",
+      "question": "知识图谱的应用不包含以下哪一个选项?",
+      "options": [
+        "搜索引擎",
+        "智能驾驶路径规划",
+        "推荐系统",
+        "智能问答"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1066643443,
+      "type": "single",
+      "question": "MindSpore 中,以下哪个接口可以用来构建全连接层?",
+      "options": [
+        "Dense()",
+        "ReLU()",
+        "Conv2d()",
+        "FC()"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1109445267,
+      "type": "single",
+      "question": "John 使用 PyTorch 实现了一个包含全连接块和 CNN 层的网络结构,以下关于此网络结构描述正确的是哪个选项?",
+      "options": [
+        "网络不可执行,需要改变全连接层输入维度后才可执行",
+        "网络可以正常运行,可用于(10)分类任务",
+        "网络不可以运行,需要加入池化层后才可正常执行",
+        "网络可以运行,可以接收四维的图像数据集输入"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1205836437,
+      "type": "single",
+      "question": "DeepSeek-R1-Zero 使用了以下哪项技术?",
+      "options": [
+        "SFT",
+        "GRPO",
+        "DPO",
+        "RLHF"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1588514775,
+      "type": "single",
+      "question": "深度学习中如果神经网络的层数较多容易出现梯度消失问题,梯度消失问题出现在以下哪个环节?",
+      "options": [
+        "正向传播更新参数",
+        "反向传播更新参数",
+        "反向传播计算结果",
+        "正向传播计算结果"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1965680502,
+      "type": "single",
+      "question": "昇腾 AI 处理器中的 AI Core 可以完成矩阵、向量、标量的相关运算,其中向量和标量之间的运算由以下哪个模块完成?",
+      "options": [
+        "AI CPU",
+        "标量计算单元",
+        "矩阵计算单元",
+        "向量计算单元"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 851648732,
+      "type": "single",
+      "question": "AI 模型训练的基本流程包括以下步骤:(1)准备数据(2)保存模型(3)测试模型(4)数据处理(5)训练模型,以下哪个是正确的排序?",
+      "options": [
+        "1->5->2->4->3",
+        "1->5->4->3->2",
+        "1->4->2->5->3",
+        "1->4->5->2->3"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1356103992,
+      "type": "single",
+      "question": "GBDT 算法相比于随机森林算法,以下哪种表述是错误的?",
+      "options": [
+        "GBDT 与随机森林都可以建立在 CART 树的基础之上的",
+        "GBDT 算法比随机森林容易欠拟合",
+        "GBDT 算法中弱学习器单个效果可能很差",
+        "随机森林的并行计算效率高于 GBDT"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1355204190,
+      "type": "single",
+      "question": "以下关于前馈神经网络的描述错误的是哪一项?",
+      "options": [
+        "前馈神经网络中每一个神经元的输出都经过了激活函数",
+        "前馈神经网络是一种全连接神经网络",
+        "前馈神经网络中使用了非线性激活函数",
+        "前馈神经网络由于输出层神经元数较多,因此无法解决二分类任务,但可以实现多分类"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1696837343,
+      "type": "single",
+      "question": "以下关于数据预处理的描述中,哪个说法是错误的?(相似题)",
+      "options": [
+        "数据预处理会清洗掉杂音、发对用户的持续跟踪及另外缺点",
+        "数据降维指的是维度状态,避免维度爆炸",
+        "通过主成分分析将数据映射到低维空间",
+        "数据标准化是将所有数据按频率来减少噪声,并控制模型复杂性"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1421075036,
+      "type": "single",
+      "question": "以下不属于华为应用使能套件的是哪个选项?",
+      "options": [
+        "MindEl",
+        "CANN",
+        "MindXDK",
+        "ModelBox"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1020768804,
+      "type": "single",
+      "question": "某工程师在使用 MindSDK 构建视频分析 AI应用时,可以选择工具中的哪个模块?",
+      "options": [
+        "RAG SDK",
+        "Rec SDK",
+        "Vision SDK",
+        "IndexSDK"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 963957499,
+      "type": "single",
+      "question": "以下关于数据预处理的描述中,哪个选项是错误的?",
+      "options": [
+        "数据清理包含填充缺失值,发现并消除噪声数据及异常点",
+        "数据降维简化数据属性,避免维度爆炸",
+        "通过主成分分析来增强数据特征的可解释性",
+        "数据标准化通过标准化数据来减少噪声,并提高模型准确性"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 595774431,
+      "type": "single",
+      "question": "AI 的发展取决于诸多因素,其中 AI 学习能力的提升得益于以下哪个选项的发展?",
+      "options": [
+        "传感器",
+        "算法",
+        "芯片",
+        "数据"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1455866666,
+      "type": "multiple",
+      "question": "John 使用 PyTorch 实现一个两层全连接网络,现在使用 MNIST 数据集(28x28X1,共 10 个类别)进行训练,以下关于数值操作正确的有哪些选项?(网络定义:fcl=nn.Linear(input_size,hidden_size),fc2=nn. Linear (hidden_size, output_size))",
+      "options": [
+        "output_size=10",
+        "input_size=784",
+        "input_size=[28, 28]",
+        "hidden_size=128"
+      ],
+      "answer": "ABD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1780801826,
+      "type": "multiple",
+      "question": "以下哪些选项不能用于聚类任务?(相似题)",
+      "options": [
+        "KNN",
+        "k - means",
+        "PCA",
+        "DBSCAN"
+      ],
+      "answer": "AC",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1685602148,
+      "type": "multiple",
+      "question": "智能家居已经走入我们的生活,AI 可以赋能哪些日常应用?",
+      "options": [
+        "室内监控",
+        "语音控制家电",
+        "门锁",
+        "室内灯光控制"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 71583496,
+      "type": "multiple",
+      "question": "从数据收集开始全流程开发一个 AI 服务包含以下哪些流程?",
+      "options": [
+        "数据处理",
+        "推理部署",
+        "应用评估",
+        "模型训练"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 243704469,
+      "type": "multiple",
+      "question": "以下哪些结构属于 LSTM?",
+      "options": [
+        "遗忘门",
+        "输入门",
+        "输出门",
+        "隐藏门"
+      ],
+      "answer": "ABC",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 238656340,
+      "type": "multiple",
+      "question": "在神经网络训练过程中,使用以下哪些激活函数不容易产生梯度消失的现象?",
+      "options": [
+        "Tanh 函数",
+        "Swish 函数",
+        "Sign 函数",
+        "ReLU 函数"
+      ],
+      "answer": "BD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 857127057,
+      "type": "multiple",
+      "question": "评判分类模型的 F1 值是以下哪些指标的调和均值?",
+      "options": [
+        "精确度 (precision)",
+        "准确率 (accuracy)",
+        "有效率 (validity)",
+        "召回率 (recall)"
+      ],
+      "answer": "AD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 643952356,
+      "type": "multiple",
+      "question": "以下哪些选项是构建知识图谱的主要步骤?",
+      "options": [
+        "确定领域",
+        "信息抽取",
+        "获取数据",
+        "数据加密"
+      ],
+      "answer": "ABC",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 978368106,
+      "type": "multiple",
+      "question": "以下关于 ReLU 激活函数优点的描述,正确的是哪些选项?(相似题)",
+      "options": [
+        "输出有界,训练不易发散",
+        "相比 Sigmoid 激活函数,计算简单",
+        "一定程度上缓解了梯度消失的产生",
+        "一定程度上缓解了梯度爆炸的问题"
+      ],
+      "answer": "BC",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 210030491,
+      "type": "multiple",
+      "question": "昇腾 AI 处理器包含 AI Core 模块,这个模块包含以下哪些选项?",
+      "options": [
+        "矩阵计算单元",
+        "存储控制单元",
+        "指令发射模块",
+        "寄存器"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 752691593,
+      "type": "multiple",
+      "question": "John 在使用 AI 框架构建并训练模型时,选择了通过静态图的方式进行,以下关于他操作的描述中,错误的是哪几项?",
+      "options": [
+        "模型训练完成以后,可以进行跨平台的应用部署",
+        "为了保证网络各层之间的维度可以进行计算,随时输出一些中间结果作为参考",
+        "对于输入不确定性高(如动态 batch size)的任务,不适合使用静态图",
+        "的任务,不适合使用静态图"
+      ],
+      "answer": "BD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1364402093,
+      "type": "multiple",
+      "question": "以下描述中不属于包装法(Wrapper)局限的是哪些选项?",
+      "options": [
+        "倾向于选择冗余的变量,因为没有考虑特征之间的关系",
+        "包装法是预测模型用于评估特征组合的工具,要根据模型的准确性进行评分",
+        "因为包装法为每个子集训练一个新模型,所以它们的计算量非常大",
+        "其特征选择的方法通常为特定类型的模型提供了性能最好的特性集"
+      ],
+      "answer": "BD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1402268066,
+      "type": "multiple",
+      "question": "John 在使用 AI 开发框架训练完成模型后,想要只保存完整模型,他可以将模型保存为以下哪些格式?",
+      "options": [
+        "onnx",
+        "pth",
+        "bin",
+        "checkpoint"
+      ],
+      "answer": "AB",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 470922968,
+      "type": "multiple",
+      "question": "GPU 可以通过以下哪些方式提升并行性能?",
+      "options": [
+        "多内核架构",
+        "增加时钟频率单元",
+        "增加缓存",
+        "超频设置"
+      ],
+      "answer": "ABC",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 123890319,
+      "type": "multiple",
+      "question": "以下哪些芯片可以用来训练 AI 模型?",
+      "options": [
+        "CPU",
+        "GPU",
+        "XPU",
+        "NPU"
+      ],
+      "answer": "ABD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 808585136,
+      "type": "multiple",
+      "question": "以下关于 AI 应用开发流程的描述,错误的有哪些选项?",
+      "options": [
+        "构建网络模型时需要结合具体需求,考虑损失函数、各层数神经元数量",
+        "模型训练过程中,为保证拟合效果要尽可能的增加训练时长",
+        "模型训练完成后,只将超参数保存为模型文件方便后续调用",
+        "数据收集阶段要尽量获取更多的数据,数据的数量比质量更重要"
+      ],
+      "answer": "BCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1593644654,
+      "type": "multiple",
+      "question": "关于卷积神经网络池化层,以下哪些描述是正确的?",
+      "options": [
+        "池化操作采用扫描窗口实现",
+        "常用的池化方法有最大池化和平均池化",
+        "池化层可以减小特征图的尺寸",
+        "经过池化的特征图一定会变小"
+      ],
+      "answer": "ABC",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 98562914,
+      "type": "multiple",
+      "question": "以下哪些选项不是决策树用于划分节点的依据?",
+      "options": [
+        "信息增益率",
+        "频率",
+        "方差",
+        "期望"
+      ],
+      "answer": "BD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1975170077,
+      "type": "multiple",
+      "question": "以下关于大模型和小模型的对比描述正确的有哪些选项?",
+      "options": [
+        "小模型在部署和使用上更加灵活",
+        "行业大模型通常使用微调的方式训练",
+        "使用大模型的数据集训练小模型,小模型也会产生涌现",
+        "小模型可以使用思维链技术来提升准确度"
+      ],
+      "answer": "AB",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1625657881,
+      "type": "multiple",
+      "question": "以下对数据的操作中可以增加模型泛化能力的有哪些选项?",
+      "options": [
+        "对图片数据进行裁剪、反转操作",
+        "复制当前数据,增加数据量",
+        "对文字类数据进行随机删除",
+        "对音频类数据添加噪声"
+      ],
+      "answer": "ACD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 408394623,
+      "type": "multiple",
+      "question": "深度学习是比较火热的人工智能技术,但是在做深度学习任务时常常会遇到各种各样的问题,以下哪些问题会在深度学习任务中出现?(多选)",
+      "options": [
+        "梯度爆炸问题",
+        "梯度消失问题",
+        "过拟合问题",
+        "数据不平衡问题"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1256502059,
+      "type": "multiple",
+      "question": "MindSpore 中,用 mindspore.nn.Conv2d()构建卷积层时,可能会使用到以下哪几项参数?",
+      "options": [
+        "has_bias",
+        "filters",
+        "padding",
+        "kernel size"
+      ],
+      "answer": "ACD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1269081648,
+      "type": "multiple",
+      "question": "使用 AI 芯片训练模型时,对芯片以下哪些能力要求较高?",
+      "options": [
+        "可扩展性",
+        "芯片面积",
+        "算力",
+        "精度"
+      ],
+      "answer": "ACD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1924118018,
+      "type": "multiple",
+      "question": "以下哪些选项属于 AI 开发框架提供的功能?",
+      "options": [
+        "跨平台分布式训练",
+        "数据预处理",
+        "算子 API",
+        "自动模型调优"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 635284524,
+      "type": "multiple",
+      "question": "John 使用 PyTorch 实现一个两层全连接结构的网络: fc1 = nn.Linear(input_size, hidden_size) fc2 =nn.Linear(hidden_size, output_size)现在他将 MNIST 数据集(28281,共 10个类别)放入到网络中进行训练,以下关于他赋值操作正确的有哪些选项?",
+      "options": [
+        "input_size = [28,28] hidden_size = 128",
+        "input_size = 784 output_size = 10",
+        "input_size = [28,28] output_size = 10 hidden_size = 128",
+        "output_size = 10 hidden_size = 784"
+      ],
+      "answer": "BD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 690392295,
+      "type": "multiple",
+      "question": "以下描述中属于包装法(Wrapper)局限性的是哪些选项?",
+      "options": [
+        "因为包装法为每个子集训练一个新模型,所以它们的计算量非常大",
+        "包装法是预测模型用于评估特征组合的工具,根据模型的准确性进行评分",
+        "倾向于选择冗余的变量,因为没有考虑特征之间的关系",
+        "其特征选择的方法通常为特定类型的模型提供了性能最好的特性集"
+      ],
+      "answer": "AC",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1349980980,
+      "type": "multiple",
+      "question": "以下哪些场景更需要 AI 计算而不是通用计算?",
+      "options": [
+        "流体仿真",
+        "图像识别",
+        "数据库",
+        "自然语言处理"
+      ],
+      "answer": "BD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1952038902,
+      "type": "multiple",
+      "question": "John 在学习 MindSpore 框架时,学习了Callback 的使用并准备用于 AI 模型训练中,以下他可以使用 Callback 的场景有哪些?",
+      "options": [
+        "保存模型参数",
+        "调整激活函数",
+        "监控训练过程中的 Loss",
+        "提前终止训练"
+      ],
+      "answer": "ACD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1236747187,
+      "type": "multiple",
+      "question": "John 在使用 AI 开发框架实现 AI 应用时,以下操作可由框架实现的有哪些选项?",
+      "options": [
+        "计算图优化",
+        "自动微分",
+        "数据特征融合",
+        "调用硬件算力实现模型训练"
+      ],
+      "answer": "ABD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 48488743,
+      "type": "multiple",
+      "question": "John 想要实现一个用于语音识别的深度学习模型,他可以选择以下哪些框架实现?",
+      "options": [
+        "Scikit-learn",
+        "MindSpore",
+        "TensorFlow",
+        "PyTorch"
+      ],
+      "answer": "BCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1124966076,
+      "type": "multiple",
+      "question": "John 想要创建一个 AI 应用服务团队,为保证团队盈利,他应该考虑以下哪些问题?",
+      "options": [
+        "训练数据成本",
+        "算法研发难度",
+        "应用场景",
+        "算力平台价格"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 349821837,
+      "type": "multiple",
+      "question": "某工程师在某个实例分割项目中使用了大量的图片数据,为了节省时间,AI 训练所用的数据转化为了 MindRecord 格式,以下关于此格式描述正确的有哪些?",
+      "options": [
+        "它是一种高性能的数据格式",
+        "它采用行存储方式",
+        "它可以有效提升数据读取和训练的效率",
+        "它是一种二进制数据格式"
+      ],
+      "answer": "ACD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1157252708,
+      "type": "multiple",
+      "question": "以下关于 ReLU 激活函数优点的描述,正确的是哪些项?",
+      "options": [
+        "一定程度上缓解了梯度消失的问题",
+        "输出有界,训练不易发散",
+        "一定程度上缓解欠拟合的产生",
+        "相对 Sigmoid 激活函数,计算简单"
+      ],
+      "answer": "AD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1044219803,
+      "type": "multiple",
+      "question": "MindSpore 向用户提供了多个不同层次的API,支撑用户进行 AI 应用(算法/模型)开发,包括以下哪些选项?",
+      "options": [
+        "High-Level API",
+        "Medium-Level API",
+        "Low-Level API",
+        "Base-Level API"
+      ],
+      "answer": "ABC",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1080758882,
+      "type": "multiple",
+      "question": "昇腾 AI 处理器主要的硬件架构包括以下哪些选项?",
+      "options": [
+        "数字视觉预处理模块",
+        "多层级的片上系统缓存或缓冲区",
+        "AI 计算引擎",
+        "芯片系统控制 CPU"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 721675080,
+      "type": "multiple",
+      "question": "以下关于机器学习的描述中,哪些选项是错误的?",
+      "options": [
+        "机器无法自动学习规则",
+        "如果决策规则简单,机器学习会更加适用",
+        "机器学习使用历史数据训练",
+        "当决策的规则复杂或者难以描述时,我们会使用机器学习算法解决问题"
+      ],
+      "answer": "AB",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 881162937,
+      "type": "multiple",
+      "question": "在深度学习任务中,遇到数据不平衡问题时,可以用以下哪些方法进行解决?",
+      "options": [
+        "合成采样",
+        "批量删除",
+        "随机欠采样",
+        "随机过采样"
+      ],
+      "answer": "ACD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 171538331,
+      "type": "multiple",
+      "question": "DeepSeek-R1 可以用于以下哪些场景中?",
+      "options": [
+        "文本创作",
+        "智能问答",
+        "代码生成",
+        "3 维模型渲染"
+      ],
+      "answer": "ABC",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1717332626,
+      "type": "multiple",
+      "question": "A 企业在某个实例分割项目中(基于 MindSpore实现)使用了大量的图片数据,为了节省时间,AI 工程师将数据转化为了MindRecord 格式,以下关于此描述正确的选项有哪些?",
+      "options": [
+        "转化为 MindRecord 后,可以有效压缩数据体积,方便数据存储",
+        "转化为 MindRecord 后,减少磁盘 10,网络 I0 开销,缩短开发周期",
+        "转化为 MindRecord 后,可以提升模型的训练计算速度,缩短开发周期",
+        "转化为 MindRecord 后,实现数据统一存储、访问,方便数据管理"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 141149101,
+      "type": "multiple",
+      "question": "当使用机器学习建立模型的过程中,以下哪些属于必备的操作?",
+      "options": [
+        "特征选择",
+        "数据获取",
+        "超参数调节",
+        "模型构建"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 515721287,
+      "type": "judge",
+      "question": "多层感知机具备非线性分类的能力,这种能力来自类似 f(x)=ax 这样的激活函数和多层网络结构.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1850645386,
+      "type": "judge",
+      "question": "张量无法进行加减乘除等算数运算.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 832654773,
+      "type": "judge",
+      "question": "关于机器学习算法的理性认识,其本质就是得到一个输出,使得输出与真实结果尽可能的接近.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 281996736,
+      "type": "judge",
+      "question": "异常数据在模型训练过程中不需要删除,大量的异常数据可以提升模型的泛化能力.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 98632460,
+      "type": "judge",
+      "question": "端侧 AI 开发模型成功时模型能够对移动端推理部署,可以直接进行推理训练.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1445573169,
+      "type": "judge",
+      "question": "大模型在能力和效果上都超过了小模型,小模型已经全面被大模型取代.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 929766927,
+      "type": "judge",
+      "question": "John 在使用 PyTorch 框架实现 AI 模型训练时,他应该先通过 set_ context 配置模型训练相关的参数,如设备 ID、计算图模式等.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1062274740,
+      "type": "judge",
+      "question": "理论上,训练时的精度会随着模型复杂度的上升和训练时间的增加不断减小.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 578209283,
+      "type": "judge",
+      "question": "大的模型在工业应用时会有运行效率的问题,所以为了保证效率,模型越小越好.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 955577506,
+      "type": "judge",
+      "question": "特征选择的嵌入式过滤方法倾向于选择冗余的变量,因为它们没有考虑特征之间的关系.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1247131860,
+      "type": "single",
+      "question": "深度学习常用的损失函数有均方误差和交叉熵误差,针对两者的使用场景,以下哪种描述是正确的?",
+      "options": [
+        "交叉熵误差更多用于回归问题",
+        "两者均可用于分类问题",
+        "均方误差更多用于分类问题",
+        "两者均可用于回归问题"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 555710884,
+      "type": "single",
+      "question": "一张图片依次经过了以下网络结构,,假设输入图片的大小为 32×32×3,n 的值应该设置为以下哪个选项?",
+      "options": [
+        "4624",
+        "3136",
+        "4096",
+        "3600"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 584835380,
+      "type": "single",
+      "question": "Agent 的长期记忆通常不包含哪项内容?",
+      "options": [
+        "关键事实与结论的摘要",
+        "当前会话的全部对话历史",
+        "稳定用户画像及行为偏好",
+        "被验证有效的成功规划经验"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1593768873,
+      "type": "single",
+      "question": "全局梯度下降算法、随机梯度下降算法和批量梯度下降算法均属于梯度下降算法.关于其优缺点,以下哪项描述是错误的?",
+      "options": [
+        "全局梯度算法可能无法找到损失函数的最小值",
+        "批量梯度算法可以达到局部最优",
+        "全局梯度算法单步计算过程比较耗时",
+        "随机梯度算法可以找到损失函数的最小值"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1937925089,
+      "type": "single",
+      "question": "机器学习算法中,以下哪一项不属于集成学习策略?",
+      "options": [
+        "Bagging",
+        "Marking",
+        "Boosting",
+        "Stacking"
+      ],
+      "answer": "B",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1698775414,
+      "type": "single",
+      "question": "以下哪一项是张量[[1,2],[3,4]],[[5,6],[7,8]],[[9,10],[11,12]] 的正确形状?",
+      "options": [
+        "[3,2,2]",
+        "[3,2,3]",
+        "[2,3,2]",
+        "[2,2,3]"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 842858074,
+      "type": "single",
+      "question": "以下哪一种算法使 AI 在自然语言处理领域获得了重大突破?",
+      "options": [
+        "Transformer 架构",
+        "卷积神经网络",
+        "循环神经网络",
+        "信号去噪技术"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 166636165,
+      "type": "single",
+      "question": "某工程师在使用 AI 开发框架 MindSpore 实现深度学习算法时,以下哪个功能不是 MindSpore 提供的?",
+      "options": [
+        "集群管理",
+        "开发接口",
+        "数据处理",
+        "调试调优"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 666011471,
+      "type": "single",
+      "question": "某工程师在训练模型时,可以通过以下哪个工具管理团队的 NPU 算力集群?",
+      "options": [
+        "Mind Edge",
+        "MindSpeed - LLMC",
+        "MindSpore",
+        "MindCluster"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 190445072,
+      "type": "single",
+      "question": "以下关于聚类算法的描述,错误的是哪项?",
+      "options": [
+        "层次聚类可采用 “自下向上” 的混合策略,也可以采用 “自面向下” 的分析策略",
+        "DBSCAN 可以处理不同大小或形状的图,并且不太受噪声和离群点的影响",
+        "k-means 需要指定聚类簇数 k,并且初始聚类中心对聚类效果影响很大",
+        "k-means 和 DBSCAM 多次运行都不会产生相同的结果"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1946955120,
+      "type": "single",
+      "question": "在深度学习网络中,反向传播算法用于寻求最优参数.在反向传播算法中使用什么法则进行逐层求导?",
+      "options": [
+        "对等法则",
+        "累加法则",
+        "链式法则",
+        "归一法则"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 777920877,
+      "type": "single",
+      "question": "以下哪个特性是动态计算图相比静态计算图的主要优势之一?",
+      "options": [
+        "更低的内存占用",
+        "更好的可移植性",
+        "更高的灵活性",
+        "更高的执行效率"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1251565790,
+      "type": "single",
+      "question": "以下哪个选项是知识蒸馏的基本思想?",
+      "options": [
+        "构建一个较小的网络,将复杂网络的有用信息提取出来迁移到这个网络上",
+        "评估原始模型中每个神经元对输出的贡献量,剔除贡献量较小的神经元",
+        "评估原始模型中每个神经元对输出的贡献量,对贡献量较小的神经元采用更低位宽的数据类型表示",
+        "模型训练完成之后,设置一个阈值,删除低于这个阈值的权重参数,得到一个参数量较小的新网络"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 283099882,
+      "type": "single",
+      "question": "Seq2Seq 结构的神经网络一般由编码器和解码器两部分组成,关于该结构描述错误的是哪一项?",
+      "options": [
+        "解码器可以使用 LSTM",
+        "基于 RNN 的 Seq2Seq 模型并行度较低",
+        "编码器可以使用 RNN",
+        "编码器编码得到的中间向量长度不固定,计算复杂"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1060332641,
+      "type": "single",
+      "question": "某工程师在学习了深度学习知识后,对DeepSeek V3 的模型结构有以下认知,其中错误的是哪一项?",
+      "options": [
+        "MoE 结构可以提升推理速度",
+        "transformer block 可以提取数据特征",
+        "强化学习微调可以对齐人类偏好",
+        "位置编码的作用是限制输出序列长度"
+      ],
+      "answer": "D",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1874005283,
+      "type": "single",
+      "question": "以下关于 CPU 低时延设计的描述,错误的是哪一个选项?",
+      "options": [
+        "有很多 ALU 和很少 Cache,缓存合并访问 DRAM,降低时延",
+        "高时钟频率降低时延",
+        "强大的 ALU 单元,可在很短时钟周期完成计算",
+        "复杂逻辑控制单元,多分支程序可通过分支预测能力降低时延"
+      ],
+      "answer": "A",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 660682663,
+      "type": "single",
+      "question": "John 用 PyTorch 实现了一个包含全连接层和 CNN 层的网络结构,代码如下,以下描述正确的是哪个选项?",
+      "options": [
+        "网络可以正常运行,可用于多(10)分类任务",
+        "网络不可以运行,需要加入池化层后才可正常执行",
+        "网络不可以执行,需要改变部分隐藏层输出维度后才可执行",
+        "网络可以运行,可以接受四维的图像数据集输入"
+      ],
+      "answer": "C",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 571117750,
+      "type": "multiple",
+      "question": "深度学习中,数据增强是一种有效防止过拟合的方法.以下关于数据增强的描述中,正确的有哪几项?",
+      "options": [
+        "在图像分类任务中对图片进行旋转、缩放",
+        "语音识别任务中对输入数据添加随机噪声",
+        "NLP 中复制同一个词多次进行训练",
+        "在图像分类任务中调节图片亮度或对比度"
+      ],
+      "answer": "ABD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1273977705,
+      "type": "multiple",
+      "question": "某工程师想要部署 DeepSeek V3 模型进行推理,他需要考虑以下哪些问题?",
+      "options": [
+        "微调数据",
+        "是否使用量化 / 量化方式",
+        "模型结构",
+        "设备显存 / 内存"
+      ],
+      "answer": "BCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1828932570,
+      "type": "multiple",
+      "question": "John 使用 AI 框架创建了一个 tensor A,",
+      "options": [
+        "A 具备以下哪些属性?",
+        "数据类型",
+        "维数",
+        "形状"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 716263523,
+      "type": "multiple",
+      "question": "某工程师使用一个全连接神经网络实现了 10分类任务,此网络有 2 层隐藏层,每层均有 32 个神经元,输出层有 10 个神经元,输入层有 20 个神经元.现在他需要修改此网络结构以实现 2 分类任务,以下哪些修改不能实现该功能?",
+      "options": [
+        "将隐藏层和输出层神经元数量减半",
+        "减少输入层神经元数量",
+        "减少一层隐藏层,将剩下的隐藏层神经元数量减半",
+        "增加一层隐藏层,神经元数为 16,并将输出层神经元数量修改为 2"
+      ],
+      "answer": "ABC",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 883578643,
+      "type": "multiple",
+      "question": "只有更完善的基础数据服务产业,才是 AI 技术能更好发展的基石.关于数据,以下哪些选项是正确的?",
+      "options": [
+        "数据质量和数量对 AI 发展来说很重要",
+        "消除数据孤岛现象对 AI 技术拓展很重要",
+        "消除数据壁垒对 AI 技术发展很重要",
+        "更安全的数据共享是 AI 技术更好发展的基石之一"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 133625003,
+      "type": "multiple",
+      "question": "以下哪些选项属于终端设备上所使用的 AI 芯片特征?",
+      "options": [
+        "低成本",
+        "高功耗",
+        "高性能",
+        "低延迟"
+      ],
+      "answer": "ACD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 526136037,
+      "type": "multiple",
+      "question": "与 ASIC 芯片相比,以下哪些选项是 FPGA芯片的特征?",
+      "options": [
+        "实现相同功能时,需要的芯片规模更大",
+        "相同工艺条件下,功耗更小",
+        "运行时无需加载配置,可立即运行",
+        "研发风险较低"
+      ],
+      "answer": "AD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1541001426,
+      "type": "multiple",
+      "question": "以下哪些选项属于图像识别技术应用场景?",
+      "options": [
+        "无人驾驶",
+        "安防监控",
+        "智能机器人",
+        "机器狗"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1158457713,
+      "type": "multiple",
+      "question": "机器学习中模型总会存在误差,误差包括哪些部分?",
+      "options": [
+        "偏差",
+        "数据异常值",
+        "协方差",
+        "方差"
+      ],
+      "answer": "AD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 21501293,
+      "type": "multiple",
+      "question": "在昇腾 AI 处理器中,AI Core 的存储控制单元可以完成以下哪些操作?",
+      "options": [
+        "转置",
+        "补零",
+        "解压缩",
+        "Img2Col"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 711804270,
+      "type": "judge",
+      "question": "语音助手使用了计算机视觉技术和自然语言处理技术来识别语音并理解用户发出的指令.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 695334950,
+      "type": "judge",
+      "question": "理论上,训练的模型会随着模型复杂度的上升和训练时间的增加不断减小.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1395465879,
+      "type": "judge",
+      "question": "RNN 中不同时刻的权重参数是共享的.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1754124180,
+      "type": "judge",
+      "question": "梯度下降法中不同批次的权重参数是共享的.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1837235459,
+      "type": "judge",
+      "question": "AscendCL 可以基于第三方框架开发推理类应用,但是需要通过 ATC 工具先对模型进行转换.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1572919275,
+      "type": "judge",
+      "question": "Self - Attention 机制无法捕捉到序列的位置信息,因此在 Transformer 模型中需要添加位置编码.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 291053696,
+      "type": "judge",
+      "question": "SVM 和 k - means 都属于非参数模型.(相似题)",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 26843293,
+      "type": "judge",
+      "question": "反映样本在某方面的表现或性能的事项或属性称为特征.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1943037259,
+      "type": "judge",
+      "question": "对于 AI 业务应用来说,训练环节不会对模型进行压缩,而推理环节则需要.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 247377098,
+      "type": "judge",
+      "question": "tanh 激活函数输出关于 0 对称,相比于 Sigmoid函数可以加快模型的收敛.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 659347748,
+      "type": "judge",
+      "question": "随着大模型技术发展,大语言模型已经赋能机器人领域,它使机器人不仅能听懂人类指令,还能认识三维世界中的物体.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 158592923,
+      "type": "judge",
+      "question": "CPU 主要提供通用计算,适合复杂逻辑运算,70% 以上的晶体管用于构建算数逻辑单元、缓存 Cache 和控制单元.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1623548049,
+      "type": "judge",
+      "question": "AI 开发框架可以帮助开发者快速构建和部署自己的模型,并且可以实现端云协同和端侧推理的分布式训练.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1807645001,
+      "type": "judge",
+      "question": "MoE 是一种混合专家模型,这种方案可以有效增强模型的容量和能力,同时在推理时能够动态决定哪些专家模型工作.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 191865670,
+      "type": "judge",
+      "question": "在随机森林中,基于学习器所使用特征衡量指标需要是基尼系数.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 193025275,
+      "type": "judge",
+      "question": "昇腾 AI 处理器中 AICore 控制单元包含标量指令处理队列和向量指令处理队列.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1603708009,
+      "type": "judge",
+      "question": "卷积神经网络中的卷积层可以实现参数共享,减少网络参数.参数共享是指在同一层中使用全部卷积核参数一致,不同层使用的卷积核参数是不同的.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 171929501,
+      "type": "judge",
+      "question": "Atlas 系列产品覆盖训练、推理场景、服务器、边缘计算、加速模块等产品形态.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 394025042,
+      "type": "judge",
+      "question": "单层感知机无法解决 XOR 问题,成为了阻碍深度学习发展的一个重要原因.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 426605775,
+      "type": "judge",
+      "question": "DeepSeek-R1-Zero 的参数量仅为 660B,不属于大模型的范畴.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1378415097,
+      "type": "judge",
+      "question": "Softmax 回归是逻辑回归的一般化,只适用于二分类的问题.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 315367094,
+      "type": "judge",
+      "question": "当问题的解决方案很复杂,或者问题可能涉及到大量的数据却没有明确的数据分布函数时,比较适合使用机器学习方法",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 503501059,
+      "type": "judge",
+      "question": "在 MindSpore 中,默认的模式为动态模式,也可以通过 set_context(mode=PYNATIVE MODE)手动设置为动态图模式.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 440549514,
+      "type": "judge",
+      "question": "使用 mindspore.nn.Conv2d(1,3, 5,has_bias=False, weight_init= ‘normal’)接口,可以创建输入通道数为 1、输出的通道数为 5、卷积核大小为 3*3、使用 nonmal 算子初始化参数的卷积层.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 375840440,
+      "type": "judge",
+      "question": "在当今快速发展的科技时代,人工智能已经成为我们生活中不可或缺的一部分,例如语音助手就是使用了计算机视觉技术和自然语言处理技术来识别是谁发出了什么样的指令.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 746242441,
+      "type": "judge",
+      "question": "在 Self-Attention 计算过程中,Query、Key和 Value 都是由输入序列通过不同的线性变换得到的.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1817712662,
+      "type": "judge",
+      "question": "数据降维的目的是减少数据量,增加模型的准确度.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 224568419,
+      "type": "judge",
+      "question": "Sigmoid、tanh 和 Softsign 这些激活函数在网络层数加深时,都不能避免梯度消失的问题.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1236683606,
+      "type": "judge",
+      "question": "机器学习是深度学习的一部分,人工智能也是深度学习的一部分.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1053635205,
+      "type": "judge",
+      "question": "PyTorch、MindSpore 等 AI 开发框架通常提供内置的预处理功能,用于数据采集、数据清洗、特征选择和归一化等操作.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1763577059,
+      "type": "judge",
+      "question": "CANN 中提供了 DVPP 和 AIPP,前者使用昇腾 AI 处理器中的 DVPP 模块对图像进行处理,后者使用 AICore 对图像进行处理.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1647695685,
+      "type": "judge",
+      "question": "为防止过拟合,在训练过程中,可以插入对验证集数据的测试.当发现验证集数据的 Loss 上升时,提前停止训练.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1383807645,
+      "type": "judge",
+      "question": "DeepSeek - R1 - Zero 是 DeepSeek 系列模型中体积最大的,它不需要通过强化学习训练,也能和人类偏好对齐.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1133843189,
+      "type": "judge",
+      "question": "昇腾 AI 处理器只提供了 DDR 接口,可以外接 DDR4 内存.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1821602635,
+      "type": "judge",
+      "question": "SVM、k - NN 和 k - means 都属于非参数模型.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 398554639,
+      "type": "judge",
+      "question": "在 RNN 中,每一时刻隐藏状态的权重都保持一致,这样可以减少网络的参数量.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 357273773,
+      "type": "judge",
+      "question": "AI 开发框架的功能是对开发者提供网络模型接口,模型训练过程中的前向传播和反向传播需要开发者自己完成.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1101836869,
+      "type": "judge",
+      "question": "MindSpore 在构建神经网络时,可以通过继承 Cell 类,并复写__init__方法和 construct 方法实现.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 438535491,
+      "type": "judge",
+      "question": "CPU 可以通过提高频率的方式提升 AI 计算性能.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 699300151,
+      "type": "judge",
+      "question": "DeepSeek V3 是一个基于 GPT 结构的多模态模型,较 V2 版本相比,其训练成本和推理速度都有很大的提升.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1057399557,
+      "type": "judge",
+      "question": "与 FPGA 相比,相同工艺下,基于 ASIC 的AI 芯片功耗更大,因此不适合用于手机等终端设备上.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 666049820,
+      "type": "judge",
+      "question": "John 在使用 PyTorch 框架实现 AI 模型训练时,他应该先通过 set_context 设置模型训练相关参数,如设备 ID、计算图模式等.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1372045502,
+      "type": "judge",
+      "question": "前馈神经网络接收前一层的输出,并输出给下一层.采用一种单向多层结构,每一层包含若干个神经元,同一层的神经元之间没有互相连接,层间信息的传送只沿一个方向进行.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 1802380786,
+      "type": "judge",
+      "question": "当前 AI 开发框架动态计算图和静态计算图语法兼容,可以直接进行相互转换.",
+      "answer": "错误",
+      "subject": "ai_upgrade_exam"
+    },
+    {
+      "id": 214210325,
+      "type": "judge",
+      "question": "AI 芯片会针对矩阵运算做加速设计.",
+      "answer": "正确",
+      "subject": "ai_upgrade_exam"
+    }
+  ]
+}

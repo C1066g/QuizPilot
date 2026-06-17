@@ -386,72 +386,58 @@
             font-size: 0.95rem;
         }
 
-        .nav-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
         .nav-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 8px 10px;
-            border-radius: 8px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            gap: 8px;
+            padding: 7px 10px;
+            border-radius: 6px;
+            border: 1px solid transparent;
             cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.15s ease;
+            font-size: 0.82rem;
         }
 
         .nav-item:hover {
-            background: rgba(127,140,255,0.12);
-            transform: translateX(2px);
+            background: var(--panel-bg);
+            border-color: var(--border-color);
         }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 0;
-            background: var(--accent);
-            transition: width .18s ease;
-        }
-        .nav-item:hover::before { width: 4px; }
-        .nav-item.active::before { width: 6px; }
 
         .nav-item.active {
             background: var(--accent);
             color: white;
             border-color: var(--accent);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.35);
+            font-weight: 600;
         }
 
         .nav-num {
             font-weight: 700;
-        }
-
-        .nav-type {
+            min-width: 28px;
+            text-align: right;
+            color: var(--accent);
             font-size: 0.8rem;
-            opacity: 0.9;
         }
+        .nav-item.active .nav-num { color: white; }
 
-        .nav-group {
-            margin-bottom: 12px;
-        }
-
-        .nav-group-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 700;
+        .nav-tag {
+            font-size: 0.65rem;
+            padding: 1px 5px;
+            border-radius: 3px;
+            background: var(--panel-bg);
             color: var(--muted-color);
-            margin: 6px 0;
-            font-size: 0.9rem;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
+        .nav-item.active .nav-tag { background: rgba(255,255,255,0.25); color: white; }
+
+        .nav-title {
+            color: var(--text-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 1;
+        }
+        .nav-item.active .nav-title { color: white; }
 
         .mode-selector {
             display: flex;
@@ -1127,6 +1113,10 @@
                     <a class="btn btn-secondary" href="materials/comm-net-ch1-3.pdf" target="_blank" rel="noopener">查看 通信网络1-3章 PDF</a>
                     <button class="btn btn-secondary" id="importBundledCommNet45Btn">载入 通信网络第4-5章</button>
                     <a class="btn btn-secondary" href="materials/comm-net-ch4-5.pdf" target="_blank" rel="noopener">查看 通信网络4-5章 PDF</a>
+                    <button class="btn btn-secondary" id="importBundledIcDesignBtn">载入 集成电路设计基础</button>
+                    <a class="btn btn-secondary" href="materials/ic-design.pdf" target="_blank" rel="noopener">查看 集成电路 PDF</a>
+                    <button class="btn btn-secondary" id="importBundledAndroidBtn">载入 Android系统开发基础</button>
+                    <a class="btn btn-secondary" href="materials/android.txt" target="_blank" rel="noopener">查看 Android 题库</a>
                 </div>
                 <div class="tools-row">
                     <span class="tools-row-label">覆盖层管理</span>

@@ -1,0 +1,1929 @@
+{
+  "subject": "ai_microcert",
+  "name": "AI 微认证",
+  "items": [
+    {
+      "id": 1244190608,
+      "type": "single",
+      "question": "在面向功能⻆色的分类中, 哪类 AI Agent 被设计用于高效完成某一特定类型的任务, 并在当前以大语言模型为核心的应用生态中占主导地位?",
+      "options": [
+        "决策型 Agent",
+        "协同/多 Agent 系统",
+        "单一任务型 Agent",
+        "自主 Agents"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 631978987,
+      "type": "single",
+      "question": "模型上下文协议(MCP)与传统函数调用机制的主要区别是以下哪个选项?",
+      "options": [
+        "MCP 仅支持单一任务步骤的触发",
+        "MCP 无法管理工具调用",
+        "MCP 更侧重于高层级的协作流程管理与上下文状态维护",
+        "MCP 不支持权限与安全策略"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1110682193,
+      "type": "single",
+      "question": "AI Agent 的推理能力模块不包含哪项核心子能力?",
+      "options": [
+        "自我修正能力",
+        "仅限于文本生成能力",
+        "任务分解能力",
+        "工具调用能力"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 155053662,
+      "type": "single",
+      "question": "Agent 的⻓期记忆通常不包含哪项内容?",
+      "options": [
+        "被验证有效的成功规划经验",
+        "稳定用户画像及行为偏好",
+        "当前会话的全部对话历史",
+        "关键事实与结论的摘要"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 242709459,
+      "type": "single",
+      "question": "在 LLM 调用外部工具的流程中, 哪个核心环节负责从用户输入的非结构化文本中提取出结构化的函数调用参数?",
+      "options": [
+        "模型推断意图(Intent Inference by the Model)",
+        "工具描述注册(Tool Description Registration)",
+        "环境适配与优化(Environment Adaptation and Optimization)",
+        "动态决定调用(Dynamic Invocation Decision)"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1690521015,
+      "type": "single",
+      "question": "智能体 (Agent) 在决定是否调用工具时, 最基本的决策依据是以下哪个选项?",
+      "options": [
+        "工具的注册时间先后顺序",
+        "模型内能力与工具能力的权衡",
+        "用户查询的语句⻓度",
+        "当前服务器的负载情况"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1131959351,
+      "type": "single",
+      "question": "在商业智能(BI) 自动报表生成场景中, 智能体与传统 RAG 系统的主要区别是以下哪个选项?",
+      "options": [
+        "仅能处理非结构化文本数据",
+        "需具备多步操作与复杂决策能力",
+        "完全依赖预先生成的固定报告模板",
+        "主要侧重于开放域的知识问答"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 676995790,
+      "type": "single",
+      "question": "在数据分析场景中, 智能体扮演\"数据科学家\"⻆色时, 其标准化操作序列的第一步通常是以下哪个选项?",
+      "options": [
+        "通过文件 I/O 工具读取数据文件",
+        "利用可视化工具生成图表",
+        "调用代码执行环境进行统计计算",
+        "基于分析结果撰写综合性报告"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1652200534,
+      "type": "multiple",
+      "question": "AI Agent 的核心特征包括哪些方面?",
+      "options": [
+        "与环境的持续交互能力",
+        "自治性",
+        "推理性",
+        "反应性"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 535323973,
+      "type": "multiple",
+      "question": "AI Agent 在从游戏等封闭环境向现实世界推广时面临哪些主要瓶颈?",
+      "options": [
+        "迁移泛化能力的欠缺",
+        "环境的部分可观测性",
+        "安全性与可解释性的要求",
+        "奖励稀疏问题"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 131739662,
+      "type": "multiple",
+      "question": "AI Agent 中 ReAct 架构的\"思考(Thought)-行动(Action)-观察 (Observation) \"循环流程, 整合了以下哪些优势?",
+      "options": [
+        "摒弃所有推理步骤, 直接输出动作",
+        "\"链式思维\"(Chain-of-Thought, CoT) 的逻辑推演能力",
+        "完全依赖内部知识, 不与外界交互",
+        "\"纯动作型\"(Action-only) 方法的外部工具调用能力"
+      ],
+      "answer": "BD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 77123726,
+      "type": "multiple",
+      "question": "基于大模型的 AI Agent 推动应用构建模式从 DevOps 转向 LLMOps, 这其中开发活动的主体可能包括以下哪些选项?",
+      "options": [
+        "模型行为对⻬",
+        "评估流水线构建",
+        "纯代码编写",
+        "提示词设计(Prompt Engineering)"
+      ],
+      "answer": "ABD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 242534248,
+      "type": "judge",
+      "question": "Agentic Agent 的执行完全依赖于预先编排好的 、 固定不变的流程.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1763829124,
+      "type": "judge",
+      "question": "单一的大语言模型(LLM)已经具备了实现 AGI 所需的所有鲁棒性与泛化能力.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 232206603,
+      "type": "judge",
+      "question": "单体智能 AI Agent 的设计目标通常是专注于相对狭窄且定义明确的问题域.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 803734700,
+      "type": "judge",
+      "question": "在 AlAgent 业务流设计中, 采用泳道图(Swimlane Diagram)可以清晰表达不同⻆色的职责与时序关系.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1923999127,
+      "type": "judge",
+      "question": "在 LLM 调用外部工具时, 无论用户查询什么内容, 模型都应优先尝试调用外部工具来获取信息.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 7738978,
+      "type": "judge",
+      "question": "对话型个人助手如果具备\"⻓期记忆机制\", 则可以维护用户偏好与历史上下文信息.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1135832094,
+      "type": "single",
+      "question": "根据架构的实时性要求, 哪类 AI Agent 强调对环境变化的即时响应, 通常不包含复杂的内部状态?",
+      "options": [
+        "反应式架构 Agent",
+        "学习型智能体",
+        "基于模型的反射型智能体",
+        "慎思式架构 Agent"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 95308584,
+      "type": "single",
+      "question": "以下哪项是 Agentic Agent 相较于 WorkFlow Agent 的核心优势?",
+      "options": [
+        "通过自主学习和推理实现任务目标",
+        "完全依赖预定义的静态流程",
+        "仅能处理确定性高 、复杂度低的任务",
+        "执行速度远超 WorkFlow Agent"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 795692848,
+      "type": "single",
+      "question": "Toolformer 工具赋能模型的核心机制是以下哪个选项?",
+      "options": [
+        "专⻔用于增强模型的图像识别能力",
+        "通过自监督学习, 让模型自主决策在何时调用何种外部工具 API",
+        "通过人工标注大量数据来训练模型使用工具",
+        "完全依赖模型内部参数化知识, 不调用任何外部工具"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 156078732,
+      "type": "single",
+      "question": "LangGraph 多 Agent 流程框架相较于传统线性有向无环图(DAG) 结构的核心优势是以下哪个选项?",
+      "options": [
+        "对非线性 、 自适应和迭代式流程的支持能力",
+        "只能支持单个智能体顺序执行",
+        "无需任何状态维护",
+        "计算速度更快"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1986208944,
+      "type": "single",
+      "question": "在 AI Agent 工具调用的完整流程中, 以下哪项是\"工具注册\"步骤的核心内容?",
+      "options": [
+        "执行同步或异步调用模式",
+        "进行错误处理和自动重试",
+        "对工具的元信息进行规范化描述并纳入可调用资源库",
+        "处理参数绑定和格式校验"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 9854629,
+      "type": "multiple",
+      "question": "AI Agent 的分类维度是相互交织的. 可能同时具备哪些类别属性? 一个真实世界的 A! 科研助手 Agent",
+      "options": [
+        "学习型 Agent",
+        "多 Agent 系统的组成单元",
+        "自主 Agent",
+        "采用混合式架构"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 84222409,
+      "type": "multiple",
+      "question": "Agentic Agent 通常具备哪些高级能力?",
+      "options": [
+        "形成静态不变的任务列表",
+        "反思机制 (Reflection Mechanism)以实现自我修正",
+        "动态任务分解(Task Decomposition)",
+        "仅能执行单一步骤的简单任务"
+      ],
+      "answer": "BC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1375112826,
+      "type": "multiple",
+      "question": "模型上下文协议(MCP) 的典型组成部分包括以下哪些选项?",
+      "options": [
+        "工具抽象层",
+        "上下文管理器",
+        "资源接口",
+        "仅包含一个简单的函数调用列表"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 402335251,
+      "type": "judge",
+      "question": "基于效用的智能体在面对多个可能达成目标的状态时, 能够根据期望效用最大化原则进行择优决策.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1938286268,
+      "type": "judge",
+      "question": "ReAct 架构中的\"观察(Observation) \"步骤是指接收外部工具返回的结果, 并将其纳入上下文环境.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1050070269,
+      "type": "judge",
+      "question": "LangGraph 框架中的节点必须是同构的, 即所有节点都使用相同配置的 LLM 和工具.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 293568717,
+      "type": "judge",
+      "question": "AI Agent 的环境感知模块输入仅限于文本信息, 无法处理视觉或听觉信号.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1666871525,
+      "type": "judge",
+      "question": "\"难以穷举与扩展\"的特性意味着任务的规则或决策路径可以通过有限的条件分支完全覆盖, 因此非常适合用传统的自动化脚本实现.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1314846400,
+      "type": "judge",
+      "question": "基于大模型的 AI Agent 应用使得业务流程并非通过硬编码实现, 而是依托于模型的上下文学习能力 、推理机制以及工具调用能力动态生成并执行.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 781754373,
+      "type": "single",
+      "question": "在 AI Agent 业务流设计中, 以下哪项交互细节通常被封装起来, 对用户不可⻅?",
+      "options": [
+        "业务流程中的顺序执行和条件分支逻辑",
+        "最终用户的任务启动与方案审核⻆色",
+        "用户与 Agent 之间的自然语言对话步骤",
+        "Agent 后台与各类工具之间的调用协议和异常处理机制"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1825126791,
+      "type": "single",
+      "question": "与传统应用开发范式相比, 基于大模型的 AI Agent 应用的一个根本性范式转移是以下哪个选项?",
+      "options": [
+        "业务流程从动态适应性流程转变为固定流程",
+        "业务逻辑从通过硬编码实现转变为由模型动态生成并执行",
+        "开发主导⻆色从业务人员变回开发人员",
+        "系统表现出更高的刚性设计与强耦合性"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 450805681,
+      "type": "multiple",
+      "question": "AlAgent 中 ReAct 架构的\"思考(Thought)-行动(Action)-观察 (Observation)“循环流程, 整合了以下哪些优势",
+      "options": [
+        "摒弃所有推理步骤, 直接输出动作",
+        "完全依赖内部知识, 不与外界交互",
+        "“纯动作型”(Action-only)方法的外部工具调用能力",
+        "“链式思维”(Chain-of-Thought, CoT)的逻辑推演能力"
+      ],
+      "answer": "CD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1274716403,
+      "type": "multiple",
+      "question": "Agent 在确定需要调用工具后, 通过以下哪些选项选择最优的工具实例?",
+      "options": [
+        "计算用户意图与各可用工具描述之间的语义相似度",
+        "高度依赖于注册阶段提供的结构化功能描述",
+        "结合上下文信息进行综合排序",
+        "随机选择一个可用的工具"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 572788653,
+      "type": "judge",
+      "question": "AI Agent 中的 Self-Refine 方法完全依赖于大量标注数据和人工注释来进行迭代优化.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1490437852,
+      "type": "judge",
+      "question": "在 AI Agent 工具调用的执行过程中, 同步调用模式适用于高延迟或⻓时间运行的任务, 因为它采用非阻塞方式.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 214719242,
+      "type": "single",
+      "question": "关于智算中心和云数据中心, 以下哪个选项说法是错误的?",
+      "options": [
+        "智算中心芯片以 CPU 为主",
+        "智算中心面向 AI 典型应用场景, 如智能制造 、智慧农业等",
+        "云数据中心提供混合精度的通用算力",
+        "云数据中心架构统一标准, 互联互通互操作方便"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 906918683,
+      "type": "single",
+      "question": "以下哪个选项不属于 CANN 提供的工具链?",
+      "options": [
+        "Ascend C",
+        "MindSpore",
+        "GE",
+        "HCCL"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1308045301,
+      "type": "single",
+      "question": "关于使用 Ascend C 开发自定义算子的描述, 以下哪个选项是错误的?",
+      "options": [
+        "自动并行调度, 获得最优执行性能",
+        "简单易用, 遵循 Python 开发规则",
+        "结构化核函数编程, 简化算子开发逻辑",
+        "CPU/NPU 孪生调试, 提升算子调试效率规则"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1312020683,
+      "type": "single",
+      "question": "某工程师在 Atlas 系列硬件上训练模型时, 想要优化各个计算节点的通信时⻓, 可以选择 CANN 的哪个组件?",
+      "options": [
+        "GE",
+        "AOL",
+        "HCCL",
+        "MindIE"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1824110642,
+      "type": "single",
+      "question": "以下不属于华为应用使能套件的是哪个选项?",
+      "options": [
+        "MindSDK",
+        "ModelZoo",
+        "CANN",
+        "MindIE"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1384347472,
+      "type": "single",
+      "question": "以下哪一项是 AI4Science 在宏观尺度上的应用?",
+      "options": [
+        "设计新的药物小分子",
+        "设计蛋白质大分子",
+        "设计新的材料晶型",
+        "设计高效的⻜行器"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 160988672,
+      "type": "single",
+      "question": "在华为银行 AI 智算系统的全栈架构中, 模型层实现以下哪一项功能?",
+      "options": [
+        "围绕新一代 AI 基础模型构建可消费 、可调用 、可迭代的 AI 能力, 模型可编排 、可调整 、可组合",
+        "围绕算力底座的资源调度和管理, 以及 AI 模型能力的生产部署, 使能算力 、数据、算法资源可用",
+        "础设施以计算 、 网络 、存储等产品为核心, 形成标准化 、可交付 、可持续运营的算力基",
+        "结合自身场景应用, 使用 AI 能力改进业务, 让 AI 算力 、算法 、数据产生战略价值 、商业价值 、业务价值可编排 、可调整 、可组合"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1720589940,
+      "type": "multiple",
+      "question": "华为 AI 正在加速进入千行百业, 以下哪些选项是华为 AI 可以赋能的行业?",
+      "options": [
+        "制造",
+        "互联网",
+        "运营商",
+        "金融"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1233071760,
+      "type": "multiple",
+      "question": "以下哪些选项是华为昇腾硬件产品?",
+      "options": [
+        "Atlas 8001 A2",
+        "Atlas 3001 Pro",
+        "Atlas 900PoD",
+        "H100"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1073722723,
+      "type": "multiple",
+      "question": "以下哪些选项是智算芯片面临的挑战?",
+      "options": [
+        "高算力",
+        "大带宽",
+        "高功耗",
+        "高能效"
+      ],
+      "answer": "BCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1815629432,
+      "type": "multiple",
+      "question": "以下哪些选项属于 MindSpore 框架的优点?",
+      "options": [
+        "手动微分",
+        "易用",
+        "高效",
+        "全场景"
+      ],
+      "answer": "BCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 516584827,
+      "type": "judge",
+      "question": "与 CPU 相比, NPU 中 ALU 的占比更高.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1610999657,
+      "type": "judge",
+      "question": "进行模型训练时, 存储设备主要关注大文件的读写速度.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1721270993,
+      "type": "judge",
+      "question": "MindSpore 可以支持数据并行 、模型并行和混合并行训练, 具有很强的灵活性.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 688750866,
+      "type": "judge",
+      "question": "MindIE 是昇腾针对 AI 全场景业务的推理加速套件.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 932274058,
+      "type": "judge",
+      "question": "Mind Edge 提供边缘 AI 业务基础组件管理和边缘 AI 业务容器的全生命周期管理能力, 同时提供节点看管 、 日志采集等统一运维能力和严格的安全可信保障.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1920569965,
+      "type": "judge",
+      "question": "华为和中科院团队提出的盘古药物分子大模型可以有效提升药物研发效率, 推动了 AI 在制药领域的应用.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1410670852,
+      "type": "single",
+      "question": "AskO3-X 语音助手基于以下哪种技术实现全双工的通信?",
+      "options": [
+        "5G 通信技术",
+        "AI 语音架构",
+        "云计算技术",
+        "物联网技术"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 869578398,
+      "type": "single",
+      "question": "以下哪个选项不是智算设备大内存(显存)的作用?",
+      "options": [
+        "减少模型训练时间",
+        "降低模型对算力卡数量的要求",
+        "提高模型的准确率",
+        "增加模型吞吐量"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1467656421,
+      "type": "single",
+      "question": "某工程师在训练模型时, 可以通过以下哪个工具管理团队的 NPU 算力集群?",
+      "options": [
+        "Mind Edge",
+        "MindCluster",
+        "MindSpeed",
+        "MindSpore"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1727517948,
+      "type": "single",
+      "question": "当朋友发来一张图片, 不知道图片里面是什么物体时, 可以使用小艺以下哪个功能?",
+      "options": [
+        "识屏对话",
+        "自动填表",
+        "AI 修图",
+        "小艺通话"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1364289503,
+      "type": "multiple",
+      "question": "以下属于 CANN 功能特性的选项有哪些?",
+      "options": [
+        "推理应用开发",
+        "集群作业调度",
+        "算子开发",
+        "模型训练"
+      ],
+      "answer": "ACD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 245084667,
+      "type": "multiple",
+      "question": "从 AI4Science 的⻆度来看, 科学是从微观粒子到宏观系统的连续体系, 深度学习的方法在微观尺度上可以实现以下哪些功能?",
+      "options": [
+        "设计新的药物小分子",
+        "设计蛋白质大分子",
+        "设计高效的⻜行器",
+        "预测全球气象"
+      ],
+      "answer": "AB",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 329485908,
+      "type": "judge",
+      "question": "CANN 在昇腾算力平台上发挥承上启下的作用, 承上是指对接多种 AI 框架, 启下是指对接 AI 处理器.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1055164597,
+      "type": "judge",
+      "question": "当朋友发来一个账号信息, 需要转账的时候, 小艺可以自动完成转账操作.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 791309371,
+      "type": "judge",
+      "question": "金融行业客服场景的知识涉及大量的文档和制度, 检索繁琐. 通过搜索和大模型结合的技术, 可以实现自然语言的向量搜索, 大模型自动总结, 缩短业务使用路径, 加速业务处理流程.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1318111259,
+      "type": "judge",
+      "question": "未来 AI 在农业中可以对作物生⻓数据进行精准分析, 让种植庄稼不再只靠以往的农业经验.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 993037507,
+      "type": "single",
+      "question": "某工程师希望通过 AI 模型实现水果图像分类, 以下哪项是训练模型时需要使用的数据?",
+      "options": [
+        "水果甜度",
+        "水果图片",
+        "水果颜色值",
+        "敲击水果声音数据"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 78431989,
+      "type": "single",
+      "question": "根据 AI 终端白皮书, 以下哪个选项是 L4 级 AI 的描述?",
+      "options": [
+        "AI 作为工具被调用",
+        "AI 执行被分解的任务",
+        "AI 自主拆解及分配任务, 闭环执行",
+        "AI 提供达到人类专家水平的定制化服务"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1981533411,
+      "type": "single",
+      "question": "华为 AI 助力某证券交易所实现智能摘要, 以下哪一项不属于智能摘要的功能?",
+      "options": [
+        "会议纪要",
+        "通话总结",
+        "企业年报摘要",
+        "信贷报告生成"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1075275303,
+      "type": "multiple",
+      "question": "为了支撑大模型高效训练, 存储设备应该具备以下哪些特性?",
+      "options": [
+        "高 IO",
+        "多协议融合互通",
+        "高带宽",
+        "低功耗"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 108798618,
+      "type": "multiple",
+      "question": "某工程师在使用 ModelZoo 时, 可以选择以下哪些类型的模型?",
+      "options": [
+        "多模态大模型",
+        "大语言模型",
+        "集成学习模型",
+        "视觉模型"
+      ],
+      "answer": "ABD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1142605639,
+      "type": "multiple",
+      "question": "根据 AI 终端白皮书, 以下哪些选项是 AI 达到 L3 级以后人类需要做的事情?",
+      "options": [
+        "人类授权",
+        "人类参与",
+        "人与 AI 协作, 人类监督",
+        "人类拆解及分配任务"
+      ],
+      "answer": "BCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 546557498,
+      "type": "judge",
+      "question": "华为 AI 基础硬件包含昇腾芯片和 GPU 芯片.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 350239211,
+      "type": "judge",
+      "question": "AskO3 的智能助手中心允许工程师搭建个人专属智能助手.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 124629309,
+      "type": "judge",
+      "question": "AI 模型在朝着大参数量 、 多专家 、低位宽精度发展.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1589461742,
+      "type": "judge",
+      "question": "同一个 AI 开发框架无法在不同的平台上使用.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1143704122,
+      "type": "single",
+      "question": "关于 AI 技术, 以下哪项描述是错误的?",
+      "options": [
+        "AI 模型是从数据中学习, 不同类型的任务需要的训练数据也不完全相同",
+        "训练 AI 模型使用的数据类别可以是图片 、文字或者语音",
+        "训练 AI 模型可以不使用数据和 AI 计算芯片",
+        "AI 框架可以提高工程师实现 AI 模型的效率"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 562114756,
+      "type": "single",
+      "question": "以下哪一款是华为自研的 AI 芯片?",
+      "options": [
+        "GTX4090",
+        "昇腾 910",
+        "RX 9070XT",
+        "H200"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1939594753,
+      "type": "single",
+      "question": "AI 助力金融实现智慧运营, 以下哪一项不属于智慧运营的能力?",
+      "options": [
+        "OCR 智能识别",
+        "智能客服助手",
+        "基于财务信息和历史行为信息的信用评分",
+        "文档助手"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1282254293,
+      "type": "multiple",
+      "question": "训练大语言模型的关键设备包括以下哪些选项?",
+      "options": [
+        "算力设备",
+        "存储设备",
+        "网络设备",
+        "基站设备"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1947042484,
+      "type": "multiple",
+      "question": "大模型分布式训练时需要考虑以下哪些问题?",
+      "options": [
+        "装得下",
+        "低功耗",
+        "算得快",
+        "通信快"
+      ],
+      "answer": "ACD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 34512940,
+      "type": "multiple",
+      "question": "以下关于某工程师在使用 MindSDK 时的操作, 描述正确的有哪些选项?",
+      "options": [
+        "通过 RAG SDK 实现大语言模型知识增强",
+        "通过 Index SDK 实现搜索推荐应用",
+        "通过 Audio SDK 实现语音交互应用",
+        "通过 Vision SDK 实现图像智能分析"
+      ],
+      "answer": "ACD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1979336637,
+      "type": "multiple",
+      "question": "小艺支持以下哪些功能?",
+      "options": [
+        "AI 翻译",
+        "AI 自拍",
+        "AI 慧眼识物",
+        "AI 字幕"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1499492404,
+      "type": "multiple",
+      "question": "盘古气象大模型包含以下哪些模块?",
+      "options": [
+        "全球预报模块",
+        "区域预报模块",
+        "降水预报模块",
+        "观测同化模块"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 537873602,
+      "type": "judge",
+      "question": "CANN 是华为针对 AI 场景推出的异构计算架构, 支持多种 AI 框架, 包括 MindSpore 、 PyTorch 、TensorFlow 等.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1788890041,
+      "type": "judge",
+      "question": "MindSpore 框架无法在 CPU 平台上使用.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 87056785,
+      "type": "judge",
+      "question": "应用使能组件, 包括异构的极致性能应用对接 SDK 、极简易用的设备/调度/监控/诊断/断点续训等平台对接组件 、推理引擎 、大模型训练加速等工具.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 862378222,
+      "type": "judge",
+      "question": "通过小艺的 AI 修图功能, 可以消除照片中不希望出现的内容.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1660783884,
+      "type": "judge",
+      "question": "AI4Science 离不开人类的科研经验和 AI 的发展.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 658749497,
+      "type": "judge",
+      "question": "人类的知识体系是建立在科学对于宇宙的描述上, 其中默会知识代表人类只可意会不可言传的知识.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 283936306,
+      "type": "single",
+      "question": "以下哪一项可以提高工程师编写 AI 算法的效率?",
+      "options": [
+        "AI 算力",
+        "AI 框架",
+        "训练数据",
+        "计算机 CPU 性能"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 134273999,
+      "type": "single",
+      "question": "以下哪个选项是智算的特点?",
+      "options": [
+        "高精度",
+        "低功耗",
+        "大集群",
+        "串行计算"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1492637050,
+      "type": "single",
+      "question": "某工程师在使用 MindSDK 构建视频分析 AI 应用时, 可以选择工具中的哪个模块?",
+      "options": [
+        "Index SDK",
+        "RAG SDK",
+        "Rec SDK",
+        "Vision SDK"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1704616433,
+      "type": "multiple",
+      "question": "无损以太网使用了以下哪些协议?",
+      "options": [
+        "ECN",
+        "PFC",
+        "HCCS",
+        "HDFS"
+      ],
+      "answer": "AB",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1703983633,
+      "type": "multiple",
+      "question": "某工程师在 Atlas 系列硬件上训练模型时, 想要提升模型的训练速度, 可以选择 CANN 的以下哪些组件?",
+      "options": [
+        "AscendCL",
+        "GE",
+        "AOL",
+        "MindSDK"
+      ],
+      "answer": "AD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 139607360,
+      "type": "multiple",
+      "question": "某工程师基于 MindSpore 实现 AI 模型后, 可以部署在以下哪些选项中?",
+      "options": [
+        "手机",
+        "汽⻋",
+        "机器人",
+        "云服务器"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 914719372,
+      "type": "multiple",
+      "question": "小艺的识屏对话使用到了以下哪些技术?",
+      "options": [
+        "图像识别",
+        "语音识别",
+        "自然语言处理",
+        "图像生成"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 742980266,
+      "type": "multiple",
+      "question": "AI4Science 在以下哪些选项中已经有了实际的应用?",
+      "options": [
+        "材料",
+        "生命科学",
+        "流体",
+        "电磁"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1360704057,
+      "type": "judge",
+      "question": "RoCE 协议使用了 RDMA 技术.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 545645609,
+      "type": "single",
+      "question": "以下哪个选项不属于 AI 开发框架?",
+      "options": [
+        "Mindspore",
+        "PyTorch",
+        "TensorFlow",
+        "Python"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 597364379,
+      "type": "single",
+      "question": "在华为银行 AI 智算系统的全栈架构中, 以下哪一层可以实现算力底座的资源调度和管理, 以及 AI 模型能力的生产部署, 使能算力 、数据 、算法资源可用?",
+      "options": [
+        "底座层",
+        "平台层",
+        "模型层",
+        "应用层"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1345170037,
+      "type": "multiple",
+      "question": "关于 AskO3 的\"大模型+文档\"功能, 以下哪些描述是正确的?",
+      "options": [
+        "支持⻓文档分块和知识点提取",
+        "仅能生成 Word 格式考题",
+        "可自动解析文档逻辑结构",
+        "需人工手动编写所有考题"
+      ],
+      "answer": "AC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 320716926,
+      "type": "multiple",
+      "question": "AskO3 接入 DeepSeek-R1 后, 产生以下哪些优化?",
+      "options": [
+        "增强深度推理能力",
+        "完全替代人工决策",
+        "支持多 Agent 复杂问题推演",
+        "仅用于文本搜索"
+      ],
+      "answer": "AC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 118037169,
+      "type": "judge",
+      "question": "无损以太网需要网络侧和服务器网卡侧同时支持.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1613112525,
+      "type": "judge",
+      "question": "AscendCL (Ascend Computing Language) 是一套用于在 CANN 上开发深度神经网络推理应用的 C 语言 API 库, 提供模型加载与执行 、 媒体数据处理 、 算子加载与执行等 API.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 58573182,
+      "type": "single",
+      "question": "以下哪个选项不属于数据预处理?",
+      "options": [
+        "格式标准化",
+        "异常数据清理",
+        "重复数据清除",
+        "模型权重文件读取"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 116388222,
+      "type": "single",
+      "question": "某工程师想要实现一个深度学习算法, 可以使用以下哪个框架来实现?",
+      "options": [
+        "MindSpore",
+        "MindIE",
+        "GPU",
+        "HCCL"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 150678913,
+      "type": "multiple",
+      "question": "华为智能无损技术架构包含以下哪些层?",
+      "options": [
+        "应用加速层",
+        "流量调度层",
+        "拥塞控制层",
+        "应用使能层"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1314170161,
+      "type": "judge",
+      "question": "智算芯片适合逻辑简单 、计算密集型的高并发任务.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1833473848,
+      "type": "judge",
+      "question": "通过多协议融合互通, 存储设备可以支撑 AI 模型开发全流程, 满足不同阶段使用不同协议的需求.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1343699656,
+      "type": "judge",
+      "question": "昇腾应用使能组件集, 包括昇腾亲和的极致性能应用对接 SDK 、极简易用的设备纳管/调度/监控/故障诊断/断点续训等平台对接组件 、昇腾推理引擎 、昇腾大模型训练加速库等工具.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 787070133,
+      "type": "judge",
+      "question": "华为 AI 在未来将在多个领域中持续探索其应用, 包括但不限于农业 、城市规划 、 出行等领域.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 17901347,
+      "type": "multiple",
+      "question": "以下哪些选项是智算服务器面临的挑战?",
+      "options": [
+        "散热",
+        "重量",
+        "体积",
+        "供电"
+      ],
+      "answer": "AD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 76996345,
+      "type": "multiple",
+      "question": "在 MindSpore 中, API 可以被分为以下哪几个层次?",
+      "options": [
+        "High-Level",
+        "Medium-Level",
+        "Low-Level",
+        "Base-Level"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 468637264,
+      "type": "multiple",
+      "question": "实现具身智能需要以下哪些因素?",
+      "options": [
+        "智能的本体",
+        "本体可以和环境交互",
+        "本体具有学习能力",
+        "本体可以在环境中学习并成⻓"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1627676831,
+      "type": "judge",
+      "question": "根据人类语音指令可以自动抓取物品的机器人是一个智能的智能体, 它可以识别人类语音并理解意图, 最终在环境中实现指令.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1535686021,
+      "type": "single",
+      "question": "在训练大模型时, 以下哪个环节对存储设备的 IO 性能要求较高?",
+      "options": [
+        "保存 CKPT 文件",
+        "更新模型参数",
+        "计算 Loss 值",
+        "检索向量数据库"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1155712793,
+      "type": "multiple",
+      "question": "某工程师使用 MindSpore 进行 AI 模型开发的时候, 以下哪些功能可以通过 MindSpore 实现?",
+      "options": [
+        "矩阵计算",
+        "模型部署",
+        "模型训练",
+        "数据处理"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1228251662,
+      "type": "single",
+      "question": "在分析 DeepSeek 的基础模型 V3 与深度思考模型 R1 时, 以下哪一项不属于使用的 5R 框架?",
+      "options": [
+        "Result(结果导向)",
+        "Route(路径灵活性)",
+        "Regulation(规范性)",
+        "Review(回顾)"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1019540469,
+      "type": "single",
+      "question": "关于 RAG 技术在课程资源查询中的作用, 以下哪一项是正确的?",
+      "options": [
+        "使用 RAG 技术无法关联课程大纲与实验手册内容",
+        "RAG 技术不能标注答案来源",
+        "RAG 技术只能检索到通用的课程资源",
+        "RAG 技术可精准提取课程特色内容并关联相关案例"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 689336420,
+      "type": "single",
+      "question": "RAG 在处理⻓文本时, 通常会使用以下哪一种做法?",
+      "options": [
+        "直接输入整个⻓文本",
+        "仅提取⻓文本标题",
+        "忽略⻓文本内容",
+        "分割成⻓度合适的文本块"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1981564163,
+      "type": "single",
+      "question": "对于 Responsiveness(响应模式), 有关 DeepSeek 的 V3 模型和 R1 模型的表述, 以下哪一项是错误的?",
+      "options": [
+        "V3 模型被动适配, 严格按规则执行",
+        "R1 模型主动创新, 具备自主决策能力",
+        "R1 模型在缺乏明确规则时, 可探索新解决方案",
+        "V3 模型适用于开放性问题求解场景"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 185800502,
+      "type": "single",
+      "question": "以下哪个选项有助于提高 RAG 系统的检索准确率?",
+      "options": [
+        "优化向量化算法和检索策略",
+        "扩大用户群体",
+        "增加服务器内存",
+        "更换生成模型"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1896353533,
+      "type": "single",
+      "question": "关于 DeepSeek 的 V3 模型和 R1 模型在 Regulation(规范性)方面的表述, 以下哪一项是正确的?",
+      "options": [
+        "R1 模型采用强规范约束, 适合标准化数据处理场景",
+        "R1 模型强调强规范约束, 操作路径明确",
+        "V3 模型强调强规范约束, 操作路径明确",
+        "V3 模型采用弱规范约束, 操作路径灵活"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1188970128,
+      "type": "single",
+      "question": "对于 Risk(⻛险特征), 关于 DeepSeek 的 V3 模型和 R1 模型的表述, 以下哪一项是正确的?",
+      "options": [
+        "R1 模型不适合用于探索性研究",
+        "V3 模型高⻛险, 不确定性强",
+        "R1 模型低⻛险, 稳定可控",
+        "V3 模型追求目标确定性高, 结果可预期"
+      ],
+      "answer": "D",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 271309594,
+      "type": "single",
+      "question": "RAG 系统相比传统问答系统, 以下哪一项属于其优势?",
+      "options": [
+        "不需要训练",
+        "部署成本更低",
+        "准确率更高",
+        "完全不会出错"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 37474808,
+      "type": "single",
+      "question": "在构建 RAG 流程中, 以下哪一项是对输入问题进行处理后的下一步?",
+      "options": [
+        "评估答案质量",
+        "检索相关文档",
+        "微调语言模型",
+        "直接生成答案"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 619324657,
+      "type": "single",
+      "question": "在使用 LangChain 框架进行知识问答时, 以下哪一个选项是 Unstructured Loader 模块的作用?",
+      "options": [
+        "将非结构化的文档加载并转换为文本数据",
+        "将文本转换为向量表示",
+        "将文本分割成小片段",
+        "将结构化数据转换为文本"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1394559398,
+      "type": "single",
+      "question": "DeepSeek-R1-Zero 模型在强化学习阶段, 使用以下哪一项数据进行强化学习?",
+      "options": [
+        "冷启动推理数据",
+        "音频数据",
+        "图像数据",
+        "视频数据"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 912185296,
+      "type": "single",
+      "question": "在自然语言理解 、文本生成等通用基准测试中, DeepSeek NSA 机制与传统全注意力机制相比, 以下哪一项是其优点?",
+      "options": [
+        "首次实现对传统全注意力机制的全面性能反超",
+        "在短序列任务上精度明显下降",
+        "性能不如传统全注意力机制",
+        "模型训练所需显存大度增加"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 921743916,
+      "type": "single",
+      "question": "在 DeepSeek-R1 强化学习中, 以下哪一项是引入 Rule-based Verifier 的目的?",
+      "options": [
+        "确保模型输出符合特定规则和标准",
+        "降低模型参数量",
+        "提高模型训练速度",
+        "增加模型输出的多样性"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1080416364,
+      "type": "single",
+      "question": "以下哪一项不属于 DeepSeek 的 NSA 机制实现突破的关键技术架构?",
+      "options": [
+        "动态路由机制",
+        "多尺度注意力融合",
+        "静态特征映射",
+        "原生可训练设计"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 344726928,
+      "type": "single",
+      "question": "关于 DeepSeek ⻓文本处理技术的原生可训练设计, 以下哪一项是正确的?",
+      "options": [
+        "相比截断方法, 在 SQuAD 任务上准确率降低",
+        "不支持端到端梯度传播",
+        "在训练初期就开始学习最优稀疏模式",
+        "采用“先训练后裁剪”的流程"
+      ],
+      "answer": "C",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 194041355,
+      "type": "single",
+      "question": "在 Result(结果导向)方面, 关于 DeepSeek 的 V3 模型和 R1 模型, 以下哪一项是错误的?",
+      "options": [
+        "R1 模型允许目标开放, 结果多样化",
+        "V3 模型生成固定格式报告时, 输出结构不可控",
+        "V3 模型追求目标确定性高, 结果可预期",
+        "R1 模型在创意文案生成中, 同一需求可产生多种⻛格内容"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 44393772,
+      "type": "single",
+      "question": "以下哪个选项是数据质量对 RAG 系统的影响?",
+      "options": [
+        "影响答案的准确度和可靠性",
+        "仅影响用户体验",
+        "不影响系统性能",
+        "只影响检索速度"
+      ],
+      "answer": "A",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1634547258,
+      "type": "single",
+      "question": "以下关于开源基座大语言模型领域知识缺失的描述, 哪一项是正确的?",
+      "options": [
+        "大语言模型的回答都具有很强的针对性",
+        "大语言模型缺乏企业私有数据支持",
+        "大语言模型仅缺乏医学领域知识",
+        "领域知识缺失问题无法解决"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1799001537,
+      "type": "single",
+      "question": "在构建 RAG 应用的 Prompt 模板设计中, 为减少幻觉⻛险, 以下哪项不是 Prompt 模板的核心部分?",
+      "options": [
+        "系统指令",
+        "模型生成的随机提示",
+        "用户提问",
+        "检索结果"
+      ],
+      "answer": "B",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1179216761,
+      "type": "multiple",
+      "question": "在调用大语言模型的 API 时, “Temperature”参数的作用是什么?",
+      "options": [
+        "较高值产生更有创意的回答",
+        "较低值使回答更稳定",
+        "设置模型名称",
+        "控制生成文本的随机性"
+      ],
+      "answer": "ABD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 223256027,
+      "type": "multiple",
+      "question": "在 DeepSeek ⻓文本处理的稀疏注意力机制 NSA 的硬件级优化中, 以下哪些选项属于采取的措施?",
+      "options": [
+        "重构指令流水线提升训练加速",
+        "采用解码预测器加快解码速度",
+        "增加 CPU 核心数量",
+        "设计内存访问优化器降低显存占用"
+      ],
+      "answer": "ABD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 557094503,
+      "type": "multiple",
+      "question": "在使用 Ollama 部署 DeepSeek-1. 5B 模型时, 以下哪些操作是部署流程的一部分?",
+      "options": [
+        "必须在终端执行“ollama -v”验证版本",
+        "通过“ollama pull deepseek-r1: 1. 5b”下载模型",
+        "从官网获取 Ollama 安装包并完成安装",
+        "必须安装额外的专用显卡驱动"
+      ],
+      "answer": "BC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1994418956,
+      "type": "multiple",
+      "question": "在向量数据库部署中, 以下哪些选项属于 ChromaDB 的特点?",
+      "options": [
+        "适用于大规模数据存储",
+        "易于部署",
+        "高性能",
+        "轻量级"
+      ],
+      "answer": "BCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1680020441,
+      "type": "multiple",
+      "question": "在构建 RAG 应用的 Prompt 模板设计中, 以下哪些措施可以减少幻觉⻛险?",
+      "options": [
+        "明确系统指令, 要求模型仅基于提供的资料回答",
+        "直接使用用户提问的问题",
+        "使用随机生成的 Prompt",
+        "动态插入检索到的相关文档片段"
+      ],
+      "answer": "ABD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1709023370,
+      "type": "multiple",
+      "question": "以下哪些选项属于提高 RAG 系统检索效果的方法?",
+      "options": [
+        "更换服务器硬件",
+        "改进检索策略",
+        "增加数据量并保证质量",
+        "优化向量化算法"
+      ],
+      "answer": "BCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1871866034,
+      "type": "multiple",
+      "question": "以下哪些选项属于 RAG 技术的实验原理?",
+      "options": [
+        "将用户查询与本地文档内容进行向量化匹配",
+        "仅依赖大语言模型预训练知识",
+        "通过相似度计算检索相关文本片段",
+        "大语言模型基于检索到的上下文信息生成回答"
+      ],
+      "answer": "ACD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1282470714,
+      "type": "multiple",
+      "question": "以下关于 Ollama 各种命令的描述, 哪些选项是正确的?",
+      "options": [
+        "create: 从模型文件创建模型",
+        "从模型文件创建模型",
+        "show: 显示模型的详细信息",
+        "push: 从模型仓库下载模型"
+      ],
+      "answer": "ABD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1584968317,
+      "type": "multiple",
+      "question": "以下哪些选项是 RAG 技术的优势?",
+      "options": [
+        "不需要大语言模型",
+        "能利用最新知识进行回答",
+        "减少大语言模型幻觉问题",
+        "可灵活更新知识"
+      ],
+      "answer": "BCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1683103642,
+      "type": "multiple",
+      "question": "在 RAG 实验中, 以下哪些选项是评估基于 RAG 的问答系统的指标?",
+      "options": [
+        "模型大小",
+        "召回率",
+        "响应速度",
+        "准确性"
+      ],
+      "answer": "BD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 137507408,
+      "type": "multiple",
+      "question": "在 DeepSeek 模型部署遇到显存不足问题时, 以下哪些选项属于解决措施?",
+      "options": [
+        "关闭其他占用显存的后台程序",
+        "增加电脑内存容量",
+        "更换模型版本, 如从 7B 降至 1. 5B",
+        "应用 FP4 量化技术减少显存占用"
+      ],
+      "answer": "ACD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 8557878,
+      "type": "multiple",
+      "question": "DeepSeek 1. 5B 模型通过 Ollama 部署后, 在优化模型运行效果方面, 可调整以下哪些参数?",
+      "options": [
+        "temperature (随机性)",
+        "模型训练轮次",
+        "数据输入格式",
+        "num _ ctx (上下文⻓度)"
+      ],
+      "answer": "AD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1738204465,
+      "type": "multiple",
+      "question": "以下哪些选项属于昇腾服务器?",
+      "options": [
+        "Atlas 500 Pro",
+        "Atlas 700",
+        "Atlas 800",
+        "Atlas 900 A2 PoD"
+      ],
+      "answer": "ACD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 383605178,
+      "type": "multiple",
+      "question": "以下哪些选项属于使用大型语言模型时会遇到的关键问题?",
+      "options": [
+        "时效性不足",
+        "幻觉问题",
+        "领域知识缺失",
+        "数据安全⻛险"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 463878689,
+      "type": "multiple",
+      "question": "以下哪些选项属于 RAG 系统的数据来源?",
+      "options": [
+        "企业内部文档",
+        "学术期刊论文",
+        "公开网⻚数据",
+        "数据库表数据"
+      ],
+      "answer": "ABCD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1485995538,
+      "type": "multiple",
+      "question": "RAG 技术适用于以下哪些场景?",
+      "options": [
+        "企业培训知识问答",
+        "智能客服",
+        "股票实时交易决策",
+        "学术文献问答"
+      ],
+      "answer": "ABD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1424158311,
+      "type": "multiple",
+      "question": "在 RAG 系统中, 以下哪些选项是对文档进行预处理的步骤?",
+      "options": [
+        "文本分词",
+        "去除噪声数据",
+        "向量化",
+        "语法检查"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 186038815,
+      "type": "multiple",
+      "question": "在 RAG 实验中, 以下哪些选项是构建基于 RAG 的问答系统的步骤?",
+      "options": [
+        "环境配置",
+        "运行代码",
+        "编写代码",
+        "优化模型参数"
+      ],
+      "answer": "ABC",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 410116626,
+      "type": "multiple",
+      "question": "Ollama 工具与其他可选工具形成技术闭环, 以下哪些方面是其具体体现?",
+      "options": [
+        "Ollama 负责模型生命周期管理",
+        "Cherry Studio 降低非技术人员使用⻔槛",
+        "三者功能完全重叠",
+        "vLLM 保障并发级性能需求"
+      ],
+      "answer": "ABD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 116372016,
+      "type": "multiple",
+      "question": "以下哪些选项属于 Atlas 800 系列昇腾服务器?",
+      "options": [
+        "Atlas 800I A2 推理服务器",
+        "Atlas 800T A3 推理服务器",
+        "Atlas 800T A2 训练服务器",
+        "Atlas 800 推理服务器"
+      ],
+      "answer": "ACD",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1529732634,
+      "type": "judge",
+      "question": "在 RAG 架构中, 加载 PDF 后不需要分割文本.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1782556439,
+      "type": "judge",
+      "question": "将文本向量化之后, 可以计算文本之间的相似度.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 428595464,
+      "type": "judge",
+      "question": "在 RAG 构建智能助手整体方案中, 的 PDF 文档分割成小的文本块(chunks). “分割文本”(Split Into chunks)指的是将加载",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1262565659,
+      "type": "judge",
+      "question": "RAG 技术不能解决 LLM 的知识时效性问题.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1992794403,
+      "type": "judge",
+      "question": "在 RAG 实验中, 大模型初始化时的 temperature 参数不影响生成回答.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1548639839,
+      "type": "judge",
+      "question": "RAG 技术只能使用文本数据进行检索增强, 无法处理图像 、音频等非结构化数据.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 106048868,
+      "type": "judge",
+      "question": "RAG 是一种独立于大型语言模型的全新技术.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1330942316,
+      "type": "judge",
+      "question": "向量数据库是 RAG 系统中存储和检索数据的重要组件.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1214281954,
+      "type": "judge",
+      "question": "Prompt Template 对 LLM 生成答案没有影响.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 522727478,
+      "type": "judge",
+      "question": "RAG 技术在多轮对话场景下, 不需要考虑对话历史信息.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1694802995,
+      "type": "judge",
+      "question": "优化 RAG 系统时, 仅需关注生成模块的性能提升即可",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1435135407,
+      "type": "judge",
+      "question": "RAG 的检索器不支持使用 FAISS 等向量检索技术.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 638455347,
+      "type": "judge",
+      "question": "在构建基于 RAG 的问答系统时, 不需要进行环境配置.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1862924273,
+      "type": "judge",
+      "question": "大模型在回答问题时不存在“幻觉”⻛险.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1279638815,
+      "type": "judge",
+      "question": "LLM 在回答问题时, 一定能利用企业内部文档信息. 16. 大型语言模型不会生成缺乏事实依据的内容.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 71357520,
+      "type": "judge",
+      "question": "在 RAG 的核心流程中, 生成阶段不需要结合检索到的文档.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 179811912,
+      "type": "judge",
+      "question": "在 RAG 系统中, 检索模块只能使用基于关键词的检索方式.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1833365683,
+      "type": "judge",
+      "question": "对文档进行向量化时, 不同的向量化算法对 RAG 系统效果没有差异.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 125559948,
+      "type": "judge",
+      "question": "领域特定知识的 RAG 系统, 其训练数据只能来源于该领域的专业文献.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1456561838,
+      "type": "judge",
+      "question": "RAG 系统中, 检索模块和生成模块之间没有交互关系.",
+      "answer": "错误",
+      "subject": "ai_microcert"
+    },
+    {
+      "id": 1292928328,
+      "type": "judge",
+      "question": "RAG 是指通过结合外部知识库检索与生成模型, 动态提升回答的准确性和时效性.",
+      "answer": "正确",
+      "subject": "ai_microcert"
+    }
+  ]
+}
