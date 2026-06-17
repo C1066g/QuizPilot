@@ -1,6 +1,7 @@
 # Ignore runtime overlay JSON files
 *.json
 
-# Keep templates and placeholder
+# Keep templates, index, and placeholder
 !*.template.json
+!index.json
 !.gitkeep

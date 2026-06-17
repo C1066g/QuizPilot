@@ -1,0 +1,58 @@
+{
+  "files": [
+    {
+      "name": "subject_ai_microcert.json",
+      "subject": "ai_microcert",
+      "displayName": "AI 微认证",
+      "count": 177
+    },
+    {
+      "name": "subject_ai_upgrade_exam.json",
+      "subject": "ai_upgrade_exam",
+      "displayName": "AI 升级考试题",
+      "count": 172
+    },
+    {
+      "name": "subject_android.json",
+      "subject": "android",
+      "displayName": "Android系统开发基础",
+      "count": 403
+    },
+    {
+      "name": "subject_comm_net_1_3.json",
+      "subject": "comm_net_1_3",
+      "displayName": "通信网络技术 第1-3章",
+      "count": 306
+    },
+    {
+      "name": "subject_comm_net_4_5.json",
+      "subject": "comm_net_4_5",
+      "displayName": "通信网络技术 第4-5章",
+      "count": 257
+    },
+    {
+      "name": "subject_huawei_ai.json",
+      "subject": "huawei_ai",
+      "displayName": "huawei",
+      "count": 0
+    },
+    {
+      "name": "subject_ic_design.json",
+      "subject": "ic_design",
+      "displayName": "集成电路设计基础",
+      "count": 282
+    },
+    {
+      "name": "subject_openeuler_microcert.json",
+      "subject": "openeuler_microcert",
+      "displayName": "openEuler 微认证",
+      "count": 214
+    },
+    {
+      "name": "subject_txwl.json",
+      "subject": "txwl",
+      "displayName": "通信网络",
+      "count": 379
+    }
+  ]
+}
