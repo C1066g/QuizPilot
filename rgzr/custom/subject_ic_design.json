@@ -3,2320 +3,7 @@
   "name": "集成电路设计基础",
   "items": [
     {
-      "id": 1626832266,
-      "type": "single",
-      "question": "关于摩尔定律,下列说法正确的是( ).",
-      "options": [
-        "每个芯片上的晶体管数量大约每 18 个月翻一番",
-        "芯片的功耗大约每 18 个月翻一番",
-        "晶圆尺寸大约每 18 个月增大一倍",
-        "芯片的价格大约每 18 个月翻一番"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 283644106,
-      "type": "single",
-      "question": "MPW(多项目晶圆)技术的主要目的是( ).",
-      "options": [
-        "提高芯片的集成度",
-        "降低芯片的研发流片成本",
-        "缩短芯片的制造周期",
-        "提高芯片的良率"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1695206664,
-      "type": "single",
-      "question": "版图设计规则检查(DRC)主要用于验证( ).",
-      "options": [
-        "版图与电路图是否一致",
-        "版图是否符合制造工艺的几何约束",
-        "电路的功耗是否满足要求",
-        "电路的功能是否正确"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 582360007,
-      "type": "judge",
-      "question": "Fabless 模式是指芯片设计公司拥有自己的晶圆制造厂.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1757577611,
-      "type": "judge",
-      "question": "特征尺寸通常指芯片上最小的线条宽度,常见的有 180nm、28nm 等.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1222439470,
-      "type": "single",
-      "question": "Fabless 模式与 Foundry 模式的关系是( ).",
-      "options": [
-        "Fabless 公司负责制造,Foundry 公司负责设计",
-        "Fabless 公司负责设计,Foundry 公司负责制造",
-        "两者都负责设计和制造",
-        "两者都只负责设计"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1260962039,
-      "type": "single",
-      "question": "版图设计中,LVS 检查的主要作用是( ).",
-      "options": [
-        "检查版图是否符合几何规则",
-        "提取版图中的寄生参数",
-        "验证版图与电路原理图是否一致",
-        "生成用于制造的光罩数据"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 661893790,
-      "type": "judge",
-      "question": "特征尺寸越小,芯片的集成度越高,速度越快.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 897581816,
-      "type": "judge",
-      "question": "PDK 中包含器件模型、设计规则(DRC)和 LVS 规则等文件.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 29362457,
-      "type": "single",
-      "question": "集设计、制造、封装于一体的集成电路模式是().",
-      "options": [
-        "Fabless",
-        "IDM",
-        "Foundry",
-        "MPW"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1292415649,
-      "type": "single",
-      "question": "只负责芯片设计,不建设生产线的模式称为().",
-      "options": [
-        "IDM",
-        "Fabless",
-        "Mask",
-        "EDA"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 707036692,
-      "type": "single",
-      "question": "代工厂提供给设计公司的工艺设计套件缩写为()..",
-      "options": [
-        "PDK",
-        "DRC",
-        "LVS",
-        "MPW"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 773486005,
-      "type": "single",
-      "question": "特征尺寸( Feature Size)通常指:( )",
-      "options": [
-        "晶体管栅极长度",
-        "晶圆直径",
-        "金属线宽度",
-        "氧化层厚度"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1859005619,
-      "type": "single",
-      "question": "以下哪一项不是集成电路技术发展的趋势?",
-      "options": [
-        "集成电路特征尺寸越来越小.",
-        "集成电路的工作速度越来越低.",
-        "晶圆的尺寸越来越大.",
-        "集成电路的器件规模越来越大."
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1658437258,
-      "type": "fill",
-      "question": "体现集成电路工艺技术水平的关键技术指标是 .;",
-      "answerText": "特征尺寸",
-      "subject": "ic_design"
-    },
-    {
-      "id": 559464243,
-      "type": "fill",
-      "question": "集成电路发展趋势包括:特征尺寸越来_____、晶圆尺寸越来越越大、速度越来越快、工作电压越来越_____。",
-      "answerText": "越小",
-      "subject": "ic_design",
-      "answer": "越低"
-    },
-    {
-      "id": 14031470,
-      "type": "fill",
-      "question": "摩尔定律的核心内容是:每个芯片上的晶体管数量大约每_____个月翻一番.;",
-      "answerText": "18",
-      "subject": "ic_design"
-    },
-    {
-      "id": 314783102,
-      "type": "fill",
-      "question": "特征尺寸通常指集成电路中能制造的最小线条宽度,一般指 MOS 管的_____长度.当前最新 CMOS 工艺的特征尺寸已达到_____纳米量级(填一个典型值)。",
-      "answerText": "沟道;栅极",
-      "subject": "ic_design",
-      "answer": "3；5；7；14"
-    },
-    {
-      "id": 102017598,
-      "type": "fill",
-      "question": "7、14 等合理值均可19、MPW 的全称是_____,其核心优势是将多个具有相同工艺的芯片设计放在同一晶圆上流片,通过分摊成本降低芯片的_____费用。",
-      "answerText": "多项目晶圆;Multi-Project Wafer",
-      "subject": "ic_design",
-      "answer": "流片；研发；打样；工程"
-    },
-    {
-      "id": 37312783,
-      "type": "fill",
-      "question": "Fabless 模式是指芯片设计公司_____(填“拥有”或“不拥有”)晶圆制造厂,只负责芯片设计和销售;Foundry 模式是指专业从事_____的企业,为Fabless 公司提供代工服务。",
-      "answerText": "不拥有",
-      "subject": "ic_design",
-      "answer": "芯片制造；晶圆代工；制造；代工"
-    },
-    {
-      "id": 1937364746,
-      "type": "fill",
-      "question": "PDK 的全称是_____,它是晶圆厂提供给设计者的数据集合,包含器件模型、设计规则(DRC)、_____规则等文件。",
-      "answerText": "工艺设计套件;Process Design Kit",
-      "subject": "ic_design",
-      "answer": "LVS；版图与原理图对照"
-    },
-    {
-      "id": 114914,
-      "type": "fill",
-      "question": "在集成电路设计流程中,DRC 用于检查版图是否符合制造工艺的_____规则,LVS 用于验证版图与_____的一致性。",
-      "answerText": "几何;设计",
-      "subject": "ic_design",
-      "answer": "原理图"
-    },
-    {
-      "id": 1013271727,
-      "type": "fill",
-      "question": "SOC 的全称是_____,它将处理器、存储器、模拟电路、接口等模块集成在单一芯片上,构成完整的系统.;",
-      "answerText": "片上系统;System on Chip",
-      "subject": "ic_design"
-    },
-    {
-      "id": 42129998,
-      "type": "judge",
-      "question": "特征尺寸越小,芯片的集成度越高,晶体管的开关速度越快,但同时漏电流等功耗问题也变得更加突出.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 19717567,
-      "type": "judge",
-      "question": "MPW 技术的主要缺点是流片成本很高,只适合大批量生产的企业使用.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 220293139,
-      "type": "judge",
-      "question": "Fabless 模式的出现使得芯片设计公司无需承担昂贵的晶圆厂建设和维护成本,降低了行业进入门槛.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1154510777,
-      "type": "judge",
-      "question": "Foundry 模式的典型代表企业包括台积电(TSMC)、中芯国际(SMIC)等,它们只负责芯片制造,不涉及芯片设计.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1260077782,
-      "type": "judge",
-      "question": "PDK(工艺设计套件)中包含了 DRC(设计规则检查)和 LVS(版图与原理图对照)的规则文件,是连接设计与制造的桥梁.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 651605972,
-      "type": "judge",
-      "question": "DRC 检查通过后,意味着版图的连接关系一定与电路原理图一致.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1942589140,
-      "type": "judge",
-      "question": "LVS 检查通过后,意味着版图一定符合所有制造工艺的几何规则.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1926235735,
-      "type": "essay",
-      "question": "特征尺寸(Feature Size)晶体管的栅极(沟道)长度 L,单位通常为微米(μm)或纳米(nm).特征尺寸是衡量集成电路工艺水平的关键技术指标,尺寸越小代表工艺越先进,集成度越高.当前先进工艺已达 3nm/5nm 量级.",
-      "answerText": "特征尺寸是指集成电路中能制造的最小线条宽度或最小几何尺寸,通常指 MOS",
-      "subject": "ic_design"
-    },
-    {
-      "id": 786418148,
-      "type": "essay",
-      "question": "MPW(多项目晶圆)的、具有相同工艺的集成电路设计拼接到同一块晶圆上进行流片的制造模式.所有参加 MPW 的项目按照芯片面积分摊光罩和流片成本,可大幅降低芯片研发阶段的打样费用,特别适合高校科研、中小企业和小批量产品的研发验证.",
-      "answerText": "MPW(Multi-Project Wafer,多项目晶圆)是指将多个来自不同客户或项目",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1911858128,
-      "type": "essay",
-      "question": "Fabless(无生产线模式)造厂,只专注于芯片的电路设计、仿真验证和销售,而将芯片的制造环节委托给专业的代工厂(Foundry)完成.这种模式降低了芯片设计行业的进入门槛,使设计公司无需承担晶圆厂建设和维护的巨额资本投入.典型代表有高通、英伟达、联发科等.",
-      "answerText": "Fabless(无生产线集成电路设计模式)是指芯片设计公司不拥有自己的晶圆制",
-      "subject": "ic_design"
-    },
-    {
-      "id": 59566446,
-      "type": "essay",
-      "question": "Foundry(代工厂模式)司提供晶圆代工服务.Foundry 企业不涉及芯片设计,只专注于工艺开发、制造生产和良率提升.这种模式实现了设计与制造的分离,促进了半导体产业链的专业化分工.典型代表包括台积电(TSMC)、中芯国际(SMIC)、华虹集团等.",
-      "options": [
-        "中芯国际(SMI",
-        "华虹集团 等."
-      ],
-      "answerText": "Foundry(代工厂模式)是指专业从事集成电路制造的企业,为 Fabless 设计公",
-      "subject": "ic_design"
-    },
-    {
-      "id": 338888458,
-      "type": "essay",
-      "question": "SOC(片上系统)路、数字逻辑、接口电路等多个功能模块集成在单一芯片上,构成一个完整的、可运行的电子系统.SOC 是高集成度 VLSI 的高级形态,具有体积小、功耗低、可靠性高等优点,广泛应用于智能手机、物联网设备等领域.",
-      "answerText": "SOC(System on Chip,片上系统)是指将处理器(CPU)、存储器、模拟电",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1786509192,
-      "type": "essay",
-      "question": "EDA(电子设计自动化)设计软件来完成集成电路的功能设计、综合、验证、物理实现等一系列设计流程的技术.EDA 工具包括电路仿真工具(如 SPICE)、逻辑综合工具、布局布线工具、版图验证工具(DRC/LVS)等.EDA 是现代集成电路设计的必备基础.",
-      "answerText": "EDA(Electronic Design Automation,电子设计自动化)是指利用计算机辅助",
-      "subject": "ic_design"
-    },
-    {
-      "id": 340546373,
-      "type": "essay",
-      "question": "PDK(工艺设计套件)数据文件集合,是连接设计与制造的桥梁.PDK 通常包含:器件模型(SPICE 模型)、参数化单元(Pcell)、设计规则(DRC 规则)、版图与原理图对照(LVS 规则)、寄生参数提取规则(RCX)、技术文件等.设计者使用 PDK 可以确保所设计的版图符合目标工艺的制造要求.",
-      "answerText": "PDK(Process Design Kit,工艺设计套件)是晶圆厂提供给集成电路设计者的",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1151248537,
-      "type": "essay",
-      "question": "DRC(设计规则检查)骤,用于检查版图是否符合制造工艺的几何和物理约束规则.这些规则包括最小线宽、最小间距、最小交叠、最小面积、最小切口宽度等参数,由晶圆厂根据其工艺能力制定.DRC 检查通过是版图可以送交制造的前提条件之一.",
-      "answerText": "DRC(Design Rule Check,设计规则检查)是集成电路版图验证中的重要步",
-      "subject": "ic_design"
-    },
-    {
-      "id": 674347255,
-      "type": "essay",
-      "question": "LVS(版图与原理图对照)要步骤,用于验证所设计的版图是否实现了电路原理图所描述的逻辑连接关系.LVS 工具会从版图中提取出晶体管、电阻、电容等器件及其互连关系,生成版图网表,然后与原理图网表进行比对,检查器件类型、尺寸和连接关系是否一致.",
-      "answerText": "LVS(Layout vs. Schematic,版图与原理图对照)是集成电路版图验证中的重",
-      "subject": "ic_design"
-    },
-    {
-      "id": 352677624,
-      "type": "single",
-      "question": "按导电性能分类,半导体的电导率特点为().",
-      "options": [
-        "极高",
-        "中等且可精确控制",
-        "极低",
-        "无固定值"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 682706709,
-      "type": "single",
-      "question": "集成电路制造中常用的绝缘材料不包括().",
-      "options": [
-        "SiO₂",
-        "SiON",
-        "Si₃N₄",
-        "Cu"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 189666785,
-      "type": "single",
-      "question": "金属与半导体接触时,通过对半导体重掺杂形成的接触类型是().",
-      "options": [
-        "肖特基接触",
-        "欧姆接触",
-        "PN 结接触",
-        "异质结接触"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 736936953,
-      "type": "single",
-      "question": "制作 N 型半导体时,需掺入的杂质为().",
-      "options": [
-        "3 价硼",
-        "5 价磷",
-        "4 价硅",
-        "2 价镁"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 113190820,
-      "type": "single",
-      "question": "P 型半导体中的多数载流子是().",
-      "options": [
-        "电子",
-        "空穴",
-        "施主离子",
-        "自由质子"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1273891175,
-      "type": "single",
-      "question": "MOS 晶体管中,引起沟道区产生强表面反型层的最小栅电压被称为()..",
-      "options": [
-        "击穿电压",
-        "饱和电压",
-        "阈值电压",
-        "导通电压"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 240308317,
-      "type": "single",
-      "question": "属于 N 沟道增强型 MOS 器件的阈值电压 特点是().",
-      "options": [
-        ">0",
-        "<0",
-        "=0",
-        "无固定值"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 78648107,
-      "type": "single",
-      "question": "NMOS 晶体管的沟道出现夹断状态的条件是().其中:Vgs 是栅源电压,Vds 是漏源电压, 是阈值电压.",
-      "options": [
-        "Vgs< ,Vds>0",
-        "Vgs> ,Vds>",
-        "Vds > Vgs- 且 Vgs>",
-        "Vgs= ,Vds 任意"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 512770151,
-      "type": "single",
-      "question": "以下哪种掺杂方式形成 N 型半导体? ( )",
-      "options": [
-        "掺入硼(B)",
-        "掺入磷(P)",
-        "掺入铝(Al)"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 800738793,
-      "type": "single",
-      "question": "以下哪种掺杂方式形成 P 型半导体?( )",
-      "options": [
-        "掺入硼(B)",
-        "掺入磷(P)",
-        "掺入铝(Al)"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1950952007,
-      "type": "single",
-      "question": "多晶硅材料在集成电路工艺中有多种用途,以下不属于其用途的有_______.",
-      "options": [
-        "制作栅极",
-        "制作基本连线",
-        "制作高值电阻",
-        "制作源漏区"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1727411144,
-      "type": "single",
-      "question": "以下不是半导体材料的是_______.",
-      "options": [
-        "GaAs",
-        "Si",
-        "Al",
-        "Ge"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1002841008,
-      "type": "single",
-      "question": "下列材料属于 N 型半导体是( ) .",
-      "options": [
-        "硅中掺有元素杂质磷(P)或其他五价元素",
-        "硅中掺有元素杂质硼(B)或其他三价元素",
-        "或其他三价元素",
-        "硅中既掺有杂质硼(B)或其他三价元素,又掺有杂质磷(P)或其他五价元素"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 20814661,
-      "type": "single",
-      "question": "以下集成电路材料中常用作绝缘材料的是( ) .",
-      "options": [
-        "Si",
-        "Ge",
-        "Cu",
-        "Si02"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1635707991,
-      "type": "judge",
-      "question": "二氧化硅(SiO₂)在集成电路中常用作绝缘材料和器件隔离层.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1667296742,
-      "type": "judge",
-      "question": "在 N 型半导体中,多数载流子是空穴,少数载流子是电子.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 409679242,
-      "type": "judge",
-      "question": "PMOS 晶体管导通时,沟道中的载流子是空穴.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1428414390,
-      "type": "fill",
-      "question": "本征半导体是指完全纯净、结构完整的半导体晶体,其自由电子浓度_____空穴浓度(填“大于”、“小于”或“等于”);",
-      "answerText": "等于",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1635392111,
-      "type": "fill",
-      "question": "硅栅工艺中,利用栅极多晶硅作为离子注入的阻挡层,自动对准源漏区注入,这种技术称为_____工艺,可有效减小栅极与源漏区的交叠电容.;",
-      "answerText": "自对准",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1552529418,
-      "type": "judge",
-      "question": "在外加电压的作用下,P 型半导体中的电流主要是电子电流.( )",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1720782831,
-      "type": "judge",
-      "question": "硅栅自对准工艺中,利用多晶硅栅作为离子注入的掩蔽层,源漏注入后经过高温退火激活杂质,多晶硅栅能够耐受该高温;而铝栅工艺中铝无法承受高温退火,因此铝栅工艺逐渐被硅栅工艺取代.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 106225514,
-      "type": "essay",
-      "question": "PN 结的正向偏置是指 N 区接____电位.(填“高”或“低”).;",
-      "answerText": "低",
-      "subject": "ic_design"
-    },
-    {
-      "id": 656049499,
-      "type": "essay",
-      "question": "本征半导体平衡状态下,本征半导体中自由电子浓度等于空穴浓度,均等于本征载流子浓度 ni.本征载流子浓度随温度升高呈指数增加.硅(Si)和锗(Ge)是典型的本征半导体材料.",
-      "answerText": "本征半导体是指完全纯净、结构完整的半导体晶体,不含任何杂质原子.在热",
-      "subject": "ic_design"
-    },
-    {
-      "id": 323189028,
-      "type": "essay",
-      "question": "杂质半导体半导体材料.掺入五价杂质(如磷、砷)得到 N 型半导体,多数载流子为电子;掺入三价杂质(如硼、铝)得到 P 型半导体,多数载流子为空穴.杂质半导体的电导率远高于本征半导体,是制造半导体器件的基础.",
-      "answerText": "杂质半导体是指在本征半导体中有意掺入少量杂质元素,以改变其导电特性的",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1990453987,
-      "type": "essay",
-      "question": "PN 结成的结构.PN 结具有单向导电性:正向偏置时导通,反向偏置时截止.PN 结是二极管、双极型晶体管(BJT)以及 MOSFET 中源漏区与衬底之间隔离结构的基础.",
-      "answerText": "PN 结是将 P 型半导体和 N 型半导体制作在同一块半导体基片上,在其交界面形",
-      "subject": "ic_design"
-    },
-    {
-      "id": 569148895,
-      "type": "single",
-      "question": "集成电路制造中,外延生长的核心目的是()",
-      "options": [
-        "增加晶圆厚度",
-        "用同质材料形成不同掺杂种类及浓度而具有不同性能的晶体层",
-        "提高晶圆光洁度",
-        "制作绝缘层"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1837952050,
-      "type": "single",
-      "question": "光刻工艺在集成电路制造中的核心作用是()",
-      "options": [
-        "对晶圆进行清洗",
-        "把掩模图形转换为晶圆上的器件结构",
-        "形成半导体掺杂层",
-        "制作金属互连线"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 842790299,
-      "type": "single",
-      "question": "正性光刻胶的显影特点为()",
-      "options": [
-        "曝光区域溶于显影液,图像与掩模一致",
-        "曝光区域难溶于显影液,图像与掩模相反",
-        "未曝光区域溶于显影液,图像与掩模相反",
-        "曝光与未曝光区域均不溶于显影液"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1942546776,
-      "type": "single",
-      "question": "集成电路制造中,半导体掺杂最主要的两种方法是()",
-      "options": [
-        "氧化和淀积",
-        "光刻和刻蚀",
-        "离子注入和热扩散",
-        "外延和镀膜"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1297352403,
-      "type": "single",
-      "question": "与热扩散掺杂相比,离子注入法的核心优点是()",
-      "options": [
-        "设备成本极低",
-        "可精确控制杂质含量和穿透深度",
-        "无晶格损伤",
-        "掺杂速度极快"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1035975333,
-      "type": "single",
-      "question": "关于集成电路制造中的氧化工艺,下列说法正确的是( ).",
-      "options": [
-        "湿法氧化生长速率比干法氧化快,但生成的二氧化硅层质量较差",
-        "干法氧化使用氧气和水蒸气的混合气体作为氧化源",
-        "湿法氧化生成的二氧化硅层质量优于干法氧化,常用于栅氧化层的制备",
-        "干法氧化生长速率更快,适合厚氧化层的生长"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 103443503,
-      "type": "single",
-      "question": "离子注入工艺的主要优点是:( )",
-      "options": [
-        "掺杂浓度均匀",
-        "无需退火",
-        "掺杂深度可控",
-        "高温工艺"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 75583533,
-      "type": "single",
-      "question": "光刻工艺中,负性光刻胶的特点是:( )",
-      "options": [
-        "感光部分被保留,未感光部分被刻蚀",
-        "未感光部分被保留,感光部分被刻蚀",
-        "全部保留",
-        "全部刻蚀"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 107207711,
-      "type": "single",
-      "question": "光刻工艺中,正性光刻胶的特性是( ) .",
-      "options": [
-        "感光部分保留,未感光部分溶解",
-        "未感光部分保留,感光部分溶解",
-        "对黄光敏感",
-        "仅用于金属层"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1882498414,
-      "type": "single",
-      "question": "下列半导体集成电路工艺中不属于外延生长工艺的是 ( ).",
-      "options": [
-        "LPE",
-        "MOVPE",
-        "MBE",
-        "CVD"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 478450519,
-      "type": "single",
-      "question": "以下哪个不属于集成电路的制造工艺?",
-      "options": [
-        "光刻",
-        "蚀刻",
-        "射频",
-        "化学气相沉积"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1829548969,
-      "type": "single",
-      "question": "在集成电路制造中,用于去除不需要材料的过程称为?( )",
-      "options": [
-        "沉积",
-        "光刻",
-        "离子注入",
-        "刻蚀"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 891772135,
-      "type": "single",
-      "question": "集成电路制造中,氧化工艺用于( ).",
-      "options": [
-        "形成绝缘层",
-        "去除杂质",
-        "提高导电性",
-        "光刻"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 404500646,
-      "type": "fill",
-      "question": "在氧化工艺中,_____法氧化(使用水蒸气)生长速率快,但生成的二氧化硅层质量较差;_____法氧化(使用氧气)生长速率慢,但生成的氧化层致密、质量好。",
-      "answerText": "湿",
-      "subject": "ic_design",
-      "answer": "干"
-    },
-    {
-      "id": 1486929337,
-      "type": "fill",
-      "question": "在集成电路制造中,淀积与刻蚀是互连线形成的核心工艺.其中,_________(填“加法”或“减法”)工艺用于在晶圆表面沉积材料薄膜,_________(填“加法”或“减法”)工艺用于选择性地去除材料。",
-      "answerText": "加法",
-      "subject": "ic_design",
-      "answer": "减法"
-    },
-    {
-      "id": 758200031,
-      "type": "fill",
-      "question": "离子注入与热扩散是两种主要的掺杂工艺.其中,掺杂深度较深、掺杂后需要一次退火处理的是_____工艺.;",
-      "answerText": "离子",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1620280165,
-      "type": "fill",
-      "question": "掺杂工艺主要有两种方法:一种是利用高温下杂质原子扩散进入硅衬底的_____工艺;另一种是将杂质离子加速后注入硅衬底的_____工艺。",
-      "answerText": "热扩散",
-      "subject": "ic_design",
-      "answer": "离子注入"
-    },
-    {
-      "id": 377634497,
-      "type": "fill",
-      "question": "光刻胶分为正性和负性两种.使用_____性光刻胶时,感光区域在显影液中被溶解,形成的图形与掩模版相同.;",
-      "answerText": "正",
-      "subject": "ic_design"
-    },
-    {
-      "id": 138618275,
-      "type": "judge",
-      "question": "光刻工艺中,掩模版(Mask)用于将设计好的电路图形转移到晶圆上.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1309847807,
-      "type": "judge",
-      "question": "负性光刻胶在曝光后,感光区域在显影液中被溶解,未感光区域保留.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 914803364,
-      "type": "judge",
-      "question": "光刻工艺的曝光步骤是在黄光环境下进行的,以避免光刻胶被非曝光区域感光.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 600301811,
-      "type": "judge",
-      "question": "湿法氧化生成的二氧化硅层质量优于干法氧化,因此常用于栅氧化层的制备.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 117488008,
-      "type": "judge",
-      "question": "离子注入工艺完成后,晶格会受到损伤,需要进行退火处理以修复晶格并激活杂质.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 277490233,
-      "type": "judge",
-      "question": "在集成电路制造中,淀积和刻蚀是互连线形成的核心工艺步骤.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 162820692,
-      "type": "judge",
-      "question": "光刻胶对黄光不敏感,因此光刻工艺通常在黄光环境下进行.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1114183046,
-      "type": "judge",
-      "question": "光刻胶对大部分可见光灵敏,对黄光不灵敏,因此在光刻制程常在黄光下操作.( )",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 155790548,
-      "type": "single",
-      "question": "下列集成电路工艺中,潜在速度最高的是( )",
-      "options": [
-        "CMOS",
-        "双极型硅",
-        "GaAs",
-        "BiCMOS"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 814184073,
-      "type": "single",
-      "question": "以下集成电路器件工艺中,哪种是当前占统治地位的工艺路线?",
-      "options": [
-        "ECL 技术",
-        "CMOS 技术",
-        "NMOS 技术",
-        "BiCMOS 技术"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 459080687,
-      "type": "single",
-      "question": "硅栅工艺出现后,MOS 制作工艺得到了极大的改善,其原因主要是( ).",
-      "options": [
-        "硅栅工艺形成了自对准技术",
-        "硅栅比铝栅成本低",
-        "硅栅容易制作",
-        "器件集成度更高"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1495043314,
-      "type": "single",
-      "question": "关于 CMOS 工艺中的阱(Well)形成,下列说法正确的是( ).",
-      "options": [
-        "N 阱工艺中,PMOS 晶体管直接制作在 P 型衬底上",
-        "深 N 阱工艺的主要作用是降低 PMOS 晶体管的阈值电压",
-        "双阱工艺可以同时优化 NMOS 和 PMOS 的性能,实现更好的电性隔离",
-        "阱的形成通常采用外延生长工艺,而非掺杂工艺"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 347781108,
-      "type": "single",
-      "question": "BiCMOS 工艺的主要优点是( ).",
-      "options": [
-        "只集成了双极型晶体管,功耗极低",
-        "综合了双极型器件的高跨导、强驱动能力和 CMOS 器件的高集成度、低功耗优点",
-        "只集成了 CMOS 器件,制造成本低",
-        "适用于纯数字电路设计,不适用于模拟电路"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 254938341,
-      "type": "single",
-      "question": "在 CMOS 工艺中,用于实现器件之间电隔离的常用技术是( ).",
-      "options": [
-        "场氧",
-        "离子注入掺杂",
-        "金属互连",
-        "多晶硅栅极形成"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 826857467,
-      "type": "fill",
-      "question": "两种类型的半导体结合形成 PN 结,金属与半导体结合形成 结,金属与重掺杂半导体结合形成 结.;欧姆;",
-      "answerText": "肖特基",
-      "subject": "ic_design"
-    },
-    {
-      "id": 920830381,
-      "type": "fill",
-      "question": "根据金属的种类及半导体掺杂浓度的不同,可形成两种不同的接触类型,分别是__________接触和__________接触。",
-      "answerText": "肖特基",
-      "subject": "ic_design",
-      "answer": "欧姆"
-    },
-    {
-      "id": 404990357,
-      "type": "judge",
-      "question": "CMOS 技术因其低功耗、高噪声容限和高集成度等优势,已成为当前主流工艺.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1817544472,
-      "type": "single",
-      "question": "在 NMOS 中, 衬底上加上负电压偏置, 会使阈值电压( ).",
-      "options": [
-        "增大",
-        "不变",
-        "减小",
-        "可大可小"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 753028035,
-      "type": "single",
-      "question": "MOS 管一旦出现 现象,此时的 MOS 管将进入饱和区.",
-      "options": [
-        "导电",
-        "反型",
-        "夹断",
-        "耗尽"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1327494166,
-      "type": "single",
-      "question": "下图中的 MOS 管工作在______区(假定阈值电压 Vth=0.7V).",
-      "options": [
-        "三极管",
-        "深三极管",
-        "饱和",
-        "截止"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1097111383,
-      "type": "single",
-      "question": "对于 MOS 器件,器件如果进入三极管区(线性区), 跨导将_______________ .",
-      "options": [
-        "增加",
-        "减少",
-        "不变",
-        "可能增加也可能减小"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 644670818,
-      "type": "single",
-      "question": "在 W/L 保持不变的情况下,跨导随过驱动电压和漏电流变化的关系是( ).",
-      "options": [
-        "跨导随过驱动电压增大而增大,跨导随漏电流增大而增大.",
-        "跨导随过驱动电压增大而增大,跨导随漏电流增大而减小.",
-        "跨导随过驱动电压增大而减小,跨导随漏电流增大而增大.",
-        "跨导随过驱动电压增大而减小,跨导随漏电流增大而减小."
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1054305908,
-      "type": "single",
-      "question": "采用二极管连接的 CMOS,因漏极和栅极电势相同,这时晶体管总是工作在( ).",
-      "options": [
-        "线性区",
-        "饱和区",
-        "截止区",
-        "亚阈值区"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 241265875,
-      "type": "single",
-      "question": "MOS 器件中,保持 不变,随着 的增加,MOS 器件( ).",
-      "options": [
-        "从截止区——>饱和区——>线性区",
-        "从饱和区——>截止区——>线性区",
-        "从饱和区——>线性区——>截止区",
-        "从截止区——>线性区——>饱和区"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1400410436,
-      "type": "single",
-      "question": "增大 MOSFETs 的沟道长度, 会使等效的输出电阻( ).",
-      "options": [
-        "增大",
-        "不变",
-        "减小",
-        "可大可小"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 426079272,
-      "type": "single",
-      "question": "在 CMOS 模拟集成电路中,PMOS 管的衬底(Bulk)通常应接( ).",
-      "options": [
-        "最低电位(GND)",
-        "最高电位(VDD)"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1822843871,
-      "type": "single",
-      "question": "导致 MOSFET 阈值电压随源-衬电压 Vsb 增大而升高的现象称为( ).",
-      "options": [
-        "沟道长度调制效应",
-        "短沟道效应",
-        "体效应",
-        "窄沟道效应"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 389705940,
-      "type": "single",
-      "question": "关于沟道长度调制效应,下列说法正确的是( ).",
-      "options": [
-        "沟道长度 L 越大,沟道长度调制效应越明显",
-        "沟道长度调制效应使 MOSFET 在饱和区的输出电阻 ro 增大",
-        "沟道长度调制效应使饱和区漏极电流 ID 随 VDS 增大而增大",
-        "沟道长度调制效应与 L 无关"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 887700855,
-      "type": "single",
-      "question": "CMOS 模拟集成电路中,PMOS 管的衬底(Bulk)通常接( ),NMOS 管的衬底通常接( ).",
-      "options": [
-        "VDD,VDD",
-        "GND,GND",
-        "VDD,GND",
-        "GND,VDD"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 353571356,
-      "type": "single",
-      "question": "下列因素中,会使 MOSFET 阈值电压∣VTH∣ 升高的是( ).",
-      "options": [
-        "增加栅氧化层厚度 tox",
-        "降低衬底掺杂浓度 Nsub",
-        "升高温度",
-        "减小沟道长度 L"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1259722663,
-      "type": "single",
-      "question": "以下关于 MOS 管伏安特性的描述,正确的是?",
-      "options": [
-        "漏极电流仅由栅源电压决定,与漏源电压无关",
-        "饱和区漏极电流近似为恒定值,与漏源电压弱相关",
-        "截止区漏极电流远大于饱和区",
-        "线性区漏极电流随栅源电压增大而减小"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 753873286,
-      "type": "single",
-      "question": "在理想情况下,当 MOS 管处于饱和区时,漏极电流 ( ) .",
-      "options": [
-        "随漏源电压增大而增大",
-        "随漏源电压增大而减少",
-        "几乎不随源漏电压变化",
-        "以上都不对"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1617831357,
-      "type": "single",
-      "question": "MOS 管漏极电流的变化量除以栅源电压的变化量是( ).",
-      "options": [
-        "跨导",
-        "电阻",
-        "电导",
-        "跨阻"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1151924821,
-      "type": "single",
-      "question": "以下关于 MOS 管输出特性曲线的描述,错误的是( ).",
-      "options": [
-        "线性区的斜率不变",
-        "分为截止区、饱和区和线性区",
-        "饱和区时对应恒流特性",
-        "截止区时对应电流为 0"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 942923674,
-      "type": "single",
-      "question": "以下哪种结构是 MOS 管的核心绝缘层?",
-      "options": [
-        "金属铝层",
-        "二氧化硅(SiO₂)层",
-        "多晶硅层",
-        "硅衬底层"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1734039060,
-      "type": "single",
-      "question": "以下哪个因素会直接影响 MOS 管的阈值电压?",
-      "options": [
-        "漏极负载电阻",
-        "栅氧化层厚度",
-        "源极串联电阻",
-        "电路的工作频率"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 253295353,
-      "type": "single",
-      "question": "以下哪种工艺调整可以降低 NMOS 管的阈值电压?",
-      "options": [
-        "增加栅氧化层厚度",
-        "减小衬底掺杂浓度",
-        "提高衬底偏置电压",
-        "减小沟道长度"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1378340254,
-      "type": "single",
-      "question": "MOS 管的体效应是由以下哪个电压引起的?",
-      "options": [
-        "栅源电压 VGS",
-        "漏源电压 VDS",
-        "源衬电压 VSB",
-        "漏衬电压 VDB"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 798525709,
-      "type": "single",
-      "question": "体效应会对 MOS 管的阈值电压产生什么影响?",
-      "options": [
-        "使 NMOS 管阈值电压升高",
-        "使 NMOS 管阈值电压降低",
-        "对阈值电压无影响",
-        "仅影响 PMOS 管,不影响 NMOS 管"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 806734429,
-      "type": "single",
-      "question": "体效应的本质是?",
-      "options": [
-        "源极电阻的交流负反馈",
-        "衬底偏置改变耗尽区宽度,进而影响阈值电压",
-        "沟道长度调制导致的漏极电流变化",
-        "氧化层电荷导致的阈值电压漂移"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1970836563,
-      "type": "single",
-      "question": "为了减小体效应的影响,通常采取以下哪种措施?",
-      "options": [
-        "增加源衬电压 V{SB}",
-        "将源极与衬底短接",
-        "增加栅氧化层厚度",
-        "减小沟道宽度"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1311232003,
-      "type": "single",
-      "question": "温度升高时,MOS 管的阈值电压会发生什么变化?",
-      "options": [
-        "NMOS 管阈值电压降低",
-        "NMOS 管阈值电压升高",
-        "对阈值电压无影响",
-        "仅影响 PMOS 管,不影响 NMOS 管"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1031664186,
-      "type": "single",
-      "question": "沟道长度调制效应的本质是?",
-      "options": [
-        "漏源电压增大时,有效沟道长度缩短,漏极电流增大",
-        "栅源电压增大时,有效沟道长度缩短,漏极电流增大",
-        "源衬电压增大时,有效沟道长度缩短,漏极电流增大",
-        "温度升高时,有效沟道长度缩短,漏极电流增大"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 917879772,
-      "type": "single",
-      "question": "关于增强型 NMOS 晶体管的工作原理,下列说法正确的是( ).",
-      "options": [
-        "当 VGS>VTH 时,沟道中的载流子为空穴",
-        "当 VGS>VTH 时,栅极下方形成反型层,载流子为电子",
-        "耗尽型 NMOS 与增强型 NMOS 的区别在于衬底材料不同",
-        "增强型 NMOS 在 VGS=0 时已存在导电沟道"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1383212952,
-      "type": "single",
-      "question": "一个 NMOS 管,已知 VGS =1.5V, VDS =0.1V,VTH =0.6V,它工作在( ).",
-      "options": [
-        "截止区",
-        "线性区",
-        "饱和区",
-        "击穿区"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1361155637,
-      "type": "single",
-      "question": "关于 MOSFET 的跨导 ,下列说法错误的是( ).",
-      "options": [
-        "跨导的定义为",
-        "在饱和区,",
-        "在饱和区,当 时, 与漏极电流 成正比",
-        "在饱和区, 与沟道长度 L 成正比"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1552480309,
-      "type": "single",
-      "question": "导致 MOSFET 阈值电压随源极-衬底电压 VSB 增大而升高的现象称为( ).",
-      "options": [
-        "沟道长度调制效应",
-        "短沟道效应",
-        "体效应(衬偏效应)",
-        "窄沟道效应"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1771932219,
-      "type": "single",
-      "question": "下图是 MOSFET 的低频小信号等效模型,图中 代表( ).",
-      "options": [
-        "栅极输入电阻",
-        "漏极输出电阻",
-        "栅源电压控制的漏极受控电流源",
-        "衬底偏置效应产生的附加电流源"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 22686068,
-      "type": "fill",
-      "question": "增强型 NMOS 晶体管在 _____ 时开始形成导电沟道,沟道中的载流子是_____。",
-      "answerText": "大于; >",
-      "subject": "ic_design",
-      "answer": "电子"
-    },
-    {
-      "id": 1742644781,
-      "type": "fill",
-      "question": "由于体效应(衬偏效应),当源极-衬底电压 增大时,阈值电压 ∣ ∣ 会_____(填“升高”或“降低”).;",
-      "answerText": "升高",
-      "subject": "ic_design"
-    },
-    {
-      "id": 527370937,
-      "type": "fill",
-      "question": "沟道长度调制效应导致饱和区的漏极电流 随 增大而_____(填“增大”或“减小”);",
-      "answerText": "增大",
-      "subject": "ic_design"
-    },
-    {
-      "id": 458593367,
-      "type": "judge",
-      "question": "沟道长度调制效应使 MOSFET 在饱和区的输出电阻趋于无穷大.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1481959756,
-      "type": "judge",
-      "question": "温度升高时,MOSFET 的阈值电压通常会升高.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 163246222,
-      "type": "fill",
-      "question": "标准 CMOS 工艺中,NMOS 晶体管的衬底材料是_____型半导体,PMOS 晶体管的衬底制作在_____阱中。",
-      "answerText": "P",
-      "subject": "ic_design",
-      "answer": "N"
-    },
-    {
-      "id": 1010711632,
-      "type": "fill",
-      "question": "沟道长度调制系数λ 与沟道长度 L 的关系是:L 越大,λ 越_____(填“大”或“小”),输出电阻 ro 越_____(填“大”或“小”)。",
-      "answerText": "小",
-      "subject": "ic_design",
-      "answer": "大"
-    },
-    {
-      "id": 1598672632,
-      "type": "judge",
-      "question": "PMOS 管导通时,沟道中的载流子是电子.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1926510587,
-      "type": "fill",
-      "question": "在线性区(深三极管区),当 很小时,MOSFET 可等效为一个_____,其导通电阻 Ron 的表达式为 Ron = _____。",
-      "answerText": "电阻",
-      "subject": "ic_design",
-      "answer": "�������(���−���)μnCoxLW(VGS−VTH)1"
-    },
-    {
-      "id": 240480085,
-      "type": "fill",
-      "question": "MOS 管的过驱动电压定义为 = _____ .;",
-      "answerText": "VGS-VTH;",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1596317970,
-      "type": "fill",
-      "question": "MOSFET 的阈值电压 表达式为 ,其中 .当衬底掺杂浓度 增大时, 会_____(填“增大”或“减小”),这是因为_____增大导致耗尽层电荷增加。",
-      "answerText": "增大",
-      "subject": "ic_design",
-      "answer": "表面势；费米能级"
-    },
-    {
-      "id": 650678519,
-      "type": "fill",
-      "question": "在长沟道 MOSFET 的饱和区,跨导 与漏极电流 的关系为;若将晶体管的宽长比 增大为原来的 4 倍,且保持不变,则 增大为原来的_____倍;若保持 不变,将 增大为原来的4 倍,则 增大为原来的_____倍。",
-      "answerText": "2",
-      "subject": "ic_design",
-      "answer": "2"
-    },
-    {
-      "id": 292417564,
-      "type": "fill",
-      "question": "对于工作在饱和区的 NMOS 管,其漏极电流表达式为,已知 ,阈值电压 , ,若要使 =1mA,则所需的栅源电压 =_____ V.",
-      "_unknown": true,
-      "subject": "ic_design"
-    },
-    {
-      "id": 850097001,
-      "type": "essay",
-      "question": "7;145、阈值电压型(即形成导电沟道)所需的最小栅源电压.",
-      "answerText": "阈值电压是指使 MOSFET 栅极下方硅表面从多数载流子类型反型为少数载流子类",
-      "subject": "ic_design"
-    },
-    {
-      "id": 917572480,
-      "type": "essay",
-      "question": "过驱动电压动电压决定了 MOSFET 的导通程度:Vod 越大,沟道电导越大,漏极电流越大.",
-      "answerText": "过驱动电压定义为 Vod =VGS −VTH ,表示栅源电压超过阈值电压的部分.过驱",
-      "subject": "ic_design"
-    },
-    {
-      "id": 812939073,
-      "type": "fill",
-      "question": "体效应致阈值电压发生变化的现象.",
-      "answerText": "体效应(又称衬偏效应)是指由于 MOSFET 的源极与衬底之间存在的电压差而导",
-      "subject": "ic_design"
-    },
-    {
-      "id": 360119380,
-      "type": "essay",
-      "question": "沟道长度调制效应VDS 增大时,沟道夹断点向源极方向移动,导致有效沟道 � � � � Leff 减小.根据 � � ∝ 1 / � ID∝1/L,漏极电流 � � ID 会随 � � � VDS 的增大而略有增加,使饱和区输出特性曲线向上倾斜.",
-      "answerText": "沟道长度调制效应是 MOSFET 工作在饱和区时出现的一种二级效应.当",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1371055040,
-      "type": "essay",
-      "question": "跨导(gm)压 VGS 的偏导数,表征栅源电压对漏极电流的控制能力.",
-      "answerText": "跨导 gm 是 MOSFET 的重要小信号参数,定义为漏极电流 ID 对栅源电",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1949706678,
-      "type": "single",
-      "question": "下列哪种结构不属于片上集成电容().",
-      "options": [
-        "MIM 电容",
-        "叉指电容",
-        "电解电容",
-        "MOS 电容"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1808810739,
-      "type": "single",
-      "question": "互连线产生串扰的主要寄生参数是()..",
-      "options": [
-        "串联电阻",
-        "线间耦合电容",
-        "衬底电容",
-        "寄生电感"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 115213339,
-      "type": "single",
-      "question": "MOS 管作为有源电阻,想要获得近似线性可调电阻,应工作在( ).",
-      "options": [
-        "饱和区",
-        "线性区(三极管区)",
-        "截止区",
-        "击穿区"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 756243951,
-      "type": "single",
-      "question": "降低互连线串扰的可行方法不包括()",
-      "options": [
-        "增大线间距",
-        "增加屏蔽地线",
-        "缩短并行长度",
-        "减小线宽"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1045212737,
-      "type": "single",
-      "question": "关于集成电路中的无源器件,下列说法正确的是( ).",
-      "options": [
-        "集成电路中的电阻只能使用多晶硅材料制作",
-        "电容可以通过金属-绝缘体-金属(MIM)结构实现",
-        "电感在集成电路中易于实现且品质因数很高",
-        "互连线不属于无源器件范畴"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 119783313,
-      "type": "single",
-      "question": "关于互连线的寄生效应,下列说法错误的是( ).",
-      "options": [
-        "互连线存在寄生电阻、寄生电容和寄生电感",
-        "随着特征尺寸缩小,互连线的寄生效应变得更加显著",
-        "趋肤效应会使高频电流集中在导线表面,等效电阻减小",
-        "增加金属线宽度可以减小寄生电阻"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1124769450,
-      "type": "single",
-      "question": "以下 SPICE 语句中,用于定义 NMOS 晶体管的正确格式是( ).",
-      "options": [
-        "M1 D G S B NMOS W=2u L=1u",
-        "Q1 C B E NPN",
-        "R1 N1 N2 1k",
-        "C1 N1 N2 1p"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1741615668,
-      "type": "single",
-      "question": "关于 SPICE 中的独立电压源,下列说法正确的是( ).",
-      "options": [
-        "直流电压源只能用“DC”关键字声明",
-        "VIN 1 0 SIN(0 1 60) 表示一个频率为 60Hz、峰值为 1V 的正弦波电压源",
-        "PULSE 函数不能定义信号的上升时间和下降时间",
-        "EXP 函数用于产生正弦波形"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 389795,
-      "type": "single",
-      "question": "在集成电路中,常用作高值电阻的材料是( ).",
-      "options": [
-        "金属铝",
-        "多晶硅",
-        "N+有源区",
-        "铜"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1113973955,
-      "type": "single",
-      "question": "关于互连线的寄生电容,下列说法错误的是( ).",
-      "options": [
-        "寄生电容包括平行板电容和边缘电容",
-        "寄生电容会导致信号延迟增加",
-        "寄生电容会随着互连线间距增大而增大",
-        "在先进工艺中,采用低介电常数(low-k)材料可以减小寄生电容"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 335053804,
-      "type": "single",
-      "question": "在 SPICE 中,以下哪个语句用于定义电路中的电容元件?( )",
-      "options": [
-        "R1 N1 N2 1k",
-        "C1 N1 N2 1p",
-        "L1 N1 N2 1n",
-        "V1 N1 N2 DC 5"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1929715210,
-      "type": "single",
-      "question": "关于集成电路中的有源器件,下列说法正确的是( ).",
-      "options": [
-        "CMOS 工艺中只能制造 MOSFET,不能制造 BJT",
-        "BiCMOS 工艺可以同时集成 BJT 和 CMOS 器件",
-        "所有有源器件的 SPICE 模型参数都是相同的",
-        "二极管不属于有源器件"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1115540749,
-      "type": "fill",
-      "question": "集成电路中的无源器件主要包括电阻、电容、电感和_____.;",
-      "answerText": "互连线",
-      "subject": "ic_design"
-    },
-    {
-      "id": 229104619,
-      "type": "fill",
-      "question": "互连线常见的三种寄生效应是寄生电阻、寄生电容和寄生_____.;",
-      "answerText": "电感",
-      "subject": "ic_design"
-    },
-    {
-      "id": 564181472,
-      "type": "fill",
-      "question": "在 SPICE 中,.model 语句用于定义器件的_____参数.;",
-      "answerText": "模型",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1025385875,
-      "type": "fill",
-      "question": "BiCMOS 工艺综合了双极型晶体管的高跨导、强驱动能力和_____器件的高集成度、低功耗优点.;",
-      "answerText": "CMOS",
-      "subject": "ic_design"
-    },
-    {
-      "id": 384456946,
-      "type": "fill",
-      "question": "在先进 CMOS 工艺中,为减小互连线寄生电容,常采用低介电常数(low-k)材料作为_____.;",
-      "answerText": "介质层",
-      "subject": "ic_design"
-    },
-    {
-      "id": 25250847,
-      "type": "judge",
-      "question": "集成电路中的互连线只存在寄生电阻,不存在寄生电容和寄生电感.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1011890463,
-      "type": "judge",
-      "question": "多晶硅材料在集成电路中只能用于制作 MOS 管的栅极,不能用于制作电阻.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1291245505,
-      "type": "judge",
-      "question": "CMOS 工艺只能制造 MOSFET,无法制造双极型晶体管(BJT).",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1389069299,
-      "type": "judge",
-      "question": "互连线的寄生电容会导致信号传输延迟增加.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1706264711,
-      "type": "judge",
-      "question": "在先进集成电路工艺中,铜(Cu)因其电阻率低、抗电迁移能力强,已成为互连线的主流材料.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 798115351,
-      "type": "essay",
-      "question": "SPICE路仿真程序的简称,由加州大学伯克利分校开发,是目前最广泛使用的模拟电路仿真工具.SPICE 可以对电路进行直流工作点分析(.op)、直流扫描分析(.dc)、瞬态分析(.tran)、交流小信号分析(.ac)等.SPICE 语言和模型格式已成为行业标准.",
-      "options": [
-        "瞬态分析(.tran)、交流小信号分析(.a",
-        "等.SPICE 语言和模型 格式已成为行业标准."
-      ],
-      "answerText": "SPICE(Simulation Program with Integrated Circuit Emphasis)是集成电",
-      "subject": "ic_design"
-    },
-    {
-      "id": 632962692,
-      "type": "single",
-      "question": "关于 SPICE 中的交流小信号分析(.ac),下列说法正确的是( ).",
-      "options": [
-        ".ac 分析用于计算电路的直流工作点",
-        ".ac 分析可以仿真电路的频率响应(如增益和相位)",
-        ".ac 分析需要指定瞬态分析的步长",
-        ".ac 分析只能用于数字电路仿真"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1636968923,
-      "type": "single",
-      "question": "语句“VCC 10 0 DC 5”中节点“10”为电源 VCC 的( ).",
-      "options": [
-        "正极",
-        "负极",
-        "地",
-        "控制端"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1877600707,
-      "type": "single",
-      "question": "直流工作点分析中,电容等效为( ).",
-      "options": [
-        "开路",
-        "短路",
-        "电阻",
-        "电流源"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1081883911,
-      "type": "single",
-      "question": "SPICE 程序中,分段线性信号源的关键字是( ).",
-      "options": [
-        "SIN",
-        "PULSE",
-        "PWL",
-        "EXP"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 100508442,
-      "type": "single",
-      "question": "以下是一个 CMOS 反相器的 SPICE 网表片段,回忆 CMOS 反相器电路结构,将网表文件正确填写完毕:CMOS Inverter M1 Out In _____ _____ PMOS W=4u L=1u M2 Out In _____ _____ NMOS W=2u L=1u",
-      "options": [
-        "0、0、Vdd、Vdd",
-        "Vdd",
-        "Vdd、Vdd、0、0",
-        "Vd"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 173996217,
-      "type": "single",
-      "question": "SPICE 中用于直流工作点分析的语句是:( )",
-      "options": [
-        ".tran",
-        ".ac",
-        ".op",
-        ".dc"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 407690650,
-      "type": "single",
-      "question": ".以下是一个 CMOS 反相器的 SPICE 网表片段,回忆 CMOS 反相器电路结构,将网表文件正确填写完毕:CMOS Inverter M1 Out In Vdd Vdd ______ W=4u L=1u M2 Out In 0 0 ______ W=2u L=1u",
-      "options": [
-        "CMOS、NMOS",
-        "MOSFET、MOSFET",
-        "PMOS、NMOS",
-        "NMOS、PMOS"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1671372211,
-      "type": "single",
-      "question": "在 SPICE 网表中,下列关于节点命名的说法正确的是( ).",
-      "options": [
-        "节点名只能用数字表示,不能用字母",
-        "节点名“0”被保留用于表示电路的地(GND)",
-        "电源 Vdd 和地 GND 必须使用同一个节点名"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1322278110,
-      "type": "single",
-      "question": "在 SPICE 中,要执行直流转移特性分析(如扫描输入电压,观察输出电压变化),应使用的分析语句是( ).",
-      "options": [
-        ".op",
-        ".tran",
-        ".ac",
-        ".dc"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1465453240,
-      "type": "single",
-      "question": "以下 SPICE 语句中,用于定义一个脉冲电压源的正确格式是( ).",
-      "options": [
-        "VIN 1 0 DC 5",
-        "VIN 1 0 SIN(0 1 60)",
-        "VIN 1 0 PULSE(0 5 1n 2n 2n 4n 12n)",
-        "VIN 1 0 EXP(0 1 0 1u)"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1766369590,
-      "type": "single",
-      "question": "关于 SPICE 中的瞬态分析(.tran),下列说法正确的是( ).",
-      "options": [
-        ".tran 分析用于计算电路的直流工作点",
-        ".tran 分析可以观察电压、电流随时间变化的波形",
-        ".tran 分析只能用于数字电路仿真",
-        ".tran 分析不需要指定步长"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1462544725,
-      "type": "judge",
-      "question": "在 SPICE 的特性分析语句中,用作直流工作点分析的语句格式为.AC.( )",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1463062000,
-      "type": "judge",
-      "question": "在 SPICE 的特性分析语句中,用作直流工作点分析的语句格式为.OP.( )",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 675286965,
-      "type": "judge",
-      "question": ".op 分析语句用于执行直流扫描分析,可以观察电压随输入电压扫描的变化曲线.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 930223715,
-      "type": "judge",
-      "question": ".ac 分析语句用于执行交流小信号频率响应分析,可以仿真电路的增益和相位随频率的变化.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 671494119,
-      "type": "fill",
-      "question": "用于执行直流工作点分析(计算各节点静态电压、电流)的 SPICE 语句是“_____”.;",
-      "answerText": ".op",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1968228012,
-      "type": "fill",
-      "question": "在 SPICE 网表中,节点名“_____”被保留用于表示电路的地(GND).;",
-      "answerText": "0",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1553639961,
-      "type": "judge",
-      "question": "在 SPICE 的特性分析语句中,.tran 语句用于频域响应仿真.( )",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 464940554,
-      "type": "judge",
-      "question": "天线效应指长金属导线在刻蚀时积累电荷损坏栅氧化层,可以通过跳线泄放 .( )",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1475241743,
-      "type": "fill",
-      "question": "用于执行直流扫描分析(如扫描输入电压,观察输出电压变化)的 SPICE语句是“_____”.;",
-      "answerText": ".dc",
-      "subject": "ic_design"
-    },
-    {
-      "id": 836675630,
-      "type": "fill",
-      "question": "在 SPICE 瞬态分析中,若语句为 .tran 0.5n 200n,则输出数据点的间隔为_____ns,总仿真时间为_____ns.",
-      "_unknown": true,
-      "subject": "ic_design"
-    },
-    {
-      "id": 434652510,
-      "type": "single",
-      "question": "5;200;194、在集成电路版图设计中,DRC 的主要作用是( ).",
-      "options": [
-        "验证版图与电路原理图是否一致",
-        "提取版图中的寄生参数",
-        "检查版图是否符合制造工艺的几何规则",
-        "生成用于制造的光罩数据"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1382512604,
-      "type": "single",
-      "question": "关于版图设计中的 LVS(Layout vs. Schematic),下列说法正确的是( ).",
-      "options": [
-        "LVS 用于检查版图是否符合设计规则",
-        "LVS 用于验证版图的连接关系是否与电路原理图一致",
-        "LVS 可以自动修正版图中的错误",
-        "LVS 只能在完成 DRC 检查后才能运行"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1368151003,
-      "type": "single",
-      "question": "关于版图设计中的 ESD 保护,下列说法正确的是( ).",
-      "options": [
-        "ESD 保护电路通常放置在芯片的核心运算单元附近",
-        "ESD 保护器件应尽可能远离 I/O PAD",
-        "ESD 保护电路的主要作用是防止静电放电损坏芯片内部电路",
-        "ESD 保护电路不需要在版图中特别设计,由工艺自动实现"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1130341767,
-      "type": "single",
-      "question": "在版图设计中,为了提高关键器件(如差分对管)的匹配精度,通常采用的布局方式是( ).",
-      "options": [
-        "将器件随意放置",
-        "将器件尽量远离",
-        "采用共中心(Common-Centroid)布局",
-        "布局"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1562035127,
-      "type": "single",
-      "question": "关于 CMOS 电路中的闩锁效应(Latch-up),下列说法正确的是( ).",
-      "options": [
-        "闩锁效应是由单个 MOS 管的沟道长度调制效应引起的",
-        "闩锁效应只发生在 NMOS 晶体管中",
-        "闩锁效应可以通过增加阱和衬底的接触密度来抑制",
-        "闩锁效应是 CMOS 电路正常工作所必需的现象"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1339078342,
-      "type": "single",
-      "question": "关于天线效应(Antenna Effect),下列说法错误的是( ).",
-      "options": [
-        "天线效应发生在集成电路制造过程中的等离子体刻蚀步骤",
-        "天线效应是指长金属线收集电荷击穿栅氧化层的现象",
-        "天线效应可以通过添加跳线(Strap)来避免",
-        "天线效应只与 PMOS 晶体管有关,与 NMOS 无关"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1878753259,
-      "type": "single",
-      "question": "在版图设计中,电阻的方块电阻值通常取决于( ).",
-      "options": [
-        "电阻的宽度和长度",
-        "电阻所在层的材料类型和掺杂浓度",
-        "电阻的形状是否规则",
-        "电阻周围是否有保护环"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1273522114,
-      "type": "single",
-      "question": "关于版图设计中的保护环(Guard Ring),下列说法正确的是( ).",
-      "options": [
-        "保护环只能用于隔离 NMOS 器件",
-        "保护环的主要作用是提高晶体管的跨导",
-        "保护环可以吸收少数载流子,抑制闩锁效应",
-        "保护环会增加芯片面积,因此应尽量避免使用"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 381297518,
-      "type": "fill",
-      "question": "在集成电路版图设计中,DRC 的全称是_____,用于检查版图是否符合制造工艺的几何规则.;",
-      "answerText": "设计规则检查;Design Rule Check",
-      "subject": "ic_design"
-    },
-    {
-      "id": 95027893,
-      "type": "fill",
-      "question": "版图设计中,LVS 的全称是_____,用于验证版图与电路原理图的连接关系是否一致.;",
-      "answerText": "版图与原理图对照;Layout vs. Schematic",
-      "subject": "ic_design"
-    },
-    {
-      "id": 959362275,
-      "type": "fill",
-      "question": "已知某工艺层的方块电阻值为 R□ =100Ω/□,若设计一个宽度W=1μm,长度 L=5μm 的电阻,其阻值为_____ Ω.;",
-      "answerText": "500",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1007731191,
-      "type": "fill",
-      "question": "CMOS 电路中,由寄生 PNPN 结构触发导通引起的低阻通路现象称为_____效应.;",
-      "answerText": "闩锁;Latch-up",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1462054977,
-      "type": "fill",
-      "question": "为抑制闩锁效应,通常在 NMOS 和 PMOS 区域周围添加_____,用于收集少数载流子.;",
-      "answerText": "保护环;Guard Ring",
-      "subject": "ic_design"
-    },
-    {
-      "id": 301247871,
-      "type": "fill",
-      "question": "在等离子体刻蚀过程中,暴露的金属线会像天线一样收集电荷,可能击穿栅氧化层,这种现象称为_____效应.;",
-      "answerText": "天线",
-      "subject": "ic_design"
-    },
-    {
-      "id": 137210,
-      "type": "judge",
-      "question": "版图设计规则中的最小线宽和最小间距是由电路功能需求决定的,与制造工艺无关.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1048823102,
-      "type": "judge",
-      "question": "在版图设计中,增加金属线的宽度可以减小其寄生电阻,但会增加寄生电容.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 511607773,
-      "type": "judge",
-      "question": "LVS 检查通过后,意味着版图一定满足所有设计规则,无需再进行 DRC 检查.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 793685383,
-      "type": "judge",
-      "question": "ESD 保护电路通常设计在芯片的 I/O PAD 附近,用于防止静电放电损坏内部电路.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 985528711,
-      "type": "judge",
-      "question": "在版图设计中,关键器件(如差分对管)应尽量远离,以减小相互干扰.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 519128465,
-      "type": "judge",
-      "question": "保护环(Guard Ring)的主要作用是提高晶体管的跨导,从而提升电路性能.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1562845580,
-      "type": "essay",
-      "question": "闩锁效应(Latch-up)通而引发的一种失效现象.在 CMOS 工艺中,NMOS 的 P 衬底和 N+源漏、PMOS 的N 阱和 P+源漏会形成横向和纵向的寄生双极型晶体管,构成 PNPN 四层结构.当该结构被触发导通时,会在电源(VDD)和地(GND)之间形成低阻通路,产生大电流甚至烧毁芯片.抑制方法包括:增加阱和衬底的接触密度、使用保护环(Guard Ring)、采用深 N 阱工艺或 SOI 技术等.",
-      "options": [
-        "和地(GN",
-        "之间形成低阻通路,产生 大电流甚至烧毁芯片.抑制方法包括:增加阱和衬底的接触密度、使用保护环 (Guard Rin",
-        "采用深 N 阱工艺或 SOI 技术等."
-      ],
-      "answerText": "闩锁效应是 CMOS 集成电路中由于寄生 PNPN 结构(可控硅 SCR)被意外触发导",
-      "subject": "ic_design"
-    },
-    {
-      "id": 232738877,
-      "type": "essay",
-      "question": "ESD(静电放电)之间瞬间转移的现象.在集成电路制造、封装、测试和使用过程中,ESD 事件可能产生高达数千伏的电压,击穿栅氧化层或损坏 PN 结,导致芯片永久失效.ESD 保护电路(如 GGNMOS、SCR、二极管等)设计在 I/O PAD 附近,在 ESD 事件发生时提供低阻抗泄放路径,保护内部核心电路.",
-      "answerText": "ESD(Electrostatic Discharge,静电放电)是指静电荷在不同静电势的物体",
-      "subject": "ic_design"
-    },
-    {
-      "id": 32550712,
-      "type": "essay",
-      "question": "天线效应(Antenna Effect)现象.当暴露的金属线或多晶硅线(如同天线)在等离子体中收集电荷时,如果积累的电荷足够多,会通过与之相连的薄栅氧化层放电,击穿栅氧化层,造成器件永久损坏.抑制天线效应的方法包括:添加跳线(Strap)来分段金属线、插入反偏二极管来泄放电荷、限制金属线的长宽比等.",
-      "answerText": "天线效应是集成电路制造过程中,在等离子体刻蚀工艺步骤中出现的一种损伤",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1166323519,
-      "type": "single",
-      "question": "电阻负载共源级放大器中,下列措施不能提高放大器小信号增益的是____________.",
-      "options": [
-        "增大器件宽长比",
-        "增大负载电阻",
-        "降低输入信号直流电平",
-        "增大器件的沟道长度 L"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 650781117,
-      "type": "single",
-      "question": "共源共栅放大器结构的一个重要特性就是输出阻抗______________.",
-      "options": [
-        "低",
-        "一般",
-        "高",
-        "很高"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 332459345,
-      "type": "single",
-      "question": "对于共源共栅放大电路, 如果在不考虑器件沟道调制效应时,仅考虑器件的衬底偏置效应, 则电压增益会( ).",
-      "options": [
-        "增大",
-        "不变",
-        "减小",
-        "可能增大也可能减小"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1110960144,
-      "type": "single",
-      "question": "电阻负载共源级放大器中,下列措施不能提高放大器小信号增益的是().",
-      "options": [
-        "增大器件宽长比",
-        "降低输入信号直流电平",
-        "增大器件的沟道长度 L",
-        "增大负载电阻"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 641830983,
-      "type": "single",
-      "question": "下面几种电路中增益线性度最好的是().",
-      "options": [
-        "源极负反馈共源级放大器",
-        "电流源负载共源级放大器",
-        "电阻负载共源级放大器",
-        "二极管负载共源级放大器"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 763777665,
-      "type": "single",
-      "question": "不能确定输出直流电压的共源极放大器是()的共源极放大器.",
-      "options": [
-        "电流源负载",
-        "电阻负载",
-        "二极管连接负载",
-        "二极管和电流源并联负载"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1182174623,
-      "type": "single",
-      "question": "下面放大器的小信号增益为().",
-      "options": [
-        "1",
-        "理论上无穷大"
-      ],
-      "answer": "C",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1807192266,
-      "type": "single",
-      "question": "小信号输出电阻相对最小的放大器是().",
-      "options": [
-        "共源共栅级放大器",
-        "共源级放大器",
-        "共栅级放大器",
-        "源级跟随器"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 292102810,
-      "type": "single",
-      "question": "电流源可以起一个电阻的作用,而且不消耗()的电压余度.",
-      "options": [
-        "变化",
-        "过低",
-        "恒定",
-        "过高"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1709927606,
-      "type": "single",
-      "question": "小信号输入电阻最小的放大器是().",
-      "options": [
-        "源级跟随器",
-        "共源级放大器",
-        "共源共栅级放大器",
-        "共栅级放大器"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 31032846,
-      "type": "single",
-      "question": "共源共栅放大器结构的一个重要特性就是输出阻抗().",
-      "options": [
-        "一般",
-        "高",
-        "低",
-        "很高"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 159427193,
-      "type": "single",
-      "question": "图中元器件和电压均相同时,下面两个电路的增益关系是().",
-      "options": [
-        "两个相等",
-        "左边的比右边的小",
-        "无法比较",
-        "左边的比右边的大"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1134813478,
+      "id": 1,
       "type": "single",
       "question": "( )放大器的电源抑制比最好.",
       "options": [
@@ -2329,312 +16,228 @@
       "subject": "ic_design"
     },
     {
-      "id": 96342216,
+      "id": 2,
       "type": "single",
-      "question": "差分放大器中,共模输入电平的变化不会引起差动输出的改变的因素是().",
+      "question": ".以下是一个 CMOS 反相器的 SPICE 网表片段,回忆 CMOS 反相器电路结构,将网表文件正确填写完毕:CMOS Inverter M1 Out In Vdd Vdd ______ W=4u L=1u M2 Out In 0 0 ______ W=2u L=1u",
       "options": [
-        "输入对管工作在饱和区",
-        "负载不完全对称",
-        "输入 MOS 管不完全对称",
-        "尾电流源输出阻抗为有限值"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1979623127,
-      "type": "single",
-      "question": "下列不是基本差分对电路中尾电流的作用的是().",
-      "options": [
-        "减小放大器的共模增益",
-        "为放大器管提供固定偏置",
-        "提高放大器的增益",
-        "为放大管提供电流通路"
+        "CMOS、NMOS",
+        "MOSFET、MOSFET",
+        "PMOS、NMOS",
+        "NMOS、PMOS"
       ],
       "answer": "C",
       "subject": "ic_design"
     },
     {
-      "id": 313660719,
+      "id": 3,
       "type": "single",
-      "question": "有源电流镜负载差分放大器中,()时其小信号增益最大.",
+      "question": "5;200;194、在集成电路版图设计中,DRC 的主要作用是( ).",
       "options": [
-        "输入差分信号相差较大",
-        "输入差分信号几乎相同",
-        "忽略非理想因素",
-        "共模增益为 0"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1863815669,
-      "type": "single",
-      "question": "基本差分对电路中对共模增益影响最显著的因素是().",
-      "options": [
-        "输入 MOS 不匹配",
-        "电路制造中的误差",
-        "负载不匹配",
-        "尾电流源的小信号输出阻抗为有限值"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1643411424,
-      "type": "single",
-      "question": "在差分放大器中,我们最关心的是()的增益.",
-      "options": [
-        "共模输入到差模输出",
-        "差模输入到共模输出",
-        "差模输入到差模输出",
-        "共模输入到共模输出"
+        "验证版图与电路原理图是否一致",
+        "提取版图中的寄生参数",
+        "检查版图是否符合制造工艺的几何规则",
+        "生成用于制造的光罩数据"
       ],
       "answer": "C",
       "subject": "ic_design"
     },
     {
-      "id": 1296383680,
+      "id": 4,
       "type": "single",
-      "question": "镜像电流源一般要求相同的( ).",
+      "question": "BiCMOS 工艺的主要优点是( ).",
       "options": [
-        "器件宽长比",
-        "器件长度 L",
-        "制造工艺",
-        "器件宽度 W"
+        "只集成了双极型晶体管,功耗极低",
+        "综合了双极型器件的高跨导、强驱动能力和 CMOS 器件的高集成度、低功耗优点",
+        "只集成了 CMOS 器件,制造成本低",
+        "适用于纯数字电路设计,不适用于模拟电路"
       ],
       "answer": "B",
       "subject": "ic_design"
     },
     {
-      "id": 1479255952,
+      "id": 5,
       "type": "single",
-      "question": "共源共栅电流镜是为了( ).",
+      "question": "CMOS 模拟集成电路中,PMOS 管的衬底(Bulk)通常接( ),NMOS 管的衬底通常接( ).",
       "options": [
-        "消耗较低的电压余度",
-        "抑制沟长调制效应",
-        "利用衬偏效应",
-        "降低电路漏电流"
-      ],
-      "answer": "B",
-      "subject": "ic_design"
-    },
-    {
-      "id": 39540401,
-      "type": "single",
-      "question": "共源共栅电流源具有高的( ).",
-      "options": [
-        "输出小信号电阻",
-        "输出电压余度",
-        "小信号增益",
-        "信噪比"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 879658216,
-      "type": "single",
-      "question": "下图电路中,存在( )组电流镜.",
-      "options": [
-        "3",
-        "1",
-        "4",
-        "2"
-      ],
-      "answer": "A",
-      "subject": "ic_design"
-    },
-    {
-      "id": 261649839,
-      "type": "single",
-      "question": "下图电路中,M3 管的电路组态是( ).",
-      "options": [
-        "共源管",
-        "共漏管",
-        "共栅管",
-        "共源共漏管"
+        "VDD,VDD",
+        "GND,GND",
+        "VDD,GND",
+        "GND,VDD"
       ],
       "answer": "C",
       "subject": "ic_design"
     },
     {
-      "id": 981400258,
+      "id": 6,
       "type": "single",
-      "question": "对于电流镜的要求, 那种说法正确( ).",
+      "question": "Fabless 模式与 Foundry 模式的关系是( ).",
       "options": [
-        "输出阻抗高",
-        "输出阻抗低",
-        "交流输出阻抗高",
-        "直流输出阻抗高"
+        "Fabless 公司负责制造,Foundry 公司负责设计",
+        "Fabless 公司负责设计,Foundry 公司负责制造",
+        "两者都负责设计和制造",
+        "两者都只负责设计"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 7,
+      "type": "single",
+      "question": "MOS 器件中,保持 不变,随着 的增加,MOS 器件( ).",
+      "options": [
+        "从截止区——>饱和区——>线性区",
+        "从饱和区——>截止区——>线性区",
+        "从饱和区——>线性区——>截止区",
+        "从截止区——>线性区——>饱和区"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 8,
+      "type": "single",
+      "question": "MOS 晶体管中,引起沟道区产生强表面反型层的最小栅电压被称为()..",
+      "options": [
+        "击穿电压",
+        "饱和电压",
+        "阈值电压",
+        "导通电压"
       ],
       "answer": "C",
       "subject": "ic_design"
     },
     {
-      "id": 252237113,
+      "id": 9,
       "type": "single",
-      "question": "电流镜电路的主要功能是:( )",
+      "question": "MOS 管一旦出现 现象,此时的 MOS 管将进入饱和区.",
       "options": [
-        "放大电流",
-        "提供恒定偏置",
-        "滤波",
-        "阻抗匹配"
+        "导电",
+        "反型",
+        "夹断",
+        "耗尽"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 10,
+      "type": "single",
+      "question": "MOS 管作为有源电阻,想要获得近似线性可调电阻,应工作在( ).",
+      "options": [
+        "饱和区",
+        "线性区(三极管区)",
+        "截止区",
+        "击穿区"
       ],
       "answer": "B",
       "subject": "ic_design"
     },
     {
-      "id": 346059115,
+      "id": 11,
       "type": "single",
-      "question": "差分放大器的差模增益是指对______信号的放大能力.",
+      "question": "MOS 管漏极电流的变化量除以栅源电压的变化量是( ).",
       "options": [
-        "共模",
-        "差模",
-        "直流",
-        "交流"
+        "跨导",
+        "电阻",
+        "电导",
+        "跨阻"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 12,
+      "type": "single",
+      "question": "MOS 管的体效应是由以下哪个电压引起的?",
+      "options": [
+        "栅源电压 VGS",
+        "漏源电压 VDS",
+        "源衬电压 VSB",
+        "漏衬电压 VDB"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 13,
+      "type": "single",
+      "question": "MPW(多项目晶圆)技术的主要目的是( ).",
+      "options": [
+        "提高芯片的集成度",
+        "降低芯片的研发流片成本",
+        "缩短芯片的制造周期",
+        "提高芯片的良率"
       ],
       "answer": "B",
       "subject": "ic_design"
     },
     {
-      "id": 1978356638,
+      "id": 14,
       "type": "single",
-      "question": "关于电流镜电路,下列说法正确的是( ).",
+      "question": "NMOS 晶体管的沟道出现夹断状态的条件是().其中:Vgs 是栅源电压,Vds 是漏源电压, 是阈值电压.",
       "options": [
-        "简单电流镜的输出电流与参考电流之比等于两个 MOS 管的沟道长度之比",
-        "共源共栅电流镜的主要缺点是输出阻抗比简单电流镜更低",
-        "电流镜电路只能用于提供偏置电流,不能用于放大",
-        "增加电流镜输出管的沟道长度 L 可以提高其输出电阻"
+        "Vgs< ,Vds>0",
+        "Vgs> ,Vds>",
+        "Vds > Vgs- 且 Vgs>",
+        "Vgs= ,Vds 任意"
       ],
-      "answer": "D",
+      "answer": "C",
       "subject": "ic_design"
     },
     {
-      "id": 1477791680,
+      "id": 15,
       "type": "single",
-      "question": "关于差分放大器,下列说法错误的是( ).",
+      "question": "P 型半导体中的多数载流子是().",
       "options": [
-        "差分放大器对差模信号具有放大能力",
-        "差分放大器对共模信号具有抑制作用",
-        "共模抑制比(CMRR)定义为差模增益与共模增益之比,即 CMRR=∣Adm/Acm∣",
-        "尾电流源的作用是提高差模增益"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1326605186,
-      "type": "fill",
-      "question": "在共源放大器中,电压增益 Av =−gmRout ,负号表示输出信号与输入信号相位相差_____度.;",
-      "answerText": "180",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1614103148,
-      "type": "fill",
-      "question": "电流镜电路中,输出电流与参考电流之比等于两个 MOS 管的_____之比(忽略沟道长度调制效应).;",
-      "answerText": "宽长比; W/L",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1194690457,
-      "type": "fill",
-      "question": "在简单电流镜中,增大输出管的沟道长度 L 可以_____(填“增大”或“减小”)其输出电阻 ro,从而提高电流复制精度.;",
-      "answerText": "增大",
-      "subject": "ic_design"
-    },
-    {
-      "id": 439864740,
-      "type": "judge",
-      "question": "共源放大器是一种同相放大器,其输出信号与输入信号相位相同.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1536210435,
-      "type": "judge",
-      "question": "简单电流镜的输出电阻与输出管的沟道长度 L 成反比.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1190924157,
-      "type": "judge",
-      "question": "共源共栅(Cascode)电流镜的输出阻抗比简单电流镜更高.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 5382066,
-      "type": "fill",
-      "question": "在差分放大器中,当两个输入端施加大小相等、极性相同的信号时,称为_____信号;当施加大小相等、极性相反的信号时,称为_____信号。",
-      "answerText": "共模",
-      "subject": "ic_design",
-      "answer": "差模"
-    },
-    {
-      "id": 1369573827,
-      "type": "fill",
-      "question": "共源共栅(Cascode)电流镜的输出阻抗约为简单电流镜输出阻抗的_____倍(用 gm 和 ��ro 表示).;",
-      "answerText": "gmro",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1022027017,
-      "type": "fill",
-      "question": "一个差分放大器采用 NMOS 差分对管,尾电流源输出电流为 =200μA,每个差分管的宽长比 (W/L)=10/1,工艺参数 ,忽略沟道长度调制效应和体效应.则该差分放大器的差模跨导 Gm = _____ mA/V.(结果保留两位小数)",
-      "_unknown": true,
-      "subject": "ic_design"
-    },
-    {
-      "id": 750170713,
-      "type": "fill",
-      "question": "63;268、在下图所示的电流镜电路中,假设所有晶体管均工作在饱和区,忽略沟道长度调制效应.已知参考电流 , M1 和 M2 的宽长比均为,M3 和 M4 的宽长比均为 .则输出电流IOUT = _____ μA.;",
-      "answerText": "50",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1711932138,
-      "type": "single",
-      "question": "如下 CMOS 反相器电路中,当 0≤Vin< VTN 且 VDD-Vin>|VTP|时,则:__________.",
-      "options": [
-        "NMOS 管工作在线性区",
-        "PMOS 管工作在线性区",
-        "NMOS 管工作在饱和区",
-        "PMOS 管工作在截止区"
+        "电子",
+        "空穴",
+        "施主离子",
+        "自由质子"
       ],
       "answer": "B",
       "subject": "ic_design"
     },
     {
-      "id": 1818039378,
+      "id": 16,
       "type": "single",
-      "question": "下图所示的晶体管级电路是:_______.",
+      "question": "SPICE 中用于直流工作点分析的语句是:( )",
       "options": [
-        "传输门",
-        "反相器",
-        "与非门",
-        "或非门"
+        ".tran",
+        ".ac",
+        ".op",
+        ".dc"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 17,
+      "type": "single",
+      "question": "SPICE 程序中,分段线性信号源的关键字是( ).",
+      "options": [
+        "SIN",
+        "PULSE",
+        "PWL",
+        "EXP"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 18,
+      "type": "single",
+      "question": "一个 NMOS 管,已知 VGS =1.5V, VDS =0.1V,VTH =0.6V,它工作在( ).",
+      "options": [
+        "截止区",
+        "线性区",
+        "饱和区",
+        "击穿区"
       ],
       "answer": "B",
       "subject": "ic_design"
     },
     {
-      "id": 36461383,
-      "type": "single",
-      "question": "关于 CMOS 反相器,下列说法正确的是( ).",
-      "options": [
-        "当输入为高电平时,NMOS 截止,PMOS 导通,输出为高电平",
-        "当输入为低电平时,NMOS 导通,PMOS 截止,输出为低电平",
-        "CMOS 反相器的静态功耗较大,是其主要缺点",
-        "为使上升时间和下降时间相等,通常需要 PMOS 的宽长比大于 NMOS 的宽长比"
-      ],
-      "answer": "D",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1185430950,
+      "id": 19,
       "type": "single",
       "question": "一个二输入 CMOS 与非门,其两个 NMOS 管的连接方式和两个 PMOS 管的连接方式分别是( ).",
       "options": [
@@ -2647,7 +250,549 @@
       "subject": "ic_design"
     },
     {
-      "id": 1900342220,
+      "id": 20,
+      "type": "single",
+      "question": "下列不是基本差分对电路中尾电流的作用的是().",
+      "options": [
+        "减小放大器的共模增益",
+        "为放大器管提供固定偏置",
+        "提高放大器的增益",
+        "为放大管提供电流通路"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 21,
+      "type": "single",
+      "question": "下列半导体集成电路工艺中不属于外延生长工艺的是 ( ).",
+      "options": [
+        "LPE",
+        "MOVPE",
+        "MBE",
+        "CVD"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 22,
+      "type": "single",
+      "question": "下列哪种结构不属于片上集成电容().",
+      "options": [
+        "MIM 电容",
+        "叉指电容",
+        "电解电容",
+        "MOS 电容"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 23,
+      "type": "single",
+      "question": "下列因素中,会使 MOSFET 阈值电压∣VTH∣ 升高的是( ).",
+      "options": [
+        "增加栅氧化层厚度 tox",
+        "降低衬底掺杂浓度 Nsub",
+        "升高温度",
+        "减小沟道长度 L"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 24,
+      "type": "single",
+      "question": "下列材料属于 N 型半导体是( ) .",
+      "options": [
+        "硅中掺有元素杂质磷(P)或其他五价元素",
+        "硅中掺有元素杂质硼(B)或其他三价元素",
+        "或其他三价元素",
+        "硅中既掺有杂质硼(B)或其他三价元素,又掺有杂质磷(P)或其他五价元素"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 25,
+      "type": "single",
+      "question": "下列集成电路工艺中,潜在速度最高的是( )",
+      "options": [
+        "CMOS",
+        "双极型硅",
+        "GaAs",
+        "BiCMOS"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 26,
+      "type": "single",
+      "question": "下图中的 MOS 管工作在______区(假定阈值电压 Vth=0.7V).",
+      "options": [
+        "三极管",
+        "深三极管",
+        "饱和",
+        "截止"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 27,
+      "type": "single",
+      "question": "下图所示的晶体管级电路是:_______.",
+      "options": [
+        "传输门",
+        "反相器",
+        "与非门",
+        "或非门"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 28,
+      "type": "single",
+      "question": "下图是 MOSFET 的低频小信号等效模型,图中 代表( ).",
+      "options": [
+        "栅极输入电阻",
+        "漏极输出电阻",
+        "栅源电压控制的漏极受控电流源",
+        "衬底偏置效应产生的附加电流源"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 29,
+      "type": "single",
+      "question": "下图电路中,M3 管的电路组态是( ).",
+      "options": [
+        "共源管",
+        "共漏管",
+        "共栅管",
+        "共源共漏管"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 30,
+      "type": "single",
+      "question": "下图电路中,存在( )组电流镜.",
+      "options": [
+        "3",
+        "1",
+        "4",
+        "2"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 31,
+      "type": "single",
+      "question": "下面几种电路中增益线性度最好的是().",
+      "options": [
+        "源极负反馈共源级放大器",
+        "电流源负载共源级放大器",
+        "电阻负载共源级放大器",
+        "二极管负载共源级放大器"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 32,
+      "type": "single",
+      "question": "下面放大器的小信号增益为().",
+      "options": [
+        "1",
+        "理论上无穷大"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 33,
+      "type": "single",
+      "question": "不能确定输出直流电压的共源极放大器是()的共源极放大器.",
+      "options": [
+        "电流源负载",
+        "电阻负载",
+        "二极管连接负载",
+        "二极管和电流源并联负载"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 34,
+      "type": "single",
+      "question": "与热扩散掺杂相比,离子注入法的核心优点是()",
+      "options": [
+        "设备成本极低",
+        "可精确控制杂质含量和穿透深度",
+        "无晶格损伤",
+        "掺杂速度极快"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 35,
+      "type": "single",
+      "question": "为了减小体效应的影响,通常采取以下哪种措施?",
+      "options": [
+        "增加源衬电压 V{SB}",
+        "将源极与衬底短接",
+        "增加栅氧化层厚度",
+        "减小沟道宽度"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 36,
+      "type": "single",
+      "question": "互连线产生串扰的主要寄生参数是()..",
+      "options": [
+        "串联电阻",
+        "线间耦合电容",
+        "衬底电容",
+        "寄生电感"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 37,
+      "type": "single",
+      "question": "代工厂提供给设计公司的工艺设计套件缩写为()..",
+      "options": [
+        "PDK",
+        "DRC",
+        "LVS",
+        "MPW"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 38,
+      "type": "single",
+      "question": "以下 SPICE 语句中,用于定义 NMOS 晶体管的正确格式是( ).",
+      "options": [
+        "M1 D G S B NMOS W=2u L=1u",
+        "Q1 C B E NPN",
+        "R1 N1 N2 1k",
+        "C1 N1 N2 1p"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 39,
+      "type": "single",
+      "question": "以下 SPICE 语句中,用于定义一个脉冲电压源的正确格式是( ).",
+      "options": [
+        "VIN 1 0 DC 5",
+        "VIN 1 0 SIN(0 1 60)",
+        "VIN 1 0 PULSE(0 5 1n 2n 2n 4n 12n)",
+        "VIN 1 0 EXP(0 1 0 1u)"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 40,
+      "type": "single",
+      "question": "以下不是半导体材料的是_______.",
+      "options": [
+        "GaAs",
+        "Si",
+        "Al",
+        "Ge"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 41,
+      "type": "single",
+      "question": "以下关于 MOS 管伏安特性的描述,正确的是?",
+      "options": [
+        "漏极电流仅由栅源电压决定,与漏源电压无关",
+        "饱和区漏极电流近似为恒定值,与漏源电压弱相关",
+        "截止区漏极电流远大于饱和区",
+        "线性区漏极电流随栅源电压增大而减小"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 42,
+      "type": "single",
+      "question": "以下关于 MOS 管输出特性曲线的描述,错误的是( ).",
+      "options": [
+        "线性区的斜率不变",
+        "分为截止区、饱和区和线性区",
+        "饱和区时对应恒流特性",
+        "截止区时对应电流为 0"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 43,
+      "type": "single",
+      "question": "以下哪一项不是集成电路技术发展的趋势?",
+      "options": [
+        "集成电路特征尺寸越来越小.",
+        "集成电路的工作速度越来越低.",
+        "晶圆的尺寸越来越大.",
+        "集成电路的器件规模越来越大."
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 44,
+      "type": "single",
+      "question": "以下哪个不属于集成电路的制造工艺?",
+      "options": [
+        "光刻",
+        "蚀刻",
+        "射频",
+        "化学气相沉积"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 45,
+      "type": "single",
+      "question": "以下哪个因素会直接影响 MOS 管的阈值电压?",
+      "options": [
+        "漏极负载电阻",
+        "栅氧化层厚度",
+        "源极串联电阻",
+        "电路的工作频率"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 46,
+      "type": "single",
+      "question": "以下哪种工艺调整可以降低 NMOS 管的阈值电压?",
+      "options": [
+        "增加栅氧化层厚度",
+        "减小衬底掺杂浓度",
+        "提高衬底偏置电压",
+        "减小沟道长度"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 47,
+      "type": "single",
+      "question": "以下哪种掺杂方式形成 N 型半导体? ( )",
+      "options": [
+        "掺入硼(B)",
+        "掺入磷(P)",
+        "掺入铝(Al)"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 48,
+      "type": "single",
+      "question": "以下哪种掺杂方式形成 P 型半导体?( )",
+      "options": [
+        "掺入硼(B)",
+        "掺入磷(P)",
+        "掺入铝(Al)"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 49,
+      "type": "single",
+      "question": "以下哪种结构是 MOS 管的核心绝缘层?",
+      "options": [
+        "金属铝层",
+        "二氧化硅(SiO₂)层",
+        "多晶硅层",
+        "硅衬底层"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 50,
+      "type": "single",
+      "question": "以下是一个 CMOS 反相器的 SPICE 网表片段,回忆 CMOS 反相器电路结构,将网表文件正确填写完毕:CMOS Inverter M1 Out In _____ _____ PMOS W=4u L=1u M2 Out In _____ _____ NMOS W=2u L=1u",
+      "options": [
+        "0、0、Vdd、Vdd",
+        "Vdd",
+        "Vdd、Vdd、0、0",
+        "Vd"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 51,
+      "type": "single",
+      "question": "以下集成电路器件工艺中,哪种是当前占统治地位的工艺路线?",
+      "options": [
+        "ECL 技术",
+        "CMOS 技术",
+        "NMOS 技术",
+        "BiCMOS 技术"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 52,
+      "type": "single",
+      "question": "以下集成电路材料中常用作绝缘材料的是( ) .",
+      "options": [
+        "Si",
+        "Ge",
+        "Cu",
+        "Si02"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 53,
+      "type": "single",
+      "question": "体效应会对 MOS 管的阈值电压产生什么影响?",
+      "options": [
+        "使 NMOS 管阈值电压升高",
+        "使 NMOS 管阈值电压降低",
+        "对阈值电压无影响",
+        "仅影响 PMOS 管,不影响 NMOS 管"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 54,
+      "type": "single",
+      "question": "体效应的本质是?",
+      "options": [
+        "源极电阻的交流负反馈",
+        "衬底偏置改变耗尽区宽度,进而影响阈值电压",
+        "沟道长度调制导致的漏极电流变化",
+        "氧化层电荷导致的阈值电压漂移"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 55,
+      "type": "single",
+      "question": "光刻工艺中,正性光刻胶的特性是( ) .",
+      "options": [
+        "感光部分保留,未感光部分溶解",
+        "未感光部分保留,感光部分溶解",
+        "对黄光敏感",
+        "仅用于金属层"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 56,
+      "type": "single",
+      "question": "光刻工艺中,负性光刻胶的特点是:( )",
+      "options": [
+        "感光部分被保留,未感光部分被刻蚀",
+        "未感光部分被保留,感光部分被刻蚀",
+        "全部保留",
+        "全部刻蚀"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 57,
+      "type": "single",
+      "question": "光刻工艺在集成电路制造中的核心作用是()",
+      "options": [
+        "对晶圆进行清洗",
+        "把掩模图形转换为晶圆上的器件结构",
+        "形成半导体掺杂层",
+        "制作金属互连线"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 58,
+      "type": "single",
+      "question": "共源共栅放大器结构的一个重要特性就是输出阻抗().",
+      "options": [
+        "一般",
+        "高",
+        "低",
+        "很高"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 59,
+      "type": "single",
+      "question": "共源共栅放大器结构的一个重要特性就是输出阻抗______________.",
+      "options": [
+        "低",
+        "一般",
+        "高",
+        "很高"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 60,
+      "type": "single",
+      "question": "共源共栅电流源具有高的( ).",
+      "options": [
+        "输出小信号电阻",
+        "输出电压余度",
+        "小信号增益",
+        "信噪比"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 61,
+      "type": "single",
+      "question": "共源共栅电流镜是为了( ).",
+      "options": [
+        "消耗较低的电压余度",
+        "抑制沟长调制效应",
+        "利用衬偏效应",
+        "降低电路漏电流"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 62,
       "type": "single",
       "question": "关于 CMOS 传输门,下列说法错误的是( ).",
       "options": [
@@ -2660,15 +805,1392 @@
       "subject": "ic_design"
     },
     {
-      "id": 367248973,
-      "type": "fill",
-      "question": "CMOS 反相器由_____管和_____管互补连接而成,输入为高电平时,输出为_____电平。",
-      "answerText": "PMOS;P 沟道",
-      "subject": "ic_design",
-      "answer": "NMOS；N 沟道；低；0"
+      "id": 63,
+      "type": "single",
+      "question": "关于 CMOS 反相器,下列说法正确的是( ).",
+      "options": [
+        "当输入为高电平时,NMOS 截止,PMOS 导通,输出为高电平",
+        "当输入为低电平时,NMOS 导通,PMOS 截止,输出为低电平",
+        "CMOS 反相器的静态功耗较大,是其主要缺点",
+        "为使上升时间和下降时间相等,通常需要 PMOS 的宽长比大于 NMOS 的宽长比"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
     },
     {
-      "id": 899165189,
+      "id": 64,
+      "type": "single",
+      "question": "关于 CMOS 工艺中的阱(Well)形成,下列说法正确的是( ).",
+      "options": [
+        "N 阱工艺中,PMOS 晶体管直接制作在 P 型衬底上",
+        "深 N 阱工艺的主要作用是降低 PMOS 晶体管的阈值电压",
+        "双阱工艺可以同时优化 NMOS 和 PMOS 的性能,实现更好的电性隔离",
+        "阱的形成通常采用外延生长工艺,而非掺杂工艺"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 65,
+      "type": "single",
+      "question": "关于 CMOS 电路中的闩锁效应(Latch-up),下列说法正确的是( ).",
+      "options": [
+        "闩锁效应是由单个 MOS 管的沟道长度调制效应引起的",
+        "闩锁效应只发生在 NMOS 晶体管中",
+        "闩锁效应可以通过增加阱和衬底的接触密度来抑制",
+        "闩锁效应是 CMOS 电路正常工作所必需的现象"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 66,
+      "type": "single",
+      "question": "关于 MOSFET 的跨导 ,下列说法错误的是( ).",
+      "options": [
+        "跨导的定义为",
+        "在饱和区,",
+        "在饱和区,当 时, 与漏极电流 成正比",
+        "在饱和区, 与沟道长度 L 成正比"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 67,
+      "type": "single",
+      "question": "关于 SPICE 中的交流小信号分析(.ac),下列说法正确的是( ).",
+      "options": [
+        ".ac 分析用于计算电路的直流工作点",
+        ".ac 分析可以仿真电路的频率响应(如增益和相位)",
+        ".ac 分析需要指定瞬态分析的步长",
+        ".ac 分析只能用于数字电路仿真"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 68,
+      "type": "single",
+      "question": "关于 SPICE 中的独立电压源,下列说法正确的是( ).",
+      "options": [
+        "直流电压源只能用“DC”关键字声明",
+        "VIN 1 0 SIN(0 1 60) 表示一个频率为 60Hz、峰值为 1V 的正弦波电压源",
+        "PULSE 函数不能定义信号的上升时间和下降时间",
+        "EXP 函数用于产生正弦波形"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 69,
+      "type": "single",
+      "question": "关于 SPICE 中的瞬态分析(.tran),下列说法正确的是( ).",
+      "options": [
+        ".tran 分析用于计算电路的直流工作点",
+        ".tran 分析可以观察电压、电流随时间变化的波形",
+        ".tran 分析只能用于数字电路仿真",
+        ".tran 分析不需要指定步长"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 70,
+      "type": "single",
+      "question": "关于互连线的寄生效应,下列说法错误的是( ).",
+      "options": [
+        "互连线存在寄生电阻、寄生电容和寄生电感",
+        "随着特征尺寸缩小,互连线的寄生效应变得更加显著",
+        "趋肤效应会使高频电流集中在导线表面,等效电阻减小",
+        "增加金属线宽度可以减小寄生电阻"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 71,
+      "type": "single",
+      "question": "关于互连线的寄生电容,下列说法错误的是( ).",
+      "options": [
+        "寄生电容包括平行板电容和边缘电容",
+        "寄生电容会导致信号延迟增加",
+        "寄生电容会随着互连线间距增大而增大",
+        "在先进工艺中,采用低介电常数(low-k)材料可以减小寄生电容"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 72,
+      "type": "single",
+      "question": "关于增强型 NMOS 晶体管的工作原理,下列说法正确的是( ).",
+      "options": [
+        "当 VGS>VTH 时,沟道中的载流子为空穴",
+        "当 VGS>VTH 时,栅极下方形成反型层,载流子为电子",
+        "耗尽型 NMOS 与增强型 NMOS 的区别在于衬底材料不同",
+        "增强型 NMOS 在 VGS=0 时已存在导电沟道"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 73,
+      "type": "single",
+      "question": "关于天线效应(Antenna Effect),下列说法错误的是( ).",
+      "options": [
+        "天线效应发生在集成电路制造过程中的等离子体刻蚀步骤",
+        "天线效应是指长金属线收集电荷击穿栅氧化层的现象",
+        "天线效应可以通过添加跳线(Strap)来避免",
+        "天线效应只与 PMOS 晶体管有关,与 NMOS 无关"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 74,
+      "type": "single",
+      "question": "关于差分放大器,下列说法错误的是( ).",
+      "options": [
+        "差分放大器对差模信号具有放大能力",
+        "差分放大器对共模信号具有抑制作用",
+        "共模抑制比(CMRR)定义为差模增益与共模增益之比,即 CMRR=∣Adm/Acm∣",
+        "尾电流源的作用是提高差模增益"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 75,
+      "type": "single",
+      "question": "关于摩尔定律,下列说法正确的是( ).",
+      "options": [
+        "每个芯片上的晶体管数量大约每 18 个月翻一番",
+        "芯片的功耗大约每 18 个月翻一番",
+        "晶圆尺寸大约每 18 个月增大一倍",
+        "芯片的价格大约每 18 个月翻一番"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 76,
+      "type": "single",
+      "question": "关于沟道长度调制效应,下列说法正确的是( ).",
+      "options": [
+        "沟道长度 L 越大,沟道长度调制效应越明显",
+        "沟道长度调制效应使 MOSFET 在饱和区的输出电阻 ro 增大",
+        "沟道长度调制效应使饱和区漏极电流 ID 随 VDS 增大而增大",
+        "沟道长度调制效应与 L 无关"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 77,
+      "type": "single",
+      "question": "关于版图设计中的 ESD 保护,下列说法正确的是( ).",
+      "options": [
+        "ESD 保护电路通常放置在芯片的核心运算单元附近",
+        "ESD 保护器件应尽可能远离 I/O PAD",
+        "ESD 保护电路的主要作用是防止静电放电损坏芯片内部电路",
+        "ESD 保护电路不需要在版图中特别设计,由工艺自动实现"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 78,
+      "type": "single",
+      "question": "关于版图设计中的 LVS(Layout vs. Schematic),下列说法正确的是( ).",
+      "options": [
+        "LVS 用于检查版图是否符合设计规则",
+        "LVS 用于验证版图的连接关系是否与电路原理图一致",
+        "LVS 可以自动修正版图中的错误",
+        "LVS 只能在完成 DRC 检查后才能运行"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 79,
+      "type": "single",
+      "question": "关于版图设计中的保护环(Guard Ring),下列说法正确的是( ).",
+      "options": [
+        "保护环只能用于隔离 NMOS 器件",
+        "保护环的主要作用是提高晶体管的跨导",
+        "保护环可以吸收少数载流子,抑制闩锁效应",
+        "保护环会增加芯片面积,因此应尽量避免使用"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 80,
+      "type": "single",
+      "question": "关于电流镜电路,下列说法正确的是( ).",
+      "options": [
+        "简单电流镜的输出电流与参考电流之比等于两个 MOS 管的沟道长度之比",
+        "共源共栅电流镜的主要缺点是输出阻抗比简单电流镜更低",
+        "电流镜电路只能用于提供偏置电流,不能用于放大",
+        "增加电流镜输出管的沟道长度 L 可以提高其输出电阻"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 81,
+      "type": "single",
+      "question": "关于集成电路中的无源器件,下列说法正确的是( ).",
+      "options": [
+        "集成电路中的电阻只能使用多晶硅材料制作",
+        "电容可以通过金属-绝缘体-金属(MIM)结构实现",
+        "电感在集成电路中易于实现且品质因数很高",
+        "互连线不属于无源器件范畴"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 82,
+      "type": "single",
+      "question": "关于集成电路中的有源器件,下列说法正确的是( ).",
+      "options": [
+        "CMOS 工艺中只能制造 MOSFET,不能制造 BJT",
+        "BiCMOS 工艺可以同时集成 BJT 和 CMOS 器件",
+        "所有有源器件的 SPICE 模型参数都是相同的",
+        "二极管不属于有源器件"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 83,
+      "type": "single",
+      "question": "关于集成电路制造中的氧化工艺,下列说法正确的是( ).",
+      "options": [
+        "湿法氧化生长速率比干法氧化快,但生成的二氧化硅层质量较差",
+        "干法氧化使用氧气和水蒸气的混合气体作为氧化源",
+        "湿法氧化生成的二氧化硅层质量优于干法氧化,常用于栅氧化层的制备",
+        "干法氧化生长速率更快,适合厚氧化层的生长"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 84,
+      "type": "single",
+      "question": "制作 N 型半导体时,需掺入的杂质为().",
+      "options": [
+        "3 价硼",
+        "5 价磷",
+        "4 价硅",
+        "2 价镁"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 85,
+      "type": "single",
+      "question": "只负责芯片设计,不建设生产线的模式称为().",
+      "options": [
+        "IDM",
+        "Fabless",
+        "Mask",
+        "EDA"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 86,
+      "type": "single",
+      "question": "图中元器件和电压均相同时,下面两个电路的增益关系是().",
+      "options": [
+        "两个相等",
+        "左边的比右边的小",
+        "无法比较",
+        "左边的比右边的大"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 87,
+      "type": "single",
+      "question": "在 CMOS 工艺中,用于实现器件之间电隔离的常用技术是( ).",
+      "options": [
+        "场氧",
+        "离子注入掺杂",
+        "金属互连",
+        "多晶硅栅极形成"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 88,
+      "type": "single",
+      "question": "在 CMOS 模拟集成电路中,PMOS 管的衬底(Bulk)通常应接( ).",
+      "options": [
+        "最低电位(GND)",
+        "最高电位(VDD)"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 89,
+      "type": "single",
+      "question": "在 NMOS 中, 衬底上加上负电压偏置, 会使阈值电压( ).",
+      "options": [
+        "增大",
+        "不变",
+        "减小",
+        "可大可小"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 90,
+      "type": "single",
+      "question": "在 SPICE 中,以下哪个语句用于定义电路中的电容元件?( )",
+      "options": [
+        "R1 N1 N2 1k",
+        "C1 N1 N2 1p",
+        "L1 N1 N2 1n",
+        "V1 N1 N2 DC 5"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 91,
+      "type": "single",
+      "question": "在 SPICE 中,要执行直流转移特性分析(如扫描输入电压,观察输出电压变化),应使用的分析语句是( ).",
+      "options": [
+        ".op",
+        ".tran",
+        ".ac",
+        ".dc"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 92,
+      "type": "single",
+      "question": "在 SPICE 网表中,下列关于节点命名的说法正确的是( ).",
+      "options": [
+        "节点名只能用数字表示,不能用字母",
+        "节点名“0”被保留用于表示电路的地(GND)",
+        "电源 Vdd 和地 GND 必须使用同一个节点名"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 93,
+      "type": "single",
+      "question": "在 W/L 保持不变的情况下,跨导随过驱动电压和漏电流变化的关系是( ).",
+      "options": [
+        "跨导随过驱动电压增大而增大,跨导随漏电流增大而增大.",
+        "跨导随过驱动电压增大而增大,跨导随漏电流增大而减小.",
+        "跨导随过驱动电压增大而减小,跨导随漏电流增大而增大.",
+        "跨导随过驱动电压增大而减小,跨导随漏电流增大而减小."
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 94,
+      "type": "single",
+      "question": "在差分放大器中,我们最关心的是()的增益.",
+      "options": [
+        "共模输入到差模输出",
+        "差模输入到共模输出",
+        "差模输入到差模输出",
+        "共模输入到共模输出"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 95,
+      "type": "single",
+      "question": "在版图设计中,为了提高关键器件(如差分对管)的匹配精度,通常采用的布局方式是( ).",
+      "options": [
+        "将器件随意放置",
+        "将器件尽量远离",
+        "采用共中心(Common-Centroid)布局",
+        "布局"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 96,
+      "type": "single",
+      "question": "在版图设计中,电阻的方块电阻值通常取决于( ).",
+      "options": [
+        "电阻的宽度和长度",
+        "电阻所在层的材料类型和掺杂浓度",
+        "电阻的形状是否规则",
+        "电阻周围是否有保护环"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 97,
+      "type": "single",
+      "question": "在理想情况下,当 MOS 管处于饱和区时,漏极电流 ( ) .",
+      "options": [
+        "随漏源电压增大而增大",
+        "随漏源电压增大而减少",
+        "几乎不随源漏电压变化",
+        "以上都不对"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 98,
+      "type": "single",
+      "question": "在集成电路中,常用作高值电阻的材料是( ).",
+      "options": [
+        "金属铝",
+        "多晶硅",
+        "N+有源区",
+        "铜"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 99,
+      "type": "single",
+      "question": "在集成电路制造中,用于去除不需要材料的过程称为?( )",
+      "options": [
+        "沉积",
+        "光刻",
+        "离子注入",
+        "刻蚀"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 100,
+      "type": "single",
+      "question": "基本差分对电路中对共模增益影响最显著的因素是().",
+      "options": [
+        "输入 MOS 不匹配",
+        "电路制造中的误差",
+        "负载不匹配",
+        "尾电流源的小信号输出阻抗为有限值"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 101,
+      "type": "single",
+      "question": "增大 MOSFETs 的沟道长度, 会使等效的输出电阻( ).",
+      "options": [
+        "增大",
+        "不变",
+        "减小",
+        "可大可小"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 102,
+      "type": "single",
+      "question": "多晶硅材料在集成电路工艺中有多种用途,以下不属于其用途的有_______.",
+      "options": [
+        "制作栅极",
+        "制作基本连线",
+        "制作高值电阻",
+        "制作源漏区"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 103,
+      "type": "single",
+      "question": "如下 CMOS 反相器电路中,当 0≤Vin< VTN 且 VDD-Vin>|VTP|时,则:__________.",
+      "options": [
+        "NMOS 管工作在线性区",
+        "PMOS 管工作在线性区",
+        "NMOS 管工作在饱和区",
+        "PMOS 管工作在截止区"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 104,
+      "type": "single",
+      "question": "对于 MOS 器件,器件如果进入三极管区(线性区), 跨导将_______________ .",
+      "options": [
+        "增加",
+        "减少",
+        "不变",
+        "可能增加也可能减小"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 105,
+      "type": "single",
+      "question": "对于共源共栅放大电路, 如果在不考虑器件沟道调制效应时,仅考虑器件的衬底偏置效应, 则电压增益会( ).",
+      "options": [
+        "增大",
+        "不变",
+        "减小",
+        "可能增大也可能减小"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 106,
+      "type": "single",
+      "question": "对于电流镜的要求, 那种说法正确( ).",
+      "options": [
+        "输出阻抗高",
+        "输出阻抗低",
+        "交流输出阻抗高",
+        "直流输出阻抗高"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 107,
+      "type": "single",
+      "question": "导致 MOSFET 阈值电压随源-衬电压 Vsb 增大而升高的现象称为( ).",
+      "options": [
+        "沟道长度调制效应",
+        "短沟道效应",
+        "体效应",
+        "窄沟道效应"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 108,
+      "type": "single",
+      "question": "导致 MOSFET 阈值电压随源极-衬底电压 VSB 增大而升高的现象称为( ).",
+      "options": [
+        "沟道长度调制效应",
+        "短沟道效应",
+        "体效应(衬偏效应)",
+        "窄沟道效应"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 109,
+      "type": "single",
+      "question": "小信号输入电阻最小的放大器是().",
+      "options": [
+        "源级跟随器",
+        "共源级放大器",
+        "共源共栅级放大器",
+        "共栅级放大器"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 110,
+      "type": "single",
+      "question": "小信号输出电阻相对最小的放大器是().",
+      "options": [
+        "共源共栅级放大器",
+        "共源级放大器",
+        "共栅级放大器",
+        "源级跟随器"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 111,
+      "type": "single",
+      "question": "属于 N 沟道增强型 MOS 器件的阈值电压 特点是().",
+      "options": [
+        ">0",
+        "<0",
+        "=0",
+        "无固定值"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 112,
+      "type": "single",
+      "question": "差分放大器中,共模输入电平的变化不会引起差动输出的改变的因素是().",
+      "options": [
+        "输入对管工作在饱和区",
+        "负载不完全对称",
+        "输入 MOS 管不完全对称",
+        "尾电流源输出阻抗为有限值"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 113,
+      "type": "single",
+      "question": "差分放大器的差模增益是指对______信号的放大能力.",
+      "options": [
+        "共模",
+        "差模",
+        "直流",
+        "交流"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 114,
+      "type": "single",
+      "question": "按导电性能分类,半导体的电导率特点为().",
+      "options": [
+        "极高",
+        "中等且可精确控制",
+        "极低",
+        "无固定值"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 115,
+      "type": "single",
+      "question": "有源电流镜负载差分放大器中,()时其小信号增益最大.",
+      "options": [
+        "输入差分信号相差较大",
+        "输入差分信号几乎相同",
+        "忽略非理想因素",
+        "共模增益为 0"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 116,
+      "type": "single",
+      "question": "正性光刻胶的显影特点为()",
+      "options": [
+        "曝光区域溶于显影液,图像与掩模一致",
+        "曝光区域难溶于显影液,图像与掩模相反",
+        "未曝光区域溶于显影液,图像与掩模相反",
+        "曝光与未曝光区域均不溶于显影液"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 117,
+      "type": "single",
+      "question": "沟道长度调制效应的本质是?",
+      "options": [
+        "漏源电压增大时,有效沟道长度缩短,漏极电流增大",
+        "栅源电压增大时,有效沟道长度缩短,漏极电流增大",
+        "源衬电压增大时,有效沟道长度缩短,漏极电流增大",
+        "温度升高时,有效沟道长度缩短,漏极电流增大"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 118,
+      "type": "single",
+      "question": "温度升高时,MOS 管的阈值电压会发生什么变化?",
+      "options": [
+        "NMOS 管阈值电压降低",
+        "NMOS 管阈值电压升高",
+        "对阈值电压无影响",
+        "仅影响 PMOS 管,不影响 NMOS 管"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 119,
+      "type": "single",
+      "question": "版图设计中,LVS 检查的主要作用是( ).",
+      "options": [
+        "检查版图是否符合几何规则",
+        "提取版图中的寄生参数",
+        "验证版图与电路原理图是否一致",
+        "生成用于制造的光罩数据"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 120,
+      "type": "single",
+      "question": "版图设计规则检查(DRC)主要用于验证( ).",
+      "options": [
+        "版图与电路图是否一致",
+        "版图是否符合制造工艺的几何约束",
+        "电路的功耗是否满足要求",
+        "电路的功能是否正确"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 121,
+      "type": "single",
+      "question": "特征尺寸( Feature Size)通常指:( )",
+      "options": [
+        "晶体管栅极长度",
+        "晶圆直径",
+        "金属线宽度",
+        "氧化层厚度"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 122,
+      "type": "single",
+      "question": "电流源可以起一个电阻的作用,而且不消耗()的电压余度.",
+      "options": [
+        "变化",
+        "过低",
+        "恒定",
+        "过高"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 123,
+      "type": "single",
+      "question": "电流镜电路的主要功能是:( )",
+      "options": [
+        "放大电流",
+        "提供恒定偏置",
+        "滤波",
+        "阻抗匹配"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 124,
+      "type": "single",
+      "question": "电阻负载共源级放大器中,下列措施不能提高放大器小信号增益的是().",
+      "options": [
+        "增大器件宽长比",
+        "降低输入信号直流电平",
+        "增大器件的沟道长度 L",
+        "增大负载电阻"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 125,
+      "type": "single",
+      "question": "电阻负载共源级放大器中,下列措施不能提高放大器小信号增益的是____________.",
+      "options": [
+        "增大器件宽长比",
+        "增大负载电阻",
+        "降低输入信号直流电平",
+        "增大器件的沟道长度 L"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 126,
+      "type": "single",
+      "question": "直流工作点分析中,电容等效为( ).",
+      "options": [
+        "开路",
+        "短路",
+        "电阻",
+        "电流源"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 127,
+      "type": "single",
+      "question": "硅栅工艺出现后,MOS 制作工艺得到了极大的改善,其原因主要是( ).",
+      "options": [
+        "硅栅工艺形成了自对准技术",
+        "硅栅比铝栅成本低",
+        "硅栅容易制作",
+        "器件集成度更高"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 128,
+      "type": "single",
+      "question": "离子注入工艺的主要优点是:( )",
+      "options": [
+        "掺杂浓度均匀",
+        "无需退火",
+        "掺杂深度可控",
+        "高温工艺"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 129,
+      "type": "single",
+      "question": "语句“VCC 10 0 DC 5”中节点“10”为电源 VCC 的( ).",
+      "options": [
+        "正极",
+        "负极",
+        "地",
+        "控制端"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 130,
+      "type": "single",
+      "question": "采用二极管连接的 CMOS,因漏极和栅极电势相同,这时晶体管总是工作在( ).",
+      "options": [
+        "线性区",
+        "饱和区",
+        "截止区",
+        "亚阈值区"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 131,
+      "type": "single",
+      "question": "金属与半导体接触时,通过对半导体重掺杂形成的接触类型是().",
+      "options": [
+        "肖特基接触",
+        "欧姆接触",
+        "PN 结接触",
+        "异质结接触"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 132,
+      "type": "single",
+      "question": "镜像电流源一般要求相同的( ).",
+      "options": [
+        "器件宽长比",
+        "器件长度 L",
+        "制造工艺",
+        "器件宽度 W"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 133,
+      "type": "single",
+      "question": "降低互连线串扰的可行方法不包括()",
+      "options": [
+        "增大线间距",
+        "增加屏蔽地线",
+        "缩短并行长度",
+        "减小线宽"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 134,
+      "type": "single",
+      "question": "集成电路制造中,半导体掺杂最主要的两种方法是()",
+      "options": [
+        "氧化和淀积",
+        "光刻和刻蚀",
+        "离子注入和热扩散",
+        "外延和镀膜"
+      ],
+      "answer": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 135,
+      "type": "single",
+      "question": "集成电路制造中,外延生长的核心目的是()",
+      "options": [
+        "增加晶圆厚度",
+        "用同质材料形成不同掺杂种类及浓度而具有不同性能的晶体层",
+        "提高晶圆光洁度",
+        "制作绝缘层"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 136,
+      "type": "single",
+      "question": "集成电路制造中,氧化工艺用于( ).",
+      "options": [
+        "形成绝缘层",
+        "去除杂质",
+        "提高导电性",
+        "光刻"
+      ],
+      "answer": "A",
+      "subject": "ic_design"
+    },
+    {
+      "id": 137,
+      "type": "single",
+      "question": "集成电路制造中常用的绝缘材料不包括().",
+      "options": [
+        "SiO₂",
+        "SiON",
+        "Si₃N₄",
+        "Cu"
+      ],
+      "answer": "D",
+      "subject": "ic_design"
+    },
+    {
+      "id": 138,
+      "type": "single",
+      "question": "集设计、制造、封装于一体的集成电路模式是().",
+      "options": [
+        "Fabless",
+        "IDM",
+        "Foundry",
+        "MPW"
+      ],
+      "answer": "B",
+      "subject": "ic_design"
+    },
+    {
+      "id": 139,
+      "type": "judge",
+      "question": ".ac 分析语句用于执行交流小信号频率响应分析,可以仿真电路的增益和相位随频率的变化.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 140,
+      "type": "judge",
+      "question": ".op 分析语句用于执行直流扫描分析,可以观察电压随输入电压扫描的变化曲线.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 141,
+      "type": "judge",
+      "question": "CMOS 传输门可以传输模拟信号,也可以传输数字信号.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 142,
+      "type": "judge",
+      "question": "CMOS 反相器在输入电压为 VDD/2 附近时,NMOS 和 PMOS 同时导通,存在短路电流.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 143,
+      "type": "judge",
+      "question": "CMOS 反相器的静态功耗很大,是其应用于大规模集成电路的主要障碍.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 144,
+      "type": "judge",
+      "question": "CMOS 工艺只能制造 MOSFET,无法制造双极型晶体管(BJT).",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 145,
+      "type": "judge",
+      "question": "CMOS 技术因其低功耗、高噪声容限和高集成度等优势,已成为当前主流工艺.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 146,
+      "type": "judge",
+      "question": "DRC 检查通过后,意味着版图的连接关系一定与电路原理图一致.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 147,
+      "type": "judge",
+      "question": "ESD 保护电路通常设计在芯片的 I/O PAD 附近,用于防止静电放电损坏内部电路.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 148,
+      "type": "judge",
+      "question": "Fabless 模式是指芯片设计公司拥有自己的晶圆制造厂.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 149,
+      "type": "judge",
+      "question": "Fabless 模式的出现使得芯片设计公司无需承担昂贵的晶圆厂建设和维护成本,降低了行业进入门槛.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 150,
+      "type": "judge",
+      "question": "Foundry 模式的典型代表企业包括台积电(TSMC)、中芯国际(SMIC)等,它们只负责芯片制造,不涉及芯片设计.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 151,
+      "type": "judge",
+      "question": "LVS 检查通过后,意味着版图一定满足所有设计规则,无需再进行 DRC 检查.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 152,
+      "type": "judge",
+      "question": "LVS 检查通过后,意味着版图一定符合所有制造工艺的几何规则.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 153,
+      "type": "judge",
+      "question": "MPW 技术的主要缺点是流片成本很高,只适合大批量生产的企业使用.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 154,
+      "type": "judge",
+      "question": "PDK 中包含器件模型、设计规则(DRC)和 LVS 规则等文件.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 155,
+      "type": "judge",
+      "question": "PDK(工艺设计套件)中包含了 DRC(设计规则检查)和 LVS(版图与原理图对照)的规则文件,是连接设计与制造的桥梁.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 156,
+      "type": "judge",
+      "question": "PMOS 晶体管导通时,沟道中的载流子是空穴.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 157,
+      "type": "judge",
+      "question": "PMOS 管导通时,沟道中的载流子是电子.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 158,
+      "type": "judge",
+      "question": "二氧化硅(SiO₂)在集成电路中常用作绝缘材料和器件隔离层.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 159,
+      "type": "judge",
+      "question": "二输入 CMOS 或非门(NOR)的两个 NMOS 管串联,两个 PMOS 管并联.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 160,
+      "type": "judge",
+      "question": "互连线的寄生电容会导致信号传输延迟增加.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 161,
+      "type": "judge",
+      "question": "保护环(Guard Ring)的主要作用是提高晶体管的跨导,从而提升电路性能.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 162,
+      "type": "judge",
+      "question": "光刻工艺中,掩模版(Mask)用于将设计好的电路图形转移到晶圆上.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 163,
+      "type": "judge",
+      "question": "光刻工艺的曝光步骤是在黄光环境下进行的,以避免光刻胶被非曝光区域感光.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 164,
+      "type": "judge",
+      "question": "光刻胶对大部分可见光灵敏,对黄光不灵敏,因此在光刻制程常在黄光下操作.( )",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 165,
+      "type": "judge",
+      "question": "光刻胶对黄光不敏感,因此光刻工艺通常在黄光环境下进行.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 166,
+      "type": "judge",
+      "question": "共源共栅(Cascode)电流镜的输出阻抗比简单电流镜更高.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 167,
+      "type": "judge",
+      "question": "共源放大器是一种同相放大器,其输出信号与输入信号相位相同.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 168,
+      "type": "judge",
+      "question": "在 CMOS 数字电路版图设计中,通常将 NMOS 和 PMOS 分别制作在不同的区域,并通过阱和衬底接触进行隔离.解析:标准 CMOS 工艺中,NMOS 制作在 P 型衬底上,PMOS 制作在 N 阱中,两者通过阱接触和衬底接触隔离,以防止闩锁效应.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 169,
+      "type": "judge",
+      "question": "在 N 型半导体中,多数载流子是空穴,少数载流子是电子.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 170,
+      "type": "judge",
+      "question": "在 SPICE 的特性分析语句中,.tran 语句用于频域响应仿真.( )",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 171,
+      "type": "judge",
+      "question": "在 SPICE 的特性分析语句中,用作直流工作点分析的语句格式为.AC.( )",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 172,
+      "type": "judge",
+      "question": "在 SPICE 的特性分析语句中,用作直流工作点分析的语句格式为.OP.( )",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 173,
+      "type": "judge",
+      "question": "在先进集成电路工艺中,铜(Cu)因其电阻率低、抗电迁移能力强,已成为互连线的主流材料.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 174,
+      "type": "judge",
+      "question": "在外加电压的作用下,P 型半导体中的电流主要是电子电流.( )",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 175,
+      "type": "judge",
+      "question": "在版图设计中,关键器件(如差分对管)应尽量远离,以减小相互干扰.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 176,
+      "type": "judge",
+      "question": "在版图设计中,增加金属线的宽度可以减小其寄生电阻,但会增加寄生电容.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 177,
+      "type": "judge",
+      "question": "在集成电路制造中,淀积和刻蚀是互连线形成的核心工艺步骤.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 178,
+      "type": "judge",
+      "question": "多晶硅材料在集成电路中只能用于制作 MOS 管的栅极,不能用于制作电阻.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 179,
+      "type": "judge",
+      "question": "天线效应指长金属导线在刻蚀时积累电荷损坏栅氧化层,可以通过跳线泄放 .( )",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 180,
+      "type": "judge",
+      "question": "沟道长度调制效应使 MOSFET 在饱和区的输出电阻趋于无穷大.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 181,
+      "type": "judge",
+      "question": "温度升高时,MOSFET 的阈值电压通常会升高.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 182,
+      "type": "judge",
+      "question": "湿法氧化生成的二氧化硅层质量优于干法氧化,因此常用于栅氧化层的制备.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 183,
+      "type": "judge",
+      "question": "版图设计规则中的最小线宽和最小间距是由电路功能需求决定的,与制造工艺无关.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 184,
+      "type": "judge",
+      "question": "特征尺寸越小,芯片的集成度越高,晶体管的开关速度越快,但同时漏电流等功耗问题也变得更加突出.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 185,
+      "type": "judge",
+      "question": "特征尺寸越小,芯片的集成度越高,速度越快.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 186,
+      "type": "judge",
+      "question": "特征尺寸通常指芯片上最小的线条宽度,常见的有 180nm、28nm 等.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 187,
+      "type": "judge",
+      "question": "硅栅自对准工艺中,利用多晶硅栅作为离子注入的掩蔽层,源漏注入后经过高温退火激活杂质,多晶硅栅能够耐受该高温;而铝栅工艺中铝无法承受高温退火,因此铝栅工艺逐渐被硅栅工艺取代.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 188,
+      "type": "judge",
+      "question": "离子注入工艺完成后,晶格会受到损伤,需要进行退火处理以修复晶格并激活杂质.",
+      "answer": "正确",
+      "subject": "ic_design"
+    },
+    {
+      "id": 189,
+      "type": "judge",
+      "question": "简单电流镜的输出电阻与输出管的沟道长度 L 成反比.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 190,
+      "type": "judge",
+      "question": "负性光刻胶在曝光后,感光区域在显影液中被溶解,未感光区域保留.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 191,
+      "type": "judge",
+      "question": "集成电路中的互连线只存在寄生电阻,不存在寄生电容和寄生电感.",
+      "answer": "错误",
+      "subject": "ic_design"
+    },
+    {
+      "id": 192,
+      "type": "fill",
+      "question": "63;268、在下图所示的电流镜电路中,假设所有晶体管均工作在饱和区,忽略沟道长度调制效应.已知参考电流 , M1 和 M2 的宽长比均为,M3 和 M4 的宽长比均为 .则输出电流IOUT = _____ μA.;",
+      "answerText": "50",
+      "subject": "ic_design"
+    },
+    {
+      "id": 193,
+      "type": "fill",
+      "question": "7、14 等合理值均可19、MPW 的全称是_____,其核心优势是将多个具有相同工艺的芯片设计放在同一晶圆上流片,通过分摊成本降低芯片的_____费用。",
+      "answerText": "多项目晶圆;Multi-Project Wafer",
+      "subject": "ic_design",
+      "answer": "流片；研发；打样；工程"
+    },
+    {
+      "id": 194,
+      "type": "fill",
+      "question": "BiCMOS 工艺综合了双极型晶体管的高跨导、强驱动能力和_____器件的高集成度、低功耗优点.;",
+      "answerText": "CMOS",
+      "subject": "ic_design"
+    },
+    {
+      "id": 195,
+      "type": "fill",
+      "question": "CMOS 传输门中,NMOS 管的栅极应接控制信号 C,PMOS 管的栅极应接控制信号_____.;",
+      "answerText": "C",
+      "subject": "ic_design"
+    },
+    {
+      "id": 196,
       "type": "fill",
       "question": "CMOS 传输门由_____管和_____管并联构成,其两个栅极应接互补的控制信号。",
       "answerText": "NMOS;N 沟道",
@@ -2676,7 +2198,81 @@
       "answer": "PMOS；P 沟道"
     },
     {
-      "id": 1383565692,
+      "id": 197,
+      "type": "fill",
+      "question": "CMOS 反相器由_____管和_____管互补连接而成,输入为高电平时,输出为_____电平。",
+      "answerText": "PMOS;P 沟道",
+      "subject": "ic_design",
+      "answer": "NMOS；N 沟道；低；0"
+    },
+    {
+      "id": 198,
+      "type": "fill",
+      "question": "CMOS 反相器的静态功耗理论上为_____,这是其取代 NMOS 反相器成为主流的重要原因之一.;",
+      "answerText": "0;零",
+      "subject": "ic_design"
+    },
+    {
+      "id": 199,
+      "type": "fill",
+      "question": "CMOS 电路中,由寄生 PNPN 结构触发导通引起的低阻通路现象称为_____效应.;",
+      "answerText": "闩锁;Latch-up",
+      "subject": "ic_design"
+    },
+    {
+      "id": 200,
+      "type": "fill",
+      "question": "Fabless 模式是指芯片设计公司_____(填“拥有”或“不拥有”)晶圆制造厂,只负责芯片设计和销售;Foundry 模式是指专业从事_____的企业,为Fabless 公司提供代工服务。",
+      "answerText": "不拥有",
+      "subject": "ic_design",
+      "answer": "芯片制造；晶圆代工；制造；代工"
+    },
+    {
+      "id": 201,
+      "type": "fill",
+      "question": "MOS 管的过驱动电压定义为 = _____ .;",
+      "answerText": "VGS-VTH;",
+      "subject": "ic_design"
+    },
+    {
+      "id": 202,
+      "type": "fill",
+      "question": "MOSFET 的阈值电压 表达式为 ,其中 .当衬底掺杂浓度 增大时, 会_____(填“增大”或“减小”),这是因为_____增大导致耗尽层电荷增加。",
+      "answerText": "增大",
+      "subject": "ic_design",
+      "answer": "表面势；费米能级"
+    },
+    {
+      "id": 203,
+      "type": "fill",
+      "question": "PDK 的全称是_____,它是晶圆厂提供给设计者的数据集合,包含器件模型、设计规则(DRC)、_____规则等文件。",
+      "answerText": "工艺设计套件;Process Design Kit",
+      "subject": "ic_design",
+      "answer": "LVS；版图与原理图对照"
+    },
+    {
+      "id": 204,
+      "type": "fill",
+      "question": "SOC 的全称是_____,它将处理器、存储器、模拟电路、接口等模块集成在单一芯片上,构成完整的系统.;",
+      "answerText": "片上系统;System on Chip",
+      "subject": "ic_design"
+    },
+    {
+      "id": 205,
+      "type": "fill",
+      "question": "一个差分放大器采用 NMOS 差分对管,尾电流源输出电流为 =200μA,每个差分管的宽长比 (W/L)=10/1,工艺参数 ,忽略沟道长度调制效应和体效应.则该差分放大器的差模跨导 Gm = _____ mA/V.(结果保留两位小数)",
+      "_unknown": true,
+      "subject": "ic_design"
+    },
+    {
+      "id": 206,
+      "type": "fill",
+      "question": "两种类型的半导体结合形成 PN 结,金属与半导体结合形成 结,金属与重掺杂半导体结合形成 结.;欧姆;",
+      "answerText": "肖特基",
+      "subject": "ic_design"
+    },
+    {
+      "id": 207,
       "type": "fill",
       "question": "为使 CMOS 反相器的上升时间和下降时间相等,通常需要 PMOS 的宽长比_____(填“大于”或“小于”)NMOS 的宽长比,这是因为电子迁移率_____(填“大于”或“小于”)空穴迁移率。",
       "answerText": "大于",
@@ -2684,70 +2280,342 @@
       "answer": "大于"
     },
     {
-      "id": 8798957,
-      "type": "judge",
-      "question": "CMOS 反相器在输入电压为 VDD/2 附近时,NMOS 和 PMOS 同时导通,存在短路电流.",
-      "answer": "正确",
+      "id": 208,
+      "type": "fill",
+      "question": "为抑制闩锁效应,通常在 NMOS 和 PMOS 区域周围添加_____,用于收集少数载流子.;",
+      "answerText": "保护环;Guard Ring",
       "subject": "ic_design"
     },
     {
-      "id": 170054055,
-      "type": "judge",
-      "question": "二输入 CMOS 或非门(NOR)的两个 NMOS 管串联,两个 PMOS 管并联.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 97712920,
-      "type": "judge",
-      "question": "CMOS 传输门可以传输模拟信号,也可以传输数字信号.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 191572743,
-      "type": "judge",
-      "question": "CMOS 反相器的静态功耗很大,是其应用于大规模集成电路的主要障碍.",
-      "answer": "错误",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1230041665,
-      "type": "judge",
-      "question": "在 CMOS 数字电路版图设计中,通常将 NMOS 和 PMOS 分别制作在不同的区域,并通过阱和衬底接触进行隔离.解析:标准 CMOS 工艺中,NMOS 制作在 P 型衬底上,PMOS 制作在 N 阱中,两者通过阱接触和衬底接触隔离,以防止闩锁效应.",
-      "answer": "正确",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1959430595,
+      "id": 209,
       "type": "fill",
       "question": "二输入 CMOS 与非门(NAND)的两个 PMOS 管采用_____联方式连接.;",
       "answerText": "并",
       "subject": "ic_design"
     },
     {
-      "id": 1521988274,
+      "id": 210,
       "type": "fill",
-      "question": "CMOS 传输门中,NMOS 管的栅极应接控制信号 C,PMOS 管的栅极应接控制信号_____.;",
-      "answerText": "C",
+      "question": "互连线常见的三种寄生效应是寄生电阻、寄生电容和寄生_____.;",
+      "answerText": "电感",
       "subject": "ic_design"
     },
     {
-      "id": 612363585,
+      "id": 211,
       "type": "fill",
-      "question": "CMOS 反相器的静态功耗理论上为_____,这是其取代 NMOS 反相器成为主流的重要原因之一.;",
-      "answerText": "0;零",
+      "question": "体效应致阈值电压发生变化的现象.",
+      "answerText": "体效应(又称衬偏效应)是指由于 MOSFET 的源极与衬底之间存在的电压差而导",
       "subject": "ic_design"
     },
     {
-      "id": 1313141516,
-      "type": "essay",
-      "question": "如图为某 CMOS 芯片剖面示意图,请回到如下问题:1)图中 1 和 2 下部区域分别代表哪种类型的 MOS 管?它们的沟道载流子分别是什么?在正常工作条件下,它们的衬底(B)应分接什么电平?(4 分)(2)图中 4 和 5 所在的区域分别是什么类型的接触区?它们各自连接到什么电位?其作用是什么?(2 分)(3)在 CMOS 集成电路中,由于寄生 PNPN 结构被触发导通会导致一种失效现象.这种现象叫什么名称?至少说出两种避免该现象的方法.(2 分)",
+      "id": 212,
+      "type": "fill",
+      "question": "体现集成电路工艺技术水平的关键技术指标是 .;",
+      "answerText": "特征尺寸",
+      "subject": "ic_design"
+    },
+    {
+      "id": 213,
+      "type": "fill",
+      "question": "光刻胶分为正性和负性两种.使用_____性光刻胶时,感光区域在显影液中被溶解,形成的图形与掩模版相同.;",
+      "answerText": "正",
+      "subject": "ic_design"
+    },
+    {
+      "id": 214,
+      "type": "fill",
+      "question": "共源共栅(Cascode)电流镜的输出阻抗约为简单电流镜输出阻抗的_____倍(用 gm 和 ��ro 表示).;",
+      "answerText": "gmro",
+      "subject": "ic_design"
+    },
+    {
+      "id": 215,
+      "type": "fill",
+      "question": "在 SPICE 中,.model 语句用于定义器件的_____参数.;",
+      "answerText": "模型",
+      "subject": "ic_design"
+    },
+    {
+      "id": 216,
+      "type": "fill",
+      "question": "在 SPICE 瞬态分析中,若语句为 .tran 0.5n 200n,则输出数据点的间隔为_____ns,总仿真时间为_____ns.",
       "_unknown": true,
       "subject": "ic_design"
     },
     {
-      "id": 958267758,
+      "id": 217,
+      "type": "fill",
+      "question": "在 SPICE 网表中,节点名“_____”被保留用于表示电路的地(GND).;",
+      "answerText": "0",
+      "subject": "ic_design"
+    },
+    {
+      "id": 218,
+      "type": "fill",
+      "question": "在先进 CMOS 工艺中,为减小互连线寄生电容,常采用低介电常数(low-k)材料作为_____.;",
+      "answerText": "介质层",
+      "subject": "ic_design"
+    },
+    {
+      "id": 219,
+      "type": "fill",
+      "question": "在共源放大器中,电压增益 Av =−gmRout ,负号表示输出信号与输入信号相位相差_____度.;",
+      "answerText": "180",
+      "subject": "ic_design"
+    },
+    {
+      "id": 220,
+      "type": "fill",
+      "question": "在差分放大器中,当两个输入端施加大小相等、极性相同的信号时,称为_____信号;当施加大小相等、极性相反的信号时,称为_____信号。",
+      "answerText": "共模",
+      "subject": "ic_design",
+      "answer": "差模"
+    },
+    {
+      "id": 221,
+      "type": "fill",
+      "question": "在氧化工艺中,_____法氧化(使用水蒸气)生长速率快,但生成的二氧化硅层质量较差;_____法氧化(使用氧气)生长速率慢,但生成的氧化层致密、质量好。",
+      "answerText": "湿",
+      "subject": "ic_design",
+      "answer": "干"
+    },
+    {
+      "id": 222,
+      "type": "fill",
+      "question": "在等离子体刻蚀过程中,暴露的金属线会像天线一样收集电荷,可能击穿栅氧化层,这种现象称为_____效应.;",
+      "answerText": "天线",
+      "subject": "ic_design"
+    },
+    {
+      "id": 223,
+      "type": "fill",
+      "question": "在简单电流镜中,增大输出管的沟道长度 L 可以_____(填“增大”或“减小”)其输出电阻 ro,从而提高电流复制精度.;",
+      "answerText": "增大",
+      "subject": "ic_design"
+    },
+    {
+      "id": 224,
+      "type": "fill",
+      "question": "在线性区(深三极管区),当 很小时,MOSFET 可等效为一个_____,其导通电阻 Ron 的表达式为 Ron = _____。",
+      "answerText": "电阻",
+      "subject": "ic_design",
+      "answer": "�������(���−���)μnCoxLW(VGS−VTH)1"
+    },
+    {
+      "id": 225,
+      "type": "fill",
+      "question": "在长沟道 MOSFET 的饱和区,跨导 与漏极电流 的关系为;若将晶体管的宽长比 增大为原来的 4 倍,且保持不变,则 增大为原来的_____倍;若保持 不变,将 增大为原来的4 倍,则 增大为原来的_____倍。",
+      "answerText": "2",
+      "subject": "ic_design",
+      "answer": "2"
+    },
+    {
+      "id": 226,
+      "type": "fill",
+      "question": "在集成电路制造中,淀积与刻蚀是互连线形成的核心工艺.其中,_________(填“加法”或“减法”)工艺用于在晶圆表面沉积材料薄膜,_________(填“加法”或“减法”)工艺用于选择性地去除材料。",
+      "answerText": "加法",
+      "subject": "ic_design",
+      "answer": "减法"
+    },
+    {
+      "id": 227,
+      "type": "fill",
+      "question": "在集成电路版图设计中,DRC 的全称是_____,用于检查版图是否符合制造工艺的几何规则.;",
+      "answerText": "设计规则检查;Design Rule Check",
+      "subject": "ic_design"
+    },
+    {
+      "id": 228,
+      "type": "fill",
+      "question": "在集成电路设计流程中,DRC 用于检查版图是否符合制造工艺的_____规则,LVS 用于验证版图与_____的一致性。",
+      "answerText": "几何;设计",
+      "subject": "ic_design",
+      "answer": "原理图"
+    },
+    {
+      "id": 229,
+      "type": "fill",
+      "question": "增强型 NMOS 晶体管在 _____ 时开始形成导电沟道,沟道中的载流子是_____。",
+      "answerText": "大于; >",
+      "subject": "ic_design",
+      "answer": "电子"
+    },
+    {
+      "id": 230,
+      "type": "fill",
+      "question": "对于工作在饱和区的 NMOS 管,其漏极电流表达式为,已知 ,阈值电压 , ,若要使 =1mA,则所需的栅源电压 =_____ V.",
+      "_unknown": true,
+      "subject": "ic_design"
+    },
+    {
+      "id": 231,
+      "type": "fill",
+      "question": "已知某工艺层的方块电阻值为 R□ =100Ω/□,若设计一个宽度W=1μm,长度 L=5μm 的电阻,其阻值为_____ Ω.;",
+      "answerText": "500",
+      "subject": "ic_design"
+    },
+    {
+      "id": 232,
+      "type": "fill",
+      "question": "掺杂工艺主要有两种方法:一种是利用高温下杂质原子扩散进入硅衬底的_____工艺;另一种是将杂质离子加速后注入硅衬底的_____工艺。",
+      "answerText": "热扩散",
+      "subject": "ic_design",
+      "answer": "离子注入"
+    },
+    {
+      "id": 233,
+      "type": "fill",
+      "question": "摩尔定律的核心内容是:每个芯片上的晶体管数量大约每_____个月翻一番.;",
+      "answerText": "18",
+      "subject": "ic_design"
+    },
+    {
+      "id": 234,
+      "type": "fill",
+      "question": "本征半导体是指完全纯净、结构完整的半导体晶体,其自由电子浓度_____空穴浓度(填“大于”、“小于”或“等于”);",
+      "answerText": "等于",
+      "subject": "ic_design"
+    },
+    {
+      "id": 235,
+      "type": "fill",
+      "question": "标准 CMOS 工艺中,NMOS 晶体管的衬底材料是_____型半导体,PMOS 晶体管的衬底制作在_____阱中。",
+      "answerText": "P",
+      "subject": "ic_design",
+      "answer": "N"
+    },
+    {
+      "id": 236,
+      "type": "fill",
+      "question": "根据金属的种类及半导体掺杂浓度的不同,可形成两种不同的接触类型,分别是__________接触和__________接触。",
+      "answerText": "肖特基",
+      "subject": "ic_design",
+      "answer": "欧姆"
+    },
+    {
+      "id": 237,
+      "type": "fill",
+      "question": "沟道长度调制效应导致饱和区的漏极电流 随 增大而_____(填“增大”或“减小”);",
+      "answerText": "增大",
+      "subject": "ic_design"
+    },
+    {
+      "id": 238,
+      "type": "fill",
+      "question": "沟道长度调制系数λ 与沟道长度 L 的关系是:L 越大,λ 越_____(填“大”或“小”),输出电阻 ro 越_____(填“大”或“小”)。",
+      "answerText": "小",
+      "subject": "ic_design",
+      "answer": "大"
+    },
+    {
+      "id": 239,
+      "type": "fill",
+      "question": "版图设计中,LVS 的全称是_____,用于验证版图与电路原理图的连接关系是否一致.;",
+      "answerText": "版图与原理图对照;Layout vs. Schematic",
+      "subject": "ic_design"
+    },
+    {
+      "id": 240,
+      "type": "fill",
+      "question": "特征尺寸通常指集成电路中能制造的最小线条宽度,一般指 MOS 管的_____长度.当前最新 CMOS 工艺的特征尺寸已达到_____纳米量级(填一个典型值)。",
+      "answerText": "沟道;栅极",
+      "subject": "ic_design",
+      "answer": "3；5；7；14"
+    },
+    {
+      "id": 241,
+      "type": "fill",
+      "question": "用于执行直流工作点分析(计算各节点静态电压、电流)的 SPICE 语句是“_____”.;",
+      "answerText": ".op",
+      "subject": "ic_design"
+    },
+    {
+      "id": 242,
+      "type": "fill",
+      "question": "用于执行直流扫描分析(如扫描输入电压,观察输出电压变化)的 SPICE语句是“_____”.;",
+      "answerText": ".dc",
+      "subject": "ic_design"
+    },
+    {
+      "id": 243,
+      "type": "fill",
+      "question": "由于体效应(衬偏效应),当源极-衬底电压 增大时,阈值电压 ∣ ∣ 会_____(填“升高”或“降低”).;",
+      "answerText": "升高",
+      "subject": "ic_design"
+    },
+    {
+      "id": 244,
+      "type": "fill",
+      "question": "电流镜电路中,输出电流与参考电流之比等于两个 MOS 管的_____之比(忽略沟道长度调制效应).;",
+      "answerText": "宽长比; W/L",
+      "subject": "ic_design"
+    },
+    {
+      "id": 245,
+      "type": "fill",
+      "question": "硅栅工艺中,利用栅极多晶硅作为离子注入的阻挡层,自动对准源漏区注入,这种技术称为_____工艺,可有效减小栅极与源漏区的交叠电容.;",
+      "answerText": "自对准",
+      "subject": "ic_design"
+    },
+    {
+      "id": 246,
+      "type": "fill",
+      "question": "离子注入与热扩散是两种主要的掺杂工艺.其中,掺杂深度较深、掺杂后需要一次退火处理的是_____工艺.;",
+      "answerText": "离子",
+      "subject": "ic_design"
+    },
+    {
+      "id": 247,
+      "type": "fill",
+      "question": "集成电路中的无源器件主要包括电阻、电容、电感和_____.;",
+      "answerText": "互连线",
+      "subject": "ic_design"
+    },
+    {
+      "id": 248,
+      "type": "fill",
+      "question": "集成电路发展趋势包括:特征尺寸越来_____、晶圆尺寸越来越越大、速度越来越快、工作电压越来越_____。",
+      "answerText": "越小",
+      "subject": "ic_design",
+      "answer": "越低"
+    },
+    {
+      "id": 249,
+      "type": "essay",
+      "question": "(2 分)M2 和 M3 构成 PMOS 电流镜,共同作为 M1 管的有源负载(或“电流源负载”).(2) (6 分)第一步:求跨导 Gm (2 分)将输出端短路,求短路输出电流 Iout 与输入电压 Vin 之比.第二步:求输出电阻 (2 分)将输入源置零(Vin=0),从输出端看进去的等效电阻.从 M3 的漏极看入的 MOS 电阻也为无穷大(PMOS 电流镜输出电阻)第三步:求增益 Av (2 分)11、分析图中 OTA 电路,M1/M2 器件参数相同,M3/M4 器件参数相同,回答问题:(1)图中的 M1-M4 中,哪些是 PMOS 管,哪些是 NMOS 管?(用 M1-M4 编号回答) (2 分)(2)图中哪些管会存在体效应?为什么?(用 M1-M5 编号回答) (1 分)(3) 图中 M5 管的作用. (1 分)(4)若 M1-M4 器件的输出电阻分别为 ,跨导分别为,求小信号差模增益 (4 分)",
+      "_unknown": true,
+      "subject": "ic_design"
+    },
+    {
+      "id": 250,
+      "type": "essay",
+      "question": "(2 分)该 MOS 管为 PMOS 管(1 分)沟道载流子为 空穴(1 分)(2)(2 分)四个端口分别为:B 为 衬底(Bulk)、S 为 源极(Source)、G 为 栅极(Gate)、D 为 漏极(Drain)(1 分)在正常工作条件下,衬底 B 应接 最高电位 (1 分)(3)(4 分)饱和区漏极电流表达式(2 分):工作区判断(2 分):饱和区故工作在饱和区3、下图为某深 N 阱 CMOS 芯片剖面示意图,请回答如下问题:1)在深 N 阱 CMOS 工艺中,1 和 2 下面的 MOS 分别代表什么 MOS 管?分别制作在什么区域?(4 分)2)图中 3 所在的区域是深 N 阱(Deep N-Well),它是在 P 型衬底上通过掺杂何种杂质形成的?(2 分)3)若需 CMOS 管正常工作,图中 1 和 2 下方的 MOS 管的衬底(B)应分别接什么电平?并说明原因.(2 分)",
+      "options": [
+        "G 为 栅极 (Gat",
+        "D 为 漏极(Drain)(1 分) 在正常工作条件下,衬底 B 应接 最高电位 (1 分) (3)(4 分) 饱和区漏极电流表达式(2 分): 工作区判断(2 分):饱和区 故工作在饱和区 3、下图为某深 N 阱 CMOS 芯片剖面示意图,请回答如下问题: 1)在深 N 阱 CMOS 工艺中,1 和 2 下面的 MOS 分别代表什么 MOS 管?分别制作 在什么区域?(4 分) 2)图中 3 所",
+        "应分别接什么 电平?并说明原因.(2 分) 答案:"
+      ],
+      "subject": "ic_design"
+    },
+    {
+      "id": 251,
+      "type": "essay",
+      "question": "(2 分)连接方式不同:M1 采用二极管连接方式(漏极与栅极短接),M2 的栅极与 M1的栅极相连,漏极为输出端(1 分)M1 的作用:将参考电流 IREF 转换为栅源电压 VGS1 ,为 M2 提供偏置电压,同时作为电流镜的输入级(1 分)(2)(3 分)(3) (3 分)采用共源共栅结构 (2 分)提高输出阻抗 (1 分)9、分析下图电路,回答问题.假设所有 MOS 管都工作在饱和区,忽略沟道长度调制效应,已知: , , ,M1:M2:1)求 M1 管的栅源电压 ?(4 分)2) 求图中电流 Iout 是多少?(4 分)",
+      "_unknown": true,
+      "subject": "ic_design"
+    },
+    {
+      "id": 252,
+      "type": "essay",
+      "question": "(4 分)1 区 PMOS, 制作在 N 阱 中(2 分)2 区 NMOS,制作在 P 阱 中(2 分)(2)(2 分)深 N 阱是在 P 型衬底上掺杂 五价杂质(如磷 P、砷 As)形成的(2 分)(3)(2 分)PMOS 衬底(N 阱) 接 最高电位(VDD)(0.5 分)NMOS 衬底(P 阱) 接 最低电位(GND)(0.5 分)原因:确保 PMOS 和 NMOS 的源漏区与衬底形成的 PN 结始终处于 反偏状态,防止电流在衬底和阱之间流动,实现器件间的电隔离(1 分)4、下表给出了 NMOS 管在不同偏置条件下的测量数据,请根据 MOSFET 的工作区判断规则,完成表格填空并回答问题:请按要求回答如下问题:(1)计算表中每组条件的 值,并判断各条件下的工作区域,写出对应的漏极电流表达式(用公式表示,无需计算具体数值).(5 分)(2)条件 3 中的 MOS 管若存在沟道长度调制效应,其漏极电流表达式应如何修正?写出修正后的表达式.(1 分)(3)条件 2 中的 MOS 管,若保持 不变,逐渐增大 ,当 增大到多少时,管子将进入饱和区?(2 分)",
+      "options": [
+        "(0.5 分) NMOS 衬底(P 阱) 接 最低电位(GN",
+        "(0.5 分) 原因:确保 PMOS 和 NMOS 的源漏区与衬底形成的 PN 结始终处于 反 偏状态,防止电流在衬底和阱之间流动,实现器件间的电隔离(1 分) 4、下表给出了 NMOS 管在不同偏置条件下的测量数据,请根据 MOSFET 的工作区 判断规则,完成表格填空并回答问题: 请按要求回答如下问题: (1)计算表中每组条件的 值,并判断各条件下的工作区域,写出 对应的漏极电流表达式(用公式"
+      ],
+      "subject": "ic_design"
+    },
+    {
+      "id": 253,
       "type": "essay",
       "question": "(4 分)1 区:NMOS 管,沟道载流子为 电子(1 分)2 区:PMOS 管,沟道载流子为 空穴(1 分)衬底接法:PMOS 衬底(N 阱)接 最高电位(VDD)(1 分)NMOS 衬底(P 型衬底)接 最低电位(GND)(1 分)(2)(2 分)4 区:P+衬底接触区,连接到 GND(0.5 分)5 区:N+阱接触区,连接到 VDD(0.5 分)作用:为 N 阱和 P 型衬底提供稳定的电位连接,防止阱和衬底电位浮空;降低阱和衬底的寄生电阻,抑制闩锁效应(Latch-up)(1 分)(3)(2 分)这种现象称为 闩锁效应(Latch-up)(1 分)避免方法(答出 2 种即可,1 分):增加 N 阱和 P 型衬底的接触密度(增加阱接触和衬底接触)在 NMOS 和 PMOS 之间添加 保护环(Guard Ring)采用 深 N 阱工艺,隔离 NMOS 与 P 型衬底采用 SOI(绝缘体上硅)技术优化版图布局,增大 NMOS 与 PMOS 的距离使用 外延层 降低衬底寄生电阻2、如图为某 MOS 管剖面示意图,请回到如下问题:1)该 MOS 管是 PMOS 还是 NMOS?其沟道载流子",
       "options": [
@@ -2759,86 +2627,218 @@
       "subject": "ic_design"
     },
     {
-      "id": 1981219359,
-      "type": "essay",
-      "question": "(2 分)该 MOS 管为 PMOS 管(1 分)沟道载流子为 空穴(1 分)(2)(2 分)四个端口分别为:B 为 衬底(Bulk)、S 为 源极(Source)、G 为 栅极(Gate)、D 为 漏极(Drain)(1 分)在正常工作条件下,衬底 B 应接 最高电位 (1 分)(3)(4 分)饱和区漏极电流表达式(2 分):工作区判断(2 分):饱和区故工作在饱和区3、下图为某深 N 阱 CMOS 芯片剖面示意图,请回答如下问题:1)在深 N 阱 CMOS 工艺中,1 和 2 下面的 MOS 分别代表什么 MOS 管?分别制作在什么区域?(4 分)2)图中 3 所在的区域是深 N 阱(Deep N-Well),它是在 P 型衬底上通过掺杂何种杂质形成的?(2 分)3)若需 CMOS 管正常工作,图中 1 和 2 下方的 MOS 管的衬底(B)应分别接什么电平?并说明原因.(2 分)",
-      "options": [
-        "G 为 栅极 (Gat",
-        "D 为 漏极(Drain)(1 分) 在正常工作条件下,衬底 B 应接 最高电位 (1 分) (3)(4 分) 饱和区漏极电流表达式(2 分): 工作区判断(2 分):饱和区 故工作在饱和区 3、下图为某深 N 阱 CMOS 芯片剖面示意图,请回答如下问题: 1)在深 N 阱 CMOS 工艺中,1 和 2 下面的 MOS 分别代表什么 MOS 管?分别制作 在什么区域?(4 分) 2)图中 3 所",
-        "应分别接什么 电平?并说明原因.(2 分) 答案:"
-      ],
-      "subject": "ic_design"
-    },
-    {
-      "id": 980234247,
-      "type": "essay",
-      "question": "(4 分)1 区 PMOS, 制作在 N 阱 中(2 分)2 区 NMOS,制作在 P 阱 中(2 分)(2)(2 分)深 N 阱是在 P 型衬底上掺杂 五价杂质(如磷 P、砷 As)形成的(2 分)(3)(2 分)PMOS 衬底(N 阱) 接 最高电位(VDD)(0.5 分)NMOS 衬底(P 阱) 接 最低电位(GND)(0.5 分)原因:确保 PMOS 和 NMOS 的源漏区与衬底形成的 PN 结始终处于 反偏状态,防止电流在衬底和阱之间流动,实现器件间的电隔离(1 分)4、下表给出了 NMOS 管在不同偏置条件下的测量数据,请根据 MOSFET 的工作区判断规则,完成表格填空并回答问题:请按要求回答如下问题:(1)计算表中每组条件的 值,并判断各条件下的工作区域,写出对应的漏极电流表达式(用公式表示,无需计算具体数值).(5 分)(2)条件 3 中的 MOS 管若存在沟道长度调制效应,其漏极电流表达式应如何修正?写出修正后的表达式.(1 分)(3)条件 2 中的 MOS 管,若保持 不变,逐渐增大 ,当 增大到多少时,管子将进入饱和区?(2 分)",
-      "options": [
-        "(0.5 分) NMOS 衬底(P 阱) 接 最低电位(GN",
-        "(0.5 分) 原因:确保 PMOS 和 NMOS 的源漏区与衬底形成的 PN 结始终处于 反 偏状态,防止电流在衬底和阱之间流动,实现器件间的电隔离(1 分) 4、下表给出了 NMOS 管在不同偏置条件下的测量数据,请根据 MOSFET 的工作区 判断规则,完成表格填空并回答问题: 请按要求回答如下问题: (1)计算表中每组条件的 值,并判断各条件下的工作区域,写出 对应的漏极电流表达式(用公式"
-      ],
-      "subject": "ic_design"
-    },
-    {
-      "id": 43639031,
-      "type": "essay",
-      "question": "下面给出了 NMOS 在三种不同工作状态下漏极电流的表达式,请回答相关问题:请按要求回答如下问题:(1)区域 A、B、C 分别对应 MOS 管的哪个工作区?写出每个区域对应的、 和 应满足的条件.(4 分)(2)区域 C 的表达式中引入了参数 λ,该参数称为什么?它反映了 MOS 管的什么物理效应?(2 分)(3)已知 =2.0V, =0.5V, =0.2V, ,W/L=10,则该 NMOS 管工作在哪个区域?其漏极电流 ID 是多少?(2 分)",
-      "subject": "ic_design"
-    },
-    {
-      "id": 1105752493,
-      "type": "essay",
-      "question": "4 分(2) 2 分λ 称为 沟道长度调制系数(1 分)它反映了 沟道长度调制效应:随着 VDS 增大,沟道夹断点向源极移动,有效沟道长度 L 减小,导致 ID 随 VDS 增大而略有增加(1 分)(3) 2 分第一步:判断工作区域(1 分)计算过驱动电压: Vod =VGS −VTH =2.0−0.5=1.5 V由于 VDS<Vod,且 VGS>VTH,该 NMOS 管工作在 线性区(区域 B).第二步:计算漏极电流(1 分)使用线性区电流公式:代入计算得,6、NMOS 管在不同工作区的漏极电流 表达式反映了其物理特性与外部电压的关系.已知 .1)请分别写出 MOS 管工作在三个区域的漏极电流 表达式?并给出每个工作区域对应的栅源电压 、漏源电压 和阈值电压 之间需要满足的条件.(4 分)2)当 NMOS 管工作在饱和区时,其漏极电流 与 是否有关?为什么?实际器件中是否存在偏差?请简要说明.(2 分)3)若一个 NMOS 管的 =0.6V, =1.2V, =0.3V,判断该管工作在哪个区域?并计算其过驱动电压.(2 分)",
-      "_unknown": true,
-      "subject": "ic_design"
-    },
-    {
-      "id": 662839287,
-      "type": "essay",
-      "question": "分析下图所示的镜像电流源电路,回答问题.其中所有 MOS 管均工作在饱和区,忽略沟道长度调制效应,工艺参数 ,NMOS 阈值电压 ,PMOS 阈值电压 .已知设计参数:M1:W/L=5/1 M2:W/L=10/1 M3:W/L=5/1 M4:W/L=10/1 1)求 M1 管的栅源电压 .(4 分)2) 求输出电流 .(4 分)",
-      "_unknown": true,
-      "subject": "ic_design"
-    },
-    {
-      "id": 438439685,
-      "type": "essay",
-      "question": "(4 分)M1 为 NMOS 管,采用二极管连接方式(漏极与栅极短接),因此 M1 始终工作在饱和区.饱和区 NMOS 管的漏极电流公式为:(2 分)代入数值,求得 (2 分)(2)(4 分)该电路由两级电流镜级联构成,总电流增益为各级电流镜倍数的乘积.第一级(NMOS 电流镜:M1→M2):(2 分)第二级(PMOS 电流镜:M3→M4):(2 分)8、分析如下电路,回答问题.(1)电路中 M1 和 M2 的连接方式有何不同?M1 的作用是什么?(2 分)(2)若 M1、M3 的宽长比均为(W/L)=10/1,M2、M4 的宽长比为 (W/L)=50/1,求输出电流 .(3 分)(3)上述电流源电路属于什么结构?该电路结构对输出阻抗的影响如何?(3分)",
-      "_unknown": true,
-      "subject": "ic_design"
-    },
-    {
-      "id": 59036234,
-      "type": "essay",
-      "question": "(2 分)连接方式不同:M1 采用二极管连接方式(漏极与栅极短接),M2 的栅极与 M1的栅极相连,漏极为输出端(1 分)M1 的作用:将参考电流 IREF 转换为栅源电压 VGS1 ,为 M2 提供偏置电压,同时作为电流镜的输入级(1 分)(2)(3 分)(3) (3 分)采用共源共栅结构 (2 分)提高输出阻抗 (1 分)9、分析下图电路,回答问题.假设所有 MOS 管都工作在饱和区,忽略沟道长度调制效应,已知: , , ,M1:M2:1)求 M1 管的栅源电压 ?(4 分)2) 求图中电流 Iout 是多少?(4 分)",
-      "_unknown": true,
-      "subject": "ic_design"
-    },
-    {
-      "id": 1167071880,
+      "id": 254,
       "type": "essay",
       "question": "(4 分)M1 为 NMOS 管,采用二极管连接方式(漏极与栅极短接),因此 M1 始终工作在饱和区.饱和区 NMOS 管的漏极电流公式为:(2 分)代入已知数据,求得 (2 分)(2)(4 分)M1 和 M2 构成 NMOS 电流镜.由于 M1 和 M2 的栅极相连,且 M1 为二极管连接方式,在忽略沟道长度调制效应的情况下,输出电流Iout 与参考电流IREF 之比等于两个 MOS 管的宽长比之比.(2 分)代入已知数据,求得: (2 分)10、分析如下电路,回答问题.已知所有 MOS 管都工作在饱和区,忽略沟道长度调制效应,已知 M1 管的晶体管跨导为 ,(1)M2 与 M3 在电路中的作用. (2 分)(2)求小信号增益 (6 分)",
       "_unknown": true,
       "subject": "ic_design"
     },
     {
-      "id": 62255526,
+      "id": 255,
       "type": "essay",
-      "question": "(2 分)M2 和 M3 构成 PMOS 电流镜,共同作为 M1 管的有源负载(或“电流源负载”).(2) (6 分)第一步:求跨导 Gm (2 分)将输出端短路,求短路输出电流 Iout 与输入电压 Vin 之比.第二步:求输出电阻 (2 分)将输入源置零(Vin=0),从输出端看进去的等效电阻.从 M3 的漏极看入的 MOS 电阻也为无穷大(PMOS 电流镜输出电阻)第三步:求增益 Av (2 分)11、分析图中 OTA 电路,M1/M2 器件参数相同,M3/M4 器件参数相同,回答问题:(1)图中的 M1-M4 中,哪些是 PMOS 管,哪些是 NMOS 管?(用 M1-M4 编号回答) (2 分)(2)图中哪些管会存在体效应?为什么?(用 M1-M5 编号回答) (1 分)(3) 图中 M5 管的作用. (1 分)(4)若 M1-M4 器件的输出电阻分别为 ,跨导分别为,求小信号差模增益 (4 分)",
+      "question": "(4 分)M1 为 NMOS 管,采用二极管连接方式(漏极与栅极短接),因此 M1 始终工作在饱和区.饱和区 NMOS 管的漏极电流公式为:(2 分)代入数值,求得 (2 分)(2)(4 分)该电路由两级电流镜级联构成,总电流增益为各级电流镜倍数的乘积.第一级(NMOS 电流镜:M1→M2):(2 分)第二级(PMOS 电流镜:M3→M4):(2 分)8、分析如下电路,回答问题.(1)电路中 M1 和 M2 的连接方式有何不同?M1 的作用是什么?(2 分)(2)若 M1、M3 的宽长比均为(W/L)=10/1,M2、M4 的宽长比为 (W/L)=50/1,求输出电流 .(3 分)(3)上述电流源电路属于什么结构?该电路结构对输出阻抗的影响如何?(3分)",
       "_unknown": true,
       "subject": "ic_design"
     },
     {
-      "id": 183368383,
+      "id": 256,
       "type": "essay",
       "question": "2 分NMOS:M1,M2 PMOS:M3,M4(2) 1 分存在体效应的 MOS 管:M1,M2.因为源极与衬底不短接,VSB 存在电位差(3)1 分M5 为尾电流源,作用是为差分对提供恒定的偏置电流 ISS ,并提高差分对的共模抑制比(CMRR).(4) 4 分输出短路,求 ,进而获得求输出电阻,使用 ,可得12、在下图所示的采用二极管链接负载的差动对电路中,,差动对的参数为 , ,由 NMOS 提供, .忽略所有 MOS 管体效应及沟道长度调制效应,求电路的小信号差动增益.",
       "_unknown": true,
       "subject": "ic_design"
     },
     {
-      "id": 1951869806,
+      "id": 257,
+      "type": "essay",
+      "question": "4 分(2) 2 分λ 称为 沟道长度调制系数(1 分)它反映了 沟道长度调制效应:随着 VDS 增大,沟道夹断点向源极移动,有效沟道长度 L 减小,导致 ID 随 VDS 增大而略有增加(1 分)(3) 2 分第一步:判断工作区域(1 分)计算过驱动电压: Vod =VGS −VTH =2.0−0.5=1.5 V由于 VDS<Vod,且 VGS>VTH,该 NMOS 管工作在 线性区(区域 B).第二步:计算漏极电流(1 分)使用线性区电流公式:代入计算得,6、NMOS 管在不同工作区的漏极电流 表达式反映了其物理特性与外部电压的关系.已知 .1)请分别写出 MOS 管工作在三个区域的漏极电流 表达式?并给出每个工作区域对应的栅源电压 、漏源电压 和阈值电压 之间需要满足的条件.(4 分)2)当 NMOS 管工作在饱和区时,其漏极电流 与 是否有关?为什么?实际器件中是否存在偏差?请简要说明.(2 分)3)若一个 NMOS 管的 =0.6V, =1.2V, =0.3V,判断该管工作在哪个区域?并计算其过驱动电压.(2 分)",
+      "_unknown": true,
+      "subject": "ic_design"
+    },
+    {
+      "id": 258,
+      "type": "essay",
+      "question": "7;145、阈值电压型(即形成导电沟道)所需的最小栅源电压.",
+      "answerText": "阈值电压是指使 MOSFET 栅极下方硅表面从多数载流子类型反型为少数载流子类",
+      "subject": "ic_design"
+    },
+    {
+      "id": 259,
+      "type": "essay",
+      "question": "DRC(设计规则检查)骤,用于检查版图是否符合制造工艺的几何和物理约束规则.这些规则包括最小线宽、最小间距、最小交叠、最小面积、最小切口宽度等参数,由晶圆厂根据其工艺能力制定.DRC 检查通过是版图可以送交制造的前提条件之一.",
+      "answerText": "DRC(Design Rule Check,设计规则检查)是集成电路版图验证中的重要步",
+      "subject": "ic_design"
+    },
+    {
+      "id": 260,
+      "type": "essay",
+      "question": "EDA(电子设计自动化)设计软件来完成集成电路的功能设计、综合、验证、物理实现等一系列设计流程的技术.EDA 工具包括电路仿真工具(如 SPICE)、逻辑综合工具、布局布线工具、版图验证工具(DRC/LVS)等.EDA 是现代集成电路设计的必备基础.",
+      "answerText": "EDA(Electronic Design Automation,电子设计自动化)是指利用计算机辅助",
+      "subject": "ic_design"
+    },
+    {
+      "id": 261,
+      "type": "essay",
+      "question": "ESD(静电放电)之间瞬间转移的现象.在集成电路制造、封装、测试和使用过程中,ESD 事件可能产生高达数千伏的电压,击穿栅氧化层或损坏 PN 结,导致芯片永久失效.ESD 保护电路(如 GGNMOS、SCR、二极管等)设计在 I/O PAD 附近,在 ESD 事件发生时提供低阻抗泄放路径,保护内部核心电路.",
+      "answerText": "ESD(Electrostatic Discharge,静电放电)是指静电荷在不同静电势的物体",
+      "subject": "ic_design"
+    },
+    {
+      "id": 262,
+      "type": "essay",
+      "question": "Fabless(无生产线模式)造厂,只专注于芯片的电路设计、仿真验证和销售,而将芯片的制造环节委托给专业的代工厂(Foundry)完成.这种模式降低了芯片设计行业的进入门槛,使设计公司无需承担晶圆厂建设和维护的巨额资本投入.典型代表有高通、英伟达、联发科等.",
+      "answerText": "Fabless(无生产线集成电路设计模式)是指芯片设计公司不拥有自己的晶圆制",
+      "subject": "ic_design"
+    },
+    {
+      "id": 263,
+      "type": "essay",
+      "question": "Foundry(代工厂模式)司提供晶圆代工服务.Foundry 企业不涉及芯片设计,只专注于工艺开发、制造生产和良率提升.这种模式实现了设计与制造的分离,促进了半导体产业链的专业化分工.典型代表包括台积电(TSMC)、中芯国际(SMIC)、华虹集团等.",
+      "options": [
+        "中芯国际(SMI",
+        "华虹集团 等."
+      ],
+      "answerText": "Foundry(代工厂模式)是指专业从事集成电路制造的企业,为 Fabless 设计公",
+      "subject": "ic_design"
+    },
+    {
+      "id": 264,
+      "type": "essay",
+      "question": "LVS(版图与原理图对照)要步骤,用于验证所设计的版图是否实现了电路原理图所描述的逻辑连接关系.LVS 工具会从版图中提取出晶体管、电阻、电容等器件及其互连关系,生成版图网表,然后与原理图网表进行比对,检查器件类型、尺寸和连接关系是否一致.",
+      "answerText": "LVS(Layout vs. Schematic,版图与原理图对照)是集成电路版图验证中的重",
+      "subject": "ic_design"
+    },
+    {
+      "id": 265,
+      "type": "essay",
+      "question": "MPW(多项目晶圆)的、具有相同工艺的集成电路设计拼接到同一块晶圆上进行流片的制造模式.所有参加 MPW 的项目按照芯片面积分摊光罩和流片成本,可大幅降低芯片研发阶段的打样费用,特别适合高校科研、中小企业和小批量产品的研发验证.",
+      "answerText": "MPW(Multi-Project Wafer,多项目晶圆)是指将多个来自不同客户或项目",
+      "subject": "ic_design"
+    },
+    {
+      "id": 266,
+      "type": "essay",
+      "question": "PDK(工艺设计套件)数据文件集合,是连接设计与制造的桥梁.PDK 通常包含:器件模型(SPICE 模型)、参数化单元(Pcell)、设计规则(DRC 规则)、版图与原理图对照(LVS 规则)、寄生参数提取规则(RCX)、技术文件等.设计者使用 PDK 可以确保所设计的版图符合目标工艺的制造要求.",
+      "answerText": "PDK(Process Design Kit,工艺设计套件)是晶圆厂提供给集成电路设计者的",
+      "subject": "ic_design"
+    },
+    {
+      "id": 267,
+      "type": "essay",
+      "question": "PN 结成的结构.PN 结具有单向导电性:正向偏置时导通,反向偏置时截止.PN 结是二极管、双极型晶体管(BJT)以及 MOSFET 中源漏区与衬底之间隔离结构的基础.",
+      "answerText": "PN 结是将 P 型半导体和 N 型半导体制作在同一块半导体基片上,在其交界面形",
+      "subject": "ic_design"
+    },
+    {
+      "id": 268,
+      "type": "essay",
+      "question": "PN 结的正向偏置是指 N 区接____电位.(填“高”或“低”).;",
+      "answerText": "低",
+      "subject": "ic_design"
+    },
+    {
+      "id": 269,
+      "type": "essay",
+      "question": "SOC(片上系统)路、数字逻辑、接口电路等多个功能模块集成在单一芯片上,构成一个完整的、可运行的电子系统.SOC 是高集成度 VLSI 的高级形态,具有体积小、功耗低、可靠性高等优点,广泛应用于智能手机、物联网设备等领域.",
+      "answerText": "SOC(System on Chip,片上系统)是指将处理器(CPU)、存储器、模拟电",
+      "subject": "ic_design"
+    },
+    {
+      "id": 270,
+      "type": "essay",
+      "question": "SPICE路仿真程序的简称,由加州大学伯克利分校开发,是目前最广泛使用的模拟电路仿真工具.SPICE 可以对电路进行直流工作点分析(.op)、直流扫描分析(.dc)、瞬态分析(.tran)、交流小信号分析(.ac)等.SPICE 语言和模型格式已成为行业标准.",
+      "options": [
+        "瞬态分析(.tran)、交流小信号分析(.a",
+        "等.SPICE 语言和模型 格式已成为行业标准."
+      ],
+      "answerText": "SPICE(Simulation Program with Integrated Circuit Emphasis)是集成电",
+      "subject": "ic_design"
+    },
+    {
+      "id": 271,
+      "type": "essay",
+      "question": "下面给出了 NMOS 在三种不同工作状态下漏极电流的表达式,请回答相关问题:请按要求回答如下问题:(1)区域 A、B、C 分别对应 MOS 管的哪个工作区?写出每个区域对应的、 和 应满足的条件.(4 分)(2)区域 C 的表达式中引入了参数 λ,该参数称为什么?它反映了 MOS 管的什么物理效应?(2 分)(3)已知 =2.0V, =0.5V, =0.2V, ,W/L=10,则该 NMOS 管工作在哪个区域?其漏极电流 ID 是多少?(2 分)",
+      "subject": "ic_design"
+    },
+    {
+      "id": 272,
+      "type": "essay",
+      "question": "分析下图所示的镜像电流源电路,回答问题.其中所有 MOS 管均工作在饱和区,忽略沟道长度调制效应,工艺参数 ,NMOS 阈值电压 ,PMOS 阈值电压 .已知设计参数:M1:W/L=5/1 M2:W/L=10/1 M3:W/L=5/1 M4:W/L=10/1 1)求 M1 管的栅源电压 .(4 分)2) 求输出电流 .(4 分)",
+      "_unknown": true,
+      "subject": "ic_design"
+    },
+    {
+      "id": 273,
+      "type": "essay",
+      "question": "天线效应(Antenna Effect)现象.当暴露的金属线或多晶硅线(如同天线)在等离子体中收集电荷时,如果积累的电荷足够多,会通过与之相连的薄栅氧化层放电,击穿栅氧化层,造成器件永久损坏.抑制天线效应的方法包括:添加跳线(Strap)来分段金属线、插入反偏二极管来泄放电荷、限制金属线的长宽比等.",
+      "answerText": "天线效应是集成电路制造过程中,在等离子体刻蚀工艺步骤中出现的一种损伤",
+      "subject": "ic_design"
+    },
+    {
+      "id": 274,
+      "type": "essay",
+      "question": "如图为某 CMOS 芯片剖面示意图,请回到如下问题:1)图中 1 和 2 下部区域分别代表哪种类型的 MOS 管?它们的沟道载流子分别是什么?在正常工作条件下,它们的衬底(B)应分接什么电平?(4 分)(2)图中 4 和 5 所在的区域分别是什么类型的接触区?它们各自连接到什么电位?其作用是什么?(2 分)(3)在 CMOS 集成电路中,由于寄生 PNPN 结构被触发导通会导致一种失效现象.这种现象叫什么名称?至少说出两种避免该现象的方法.(2 分)",
+      "_unknown": true,
+      "subject": "ic_design"
+    },
+    {
+      "id": 275,
       "type": "essay",
       "question": "差分对 M1,M2 的电流, (1 分)跨导(1 分)代入数值,求得(1 分)(2)负载 PMOS M3,M4 二极管连接跨导代入数值,求得(1 分)(3) 求输出电阻(2 分)(4)求增益半边电路等效法,(2 分)",
       "_unknown": true,
+      "subject": "ic_design"
+    },
+    {
+      "id": 276,
+      "type": "essay",
+      "question": "本征半导体平衡状态下,本征半导体中自由电子浓度等于空穴浓度,均等于本征载流子浓度 ni.本征载流子浓度随温度升高呈指数增加.硅(Si)和锗(Ge)是典型的本征半导体材料.",
+      "answerText": "本征半导体是指完全纯净、结构完整的半导体晶体,不含任何杂质原子.在热",
+      "subject": "ic_design"
+    },
+    {
+      "id": 277,
+      "type": "essay",
+      "question": "杂质半导体半导体材料.掺入五价杂质(如磷、砷)得到 N 型半导体,多数载流子为电子;掺入三价杂质(如硼、铝)得到 P 型半导体,多数载流子为空穴.杂质半导体的电导率远高于本征半导体,是制造半导体器件的基础.",
+      "answerText": "杂质半导体是指在本征半导体中有意掺入少量杂质元素,以改变其导电特性的",
+      "subject": "ic_design"
+    },
+    {
+      "id": 278,
+      "type": "essay",
+      "question": "沟道长度调制效应VDS 增大时,沟道夹断点向源极方向移动,导致有效沟道 � � � � Leff 减小.根据 � � ∝ 1 / � ID∝1/L,漏极电流 � � ID 会随 � � � VDS 的增大而略有增加,使饱和区输出特性曲线向上倾斜.",
+      "answerText": "沟道长度调制效应是 MOSFET 工作在饱和区时出现的一种二级效应.当",
+      "subject": "ic_design"
+    },
+    {
+      "id": 279,
+      "type": "essay",
+      "question": "特征尺寸(Feature Size)晶体管的栅极(沟道)长度 L,单位通常为微米(μm)或纳米(nm).特征尺寸是衡量集成电路工艺水平的关键技术指标,尺寸越小代表工艺越先进,集成度越高.当前先进工艺已达 3nm/5nm 量级.",
+      "answerText": "特征尺寸是指集成电路中能制造的最小线条宽度或最小几何尺寸,通常指 MOS",
+      "subject": "ic_design"
+    },
+    {
+      "id": 280,
+      "type": "essay",
+      "question": "跨导(gm)压 VGS 的偏导数,表征栅源电压对漏极电流的控制能力.",
+      "answerText": "跨导 gm 是 MOSFET 的重要小信号参数,定义为漏极电流 ID 对栅源电",
+      "subject": "ic_design"
+    },
+    {
+      "id": 281,
+      "type": "essay",
+      "question": "过驱动电压动电压决定了 MOSFET 的导通程度:Vod 越大,沟道电导越大,漏极电流越大.",
+      "answerText": "过驱动电压定义为 Vod =VGS −VTH ,表示栅源电压超过阈值电压的部分.过驱",
+      "subject": "ic_design"
+    },
+    {
+      "id": 282,
+      "type": "essay",
+      "question": "闩锁效应(Latch-up)通而引发的一种失效现象.在 CMOS 工艺中,NMOS 的 P 衬底和 N+源漏、PMOS 的N 阱和 P+源漏会形成横向和纵向的寄生双极型晶体管,构成 PNPN 四层结构.当该结构被触发导通时,会在电源(VDD)和地(GND)之间形成低阻通路,产生大电流甚至烧毁芯片.抑制方法包括:增加阱和衬底的接触密度、使用保护环(Guard Ring)、采用深 N 阱工艺或 SOI 技术等.",
+      "options": [
+        "和地(GN",
+        "之间形成低阻通路,产生 大电流甚至烧毁芯片.抑制方法包括:增加阱和衬底的接触密度、使用保护环 (Guard Rin",
+        "采用深 N 阱工艺或 SOI 技术等."
+      ],
+      "answerText": "闩锁效应是 CMOS 集成电路中由于寄生 PNPN 结构(可控硅 SCR)被意外触发导",
       "subject": "ic_design"
     }
   ]
