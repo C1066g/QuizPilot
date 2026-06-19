@@ -2538,16 +2538,34 @@ function renderQuestionNav() {
     if (!nav) return;
     nav.innerHTML = '';
 
+    // 预计算每个题型的第一题索引，供题型标签跳转
+    const firstOfType = {};
+    allQuestions.forEach((q, idx) => {
+        if (!(q.type in firstOfType)) firstOfType[q.type] = idx;
+    });
+
     allQuestions.forEach((q, idx) => {
         const item = document.createElement('div');
         item.className = 'nav-item' + (idx === currentIndex ? ' active' : '');
         item.setAttribute('data-index', idx);
         const tag = getTypeLabel(q.type);
-        item.innerHTML = '<span class="nav-num">' + (idx + 1) + '</span><span class="nav-tag">' + tag + '</span><span class="nav-title">' + escapeHtml(q.question.slice(0, 28)) + '</span>';
+        const firstIdx = firstOfType[q.type];
+        item.innerHTML = '<span class="nav-num">' + (idx + 1) + '</span><span class="nav-tag" data-jump-type="' + q.type + '" title="跳转到第一道' + tag + '（第' + (firstIdx + 1) + '题）">' + tag + '</span><span class="nav-title">' + escapeHtml(q.question.slice(0, 28)) + '</span>';
         nav.appendChild(item);
     });
 
     nav.onclick = (e) => {
+        // 点击题型标签 → 跳到该题型第一题
+        const tagEl = e.target.closest('.nav-tag');
+        if (tagEl) {
+            const type = tagEl.getAttribute('data-jump-type');
+            if (type && type in firstOfType) {
+                currentIndex = firstOfType[type];
+                showQuestion();
+            }
+            return;
+        }
+        // 点击题目行 → 跳到该题
         const target = e.target.closest('.nav-item');
         if (!target) return;
         const idx = parseInt(target.getAttribute('data-index'), 10);
