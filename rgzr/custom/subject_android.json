@@ -6,1182 +6,2358 @@
       "id": 1,
       "type": "single",
       "question": "Activity 从创建到首次显示，会依次执行的生命周期方法是（）",
+      "options": [
+        "A、onCreate→onStart→onResume",
+        "B、onStart→onCreate→onResume",
+        "C、onCreate→onResume→onStart",
+        "D、onResume→onStart→onCreate"
+      ],
       "answer": "A"
     },
     {
       "id": 2,
       "type": "single",
       "question": "Android UI开发中，TableLayout的stretchColumns属性表示( )。",
+      "options": [
+        "A、TableLayout的列数",
+        "B、TableLayout的行数",
+        "C、TableLayout最多能加入的列数",
+        "D、TableLayout拉伸指定列填充满"
+      ],
       "answer": "D"
     },
     {
       "id": 3,
       "type": "single",
       "question": "Android 中 SQLite 数据库文件默认存放在哪个目录？",
+      "options": [
+        "A、files",
+        "B、databases",
+        "C、cache",
+        "D、lib"
+      ],
       "answer": "B"
     },
     {
       "id": 4,
       "type": "single",
       "question": "Android 中用于实现跨应用数据共享的核心组件是？（）",
+      "options": [
+        "A、Activity",
+        "B、Service",
+        "C、ContentProvider",
+        "D、BroadcastReceiver"
+      ],
       "answer": "C"
     },
     {
       "id": 5,
       "type": "single",
       "question": "Android 中的短信、联系人管理、浏览器等属于 Android 体系结构中的哪一层?( )",
+      "options": [
+        "A、应用程序层",
+        "B、应用程序框架层",
+        "C、核心类库",
+        "D、Linux 内核层"
+      ],
       "answer": "A"
     },
     {
       "id": 6,
       "type": "single",
       "question": "Android 中默认控件一层层叠加显示的布局是（）",
+      "options": [
+        "A、LinearLayout",
+        "B、RelativeLayout",
+        "C、FrameLayout",
+        "D、ConstraintLayout"
+      ],
       "answer": "C"
     },
     {
       "id": 7,
       "type": "single",
       "question": "Android 中，SharedPreferences 是以哪种格式存储数据的？（）",
+      "options": [
+        "A、数据库",
+        "B、文本",
+        "C、XML",
+        "D、JSON"
+      ],
       "answer": "C"
     },
     {
       "id": 8,
       "type": "single",
       "question": "Android 中，standard启动模式的核心特点是（）",
+      "options": [
+        "A、复用栈内已存在实例",
+        "B、清空栈内上方实例后复用",
+        "C、每次启动创建新实例",
+        "D、单独开辟新任务栈"
+      ],
       "answer": "C"
     },
     {
       "id": 9,
       "type": "single",
       "question": "Android 中，默认的 Activity 启动模式是（）",
+      "options": [
+        "A、standard",
+        "B、singleTop",
+        "C、singleTask",
+        "D、singleInstance"
+      ],
       "answer": "A"
     },
     {
       "id": 10,
       "type": "single",
       "question": "Android 四大组件中，可后台运行无界面的组件是？（）",
+      "options": [
+        "A、Activity",
+        "B、Service",
+        "C、BroadcastReceiver",
+        "D、ContentProvider"
+      ],
       "answer": "B"
     },
     {
       "id": 11,
       "type": "single",
       "question": "Android 四大组件中，用于接收系统或自定义广播的组件是？（）",
+      "options": [
+        "A、Activity",
+        "B、Service",
+        "C、ContentProvider",
+        "D、BroadcastReceiver"
+      ],
       "answer": "D"
     },
     {
       "id": 12,
       "type": "single",
       "question": "Android 安装程序的后缀格式是？（）",
+      "options": [
+        "A、exe",
+        "B、apk",
+        "C、msi",
+        "D、zip"
+      ],
       "answer": "B"
     },
     {
       "id": 13,
       "type": "single",
       "question": "Android 官方推荐的轻量级、高性能XML 解析方式是（）",
+      "options": [
+        "A、DOM",
+        "B、SAX",
+        "C、Pull",
+        "D、JDOM"
+      ],
       "answer": "C"
     },
     {
       "id": 14,
       "type": "single",
       "question": "Android 对数据库的表进行查询操作时，会使用 SQLiteDatabase 类中的( )方法。",
+      "options": [
+        "A、insert ( )",
+        "B、execSQL ( )",
+        "C、query ( )",
+        "D、update ( )"
+      ],
       "answer": "C"
     },
     {
       "id": 15,
       "type": "single",
       "question": "Android 应用开发主流编程语言是？（）",
+      "options": [
+        "A、Java",
+        "B、C++",
+        "C、Python",
+        "D、C#"
+      ],
       "answer": "A"
     },
     {
       "id": 16,
       "type": "single",
       "question": "Android 架构最底层是？（）",
+      "options": [
+        "A、Linux 内核",
+        "B、应用层",
+        "C、应用框架层",
+        "D、系统运行库层"
+      ],
       "answer": "A"
     },
     {
       "id": 17,
       "type": "single",
       "question": "Android 程序中的主题和样式资源，通常放在哪个目录下?( )",
+      "options": [
+        "A、res/drawable",
+        "B、res/layout",
+        "C、res/values",
+        "D、assets"
+      ],
       "answer": "C"
     },
     {
       "id": 18,
       "type": "single",
       "question": "Android 系统内存不足时，最先被杀死的是？（）",
+      "options": [
+        "A、前台服务",
+        "B、前台 Activity",
+        "C、绑定服务",
+        "D、后台启动服务"
+      ],
       "answer": "D"
     },
     {
       "id": 19,
       "type": "single",
       "question": "Android 系统基于哪个内核开发？（）",
+      "options": [
+        "A、Windows",
+        "B、Unix",
+        "C、MacOS",
+        "D、Linux"
+      ],
       "answer": "D"
     },
     {
       "id": 20,
       "type": "single",
       "question": "Android 系统架构分为几层？（）",
+      "options": [
+        "A、2 层",
+        "B、3 层",
+        "C、4 层",
+        "D、5 层"
+      ],
       "answer": "C"
     },
     {
       "id": 21,
       "type": "single",
       "question": "Android 系统正式被谷歌收购的时间是？（）",
+      "options": [
+        "A、2005 年",
+        "B、2006 年",
+        "C、2007 年",
+        "D、2008 年"
+      ],
       "answer": "A"
     },
     {
       "id": 22,
       "type": "single",
       "question": "Android 系统解析 ** 布局文件（如 activity_main.xml）** 时，底层使用的解析方式是（）",
+      "options": [
+        "A、DOM",
+        "B、SAX",
+        "C、Pull",
+        "D、自定义解析"
+      ],
       "answer": "C"
     },
     {
       "id": 23,
       "type": "single",
       "question": "AndroidManifest.xml 文件属于？（）",
+      "options": [
+        "A、布局文件",
+        "B、资源文件",
+        "C、图片文件",
+        "D、全局配置清单文件"
+      ],
       "answer": "D"
     },
     {
       "id": 24,
       "type": "single",
       "question": "Android中定义广播接收者要继承( )。",
+      "options": [
+        "A、BroadcastReceiver",
+        "B、BroadCast",
+        "C、Receiver",
+        "D、BroadCastReboot"
+      ],
       "answer": "A"
     },
     {
       "id": 25,
       "type": "single",
       "question": "Android使用( )的方式来管理Activity的实例。",
+      "options": [
+        "A、任务栈",
+        "B、任务堆",
+        "C、队列",
+        "D、任务列"
+      ],
       "answer": "A"
     },
     {
       "id": 26,
       "type": "single",
       "question": "Android相对布局中，使控件相对父控件底部对齐使用的属性是( )。",
+      "options": [
+        "A、android:layout_alignParentBottom",
+        "B、android:layout_alignBottom",
+        "C、android:layout_alignBaseline",
+        "D、android:layout_alignParentTop"
+      ],
       "answer": "A"
     },
     {
       "id": 27,
       "type": "single",
       "question": "ContentProvider 中，暴露数据权限可以在清单文件设置哪个属性？（）",
+      "options": [
+        "A、android:exported",
+        "B、android:enabled",
+        "C、android:name",
+        "D、android:authorities"
+      ],
       "answer": "A"
     },
     {
       "id": 28,
       "type": "single",
       "question": "ContentProvider 初始化时自动回调的方法是？（）",
+      "options": [
+        "A、onCreate()",
+        "B、onDestroy()",
+        "C、onStart()",
+        "D、onResume()"
+      ],
       "answer": "A"
     },
     {
       "id": 29,
       "type": "single",
       "question": "ContentResolver 实现查询操作的方法是？（）",
+      "options": [
+        "A、insert()",
+        "B、update()",
+        "C、query()",
+        "D、delete()"
+      ],
       "answer": "C"
     },
     {
       "id": 30,
       "type": "single",
       "question": "ContentResolver 获取实例的正确方式是？（）",
+      "options": [
+        "A、new ContentResolver()",
+        "B、ContentResolver.create()",
+        "C、getService()",
+        "D、getContentResolver()"
+      ],
       "answer": "D"
     },
     {
       "id": 31,
       "type": "single",
       "question": "DOM解析 XML 的核心特点是（）",
+      "options": [
+        "A、加载整树，内存占用大",
+        "B、事件驱动，逐行解析",
+        "C、主动拉取，按需解析",
+        "D、流式处理，不可回溯"
+      ],
       "answer": "A"
     },
     {
       "id": 32,
       "type": "single",
       "question": "Dalvik 虚拟机属于 Android 体系结构中的哪一层?( )",
+      "options": [
+        "A、应用程序层",
+        "B、应用程序框架层",
+        "C、核心类库",
+        "D、Linux 内核层"
+      ],
       "answer": "C"
     },
     {
       "id": 33,
       "type": "single",
       "question": "Dalvik 虚拟机是基于( )的架构。",
+      "options": [
+        "A、栈",
+        "B、堆",
+        "C、寄存器",
+        "D、存储器"
+      ],
       "answer": "C"
     },
     {
       "id": 34,
       "type": "single",
       "question": "Editor 中，同步提交数据并返回布尔结果的方法是（）",
+      "options": [
+        "A、commit()",
+        "B、apply()",
+        "C、save()",
+        "D、submit()"
+      ],
       "answer": "A"
     },
     {
       "id": 35,
       "type": "single",
       "question": "Editor 中，异步提交数据（推荐使用）的方法是（）",
+      "options": [
+        "A、commit()",
+        "B、apply()",
+        "C、save()",
+        "D、update()"
+      ],
       "answer": "B"
     },
     {
       "id": 36,
       "type": "single",
       "question": "FrameLayout 中的控件默认对齐方式是（）",
+      "options": [
+        "A、居中",
+        "B、左上角",
+        "C、右下角",
+        "D、底部"
+      ],
       "answer": "B"
     },
     {
       "id": 37,
       "type": "single",
       "question": "FrameLayout 将其中的组件叠加在自己的哪个位置?( )",
+      "options": [
+        "A、左上角",
+        "B、右上角",
+        "C、左下角",
+        "D、右下角"
+      ],
       "answer": "A"
     },
     {
       "id": 38,
       "type": "single",
       "question": "IBinder 的主要作用是？（）",
+      "options": [
+        "A、服务之间通信",
+        "B、界面跳转",
+        "C、发送广播",
+        "D、存储数据"
+      ],
       "answer": "A"
     },
     {
       "id": 39,
       "type": "single",
       "question": "Layout File Name是填写文件的名称，该名称命名规则不能包含（）",
+      "options": [
+        "A、小写字母 a~z",
+        "B、数字 0~9",
+        "C、下划线“ _ ”",
+        "D、大写字母A~Z"
+      ],
       "answer": "D"
     },
     {
       "id": 40,
       "type": "single",
       "question": "LinearLayout 中用来按比例分配宽度的属性是（）",
+      "options": [
+        "A、layout_gravity",
+        "B、layout_margin",
+        "C、layout_weight",
+        "D、padding"
+      ],
       "answer": "C"
     },
     {
       "id": 41,
       "type": "single",
       "question": "SQLite 是 Android 内置的轻量级关系型数据库。",
+      "options": [
+        "A、正确",
+        "B、错误"
+      ],
       "answer": "A"
     },
     {
       "id": 42,
       "type": "single",
       "question": "SQLiteOpenHelper 中，用于首次创建数据库时执行建表语句的方法是",
+      "options": [
+        "A、onUpgrade",
+        "B、onOpen",
+        "C、onCreate",
+        "D、onClose"
+      ],
       "answer": "C"
     },
     {
       "id": 43,
       "type": "single",
       "question": "SharedPreferences 默认的私有安全模式是（）",
+      "options": [
+        "A、MODE_PRIVATE",
+        "B、MODE_PUBLIC",
+        "C、MODE_READ",
+        "D、MODE_WRITE"
+      ],
       "answer": "A"
     },
     {
       "id": 44,
       "type": "single",
       "question": "URI content://cn.itcast.mycontentprovider/person 中，authority 部分对应的是（ ）",
+      "options": [
+        "A、content://",
+        "B、cn.itcast.mycontentprovider",
+        "C、/person",
+        "D、person"
+      ],
       "answer": "B"
     },
     {
       "id": 45,
       "type": "single",
       "question": "Uri 标准格式中，固定协议头为？（）",
+      "options": [
+        "A、http://",
+        "B、https://",
+        "C、file://",
+        "D、content://"
+      ],
       "answer": "D"
     },
     {
       "id": 46,
       "type": "single",
       "question": "match_parent 的意思是（）",
+      "options": [
+        "A、包裹内容",
+        "B、填满父布局",
+        "C、自适应屏幕",
+        "D、固定尺寸"
+      ],
       "answer": "B"
     },
     {
       "id": 47,
       "type": "single",
       "question": "res 目录主要存放什么内容？（）",
+      "options": [
+        "A、逻辑代码",
+        "B、资源文件",
+        "C、配置文件",
+        "D、第三方库"
+      ],
       "answer": "B"
     },
     {
       "id": 48,
       "type": "single",
       "question": "singleInstance 启动模式的核心作用是（）",
+      "options": [
+        "A、每次启动创建新实例",
+        "B、栈顶复用",
+        "C、清空上方实例",
+        "D、全局单例独占任务栈"
+      ],
       "answer": "D"
     },
     {
       "id": 49,
       "type": "single",
       "question": "singleTask启动模式的核心作用是（）",
+      "options": [
+        "A、禁止被其他应用启动",
+        "B、永远创建新实例",
+        "C、仅允许栈内存在一个实例",
+        "D、清空上方实例并复用自身"
+      ],
       "answer": "D"
     },
     {
       "id": 50,
       "type": "single",
       "question": "singleTop 启动模式的核心特点是（）",
+      "options": [
+        "A、全局唯一实例",
+        "B、栈顶存在时复用实例",
+        "C、清空栈内上方实例",
+        "D、独占单独任务栈"
+      ],
       "answer": "B"
     },
     {
       "id": 51,
       "type": "single",
       "question": "singleTop启动模式下，当目标 Activity 已位于栈顶时，再次启动它会（）",
+      "options": [
+        "A、复用栈顶实例",
+        "B、创建新实例压栈",
+        "C、清空栈后创建",
+        "D、移至新任务栈"
+      ],
       "answer": "A"
     },
     {
       "id": 52,
       "type": "single",
       "question": "wrap_content 的意思是（）",
+      "options": [
+        "A、填满父布局",
+        "B、根据内容自适应大小",
+        "C、充满屏幕",
+        "D、占满权重"
+      ],
       "answer": "B"
     },
     {
       "id": 53,
       "type": "single",
       "question": "下列不属于 Activity 生命周期核心方法的是（）",
+      "options": [
+        "A、onCreate()",
+        "B、onStart()",
+        "C、onResume()",
+        "D、onClick()"
+      ],
       "answer": "D"
     },
     {
       "id": 54,
       "type": "single",
       "question": "下列不属于 Android 系统特点的是？（）",
+      "options": [
+        "A、开源免费",
+        "B、开放性强",
+        "C、完全闭源",
+        "D、硬件适配广"
+      ],
       "answer": "C"
     },
     {
       "id": 55,
       "type": "single",
       "question": "下列不属于 ContentProvider 四大核心方法的是？（）",
+      "options": [
+        "A、onCreate()",
+        "B、start()",
+        "C、insert()",
+        "D、delete()"
+      ],
       "answer": "B"
     },
     {
       "id": 56,
       "type": "single",
       "question": "下列不属于 Service 特点的是？（）",
+      "options": [
+        "A、后台运行",
+        "B、无界面",
+        "C、优先级较低",
+        "D、必须显示界面"
+      ],
       "answer": "D"
     },
     {
       "id": 57,
       "type": "single",
       "question": "下列关于 Activity 跳转的描述，错误的是（）",
+      "options": [
+        "A、startActivity () 可启动新 Activity",
+        "B、finish () 会关闭整个应用",
+        "C、startActivityForResult () 可获取返回结果",
+        "D、隐式 Intent 需匹配 IntentFilter"
+      ],
       "answer": "B"
     },
     {
       "id": 58,
       "type": "single",
       "question": "下列关于 AlertDialog 对话框的描述，错误的是( )。",
+      "options": [
+        "A、使用 new 关键字创建 AlertDialog 对话框的实例",
+        "B、对话框的显示需要调用 show( ) 方法",
+        "C、setPositiveButton( ) 方法是用来设置“确定”按钮的",
+        "D、setNegativeButton( ) 方法是用来设置“取消”按钮的"
+      ],
       "answer": "A"
     },
     {
       "id": 59,
       "type": "single",
       "question": "下列关于 Android Service 的描述，错误的是（）",
+      "options": [
+        "A、Service 是 Android 四大组件之一，不提供用户界面",
+        "B、Service 运行在后台，即使启动它的 Activity 销毁了，也可以继续运行",
+        "C、Service 默认在子线程中运行，无需额外创建线程处理耗时操作",
+        "D、Service 有两种启动方式：startService() 和 bindService()"
+      ],
       "answer": "C"
     },
     {
       "id": 60,
       "type": "single",
       "question": "下列关于 Android 中 Activity 管理形式的描述中，正确的是( )",
+      "options": [
+        "A、Android 以堆的形式管理 Activity",
+        "B、Android 以栈的形式管理 Activity",
+        "C、Android 以树的形式管理 Activity",
+        "D、Android 以链表的形式管理 Activity"
+      ],
       "answer": "B"
     },
     {
       "id": 61,
       "type": "single",
       "question": "下列关于 AndroidManifest.xml 文件的说法中，错误的是( )",
+      "options": [
+        "A、它是整个程序的配置文件",
+        "B、可以在该文件中配置程序所需的权限",
+        "C、可以在该文件中注册程序用到的组件",
+        "D、该文件可以设置 UI 布局"
+      ],
       "answer": "D"
     },
     {
       "id": 62,
       "type": "single",
       "question": "下列关于 ContentProvider 的描述，错误的是( )。",
+      "options": [
+        "A、ContentProvider 是一个抽象类，只有继承后才能使用",
+        "B、ContentProvider 只有在 AndroidManifest.xml 文件中注册后才能运行",
+        "C、ContentProvider 为其他应用程序提供了统一的访问数据库的方式",
+        "D、ContentProvider 用于观察其他应用程序的数据是否有变化"
+      ],
       "answer": "D"
     },
     {
       "id": 63,
       "type": "single",
       "question": "下列关于 Intent 的描述中，正确的是( )",
+      "options": [
+        "A、Intent 不能够实现应用程序间的数据共享",
+        "B、Intent 可以实现界面的切换，还可以在不同组件间直接进行数据传递",
+        "C、使用显式 Intent 可以不指定要跳转的目标组件",
+        "D、隐式 Intent 不会明确指出需要启动的目标组件，所以无法实现组件之间的数据传递"
+      ],
       "answer": "B"
     },
     {
       "id": 64,
       "type": "single",
       "question": "下列关于 Intent 的描述，错误的是（）",
+      "options": [
+        "A、可用于组件间通信",
+        "B、隐式 Intent 必须指定包名",
+        "C、可携带数据传递",
+        "D、可启动 Service/Broadcast"
+      ],
       "answer": "B"
     },
     {
       "id": 65,
       "type": "single",
       "question": "下列关于 ListView 控件的说法中，正确的是( )。",
+      "options": [
+        "A、ListView 控件的条目不能设置点击事件",
+        "B、ListView 控件不设置数据适配器也能显示数据内容",
+        "C、当数据超出能显示的范围时，ListView 控件自动具有可滚动的特性",
+        "D、一共有 100 条数据，若 ListView 控件当前能显示 10 条，则产生了 100 个 View 控件"
+      ],
       "answer": "C"
     },
     {
       "id": 66,
       "type": "single",
       "question": "下列关于 RelativeLayout 的描述，正确的是( )。",
+      "options": [
+        "A、RelativeLayout 表示绝对布局，可以自定义控件的 x 轴、y 轴坐标",
+        "B、RelativeLayout 表示相对布局，可以实现标签切换的功能",
+        "C、RelativeLayout 表示相对布局，其中控件的位置都是相对位置",
+        "D、RelativeLayout 表示表格布局，需要配合 TableRow 布局一起使用"
+      ],
       "answer": "C"
     },
     {
       "id": 67,
       "type": "single",
       "question": "下列关于 SQLite 数据库的描述中，错误的是( )。",
+      "options": [
+        "A、SQLiteOpenHelper 类有创建数据库和更新数据库版本的功能",
+        "B、SQLiteDatabase 类是用来操作数据库的",
+        "C、每次调用 SQLiteDatabase 类的 getWritableDatabase ( ) 方法时，都会执行 SQLiteOpenHelper 类的 onCreate ( ) 方法",
+        "D、当数据库版本发生变化时，会调用 SQLiteOpenHelper 类的 onUpgrade ( ) 方法更新数据库"
+      ],
       "answer": "C"
     },
     {
       "id": 68,
       "type": "single",
       "question": "下列关于 SharedPreferences 存取文件的描述中，错误的是( )。",
+      "options": [
+        "A、属于移动存储解决方式",
+        "B、SharedPreferences 处理的就是键值对",
+        "C、读取 XML 格式的文件的路径是 /sdcard/shared_prefs",
+        "D、文本的保存格式是 XML"
+      ],
       "answer": "C"
     },
     {
       "id": 69,
       "type": "single",
       "question": "下列关于 sendOrderedBroadcast( ) 方法的说法，错误的是( )",
+      "options": [
+        "A、可以设置一个最终接收者，无论广播是否被拦截都会收到消息",
+        "B、有序广播的接收者按优先级从高到低依次接收",
+        "C、优先级高的接收者可以调用 abortBroadcast( ) 终止广播传递",
+        "D、最终接收者必须提前注册才能收到广播"
+      ],
       "answer": "D"
     },
     {
       "id": 70,
       "type": "single",
       "question": "下列关于Android起源的说法中，错误的是( )。",
+      "options": [
+        "A、Android1.5被称为甜甜圈",
+        "B、Android是第一个真正为手机打造的开放性系统",
+        "C、Android本意指\"机器人\"",
+        "D、Android最初由Andy Rubin开发的"
+      ],
       "answer": "A"
     },
     {
       "id": 71,
       "type": "single",
       "question": "下列关于动态注册广播接收者的说法，错误的是( )",
+      "options": [
+        "A、动态注册的接收者依赖注册它的组件生命周期",
+        "B、Activity 销毁时，动态注册的接收者会自动注销",
+        "C、动态注册必须在 onDestroy( ) 中手动调用 unregisterReceiver( ) 注销",
+        "D、动态注册的接收者可以接收所有系统广播"
+      ],
       "answer": "B"
     },
     {
       "id": 72,
       "type": "single",
       "question": "下列关于服务的描述中，错误的是( )。",
+      "options": [
+        "A、服务没有用户可见的界面，不能与用户交互",
+        "B、服务可以通过 Context.startService ( ) 来启动",
+        "C、服务可以通过 Context.bindService ( ) 来启动",
+        "D、服务无须在 AndroidManifest.xml 文件中进行配置"
+      ],
       "answer": "D"
     },
     {
       "id": 73,
       "type": "single",
       "question": "下列关于服务的方法描述，错误的是( )。",
+      "options": [
+        "A、onCreate ( ) 表示第一次创建服务时执行的方法",
+        "B、调用 startService ( ) 方法启动服务时执行的方法是 onStartCommand ( )",
+        "C、调用 bindService ( ) 方法启动服务时执行的方法是 onBind ( )",
+        "D、调用 startService ( ) 方法解绑服务时执行的方法是 onUnbind ( )"
+      ],
       "answer": "D"
     },
     {
       "id": 74,
       "type": "single",
       "question": "下列初始化 SharedPreferences 的代码中，正确的是( )。",
+      "options": [
+        "A、SharedPreferences sp = new SharedPreferences ( );",
+        "B、SharedPreferences sp = SharedPreferences.getDefault ( );",
+        "C、SharedPreferences sp = SharedPreferences.Factory ( );",
+        "D、SharedPreferences sp = getSharedPreferences ( );"
+      ],
       "answer": "D"
     },
     {
       "id": 75,
       "type": "single",
       "question": "下列哪项属于 Android 系统开源带来的优势？（）",
+      "options": [
+        "A、可深度定制系统",
+        "B、完全无病毒",
+        "C、运行速度比所有系统快",
+        "D、只能用于手机"
+      ],
       "answer": "A"
     },
     {
       "id": 76,
       "type": "single",
       "question": "下列哪项操作最适合放在 Service 中执行？（）",
+      "options": [
+        "A、点击事件",
+        "B、页面布局加载",
+        "C、后台文件下载",
+        "D、弹窗提示"
+      ],
       "answer": "C"
     },
     {
       "id": 77,
       "type": "single",
       "question": "下列属性中，用于设置 LinearLayout 内控件的排列顺序的是( )。",
+      "options": [
+        "A、android:orientation",
+        "B、android:gravity",
+        "C、android:layout_gravity",
+        "D、android:padding"
+      ],
       "answer": "A"
     },
     {
       "id": 78,
       "type": "single",
       "question": "下列控件中，专门用于显示文本且默认不可编辑的是（）",
+      "options": [
+        "A、Button",
+        "B、EditText",
+        "C、TextView",
+        "D、ImageView"
+      ],
       "answer": "C"
     },
     {
       "id": 79,
       "type": "single",
       "question": "下列方法中，( )是 SharedPreferences 获取其 Editor 对象的方法。",
+      "options": [
+        "A、getEdit ( )",
+        "B、edit ( )",
+        "C、setEdit ( )",
+        "D、getAll ( )"
+      ],
       "answer": "B"
     },
     {
       "id": 80,
       "type": "single",
       "question": "下列方法中，哪个方法能够得到 ContentProvider 的实例对象?( )",
+      "options": [
+        "A、newContentResolver ( )",
+        "B、getContentResolver ( )",
+        "C、newInstance ( )",
+        "D、ContentUris.newInstance ( )"
+      ],
       "answer": "B"
     },
     {
       "id": 81,
       "type": "single",
       "question": "下列方法中，哪个是启动 Activity 的方法?( )",
+      "options": [
+        "A、startActivity( )",
+        "B、goToActivity( )",
+        "C、startActivityResult( )",
+        "D、以上都是"
+      ],
       "answer": "A"
     },
     {
       "id": 82,
       "type": "single",
       "question": "下列适合使用启动服务的场景是？（）",
+      "options": [
+        "A、页面实时通信",
+        "B、后台离线播放音乐",
+        "C、界面跳转",
+        "D、数据共享"
+      ],
       "answer": "B"
     },
     {
       "id": 83,
       "type": "single",
       "question": "下列选项中不属于Android体系结构的是( )。",
+      "options": [
+        "A、应用程序层",
+        "B、应用程序框架层",
+        "C、核心类库",
+        "D、WindowManager"
+      ],
       "answer": "D"
     },
     {
       "id": 84,
       "type": "single",
       "question": "下列选项中，不属于 Android 四大组件的是( )",
+      "options": [
+        "A、Service",
+        "B、Activity",
+        "C、Handler",
+        "D、ContentProvider"
+      ],
       "answer": "C"
     },
     {
       "id": 85,
       "type": "single",
       "question": "下列选项中，不属于 Android 布局的是( )。",
+      "options": [
+        "A、FrameLayout",
+        "B、LinearLayout",
+        "C、Button",
+        "D、RelativeLayout"
+      ],
       "answer": "C"
     },
     {
       "id": 86,
       "type": "single",
       "question": "下列选项中，不属于 getSharedPreferences ( ) 方法的文件操作模式参数是( )。",
+      "options": [
+        "A、Context.MODE_PRIVATE",
+        "B、Context.MODE_PUBLIC",
+        "C、Context.MODE_WORLD_READABLE",
+        "D、Context.MODE_WORLD_WRITEABLE"
+      ],
       "answer": "B"
     },
     {
       "id": 87,
       "type": "single",
       "question": "下列选项中，哪一项可以让应用程序暴露数据给外界，并让其他应用程序访问?( )",
+      "options": [
+        "A、BroadcastReceiver",
+        "B、Activity",
+        "C、ContentProvider",
+        "D、AIDL"
+      ],
       "answer": "C"
     },
     {
       "id": 88,
       "type": "single",
       "question": "下列选项中，哪个不是 Activity 的生命周期方法?( )",
+      "options": [
+        "A、onCreate( )",
+        "B、startActivity( )",
+        "C、onStart( )",
+        "D、onResume( )"
+      ],
       "answer": "B"
     },
     {
       "id": 89,
       "type": "single",
       "question": "下列选项中，哪个用于设置 TextView 控件中文字的大小?( )",
+      "options": [
+        "A、android:textSize=\"18\"",
+        "B、android:size=\"18\"",
+        "C、android:textSize=\"18sp\"",
+        "D、android:size=\"18sp\""
+      ],
       "answer": "C"
     },
     {
       "id": 90,
       "type": "single",
       "question": "不属于Android程序结构的为( )。",
+      "options": [
+        "A、manifest",
+        "B、res",
+        "C、apk",
+        "D、java"
+      ],
       "answer": "C"
     },
     {
       "id": 91,
       "type": "single",
       "question": "不属于res目录下的文件为( )。",
+      "options": [
+        "A、mipmap",
+        "B、values",
+        "C、layout",
+        "D、java"
+      ],
       "answer": "D"
     },
     {
       "id": 92,
       "type": "single",
       "question": "为 EditText 设置空值时的提示文本，应使用的属性是（）",
+      "options": [
+        "A、android:text",
+        "B、android:inputType",
+        "C、android:maxLines",
+        "D、android:hint"
+      ],
       "answer": "D"
     },
     {
       "id": 93,
       "type": "single",
       "question": "为了让一个 ImageView 控件显示一张图片，可以设置的属性是( )。",
+      "options": [
+        "A、android:src",
+        "B、android:background",
+        "C、android:img",
+        "D、android:value"
+      ],
       "answer": "A"
     },
     {
       "id": 94,
       "type": "single",
       "question": "使用 EditText 控件的情况下，当文本内容为空时，如果想做一些提示，那么可以使用的属性是( )。",
+      "options": [
+        "A、android:text",
+        "B、android:background",
+        "C、android:inputType",
+        "D、android:hint"
+      ],
       "answer": "D"
     },
     {
       "id": 95,
       "type": "single",
       "question": "使用 Intent 传递基本数据类型时，核心方法是（）",
+      "options": [
+        "A、setData()",
+        "B、putExtra()",
+        "C、setExtra()",
+        "D、putData()"
+      ],
       "answer": "B"
     },
     {
       "id": 96,
       "type": "single",
       "question": "修改内容提供者共享数据的方法是？（）",
+      "options": [
+        "A、insert()",
+        "B、delete()",
+        "C、update()",
+        "D、query()"
+      ],
       "answer": "C"
     },
     {
       "id": 97,
       "type": "single",
       "question": "关于 Android 中 Service 的停止方式，下列说法错误的是（ ）",
+      "options": [
+        "A、通过 startService() 启动的服务，可在服务内部调用 stopSelf() 方法停止。",
+        "B、通过 startService() 启动的服务，可由其他组件调用 stopService() 方法停止。",
+        "C、通过 bindService() 启动的服务，需调用 unbindService() 方法解绑来停止。",
+        "D、通过 bindService() 启动的服务，可直接调用 stopService() 方法停止。"
+      ],
       "answer": "D"
     },
     {
       "id": 98,
       "type": "single",
       "question": "关于 ContentObserver 的取消注册，下列说法正确的是（ ）",
+      "options": [
+        "A、取消注册的目的是为了提升 App 的启动速度",
+        "B、若不取消注册，可能会造成内存泄漏，导致 App 卡顿甚至崩溃",
+        "C、取消注册操作可以在任意生命周期方法中执行，没有顺序要求",
+        "D、取消注册后，ContentObserver 仍会持续监听对应 URI 的数据变化"
+      ],
       "answer": "B"
     },
     {
       "id": 99,
       "type": "single",
       "question": "关于 ContentObserver 的工作模型，下列说法正确的是（ ）",
+      "options": [
+        "A、基于单例模式，用于跨进程数据共享",
+        "B、基于观察者模式，用于监听 ContentProvider 的数据变化",
+        "C、基于工厂模式，用于创建 ContentProvider 实例",
+        "D、基于适配器模式，用于适配不同数据源"
+      ],
       "answer": "B"
     },
     {
       "id": 100,
       "type": "single",
       "question": "关于 ContentProvider 的作用，下列说法错误的是（ ）",
+      "options": [
+        "A、实现不同应用之间安全、可控的数据共享",
+        "B、可以通过权限控制，只共享部分数据，保护隐私",
+        "C、为不同应用提供统一的增删改查 API",
+        "D、可以直接访问其他应用的私有数据库，无需权限"
+      ],
       "answer": "D"
     },
     {
       "id": 101,
       "type": "single",
       "question": "关于 RelativeLayout 相对布局的定位规则，说法正确的是（）",
+      "options": [
+        "A、控件只能以父容器作为参照物，无法参考其他兄弟控件",
+        "B、控件可以以父容器或页面内其他控件为参照物完成定位",
+        "C、RelativeLayout 内部控件会自动从上到下垂直线性排列",
+        "D、RelativeLayout 必须搭配 layout_weight 属性实现空间比例分配"
+      ],
       "answer": "B"
     },
     {
       "id": 102,
       "type": "single",
       "question": "关于 bindService() 启动 Service 的说法，正确的是（）",
+      "options": [
+        "A、Service 启动后会一直后台运行，不受绑定组件生命周期影响",
+        "B、调用 bindService() 后，会先执行 onBind()，再执行 onCreate()",
+        "C、当所有绑定的客户端都调用 unbindService() 后，Service 会执行 onUnbind() 并最终销毁",
+        "D、bindService() 启动的 Service 无法和绑定它的组件进行通信"
+      ],
       "answer": "C"
     },
     {
       "id": 103,
       "type": "single",
       "question": "关于Dalvik虚拟机，说法错误的是( )。",
+      "options": [
+        "A、基于寄存器的架构",
+        "B、基于栈的架构",
+        "C、加载的是.dex格式的数据",
+        "D、在linux操作系统上运行"
+      ],
       "answer": "B"
     },
     {
       "id": 104,
       "type": "single",
       "question": "关于sendBroadcast( )方法说法正确的是( )。",
+      "options": [
+        "A、该方法是发送一条有序广播",
+        "B、该方法是发送一条无序广播",
+        "C、该方法即是发送有序广播也可以发送无序广播",
+        "D、以上说法都不正确"
+      ],
       "answer": "B"
     },
     {
       "id": 105,
       "type": "single",
       "question": "关于动态注册广播，下列说法错误的是？（）",
+      "options": [
+        "A、应用未启动也能接收",
+        "B、代码中注册",
+        "C、生命周期跟随组件",
+        "D、必须手动注销"
+      ],
       "answer": "A"
     },
     {
       "id": 106,
       "type": "single",
       "question": "关于有序广播和无序广播，下列说法正确的是( )",
+      "options": [
+        "A、无序广播可以被 abortBroadcast( ) 拦截",
+        "B、有序广播的接收顺序是随机的",
+        "C、有序广播可以通过 setPriority( ) 设置接收优先级",
+        "D、无序广播的效率比有序广播低"
+      ],
       "answer": "C"
     },
     {
       "id": 107,
       "type": "single",
       "question": "关于静态注册广播，下列说法正确的是？（）",
+      "options": [
+        "A、必须应用前台运行",
+        "B、只能接收自定义广播",
+        "C、随时可手动注销",
+        "D、应用未启动也能接收"
+      ],
       "answer": "D"
     },
     {
       "id": 108,
       "type": "single",
       "question": "关闭启动服务使用的方法是？（）",
+      "options": [
+        "A、finish()",
+        "B、unbindService()",
+        "C、stopService()",
+        "D、closeService()"
+      ],
       "answer": "C"
     },
     {
       "id": 109,
       "type": "single",
       "question": "内容访问的唯一标识、用于定位共享数据的是？（）",
+      "options": [
+        "A、URL",
+        "B、Uri",
+        "C、URI",
+        "D、URLs"
+      ],
       "answer": "B"
     },
     {
       "id": 110,
       "type": "single",
       "question": "创建 SQLite 数据库，需要继承的系统类是",
+      "options": [
+        "A、SQLiteOpenHelper",
+        "B、SQLiteDatabase",
+        "C、ContentValues",
+        "D、Cursor"
+      ],
       "answer": "A"
     },
     {
       "id": 111,
       "type": "single",
       "question": "删除内容提供者数据的方法是？（）",
+      "options": [
+        "A、update()",
+        "B、insert()",
+        "C、query()",
+        "D、delete()"
+      ],
       "answer": "D"
     },
     {
       "id": 112,
       "type": "single",
       "question": "动态注册广播接收器，需要借助哪个类设置过滤规则？（）",
+      "options": [
+        "A、Intent",
+        "B、Bundle",
+        "C、IntentFilter",
+        "D、UriMatcher"
+      ],
       "answer": "C"
     },
     {
       "id": 113,
       "type": "single",
       "question": "动态注册广播接收者时，IntentFilter.setPriority(1000) 的作用是( )",
+      "options": [
+        "A、设置广播的超时时间",
+        "B、设置广播接收者的优先级，数值越大优先级越高",
+        "C、设置广播的 Action 名称",
+        "D、设置广播的权限"
+      ],
       "answer": "B"
     },
     {
       "id": 114,
       "type": "single",
       "question": "动态注册的广播接收器，建议在哪个生命周期方法中注销？（）",
+      "options": [
+        "A、onCreate()",
+        "B、onDestroy()",
+        "C、onStart()",
+        "D、onResume()"
+      ],
       "answer": "B"
     },
     {
       "id": 115,
       "type": "single",
       "question": "匹配 Uri 路径、实现精准访问需要用到哪个类？（）",
+      "options": [
+        "A、Uri",
+        "B、UriUtil",
+        "C、UriMatcher",
+        "D、ContentObserver"
+      ],
       "answer": "C"
     },
     {
       "id": 116,
       "type": "single",
       "question": "发送普通无序广播使用的方法是？（）",
+      "options": [
+        "A、sendBroadcast()",
+        "B、sendOrderedBroadcast()",
+        "C、sendStickyBroadcast()",
+        "D、sendMessage()"
+      ],
       "answer": "A"
     },
     {
       "id": 117,
       "type": "single",
       "question": "发送有序广播应使用哪个方法？（）",
+      "options": [
+        "A、sendBroadcast()",
+        "B、sendOrderedBroadcast()",
+        "C、sendStickyBroadcast()",
+        "D、startBroadcast()"
+      ],
       "answer": "B"
     },
     {
       "id": 118,
       "type": "single",
       "question": "取消动态注册广播接收器的方法是？（）",
+      "options": [
+        "A、stopReceiver()",
+        "B、unregisterReceiver()",
+        "C、cancelReceiver()",
+        "D、closeReceiver()"
+      ],
       "answer": "B"
     },
     {
       "id": 119,
       "type": "single",
       "question": "可以在后台长期运行、无界面的组件是？（）",
+      "options": [
+        "A、Activity",
+        "B、Service",
+        "C、广播接收器",
+        "D、内容提供者"
+      ],
       "answer": "B"
     },
     {
       "id": 120,
       "type": "single",
       "question": "可以让控件相对于父布局居中的属性是（）",
+      "options": [
+        "A、layout_centerHorizontal",
+        "B、layout_centerVertical",
+        "C、layout_centerInParent",
+        "D、以上都是"
+      ],
       "answer": "D"
     },
     {
       "id": 121,
       "type": "single",
       "question": "向 Intent 中传递字符串数据的方法是（）",
+      "options": [
+        "A、setText()",
+        "B、putExtra()",
+        "C、setData()",
+        "D、putString()"
+      ],
       "answer": "B"
     },
     {
       "id": 122,
       "type": "single",
       "question": "向 SharedPreferences 存入数据，必须通过哪个对象操作？（）",
+      "options": [
+        "A、SharedPreferences",
+        "B、Editor",
+        "C、ContentValues",
+        "D、Bundle"
+      ],
       "answer": "B"
     },
     {
       "id": 123,
       "type": "single",
       "question": "向内容提供者添加数据使用的方法是？（）",
+      "options": [
+        "A、insert()",
+        "B、query()",
+        "C、update()",
+        "D、remove()"
+      ],
       "answer": "A"
     },
     {
       "id": 124,
       "type": "single",
       "question": "向应用内部文件写入字符串数据，通常使用的流是（）",
+      "options": [
+        "A、FileReader",
+        "B、FileOutputStream",
+        "C、FileInputStream",
+        "D、ObjectOutputStream"
+      ],
       "answer": "B"
     },
     {
       "id": 125,
       "type": "single",
       "question": "启动服务执行顺序正确的是？（）",
+      "options": [
+        "A、onCreate→onStartCommand",
+        "B、onStart→onCreate",
+        "C、onBind→onCreate",
+        "D、onDestroy→onStart"
+      ],
       "answer": "A"
     },
     {
       "id": 126,
       "type": "single",
       "question": "在 Android 中对有序广播的 IntentFilter 执行filter3.setPriority(600);，以下接收者中优先级低于该接收者的是( )",
+      "options": [
+        "A、filter1.setPriority (800)",
+        "B、filter2.setPriority (600)",
+        "C、filter4.setPriority (500)",
+        "D、filter5.setPriority (900)"
+      ],
       "answer": "C"
     },
     {
       "id": 127,
       "type": "single",
       "question": "在 Android 的 LogCat 日志输出中，Log.d(\"MainActivity\",\"Debug\"); 语句代表输出的日志级别是（）",
+      "options": [
+        "A、冗余信息",
+        "B、调试信息",
+        "C、警告信息",
+        "D、错误信息"
+      ],
       "answer": "B"
     },
     {
       "id": 128,
       "type": "single",
       "question": "在 AndroidManifest.xml 中注册广播接收器的方式称为？（）",
+      "options": [
+        "A、静态注册",
+        "B、动态注册",
+        "C、手动注册",
+        "D、代码注册"
+      ],
       "answer": "A"
     },
     {
       "id": 129,
       "type": "single",
       "question": "在 Java 代码中通过 IntentFilter 注册广播的方式叫？（）",
+      "options": [
+        "A、静态注册",
+        "B、动态注册",
+        "C、全局注册",
+        "D、永久注册"
+      ],
       "answer": "B"
     },
     {
       "id": 130,
       "type": "single",
       "question": "在 XML 布局文件中定义了一个 Button 控件，决定 Button 控件上显示的文字的属性是( )。",
+      "options": [
+        "A、android:value",
+        "B、android:text",
+        "C、android:id",
+        "D、android:textvalue"
+      ],
       "answer": "B"
     },
     {
       "id": 131,
       "type": "single",
       "question": "在Android UI开发中，常见的刮刮卡是通过( )实现的。",
+      "options": [
+        "A、FrameLayout",
+        "B、LinearLayout",
+        "C、RelativeLayout",
+        "D、TableLayout"
+      ],
       "answer": "A"
     },
     {
       "id": 132,
       "type": "single",
       "question": "在下列选项中，Activity获得焦点时执行方法是( )。",
+      "options": [
+        "A、onStart( )",
+        "B、onResume( )",
+        "C、onPause( )",
+        "D、onDestroy( )"
+      ],
       "answer": "B"
     },
     {
       "id": 133,
       "type": "single",
       "question": "在下列选项中，不属于Activity的生命周期是( )。",
+      "options": [
+        "A、onRestart",
+        "B、onCreate",
+        "C、onStart",
+        "D、onFinish"
+      ],
       "answer": "D"
     },
     {
       "id": 134,
       "type": "single",
       "question": "在下列选项中，设置线性布局方向的属性是( )。",
+      "options": [
+        "A、orientation",
+        "B、gravity",
+        "C、layout_gravity E、Padding"
+      ],
       "answer": "A"
     },
     {
       "id": 135,
       "type": "single",
       "question": "在有序广播中，高优先级接收器终止广播传递的方法是？（）",
+      "options": [
+        "A、abortBroadcast()",
+        "B、stopBroadcast()",
+        "C、cancel()",
+        "D、finish()"
+      ],
       "answer": "A"
     },
     {
       "id": 136,
       "type": "single",
       "question": "在服务中执行耗时操作必须开启？（）",
+      "options": [
+        "A、主线程",
+        "B、子线程",
+        "C、UI 线程",
+        "D、广播线程"
+      ],
       "answer": "B"
     },
     {
       "id": 137,
       "type": "single",
       "question": "在目标 Activity 中获取 Intent 传递的字符串数据，应使用（）",
+      "options": [
+        "A、getIntent().getString()",
+        "B、getIntent().getExtra()",
+        "C、getIntent().getStringExtra()",
+        "D、getIntent().getData()"
+      ],
       "answer": "C"
     },
     {
       "id": 138,
       "type": "single",
       "question": "在线性布局（Linearlayout）中属性orientation适用于控制控件的排列方向，哪个是表示线性布局水平显示___",
+      "options": [
+        "A、vertical",
+        "B、horizontal",
+        "C、layout_width",
+        "D、layout_margin"
+      ],
       "answer": "B"
     },
     {
       "id": 139,
       "type": "single",
       "question": "多次调用 startService ()，会重复执行哪个方法？（）",
+      "options": [
+        "A、onCreate",
+        "B、onStartCommand",
+        "C、onDestroy",
+        "D、onBind"
+      ],
       "answer": "B"
     },
     {
       "id": 140,
       "type": "single",
       "question": "如果通过 bindService ( ) 方法启动服务，那么服务的生命周期方法的执行顺序是( )。",
+      "options": [
+        "A、onCreate ( )→onStart ( )→onBind ( )→onDestroy ( )",
+        "B、onCreate ( )→onBind ( )→onDestroy ( )",
+        "C、onCreate ( )→onBind ( )→onUnbind ( )→onDestroy ( )",
+        "D、onCreate ( )→onStart ( )→onBind ( )→onUnbind ( )→onDestroy ( )"
+      ],
       "answer": "C"
     },
     {
       "id": 141,
       "type": "single",
       "question": "安卓四大组件不包括以下哪个？（）",
+      "options": [
+        "A、Activity",
+        "B、Service",
+        "C、广播接收器",
+        "D、Window"
+      ],
       "answer": "D"
     },
     {
       "id": 142,
       "type": "single",
       "question": "安卓服务主要分为启动服务和？（）",
+      "options": [
+        "A、绑定服务",
+        "B、系统服务",
+        "C、网络服务",
+        "D、定时服务"
+      ],
       "answer": "A"
     },
     {
       "id": 143,
       "type": "single",
       "question": "安卓系统电量变化、开机、锁屏等属于什么广播？（）",
+      "options": [
+        "A、自定义广播",
+        "B、系统广播",
+        "C、有序广播",
+        "D、粘性广播"
+      ],
       "answer": "B"
     },
     {
       "id": 144,
       "type": "single",
       "question": "实现单选功能时，RadioButton 必须嵌套在哪个控件中？（）",
+      "options": [
+        "A、LinearLayout",
+        "B、RadioGroup",
+        "C、RelativeLayout",
+        "D、ConstraintLayout"
+      ],
       "answer": "B"
     },
     {
       "id": 145,
       "type": "single",
       "question": "实现水平排列的 LinearLayout 需要设置 orientation 为（）",
+      "options": [
+        "A、vertical",
+        "B、horizontal",
+        "C、center",
+        "D、left"
+      ],
       "answer": "B"
     },
     {
       "id": 146,
       "type": "single",
       "question": "对于 XML 布局文件，android:layout_width 属性的值不可以是什么?( )",
+      "options": [
+        "A、match_parent",
+        "B、fill_parent",
+        "C、wrap_content",
+        "D、match_content"
+      ],
       "answer": "D"
     },
     {
       "id": 147,
       "type": "single",
       "question": "封装数据键值对，供内容提供者插入使用的类是？（）",
+      "options": [
+        "A、ContentValues",
+        "B、Bundle",
+        "C、HashMap",
+        "D、Cursor"
+      ],
       "answer": "A"
     },
     {
       "id": 148,
       "type": "single",
       "question": "广播接收器 onReceive 方法执行时间建议不超过？（）",
+      "options": [
+        "A、3 秒",
+        "B、10 秒",
+        "C、30 秒",
+        "D、60 秒"
+      ],
       "answer": "B"
     },
     {
       "id": 149,
       "type": "single",
       "question": "广播接收器中获取广播携带数据依靠哪个对象？（）",
+      "options": [
+        "A、Bundle",
+        "B、ContentValues",
+        "C、Uri",
+        "D、Intent"
+      ],
       "answer": "D"
     },
     {
       "id": 150,
       "type": "single",
       "question": "广播接收器必须重写的核心回调方法是？（）",
+      "options": [
+        "A、onCreate()",
+        "B、onStart()",
+        "C、onReceive()",
+        "D、onBroadcast()"
+      ],
       "answer": "C"
     },
     {
       "id": 151,
       "type": "single",
       "question": "当 Activity 被另一个透明 Activity 覆盖时，会触发的生命周期方法是（）",
+      "options": [
+        "A、onStop()",
+        "B、onPause()",
+        "C、onDestroy()",
+        "D、onRestart()"
+      ],
       "answer": "B"
     },
     {
       "id": 152,
       "type": "single",
       "question": "当 singleTop 模式的 Activity 被再次启动且位于栈顶时，会触发哪个生命周期方法？（）",
+      "options": [
+        "A、onCreate()",
+        "B、onNewIntent()",
+        "C、onRestart()",
+        "D、onStart()"
+      ],
       "answer": "B"
     },
     {
       "id": 153,
       "type": "single",
       "question": "当两个广播接收者的优先级相同时，有序广播的接收顺序是( )",
+      "options": [
+        "A、后注册的接收者先收到",
+        "B、先注册的接收者先收到",
+        "C、同时收到",
+        "D、由系统随机决定"
+      ],
       "answer": "B"
     },
     {
       "id": 154,
       "type": "single",
       "question": "当使用 EditText 控件时，能够将输入框设置为多行显示的属性是( )。",
+      "options": [
+        "A、android:lines",
+        "B、android:layout_height",
+        "C、android:textcolor",
+        "D、android:textsize"
+      ],
       "answer": "A"
     },
     {
       "id": 155,
       "type": "single",
       "question": "执行增、删、改操作，使用 SQLiteDatabase 的哪个方法？",
+      "options": [
+        "A、query",
+        "B、execSQL",
+        "C、rawQuery",
+        "D、select"
+      ],
       "answer": "B"
     },
     {
       "id": 156,
       "type": "single",
       "question": "数据库版本号升级时，会触发 onUpgrade () 方法。",
+      "options": [
+        "A、正确",
+        "B、错误"
+      ],
       "answer": "A"
     },
     {
       "id": 157,
       "type": "single",
       "question": "显式 Intent 的典型写法是（）",
+      "options": [
+        "A、new Intent(this, TargetActivity.class)",
+        "B、new Intent(Intent.ACTION_VIEW)",
+        "C、new Intent(\"com.example.ACTION_START\")",
+        "D、new Intent().setPackage(\"com.example\")"
+      ],
       "answer": "A"
     },
     {
       "id": 158,
       "type": "single",
       "question": "显式启动 Activity 的正确写法是（）",
+      "options": [
+        "A、new Intent(Intent.ACTION_VIEW)",
+        "B、new Intent(\"com.example.ACTION\")",
+        "C、new Intent(this, TargetActivity.class)",
+        "D、new Intent().setData(Uri.parse(\"http://...\"))"
+      ],
       "answer": "C"
     },
     {
       "id": 159,
       "type": "single",
       "question": "普通无序广播的特点是？（）",
+      "options": [
+        "A、按顺序接收",
+        "B、可被拦截",
+        "C、有优先级差异",
+        "D、同时接收、不可拦截"
+      ],
       "answer": "D"
     },
     {
       "id": 160,
       "type": "single",
       "question": "服务第一次创建时只会执行一次的方法是？（）",
+      "options": [
+        "A、onStartCommand",
+        "B、onBind",
+        "C、onUnbind",
+        "D、onCreate"
+      ],
       "answer": "D"
     },
     {
       "id": 161,
       "type": "single",
       "question": "服务能否进行 UI 更新操作？（）",
+      "options": [
+        "A、可以直接更新",
+        "B、可弹窗更新",
+        "C、可跳转页面",
+        "D、不允许直接操作 UI"
+      ],
       "answer": "D"
     },
     {
       "id": 162,
       "type": "single",
       "question": "服务运行在哪个线程中？（）",
+      "options": [
+        "A、子线程",
+        "B、异步线程",
+        "C、独立进程",
+        "D、主线程"
+      ],
       "answer": "D"
     },
     {
       "id": 163,
       "type": "single",
       "question": "服务销毁时一定会执行的生命周期方法是？（）",
+      "options": [
+        "A、onStartCommand",
+        "B、onBind",
+        "C、onDestroy",
+        "D、onUnbind"
+      ],
       "answer": "C"
     },
     {
       "id": 164,
       "type": "single",
       "question": "查询内容提供者返回的结果集对象是？（）",
+      "options": [
+        "A、ContentValues",
+        "B、Cursor",
+        "C、List",
+        "D、Array"
+      ],
       "answer": "B"
     },
     {
       "id": 165,
       "type": "single",
       "question": "查询手机系统短信时，ContentProvider 对应的 URI 为( )。",
+      "options": [
+        "A、Contacts.Photos.CONTENT_URI",
+        "B、Contacts.People.CONTENT_URI",
+        "C、\"content://sms/\"",
+        "D、Media.EXTERNAL_CONTENT_URI"
+      ],
       "answer": "C"
     },
     {
       "id": 166,
       "type": "single",
       "question": "查询数据时，用于遍历结果集的类是",
+      "options": [
+        "A、Bundle",
+        "B、Intent",
+        "C、ContentValues",
+        "D、Cursor"
+      ],
       "answer": "D"
     },
     {
       "id": 167,
       "type": "single",
       "question": "模拟器的主要作用是？（）",
+      "options": [
+        "A、电脑上模拟运行安卓系统",
+        "B、优化电脑速度",
+        "C、清理手机内存",
+        "D、编译 Java 代码"
+      ],
       "answer": "A"
     },
     {
       "id": 168,
       "type": "single",
       "question": "注册内容观察者、监听指定 Uri 数据变化的方法是？（）",
+      "options": [
+        "A、registerReceiver()",
+        "B、startObserver()",
+        "C、openObserver()",
+        "D、registerContentObserver()"
+      ],
       "answer": "D"
     },
     {
       "id": 169,
       "type": "single",
       "question": "混合开启服务既 start 又 bind，关闭正确做法是？（）",
+      "options": [
+        "A、只停止即可",
+        "B、停止 + 解绑一起执行",
+        "C、只需解绑",
+        "D、自动销毁"
+      ],
       "answer": "B"
     },
     {
       "id": 170,
       "type": "single",
       "question": "现代 Android 开发推荐使用的布局是（）",
+      "options": [
+        "A、LinearLayout",
+        "B、RelativeLayout",
+        "C、FrameLayout",
+        "D、ConstraintLayout"
+      ],
       "answer": "D"
     },
     {
       "id": 171,
       "type": "single",
       "question": "用于接收用户输入文字的控件是（）",
+      "options": [
+        "A、TextView",
+        "B、EditText",
+        "C、ImageView",
+        "D、Button"
+      ],
       "answer": "B"
     },
     {
       "id": 172,
       "type": "single",
       "question": "用于监听共享数据发生变化的组件是？（）",
+      "options": [
+        "A、ContentProvider",
+        "B、ContentResolver",
+        "C、ContentObserver",
+        "D、BroadCastObserver"
+      ],
       "answer": "C"
     },
     {
       "id": 173,
       "type": "single",
       "question": "用于设置 ImageView 显示图片资源的核心属性是（）",
+      "options": [
+        "A、android:src",
+        "B、android:background",
+        "C、android:img",
+        "D、android:drawable"
+      ],
       "answer": "A"
     },
     {
       "id": 174,
       "type": "single",
       "question": "目前 Android 官方推荐的开发工具是？（）",
+      "options": [
+        "A、Eclipse",
+        "B、Android Studio",
+        "C、VS",
+        "D、Dev-C++"
+      ],
       "answer": "B"
     },
     {
       "id": 175,
       "type": "single",
       "question": "第一部安卓智能手机发布于哪一年？（）",
+      "options": [
+        "A、2005",
+        "B、2006",
+        "C、2008",
+        "D、2010"
+      ],
       "answer": "C"
     },
     {
       "id": 176,
       "type": "single",
       "question": "粘性广播的特点是？（）",
+      "options": [
+        "A、滞留系统，后注册也能接收",
+        "B、立即销毁不可复用",
+        "C、可被随意拦截",
+        "D、按优先级排序"
+      ],
       "answer": "A"
     },
     {
       "id": 177,
       "type": "single",
       "question": "系统通讯录、短信、相册数据，通过什么方式对外共享？（）",
+      "options": [
+        "A、文件共享",
+        "B、内容提供者",
+        "C、数据库直连",
+        "D、静态变量"
+      ],
       "answer": "B"
     },
     {
       "id": 178,
       "type": "single",
       "question": "绑定服务中建立连接成功回调的接口是？（）",
+      "options": [
+        "A、OnClickListener",
+        "B、BroadcastReceiver",
+        "C、ContentObserver",
+        "D、ServiceConnection"
+      ],
       "answer": "D"
     },
     {
       "id": 179,
       "type": "single",
       "question": "绑定服务核心重写方法是？（）",
+      "options": [
+        "A、onCreate",
+        "B、onBind",
+        "C、onStartCommand",
+        "D、onDestroy"
+      ],
       "answer": "B"
     },
     {
       "id": 180,
       "type": "single",
       "question": "自定义 ContentObserver 时，需要继承的类是( )。",
+      "options": [
+        "A、BaseObserver",
+        "B、ContentObserver",
+        "C、BasicObserver",
+        "D、DefalutObserver"
+      ],
       "answer": "B"
     },
     {
       "id": 181,
       "type": "single",
       "question": "自定义 ContentProvider 必须在哪个文件中注册？（）",
+      "options": [
+        "A、AndroidManifest.xml",
+        "B、build.gradle",
+        "C、layout 布局文件",
+        "D、values 常量文件"
+      ],
       "answer": "A"
     },
     {
       "id": 182,
       "type": "single",
       "question": "自定义广播通过什么字段进行匹配识别？（）",
+      "options": [
+        "A、action",
+        "B、category",
+        "C、data",
+        "D、type"
+      ],
       "answer": "A"
     },
     {
       "id": 183,
       "type": "single",
       "question": "若 XML 文件体积较大（如 10MB 以上），为避免 OOM，应选择的解析方式是（）",
+      "options": [
+        "A、DOM",
+        "B、SAX",
+        "C、Pull",
+        "D、SAX 和 Pull"
+      ],
       "answer": "D"
     },
     {
       "id": 184,
       "type": "single",
       "question": "若希望 Activity 在整个应用内只存在一个实例，应使用哪种启动模式？（）",
+      "options": [
+        "A、singleTop",
+        "B、singleInstance",
+        "C、singleTask",
+        "D、standard"
+      ],
       "answer": "B"
     },
     {
       "id": 185,
       "type": "single",
       "question": "获取 SharedPreferences 对象，需要指定的操作模式不包括（）",
+      "options": [
+        "A、MODE_PRIVATE",
+        "B、MODE_WORLD_READABLE",
+        "C、MODE_WORLD_WRITEABLE",
+        "D、MODE_PERMANENT"
+      ],
       "answer": "D"
     },
     {
       "id": 186,
       "type": "single",
       "question": "解绑绑定服务使用的方法是？（）",
+      "options": [
+        "A、unbindService()",
+        "B、stopService()",
+        "C、cancelService()",
+        "D、endService()"
+      ],
       "answer": "A"
     },
     {
       "id": 187,
       "type": "single",
       "question": "设置 CheckBox 控件被选中的监听事件通常使用以下哪个方法?( )",
+      "options": [
+        "A、setOnClickListener( )",
+        "B、setOnCheckedChangeListener",
+        "C、setOnMenuItemSelectedListener",
+        "D、setOnCheckedListener"
+      ],
       "answer": "B"
     },
     {
       "id": 188,
       "type": "single",
       "question": "访问内容提供者的数据，需要借助哪个工具类？（）",
+      "options": [
+        "A、ContentResolver",
+        "B、SQLiteDatabase",
+        "C、ContentValues",
+        "D、SharedPreferences"
+      ],
       "answer": "A"
     },
     {
       "id": 189,
       "type": "single",
       "question": "负责手机界面显示、交互的四大组件是？（）",
+      "options": [
+        "A、Activity",
+        "B、Service",
+        "C、BroadcastReceiver",
+        "D、ContentProvider"
+      ],
       "answer": "A"
     },
     {
       "id": 190,
       "type": "single",
       "question": "负责接收系统或自定义消息通知的组件是？（）",
+      "options": [
+        "A、Activity",
+        "B、Service",
+        "C、ContentProvider",
+        "D、BroadcastReceiver"
+      ],
       "answer": "D"
     },
     {
       "id": 191,
       "type": "single",
       "question": "适合使用绑定服务的场景是？（）",
+      "options": [
+        "A、页面与服务实时交互",
+        "B、离线后台播放",
+        "C、长期后台挂机",
+        "D、静默下载"
+      ],
       "answer": "A"
     },
     {
       "id": 192,
       "type": "single",
       "question": "通过 bindService () 开启的服务是？（）",
+      "options": [
+        "A、启动服务",
+        "B、绑定服务",
+        "C、后台服务",
+        "D、常驻服务"
+      ],
       "answer": "B"
     },
     {
       "id": 193,
       "type": "single",
       "question": "通过 startService () 开启的服务称为？（）",
+      "options": [
+        "A、绑定服务",
+        "B、前台服务",
+        "C、启动服务",
+        "D、远程服务"
+      ],
       "answer": "C"
     },
     {
       "id": 194,
       "type": "single",
       "question": "通过 startService() 启动 Service 时，下列哪个生命周期方法只会调用一次（）",
+      "options": [
+        "A、onCreate()",
+        "B、onStartCommand()",
+        "C、onDestroy()",
+        "D、onBind()"
+      ],
       "answer": "A"
     },
     {
       "id": 195,
       "type": "single",
       "question": "需要在状态栏显示通知、提高优先级的服务是？（）",
+      "options": [
+        "A、前台服务",
+        "B、后台服务",
+        "C、绑定服务",
+        "D、远程服务"
+      ],
       "answer": "A"
     },
     {
       "id": 196,
       "type": "multiple",
       "question": "Layout File Name是填写文件的名称，该名称只能包含（）",
+      "options": [
+        "A、小写字符a~z",
+        "B、数字0~9",
+        "C、下划线“_”"
+      ],
       "answer": "ABC"
     },
     {
       "id": 197,
       "type": "multiple",
       "question": "选择数据存储方案时，需考虑的因素有（）",
+      "options": [
+        "A、数据隐私性",
+        "B、数据量大小",
+        "C、访问频率",
+        "D、性能要求"
+      ],
       "answer": "ABCD"
     },
     {
