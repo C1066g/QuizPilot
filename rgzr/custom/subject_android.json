@@ -3036,7 +3036,7 @@
       "id": 1,
       "type": "fill",
       "question": "Dalvik虚拟机中的 Dx 工具会把部分 class 文件转换成______文件。",
-      "answer": ".dex; dex"
+      "answer": ".dex|dex"
     },
     {
       "id": 2,
@@ -3060,13 +3060,13 @@
       "id": 5,
       "type": "fill",
       "question": "Android 程序开发完成后需要打包成______文件发布到网上供别人使用。",
-      "answer": ".apk;或 APK"
+      "answer": ".apk|APK"
     },
     {
       "id": 6,
       "type": "fill",
       "question": "Android 系统采用分层架构，由高到低分别为____、____、____、____。",
-      "answer": "应用程序层； 应用程序框架层； 核心类库;系统运行库层； Linux 内核层"
+      "answer": "应用程序层；应用程序框架层；核心类库；系统运行库层；Linux 内核层"
     },
     {
       "id": 45,
@@ -3108,7 +3108,7 @@
       "id": 65,
       "type": "fill",
       "question": "______通过相对定位的方式指定子控件的相对位置。",
-      "answer": "RelativeLayout;相对布局"
+      "answer": "RelativeLayout|相对布局"
     },
     {
       "id": 66,
@@ -3120,7 +3120,7 @@
       "id": 67,
       "type": "fill",
       "question": "线性布局以______和______方式来显示界面中的控件。",
-      "answer": "水平； 垂直"
+      "answer": "水平；垂直"
     },
     {
       "id": 105,
@@ -3162,7 +3162,7 @@
       "id": 111,
       "type": "fill",
       "question": "任意写出两个Android 布局常用单位（表示文字大小，控件间距离）",
-      "answer": "px，pt； dp，sp"
+      "answer": "px，pt|dp，sp"
     },
     {
       "id": 112,
@@ -3174,7 +3174,7 @@
       "id": 136,
       "type": "fill",
       "question": "一般用于设置 TextView 文字大小的单位是 ________。（有两个，用小写）",
-      "answer": "sp，pt"
+      "answer": "sp|pt"
     },
     {
       "id": 137,
@@ -3204,13 +3204,13 @@
       "id": 141,
       "type": "fill",
       "question": "发送隐式 Intent 后，Android 会使用 __________ 匹配相应的组件。",
-      "answer": "IntentFilter;意图过滤器"
+      "answer": "IntentFilter|意图过滤器"
     },
     {
       "id": 142,
       "type": "fill",
       "question": "在 AndroidManifest.xml 文件中为 Activity 添加 <intent-filter> 标签时，必须添加的属性名称为 ________，否则隐式 Intent 无法启动该 Activity。",
-      "answer": "android:name; name"
+      "answer": "android:name|name"
     },
     {
       "id": 143,
@@ -3258,7 +3258,7 @@
       "id": 187,
       "type": "fill",
       "question": "singleTask 模式下，系统会将目标 Activity________至栈顶，并清空其上方所有实例。",
-      "answer": "移动 /bringToFront"
+      "answer": "移动|bringToFront"
     },
     {
       "id": 188,
@@ -3276,7 +3276,7 @@
       "id": 190,
       "type": "fill",
       "question": "Intent 的________属性用于指定要启动的组件类名，属于显式 Intent 写法。",
-      "answer": "setClass/class"
+      "answer": "setClass|class"
     },
     {
       "id": 191,
@@ -3300,7 +3300,7 @@
       "id": 200,
       "type": "fill",
       "question": "Android中常见数据存储方式有【 】、【 】、【 】、【 】、【 】。",
-      "answer": "文件存储； SharedPreferences ； SQLite ； ContentProvider ； 网络存储"
+      "answer": "文件存储；SharedPreferences；SQLite；ContentProvider；网络存储"
     },
     {
       "id": 201,
@@ -3402,7 +3402,7 @@
       "id": 289,
       "type": "fill",
       "question": "____用来监听来自系统或者应用程序的广播。",
-      "answer": "BroadcastReceiver;广播接收者"
+      "answer": "BroadcastReceiver|广播接收者"
     },
     {
       "id": 290,

@@ -2288,7 +2288,7 @@ function submitFillAnswer(userAnswer, question) {
     const normalize = (str) => {
         return str.toLowerCase()
                   .replace(/\s+/g, '') // 移除空格
-                  .replace(/[.,?!;:'"，。！？；：'“]/g, ''); // 移除中英文标点
+                  .replace(/[.,?!;:'”，。！？；：'”()_\/\-【】\[\]]/g, ''); // 移除中英文标点、括号、下划线等
     };
 
     const userAnswerNorm = normalize(userAnswer);
