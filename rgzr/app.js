@@ -596,10 +596,16 @@ const SUBJECTS = {
         getQuestions: () => [
             ...(typeof questionsLinux !== 'undefined' ? questionsLinux : [])
         ]
+    },
+    speech: {
+        name: '语音识别',
+        getQuestions: () => [
+            ...(typeof questionsSpeech !== 'undefined' ? questionsSpeech : [])
+        ]
     }
 };
 
-const DEFAULT_SUBJECT_KEYS = new Set(['ai','exchange','linux']);
+const DEFAULT_SUBJECT_KEYS = new Set(['ai','exchange','linux','speech']);
 const DYNAMIC_SUBJECT_BASE = new Map();
 const BUNDLED_IMPORTS = {
     ai_microcert: {
