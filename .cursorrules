@@ -1,0 +1,27 @@
+# QuizPilot — Cursor AI 规则
+
+## 项目技术栈
+- 纯前端：HTML + CSS + 原生 JavaScript（无框架）
+- 数据：静态 JS 文件加载题库，localStorage 持久化
+- 部署：GitHub Pages（静态托管），Netlify
+- Server：Node.js 仅做静态文件服务（非业务逻辑）
+
+## 编码规范
+- 命名：驼峰命名，函数名动词开头（showQuestion, renderOptions）
+- 函数：单一职责，一个函数不超过 50 行
+- 注释：只写 WHY，不写 WHAT
+- 不使用 var，统一 const/let
+- 模板字符串优先于字符串拼接
+- 用 early return 减少嵌套
+
+## CSS 规范
+- 动画只用 transform 和 opacity（GPU 加速，不触发 reflow）
+- 移动端触控区 ≥ 44px
+- 尊重 prefers-reduced-motion
+- 变量统一用 CSS custom properties（--bg, --text-color 等）
+
+## 禁止事项
+- 不引入 npm 依赖（保持零构建）
+- 不引入第三方 CSS/JS 框架
+- 不带 emoji 到代码里
+- 不提前抽象（三个相似代码再考虑提取）

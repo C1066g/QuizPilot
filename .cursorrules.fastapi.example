@@ -1,0 +1,30 @@
+# FastAPI 项目 Cursor 规则（新建 Python 项目时复制为 .cursorrules）
+
+## 技术栈
+- Python 3.12+、FastAPI、Pydantic v2、SQLAlchemy 2.0
+- 异步数据库驱动：asyncpg（PostgreSQL）/ aiomysql（MySQL）
+- 缓存：Redis
+- 测试：pytest + httpx
+
+## 代码风格
+- 路由函数统一 async def
+- 请求/响应用 Pydantic BaseModel，禁止裸 dict
+- 提前返回 + 守卫子句处理错误边缘情况
+- 纯函数优先，副作用集中在依赖注入层
+
+## FastAPI 约定
+- 用 lifespan 上下文管理器替代 @app.on_event
+- 依赖注入用 Depends()，复杂依赖抽到独立函数
+- 中间件处理日志和错误监控
+- 声明式路由定义（@router.get 装饰器）
+
+## 性能
+- I/O 全部异步（数据库、HTTP 调用、文件读写）
+- 列表/批量操作用 asyncio.gather
+- 大响应用 StreamingResponse
+- 热点数据用 Redis 缓存
+
+## 安全
+- 所有用户输入走 Pydantic 校验
+- Secrets 走环境变量，不硬编码
+- CORS 白名单显式配置
