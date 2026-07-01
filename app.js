@@ -2294,7 +2294,7 @@ function selectOption(answer, question) {
                     currentIndex++;
                     showQuestion();
                 }
-            }, 1200);
+            }, 800);
         }
     } else {
         // 答错了
@@ -2348,7 +2348,7 @@ function submitFillAnswer(userAnswer, question) {
                 currentIndex++;
                 showQuestion();
             }
-        }, 1200);
+        }, 800);
     } else {
         // 答错了
         const fillInput = document.querySelector('.fill-input');
@@ -2383,32 +2383,30 @@ function showAnswer() {
     if (mbBtn) mbBtn.textContent = '✓ 已显示';
 }
 
-// 显示正确消息
+// 显示正确反馈（轻量 toast，不打断刷题节奏）
 function showCorrectMessage() {
-    const message = document.createElement('div');
-    message.className = 'feedback-message correct';
-    message.innerHTML = '✓ 恭喜！答对了！';
-    document.body.appendChild(message);
+    const toast = document.createElement('div');
+    toast.className = 'answer-toast correct';
+    toast.textContent = '✓ 正确';
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('show'));
     setTimeout(() => {
-        message.classList.add('hide');
-        setTimeout(() => message.remove(), 300);
-    }, 1000);
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 800);
 }
 
-// 显示错误消息
+// 显示错误反馈
 function showWrongMessage() {
-    document.querySelectorAll('.feedback-message.wrong').forEach(el => {
-        el.classList.add('hide');
-        setTimeout(() => el.remove(), 300);
-    });
-    const message = document.createElement('div');
-    message.className = 'feedback-message wrong';
-    message.innerHTML = '✗ 答错了，请查看答案';
-    document.body.appendChild(message);
+    const toast = document.createElement('div');
+    toast.className = 'answer-toast wrong';
+    toast.textContent = '✗ 错误';
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('show'));
     setTimeout(() => {
-        message.classList.add('hide');
-        setTimeout(() => message.remove(), 300);
-    }, 1000);
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 800);
 }
 
 // 下一题

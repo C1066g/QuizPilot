@@ -776,56 +776,41 @@
             margin-bottom: 15px;
         }
 
-        /* 反馈消息样式 */
-        .feedback-message {
+        /* 轻量反馈 toast — 顶部滑入，不打断刷题 */
+        .answer-toast {
             position: fixed;
-            top: 50%;
+            top: 16px;
             left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 30px 50px;
-            border-radius: 15px;
-            font-size: 1.5em;
-            font-weight: bold;
+            transform: translateX(-50%) translateY(-80px);
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 600;
             z-index: 10000;
-            animation: popIn 0.3s ease-out;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+            pointer-events: none;
+        }
+        .answer-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        .answer-toast.correct {
+            background: #22c55e;
+            color: #fff;
+        }
+        .answer-toast.wrong {
+            background: #ef4444;
+            color: #fff;
         }
 
-        .feedback-message.correct {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-            color: white;
+        /* 选项按压反馈 */
+        .option:active {
+            transform: scale(0.97);
         }
 
-        .feedback-message.wrong {
-            background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
-            color: white;
-        }
-
-        .feedback-message.hide {
-            animation: popOut 0.3s ease-in forwards;
-        }
-
-        @keyframes popIn {
-            0% {
-                transform: translate(-50%, -50%) scale(0.5);
-                opacity: 0;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes popOut {
-            0% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(0.5);
-                opacity: 0;
-            }
-        }
+        /* 旧 feedback-message 兜底（保留给其他调用方） */
+        .feedback-message { display: none; }
 
         .filters {
             display: flex;
