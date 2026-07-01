@@ -2127,31 +2127,29 @@ function showQuestion() {
     const jumpInput = document.getElementById('jumpInput');
     if (jumpInput) jumpInput.value = currentIndex + 1;
     document.getElementById('questionType').textContent = getTypeLabel(question.type);
-    document.getElementById('questionText').textContent = question.question;
     const aa = document.getElementById('autoAdvanceToggle');
     if (aa) aa.checked = autoAdvance;
 
-    // 触发题目内容滑入动画
-    const container = document.getElementById('questionContainer');
-    if (container) {
-        container.classList.remove('active');
-        void container.offsetWidth;
-        container.classList.add('active');
-    }
-    
-    // 更新进度条
-    const progress = ((currentIndex + 1) / allQuestions.length) * 100;
-    document.getElementById('progressFill').style.width = progress + '%';
-    document.getElementById('currentQuestion').textContent = currentIndex + 1;
-    
-    // 重置选项顺序（每次显示新题目时）
-    currentOptions = [];
-    
-    // 显示选项
-    renderOptions(question);
-    
-    // 隐藏答案
-    document.getElementById('answerDisplay').classList.remove('show');
+    // 快速淡入：先设置内容再解除透明
+    const qt = document.getElementById('questionText');
+    const opts = document.getElementById('optionsContainer');
+    if (qt) qt.classList.add('fading');
+    if (opts) opts.classList.add('fading');
+
+    requestAnimationFrame(() => {
+        document.getElementById('questionText').textContent = question.question;
+        const progress = ((currentIndex + 1) / allQuestions.length) * 100;
+        document.getElementById('progressFill').style.width = progress + '%';
+        document.getElementById('currentQuestion').textContent = currentIndex + 1;
+        currentOptions = [];
+        renderOptions(question);
+        document.getElementById('answerDisplay').classList.remove('show');
+
+        requestAnimationFrame(() => {
+            if (qt) qt.classList.remove('fading');
+            if (opts) opts.classList.remove('fading');
+        });
+    });
     const mainBtn = document.getElementById('showAnswerBtn');
     if (mainBtn) mainBtn.textContent = '显示答案';
     const mbBtn = document.getElementById('mbShowBtn');
@@ -2275,7 +2273,12 @@ function renderOptions(question) {
 }
 
 // 选择选项
+let _selectLock = false;
 function selectOption(answer, question) {
+    if (_selectLock) return;
+    _selectLock = true;
+    setTimeout(() => { _selectLock = false; }, 500);
+
     const isCorrect = answer === question.answer;
     
     if (isCorrect) {
@@ -2291,7 +2294,7 @@ function selectOption(answer, question) {
                     currentIndex++;
                     showQuestion();
                 }
-            }, 800);
+            }, 500);
         }
     } else {
         answeredQuestions.add(currentIndex);
@@ -2341,7 +2344,7 @@ function submitFillAnswer(userAnswer, question) {
                 currentIndex++;
                 showQuestion();
             }
-        }, 800);
+        }, 500);
     } else {
         // 答错了
         const fillInput = document.querySelector('.fill-input');

@@ -555,7 +555,11 @@
             background: var(--panel-bg);
             border-left: 5px solid var(--accent);
             border-radius: 4px;
+            transition: opacity 0.12s ease;
         }
+        .question-text.fading { opacity: 0.3; }
+        .options { transition: opacity 0.12s ease; }
+        .options.fading { opacity: 0.3; }
 
         .options {
             display: grid;
