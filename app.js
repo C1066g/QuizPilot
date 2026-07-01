@@ -2131,8 +2131,10 @@ function showQuestion() {
     const aa = document.getElementById('autoAdvanceToggle');
     if (aa) aa.checked = autoAdvance;
 
-    // 平滑滚动到顶部
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 切换题目时确保在顶部（无动画，不干扰刷题节奏）
+    if (window.scrollY > 200) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
 
     // 触发题目内容滑入动画
     const container = document.getElementById('questionContainer');
