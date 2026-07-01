@@ -43,10 +43,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg-gradient);
             background-size: 240% 240%;
-            animation: bg-shift 28s ease infinite;
+            background-attachment: fixed;
             min-height: 100vh;
             padding: 20px;
             font-size: 18px;
+            scrollbar-gutter: stable;
         }
         @keyframes bg-shift { 0%{ background-position: 0 0; } 50%{ background-position: 100% 50%; } 100%{ background-position: 0 0; } }
         @media (prefers-reduced-motion: reduce) { body { animation: none; } }
@@ -558,7 +559,7 @@
             transition: opacity 0.12s ease;
         }
         .question-text.fading { opacity: 0.3; }
-        .options { transition: opacity 0.12s ease; }
+        .options { transition: opacity 0.12s ease; will-change: opacity; }
         .options.fading { opacity: 0.3; }
 
         .options {
@@ -781,6 +782,10 @@
         }
 
         /* 选项高亮过渡 + 按压反馈 */
+        .option {
+            will-change: transform;
+            contain: layout style;
+        }
         .option.correct {
             transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
         }
