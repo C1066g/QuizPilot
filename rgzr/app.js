@@ -2106,9 +2106,9 @@ function showQuestion() {
     if (currentIndex >= allQuestions.length) {
         currentIndex = allQuestions.length - 1;
     }
-    
+
     const question = allQuestions[currentIndex];
-    
+
     // 更新题目信息
     document.getElementById('questionNumber').textContent = `第 ${currentIndex + 1} 题 / ${allQuestions.length}`;
     const jumpInput = document.getElementById('jumpInput');
@@ -2117,6 +2117,17 @@ function showQuestion() {
     document.getElementById('questionText').textContent = question.question;
     const aa = document.getElementById('autoAdvanceToggle');
     if (aa) aa.checked = autoAdvance;
+
+    // 平滑滚动到顶部
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // 触发题目内容滑入动画
+    const container = document.getElementById('questionContainer');
+    if (container) {
+        container.classList.remove('active');
+        void container.offsetWidth;
+        container.classList.add('active');
+    }
     
     // 更新进度条
     const progress = ((currentIndex + 1) / allQuestions.length) * 100;
@@ -2267,14 +2278,13 @@ function selectOption(answer, question) {
         updateStats();
         highlightSingleJudgeOptions(question, answer);
         showCorrectMessage();
-        showCorrectMessage();
         if (autoAdvance) {
             setTimeout(() => {
                 if (currentIndex < allQuestions.length - 1) {
                     currentIndex++;
                     showQuestion();
                 }
-            }, 1000);
+            }, 1200);
         }
     } else {
         // 答错了
@@ -2288,7 +2298,6 @@ function selectOption(answer, question) {
         saveProgress();
         updateStats();
         highlightSingleJudgeOptions(question, answer);
-        showWrongMessage();
         showWrongMessage();
         showAnswer();
     }
@@ -2318,18 +2327,22 @@ function submitFillAnswer(userAnswer, question) {
         saveProgress();
         updateStats();
         
-        // 显示正确提示
+        // 显示正确提示 + 输入框反馈
         showCorrectMessage();
-        
-        // 1秒后自动跳到下一题
+        const fillInput = document.querySelector('.fill-input');
+        if (fillInput) { fillInput.style.borderColor = '#22c55e'; fillInput.style.background = '#f0fdf4'; }
+
+        // 1.2秒后自动跳到下一题
         setTimeout(() => {
             if (currentIndex < allQuestions.length - 1) {
                 currentIndex++;
                 showQuestion();
             }
-        }, 1000);
+        }, 1200);
     } else {
         // 答错了
+        const fillInput = document.querySelector('.fill-input');
+        if (fillInput) { fillInput.style.borderColor = '#ef4444'; fillInput.style.background = '#fef2f2'; }
         answeredQuestions.add(currentIndex);
         // 记录到错题集
         wrongQuestions.set(question.id, {
@@ -2366,25 +2379,26 @@ function showCorrectMessage() {
     message.className = 'feedback-message correct';
     message.innerHTML = '✓ 恭喜！答对了！';
     document.body.appendChild(message);
-    
     setTimeout(() => {
-        message.remove();
-    }, 1500);
+        message.classList.add('hide');
+        setTimeout(() => message.remove(), 300);
+    }, 1000);
 }
 
 // 显示错误消息
 function showWrongMessage() {
-    // 移除已有的错误提示，避免叠加
-    document.querySelectorAll('.feedback-message.wrong').forEach(el => el.remove());
+    document.querySelectorAll('.feedback-message.wrong').forEach(el => {
+        el.classList.add('hide');
+        setTimeout(() => el.remove(), 300);
+    });
     const message = document.createElement('div');
     message.className = 'feedback-message wrong';
     message.innerHTML = '✗ 答错了，请查看答案';
     document.body.appendChild(message);
-    
-    // 1.5秒后自动消失
     setTimeout(() => {
-        message.remove();
-    }, 1500);
+        message.classList.add('hide');
+        setTimeout(() => message.remove(), 300);
+    }, 1000);
 }
 
 // 下一题
@@ -2725,7 +2739,9 @@ function switchSubject(subjectKey) {
     if (!SUBJECTS[subjectKey]) { showToast('未知科目', 'error'); return; }
     currentSubject = subjectKey;
     localStorage.setItem('currentSubject', subjectKey);
-    
+
+    setLoading(true, '正在切换科目...');
+
     // 重新加载题目与覆盖层
     allQuestions = SUBJECTS[currentSubject].getQuestions();
     originalQuestions = [...allQuestions];
@@ -2735,6 +2751,7 @@ function switchSubject(subjectKey) {
         showQuestion();
         updateSubjectButtons();
         renderQuestionNav();
+        setLoading(false);
         showToast(`已切换科目：${SUBJECTS[subjectKey].name}`,'success');
     };
     applyOverlaysForSubject(subjectKey).then(after).catch(after);
