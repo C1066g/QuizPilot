@@ -2279,15 +2279,12 @@ function selectOption(answer, question) {
     const isCorrect = answer === question.answer;
     
     if (isCorrect) {
-        // 答对了
         answeredQuestions.add(currentIndex);
         correctAnswers++;
-        // 如果之前答错过，现在答对了，从错题集中移除
         wrongQuestions.delete(question.id);
         saveProgress();
         updateStats();
         highlightSingleJudgeOptions(question, answer);
-        showCorrectMessage();
         if (autoAdvance) {
             setTimeout(() => {
                 if (currentIndex < allQuestions.length - 1) {
@@ -2297,9 +2294,7 @@ function selectOption(answer, question) {
             }, 800);
         }
     } else {
-        // 答错了
         answeredQuestions.add(currentIndex);
-        // 记录到错题集
         wrongQuestions.set(question.id, {
             question: question,
             userAnswer: answer,
@@ -2308,7 +2303,6 @@ function selectOption(answer, question) {
         saveProgress();
         updateStats();
         highlightSingleJudgeOptions(question, answer);
-        showWrongMessage();
         showAnswer();
     }
 }
@@ -2337,8 +2331,7 @@ function submitFillAnswer(userAnswer, question) {
         saveProgress();
         updateStats();
         
-        // 显示正确提示 + 输入框反馈
-        showCorrectMessage();
+        // 输入框反馈
         const fillInput = document.querySelector('.fill-input');
         if (fillInput) { fillInput.style.borderColor = '#22c55e'; fillInput.style.background = '#f0fdf4'; }
 
@@ -2363,8 +2356,7 @@ function submitFillAnswer(userAnswer, question) {
         saveProgress();
         updateStats();
         
-        // 显示错误提示和答案
-        showWrongMessage();
+        // 显示答案
         showAnswer();
     }
 }
@@ -2383,31 +2375,9 @@ function showAnswer() {
     if (mbBtn) mbBtn.textContent = '✓ 已显示';
 }
 
-// 显示正确反馈（轻量 toast，不打断刷题节奏）
-function showCorrectMessage() {
-    const toast = document.createElement('div');
-    toast.className = 'answer-toast correct';
-    toast.textContent = '✓ 正确';
-    document.body.appendChild(toast);
-    requestAnimationFrame(() => toast.classList.add('show'));
-    setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
-    }, 800);
-}
-
-// 显示错误反馈
-function showWrongMessage() {
-    const toast = document.createElement('div');
-    toast.className = 'answer-toast wrong';
-    toast.textContent = '✗ 错误';
-    document.body.appendChild(toast);
-    requestAnimationFrame(() => toast.classList.add('show'));
-    setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
-    }, 800);
-}
+// 反馈已改为纯选项高亮，不再弹出任何消息
+function showCorrectMessage() {}
+function showWrongMessage() {}
 
 // 下一题
 function nextQuestion() {
