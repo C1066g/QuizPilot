@@ -601,11 +601,16 @@
             border-radius: 8px;
             margin-bottom: 20px;
             display: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
         }
 
         .answer-display.show {
             display: block;
             animation: slideIn 0.3s ease;
+        }
+
+        .fill-input {
+            transition: border-color 0.3s ease, background 0.3s ease;
         }
 
         .answer-display h3 {
