@@ -776,41 +776,16 @@
             margin-bottom: 15px;
         }
 
-        /* 轻量反馈 toast — 顶部滑入，不打断刷题 */
-        .answer-toast {
-            position: fixed;
-            top: 16px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-80px);
-            padding: 10px 24px;
-            border-radius: 20px;
-            font-size: 15px;
-            font-weight: 600;
-            z-index: 10000;
-            opacity: 0;
-            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
-            pointer-events: none;
+        /* 选项高亮过渡 + 按压反馈 */
+        .option.correct {
+            transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
         }
-        .answer-toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
+        .option.incorrect {
+            transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
         }
-        .answer-toast.correct {
-            background: #22c55e;
-            color: #fff;
-        }
-        .answer-toast.wrong {
-            background: #ef4444;
-            color: #fff;
-        }
-
-        /* 选项按压反馈 */
         .option:active {
             transform: scale(0.97);
         }
-
-        /* 旧 feedback-message 兜底（保留给其他调用方） */
-        .feedback-message { display: none; }
 
         .filters {
             display: flex;
