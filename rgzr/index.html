@@ -2,7 +2,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#4a6cf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)">
+    <link rel="manifest" href="manifest.json">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; worker-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
     <title>QuizPilot · AI Study & Quiz App</title>
     <style>
@@ -1024,6 +1027,45 @@
 
             .bottom-bar { display: block; }
             .content-main { padding-bottom: 86px; }
+        }
+
+        /* ── Auto dark mode (system preference) ── */
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --card-bg: #1e1e2e; --panel-bg: #16162a; --text-color: #e0e0e0;
+                --text-secondary: #a0a0b0; --border-color: #333; --hover-bg: #2a2a3e;
+                --progress-bg: #333; --bg: #0f0f1a;
+            }
+            :root:not([data-theme="light"]) body { background: var(--bg); color: var(--text-color); }
+            :root:not([data-theme="light"]) .header { background: rgba(0,0,0,0.5); }
+            :root:not([data-theme="light"]) .option { background: var(--card-bg); border-color: var(--border-color); color: var(--text-color); }
+            :root:not([data-theme="light"]) .option:hover { border-color: #4a6cf7; background: #2a2a4e; }
+            :root:not([data-theme="light"]) .question-nav { background: var(--panel-bg); }
+            :root:not([data-theme="light"]) textarea,
+            :root:not([data-theme="light"]) input[type="text"] { background: var(--card-bg); color: var(--text-color); border-color: var(--border-color); }
+        }
+
+        /* ── Smooth theme transitions ── */
+        body, .option, .header, .question-nav, textarea, input[type="text"] {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* ── Mobile touch optimization ── */
+        @media (max-width: 768px) {
+            .option, .judge-btn { min-height: 48px; padding: 14px 16px; }
+            .nav-btn, .submit-btn, .mode-btn, .filter-btn { min-height: 44px; min-width: 44px; }
+            button, .option, [role="button"] { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+            input, textarea { font-size: 16px; }
+            .sidebar { width: 100%; position: relative; height: auto; padding: 12px; }
+            .main { margin-left: 0; padding: 16px; }
+        }
+
+        /* ── Reduced motion: kill all animations ── */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>

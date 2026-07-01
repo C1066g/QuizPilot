@@ -18,6 +18,11 @@ let multiSelected = new Set(); // 多选题：当前已选择的选项字母集�
 let autoAdvance = (localStorage.getItem('autoAdvance') || '1') === '1';
 let overlayEditorState = null;
 
+// ── PWA: Service Worker ──
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
 try { if (typeof window !== 'undefined' && window.pdfjsLib) { window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'lib/pdf.worker.min.js'; } } catch (e) {}
 
 function setupHelpOverlay() {
@@ -1933,16 +1938,24 @@ function getProgressKey() {
 function setupThemeToggle() {
     const root = document.documentElement;
     const btn = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('theme') || '';
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let theme = saved || (prefersDark ? 'dark' : 'light');
+    const saved = localStorage.getItem('theme');
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    let theme = saved || (mq.matches ? 'dark' : 'light');
 
     const apply = (t) => {
         if (t === 'dark') root.setAttribute('data-theme', 'dark');
-        else root.removeAttribute('data-theme');
+        else root.setAttribute('data-theme', 'light');
         if (btn) btn.textContent = t === 'dark' ? '🌞 亮色' : '🌙 暗色';
     };
     apply(theme);
+
+    // Listen for system theme changes (only when user hasn't manually set)
+    mq.addEventListener('change', e => {
+        if (!localStorage.getItem('theme')) {
+            apply(e.matches ? 'dark' : 'light');
+        }
+    });
+
     if (btn) {
         btn.onclick = () => {
             theme = theme === 'dark' ? 'light' : 'dark';
