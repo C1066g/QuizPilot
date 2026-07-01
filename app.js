@@ -602,10 +602,16 @@ const SUBJECTS = {
         getQuestions: () => [
             ...(typeof questionsSpeech !== 'undefined' ? questionsSpeech : [])
         ]
+    },
+    dip: {
+        name: '数字图像处理',
+        getQuestions: () => [
+            ...(typeof questionsDip !== 'undefined' ? questionsDip : [])
+        ]
     }
 };
 
-const DEFAULT_SUBJECT_KEYS = new Set(['ai','exchange','linux','speech']);
+const DEFAULT_SUBJECT_KEYS = new Set(['ai','exchange','linux','speech','dip']);
 const DYNAMIC_SUBJECT_BASE = new Map();
 const BUNDLED_IMPORTS = {
     ai_microcert: {
