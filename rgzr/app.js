@@ -613,10 +613,16 @@ const SUBJECTS = {
         getQuestions: () => [
             ...(typeof questionsDip !== 'undefined' ? questionsDip : [])
         ]
+    },
+    zuoye2: {
+        name: 'Verilog HDL',
+        getQuestions: () => [
+            ...(typeof questionsZuoye2 !== 'undefined' ? questionsZuoye2 : [])
+        ]
     }
 };
 
-const DEFAULT_SUBJECT_KEYS = new Set(['ai','exchange','linux','speech','dip']);
+const DEFAULT_SUBJECT_KEYS = new Set(['ai','exchange','linux','speech','dip','zuoye2']);
 const DYNAMIC_SUBJECT_BASE = new Map();
 const BUNDLED_IMPORTS = {
     ai_microcert: {
