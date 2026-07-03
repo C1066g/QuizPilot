@@ -619,10 +619,16 @@ const SUBJECTS = {
         getQuestions: () => [
             ...(typeof questionsZuoye2 !== 'undefined' ? questionsZuoye2 : [])
         ]
+    },
+    icdesign: {
+        name: 'IC设计',
+        getQuestions: () => [
+            ...(typeof questionsICDesign !== 'undefined' ? questionsICDesign : [])
+        ]
     }
 };
 
-const DEFAULT_SUBJECT_KEYS = new Set(['ai','exchange','linux','speech','dip','zuoye2']);
+const DEFAULT_SUBJECT_KEYS = new Set(['ai','exchange','linux','speech','dip','zuoye2','icdesign']);
 const DYNAMIC_SUBJECT_BASE = new Map();
 const BUNDLED_IMPORTS = {
     ai_microcert: {
